@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:largeHeap="true"
+        android:name="com.example.myhome.appcomponents.di.MyApp"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" android:theme="@style/Theme.MyApp" android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.example.myhome.modules.logininmobiliaria.ui.LoginInmobiliariaActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.perfilinmobiliaria.ui.PerfilInmobiliariaActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.inmobiliariacompartirpropiedad.ui.InmobiliariaCompartirPropiedadActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.registrar.ui.RegistrarActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadeslistausuarioone.ui.PropiedadesListaUsuarioOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadseleccionadausuariostwo.ui.PropiedadSeleccionadaUsuariosTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.logininmobiliariaerror.ui.LoginInmobiliariaErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.reservar.ui.ReservarActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadesfavoritosusuario.ui.PropiedadesFavoritosUsuarioActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.cdigoverificacinerror.ui.CDigoVerificaciNErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.mensajeguardarpropiedadinformado.ui.MensajeGuardarPropiedadInformadoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.avisocompartir.ui.AvisoCompartirActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.modificarpropiedadparteone.ui.ModificarPropiedadParteOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.modificarpropiedadpartethree.ui.ModificarPropiedadParteThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.nuevapropiedadpartethree.ui.NuevaPropiedadParteThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadesfavoritosusuariotwo.ui.PropiedadesFavoritosUsuarioTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.contactaryturnotwo.ui.ContactarYTurnoTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadeslistainmobiliaria.ui.PropiedadesListaInmobiliariaActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.nuevapropiedadpartefour.ui.NuevaPropiedadParteFourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.resenas.ui.ResenasActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.modalfeedback.ui.ModalFeedbackActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.cambiarcontraseaerror.ui.CambiarContraseAErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.modificarpropiedadpartefour.ui.ModificarPropiedadParteFourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.nuevapropiedadparteone.ui.NuevaPropiedadParteOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.mailcontraseaenviado.ui.MailContraseAEnviadoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.filtroone.ui.FiltroOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.contactaryturno.ui.ContactarYTurnoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.filtro.ui.FiltroActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.olvidemicontrasea.ui.OlvideMiContraseAActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.contactaryturnoone.ui.ContactarYTurnoOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadeslistausuario.ui.PropiedadesListaUsuarioActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.cuentacreada.ui.CuentaCreadaActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.modificarpropiedadpartetwo.ui.ModificarPropiedadParteTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.nuevapropiedadparte1error.ui.NuevaPropiedadParte1ErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.nuevapropiedadpartetwo.ui.NuevaPropiedadParteTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.valoracionesycomentarios.ui.ValoracionesYComentariosActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.avisogps.ui.AvisoGpsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadeslistainmobiliariaone.ui.PropiedadesListaInmobiliariaOneActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true"
+            android:name="com.example.myhome.modules.login.ui.LoginActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.myhome.modules.registrarerror.ui.RegistrarErrorActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadseleccionadausuariosone.ui.PropiedadSeleccionadaUsuariosOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadseleccionadausuarios.ui.PropiedadSeleccionadaUsuariosActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.perfilinmobiliariaone.ui.PerfilInmobiliariaOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.propiedadesfavoritosusuarioone.ui.PropiedadesFavoritosUsuarioOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.myhome.modules.cambiarcontrasea.ui.CambiarContraseAActivity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>

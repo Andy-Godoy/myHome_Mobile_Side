@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="mensajeGuardarPropiedadInformadoVM" type="com.example.myhome.modules.mensajeguardarpropiedadinformado.data.viewmodel.MensajeGuardarPropiedadInformadoVM"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearMensajeGuarda"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700_f2">
+        <View
+            android:background="@drawable/rectangle_bg_cyan_300_radius_tl_10_tr_10"
+            android:id="@+id/lineFrameThirtyFive"
+            android:layout_height="@dimen/_6pxv" android:layout_width="@dimen/_350pxh"/>
+        <LinearLayout android:gravity="center_horizontal"
+            android:id="@+id/linearColumnreservarealiza"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_A700_f2">
+            <TextView android:ellipsize="end" android:gravity="start"
+                android:id="@+id/txtReservarealiza"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_14pxv"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{mensajeGuardarPropiedadInformadoVM.mensajeGuardarPropiedadInformadoModel.txtReservarealiza}"
+                style="@style/txtSourceSansProsourcesansprobold24" tools:text="@string/msg_reserva_realiza"/>
+        </LinearLayout>
+        <View android:background="@color/gray_500"
+            android:id="@+id/lineLineFourteen"
+            android:layout_height="@dimen/_1pxv" android:layout_width="@dimen/_350pxh"/>
+        <FrameLayout android:id="@+id/frameStackaceptar"
+            android:layout_height="@dimen/_126pxv"
+            android:layout_marginTop="@dimen/_7pxv" android:layout_width="match_parent">
+            <LinearLayout android:id="@+id/linearFooter"
+                android:layout_gravity="bottom|start"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylewhite_A700_5">
+                <TextView android:ellipsize="end" android:gravity="end"
+                    android:id="@+id/txtAceptar"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_2pxv"
+                    android:layout_marginEnd="@dimen/_4pxh"
+                    android:layout_marginStart="@dimen/_266pxh"
+                    android:layout_marginTop="@dimen/_34pxv"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="@dimen/_1pxv"
+                    android:paddingEnd="@dimen/_18pxh"
+                    android:paddingStart="@dimen/_18pxh"
+                    android:paddingTop="@dimen/_5pxv"
+                    android:singleLine="true"
+                    android:text="@{mensajeGuardarPropiedadInformadoVM.mensajeGuardarPropiedadInformadoModel.txtAceptar}"
+                    style="@style/txtSolidRoundedOutline_3" tools:text="@string/lbl_aceptar"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearBody"
+                android:layout_gravity="top|center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10pxv"
+                android:layout_marginEnd="@dimen/_4pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylewhite_A700_f2">
+                <TextView android:id="@+id/txtDescription"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_width="match_parent"
+                    android:text="@{mensajeGuardarPropiedadInformadoVM.mensajeGuardarPropiedadInformadoModel.txtDescription}"
+                    style="@style/txtSourceSansProsourcesansprosemibold14" tools:text="@string/msg_la_reserva_se_h"/>
+                <View android:background="@color/gray_500"
+                    android:id="@+id/lineLineThirteen"
+                    android:layout_height="@dimen/_1pxv"
+                    android:layout_marginTop="@dimen/_27pxv" android:layout_width="@dimen/_336pxh"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

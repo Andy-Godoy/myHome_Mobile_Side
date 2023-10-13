@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="modificarPropiedadParteTwoVM" type="com.example.myhome.modules.modificarpropiedadpartetwo.data.viewmodel.ModificarPropiedadParteTwoVM"/>
+    </data>
+    <LinearLayout android:id="@+id/linearModificarPropi"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4pxv"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStyle_1">
+        <LinearLayout android:id="@+id/linearColumneditarpropieda"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_95pxv"
+            android:layout_marginStart="@dimen/_2pxh"
+            android:layout_weight="0.92" android:layout_width="0dp" android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar android:gravity="start"
+                android:id="@+id/toolbarToolbar"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="match_parent" app:contentInsetStart="0dp">
+                <LinearLayout android:gravity="start"
+                    android:id="@+id/linearRowcasatwentyone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearColumncasatwentyone"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.27"
+                        android:layout_width="0dp" android:orientation="vertical">
+                        <ImageView android:id="@+id/imageCasaTwentyOne"
+                            android:layout_height="@dimen/_23pxh"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_casa21"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_casa21"/>
+                        <TextView android:ellipsize="end"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/txtMyHome"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5pxh"
+                            android:layout_marginStart="@dimen/_5pxh"
+                            android:layout_marginTop="@dimen/_2pxv"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtMyHome}"
+                            style="@style/txt_1" tools:text="@string/lbl_my_home"/>
+                    </LinearLayout>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtEditarPropieda"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5pxv"
+                        android:layout_marginStart="@dimen/_5pxh"
+                        android:layout_marginTop="@dimen/_9pxv"
+                        android:layout_weight="0.73"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtEditarPropieda}"
+                        style="@style/txtOpenSansopensansbold14" tools:text="@string/msg_editar_propieda"/>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearColumntipopropiedad"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_33pxv"
+                android:layout_width="match_parent" android:orientation="vertical">
+                <LinearLayout android:id="@+id/linearRowtipopropiedad"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearTipoPropiedad"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp" android:orientation="vertical">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtTipoPropiedad"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtTipoPropiedad}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_tipo_propiedad"/>
+                        <EditText
+                            android:background="@drawable/rectangle_bg_white_a700_f2_border_gray_400_radius_8"
+                            android:drawableEnd="@drawable/img_vector_gray_700"
+                            android:drawablePadding="@dimen/_30pxh"
+                            android:ellipsize="end"
+                            android:hint="@string/lbl_departamento"
+                            android:id="@+id/etDropdowntipop"
+                            android:inputType="text"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_9pxv"
+                            android:paddingEnd="@dimen/_11pxh"
+                            android:paddingStart="@dimen/_4pxh"
+                            android:paddingTop="@dimen/_12pxv"
+                            android:singleLine="true"
+                            android:text="@={modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.etDropdowntipopValue}"
+                            android:textColorHint="@color/gray_700"
+                            style="@style/etSolidRoundedOutline_9" tools:ignore="Autofill"/>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearColumnestado"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12pxh"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp" android:orientation="vertical">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtEstado"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtEstado}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_estado"/>
+                        <EditText
+                            android:background="@drawable/rectangle_bg_white_a700_f2_border_gray_400_radius_8"
+                            android:drawableEnd="@drawable/img_vector_gray_700_5x10"
+                            android:drawablePadding="@dimen/_30pxh"
+                            android:ellipsize="end"
+                            android:hint="@string/lbl_alquiler"
+                            android:id="@+id/etHoverestadoin"
+                            android:inputType="text"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_9pxv"
+                            android:paddingEnd="@dimen/_12pxh"
+                            android:paddingStart="@dimen/_4pxh"
+                            android:paddingTop="@dimen/_12pxv"
+                            android:singleLine="true"
+                            android:text="@={modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.etHoverestadoinValue}"
+                            android:textColorHint="@color/gray_700"
+                            style="@style/etSolidRoundedOutline_9" tools:ignore="Autofill"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/linearRoworientacin"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_41pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearColumnorientacin"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp" android:orientation="vertical">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtOrientacin"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtOrientacin}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_orientaci_n"/>
+                        <LinearLayout
+                            android:id="@+id/linearHoveraltaprop"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal" style="@style/groupStylewhite_A700_1">
+                            <TextView android:ellipsize="end"
+                                android:id="@+id/txtLabel"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_10pxv"
+                                android:layout_marginStart="@dimen/_4pxh"
+                                android:layout_marginTop="@dimen/_11pxv"
+                                android:layout_weight="0.44"
+                                android:layout_width="0dp"
+                                android:singleLine="true"
+                                android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtLabel}"
+                                style="@style/txtOpenSansopensansregular13_2" tools:text="@string/lbl_s"/>
+                            <ImageView android:id="@+id/imageVector"
+                                android:layout_height="@dimen/_5pxh"
+                                android:layout_marginBottom="@dimen/_18pxv"
+                                android:layout_marginEnd="@dimen/_15pxh"
+                                android:layout_marginStart="@dimen/_119pxh"
+                                android:layout_marginTop="@dimen/_17pxv"
+                                android:layout_width="@dimen/_10pxh"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/img_vector_gray_700_5x10"
+                                tools:ignore="ContentDescription" tools:src="@drawable/img_vector_gray_700_5x10"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearColumnposicin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12pxh"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp" android:orientation="vertical">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtPosicin"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_marginStart="@dimen/_4pxh"
+                            android:layout_width="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtPosicin}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_posici_n"/>
+                        <EditText
+                            android:background="@drawable/rectangle_bg_white_a700_f2_border_gray_500_radius_9"
+                            android:drawableEnd="@drawable/img_vector_gray_700_5x10"
+                            android:drawablePadding="@dimen/_30pxh"
+                            android:ellipsize="end"
+                            android:hint="@string/lbl_contrafrente"
+                            android:id="@+id/etDropdownposici"
+                            android:inputType="text"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_10pxv"
+                            android:paddingEnd="@dimen/_15pxh"
+                            android:paddingStart="@dimen/_4pxh"
+                            android:paddingTop="@dimen/_11pxv"
+                            android:singleLine="true"
+                            android:text="@={modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.etDropdownposiciValue}"
+                            android:textColorHint="@color/gray_700"
+                            style="@style/etSolidRoundedOutline_3" tools:ignore="Autofill"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="start"
+                    android:id="@+id/linearRowtieneterraza"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_97pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchMaterial3DSwitch"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_2pxv"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.12" android:layout_width="0dp"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtTieneterraza"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.37"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtTieneterraza}"
+                        style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_tiene_terraza"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchMaterial3DSwitchOne"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_4pxv"
+                        android:layout_marginStart="@dimen/_30pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.12" android:layout_width="0dp"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtTienecochera"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_marginStart="@dimen/_4pxh"
+                        android:layout_weight="0.39"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtTienecochera}"
+                        style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_tiene_cochera"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/linearRowcantidaddeamb"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_32pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearCantidaddeamb"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/txtCantidaddeamb"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_2pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtCantidaddeamb}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/msg_cantidad_de_amb"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtInputcantidad"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_10pxv"
+                            android:paddingEnd="@dimen/_25pxh"
+                            android:paddingTop="@dimen/_11pxv"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtInputcantidad}"
+                            style="@style/txtSolidRoundedOutline_4" tools:text="@string/lbl_3"/>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearColumncantidaddecoc"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtCantidaddecoc"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtCantidaddecoc}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/msg_cantidad_de_coc"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtInputcantidadOne"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_10pxv"
+                            android:paddingEnd="@dimen/_25pxh"
+                            android:paddingTop="@dimen/_11pxv"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtInputcantidadOne}"
+                            style="@style/txtSolidRoundedOutline_4" tools:text="@string/lbl_2"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="start"
+                    android:id="@+id/linearRowtienebaulera"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_92pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchMaterial3DSwitchTwo"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_4pxv"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.12" android:layout_width="0dp"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtTienebaulera"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.38"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtTienebaulera}"
+                        style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_tiene_baulera"/>
+                    <LinearLayout android:id="@+id/linearBalcn"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_marginStart="@dimen/_26pxh"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal" style="@style/groupStylecornerRadius_2">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchMaterialSwitch"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_3pxv"
+                            android:layout_marginTop="@dimen/_1pxv"
+                            android:layout_weight="0.26" android:layout_width="0dp"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtTienebalcn"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4pxh"
+                            android:layout_weight="0.74"
+                            android:layout_width="0dp"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtTienebalcn}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_tiene_balc_n"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/linearRowcantidaddeba"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_32pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearCantidaddeba"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtCantidaddeBa"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtCantidaddeBa}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/msg_cantidad_de_ba2"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtInputcantidadTwo"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_10pxv"
+                            android:paddingEnd="@dimen/_27pxh"
+                            android:paddingTop="@dimen/_11pxv"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtInputcantidadTwo}"
+                            style="@style/txtSolidRoundedOutline_4" tools:text="@string/lbl_1"/>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="start"
+                        android:id="@+id/linearCantidaddeCua"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12pxh"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:orientation="vertical" style="@style/groupStylecornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtCantidaddeCua"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtCantidaddeCua}"
+                            style="@style/txtOpenSansopensansmedium14" tools:text="@string/msg_cantidad_de_cua2"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtInputcantidadThree"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4pxv"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_10pxv"
+                            android:paddingEnd="@dimen/_25pxh"
+                            android:paddingTop="@dimen/_11pxv"
+                            android:singleLine="true"
+                            android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtInputcantidadThree}"
+                            style="@style/txtSolidRoundedOutline_4" tools:text="@string/lbl_2"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_8pxh"
+                android:layout_marginTop="@dimen/_26pxv"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_21pxh"
+                    android:layout_marginBottom="@dimen/_3pxv"
+                    android:layout_marginTop="@dimen/_3pxv"
+                    android:layout_width="@dimen/_21pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txt2deFour"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_134pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txt2deFour}"
+                    style="@style/txtOpenSansopensanssemibold20" tools:text="@string/lbl_2_de_4"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@+id/imageArrowright"
+            android:layout_height="@dimen/_21pxh"
+            android:layout_marginBottom="@dimen/_99pxv"
+            android:layout_marginStart="@dimen/_4pxh"
+            android:layout_marginTop="@dimen/_695pxv"
+            android:layout_width="@dimen/_21pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_arrowright_gray_800"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_arrowright_gray_800"/>
+        <FrameLayout android:id="@+id/frameBottombar"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.02" android:layout_width="0dp" style="@style/groupStylegray_200">
+            <LinearLayout android:id="@+id/linearRowhome"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_1pxv"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <LinearLayout android:id="@+id/linearColumnhome"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
+                    <ImageView android:id="@+id/imageHome"
+                        android:layout_gravity="center"
+                        android:layout_height="@dimen/_22pxh"
+                        android:layout_width="@dimen/_20pxh"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_home"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_home"/>
+                    <TextView android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/txtPropiedades"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_2pxh"
+                        android:layout_marginStart="@dimen/_2pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtPropiedades}"
+                        style="@style/txtOpenSansopensansmedium12_2" tools:text="@string/lbl_propiedades"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/linearNuevaPropiedad"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
+                    <ImageView android:id="@+id/imagePlus"
+                        android:layout_gravity="center"
+                        android:layout_height="@dimen/_22pxh"
+                        android:layout_width="@dimen/_20pxh"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_plus"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_plus"/>
+                    <TextView android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/txtNuevaPropiedad"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_2pxh"
+                        android:layout_marginStart="@dimen/_2pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtNuevaPropiedad}"
+                        style="@style/txtOpenSansopensansmedium12_2" tools:text="@string/lbl_nueva_propiedad"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/linearPerfil"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_1pxv"
+                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
+                    <ImageView android:id="@+id/imageUser"
+                        android:layout_gravity="center"
+                        android:layout_height="@dimen/_22pxh"
+                        android:layout_width="@dimen/_20pxh"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_user"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_user"/>
+                    <TextView android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/txtPerfil"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_2pxh"
+                        android:layout_marginStart="@dimen/_2pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="@{modificarPropiedadParteTwoVM.modificarPropiedadParteTwoModel.txtPerfil}"
+                        style="@style/txtOpenSansopensansmedium12_2" tools:text="@string/lbl_perfil2"/>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>
