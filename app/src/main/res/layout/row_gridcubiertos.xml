@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="gridcubiertosRowModel" type="com.example.myhome.modules.nuevapropiedadpartethree.data.model.GridcubiertosRowModel"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearColumncubiertos"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylecornerRadius">
+        <TextView android:ellipsize="end" android:id="@+id/txtCubiertos"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:layout_marginStart="@dimen/_2pxh"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{gridcubiertosRowModel.txtCubiertos}"
+            style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_cubiertos"/>
+        <EditText
+            android:background="@drawable/rectangle_bg_white_a700_f2_border_gray_500_radius_12"
+            android:ellipsize="end" android:hint="@string/lbl_cubiertos"
+            android:id="@+id/etInputmetroscu" android:inputType="text"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_10pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_10pxh"
+            android:paddingTop="@dimen/_11pxv" android:singleLine="true"
+            android:text="@={gridcubiertosRowModel.etInputmetroscuValue}"
+            android:textColorHint="@color/gray_500"
+            style="@style/etSolidRoundedOutline_2" tools:ignore="Autofill"/>
+    </LinearLayout>
+</layout>

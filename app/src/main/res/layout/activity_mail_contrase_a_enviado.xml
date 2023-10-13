@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="mailContraseAEnviadoVM" type="com.example.myhome.modules.mailcontraseaenviado.data.viewmodel.MailContraseAEnviadoVM"/>
+    </data>
+    <LinearLayout android:id="@+id/linearMailContrasea"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStyle_1">
+        <ImageView android:id="@+id/imageArrowleft"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_21pxh"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_12pxv"
+            android:layout_width="@dimen/_21pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_arrowleft"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+        <ImageView android:id="@+id/imageCasaTwentyOne"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_101pxh"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_89pxv"
+            android:layout_width="@dimen/_187pxh"
+            android:scaleType="fitXY" imageRes="@{@drawable/img_casa21}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_casa21"/>
+        <TextView android:ellipsize="end" android:id="@+id/txtMyHome"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_1pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{mailContraseAEnviadoVM.mailContraseAEnviadoModel.txtMyHome}"
+            style="@style/txt" tools:text="@string/lbl_my_home"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowcheckmark"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_38pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <ImageView android:id="@+id/imageCheckmark"
+                android:layout_height="@dimen/_24pxh"
+                android:layout_marginBottom="@dimen/_3pxv"
+                android:layout_marginTop="@dimen/_5pxv"
+                android:layout_width="@dimen/_24pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_checkmark"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtElmailhasido"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2pxh"
+                android:layout_weight="0.92" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{mailContraseAEnviadoVM.mailContraseAEnviadoModel.txtElmailhasido}"
+                style="@style/txtOpenSansopensansbold24" tools:text="@string/msg_el_mail_ha_sido"/>
+        </LinearLayout>
+        <TextView android:gravity="center_horizontal"
+            android:id="@+id/txtIntroduceelc"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_4pxv"
+            android:layout_width="match_parent"
+            android:text="@{mailContraseAEnviadoVM.mailContraseAEnviadoModel.txtIntroduceelc}"
+            style="@style/txtOpenSansopensansregular18" tools:text="@string/msg_introduce_el_c"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumncdigo"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_52pxv"
+            android:layout_width="wrap_content"
+            android:orientation="vertical" style="@style/groupStylecornerRadius">
+            <TextView android:ellipsize="end" android:id="@+id/txtCdigo"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{mailContraseAEnviadoVM.mailContraseAEnviadoModel.txtCdigo}"
+                style="@style/txtOpenSansopensansmedium14" tools:text="@string/lbl_c_digo"/>
+            <EditText
+                android:background="@drawable/rectangle_bg_white_a700_f2_border_gray_500_radius_12"
+                android:ellipsize="end"
+                android:hint="@string/lbl_c_digo"
+                android:id="@+id/etInputcodigo" android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_10pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_10pxh"
+                android:paddingTop="@dimen/_11pxv"
+                android:singleLine="true"
+                android:text="@={mailContraseAEnviadoVM.mailContraseAEnviadoModel.etInputcodigoValue}"
+                android:textColorHint="@color/gray_500"
+                style="@style/etSolidRoundedOutline_2" tools:ignore="Autofill"/>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnAceptar"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_40pxv"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_14pxh"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_177pxv"
+            android:layout_width="@dimen/_270pxh"
+            android:paddingBottom="@dimen/_9pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_9pxv" android:singleLine="true"
+            android:text="@string/lbl_aceptar"
+            android:textAllCaps="false"
+            style="@style/btnSolidRoundedOutline" tools:text="@string/lbl_aceptar"/>
+    </LinearLayout>
+</layout>
