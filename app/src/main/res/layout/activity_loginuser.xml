@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".LoginUser">
+
+    <ImageView
+        android:id="@+id/LoginLogo"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/TxtBienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:gravity="center"
+
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        tools:ignore="TextSizeCheck" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/TxtIngresar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:gravity="center"
+
+        android:text="@string/accessuser"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="20dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+
+        android:onClick="onClick"
+        android:text="@string/signingoogle"
+        android:textColor="#212121"
+        tools:ignore="DuplicateIds,VisualLintButtonSize" />
+
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="156dp"
+        android:layout_height="5dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/TxtInmobiliaria"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:gravity="center"
+        android:text="@string/msginmobiliaria"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/validarButton"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/boton"
+        android:onClick="ingresar"
+        android:text="@string/access"
+        android:textColor="#212121"
+        tools:ignore="VisualLintButtonSize" />
+
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/borde_redondo"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:autofillHints="password"
+        android:background="@drawable/borde_redondo"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/TxtOlvido"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_gravity="start"
+        android:layout_margin="15dp"
+        android:gravity="center"
+
+        android:text="@string/forgot"
+        android:textColor="@color/material_dynamic_primary30"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TVSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sincuenta"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/TVSignInLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:autoLink="web"
+            android:text="@string/Registrese_link"
+            android:textColor="#991b23"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
