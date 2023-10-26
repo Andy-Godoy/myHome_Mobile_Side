@@ -102,6 +102,47 @@
     <string name="nombre_de_inmobiliaria">Nombre de Inmobiliaria</string>
 
     <string name="id_de_usuario">ID de Usuario</string>
+    <string name="title_activity_list_properties_user">ListPropertiesUser</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    //uso de strings para activity_list_user_properties.xml
+
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_paraguay_4200">Paraguay 4200</string>
+    <string name="lbl_charcas_4000">Charcas 4000</string>
+    <string name="lbl_u_d_220">U$D 220</string>
+    <string name="lbl_33_m2">33 m2 </string>
+    <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
+    <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
+    <string name="lbl_95_m2">95 m2 </string>
+    <string name="lbl_1_dormitorio">1 dormitorio</string>
+    <string name="lbl_perfil">Perfil     </string>
+    <string name="lbl_u_d_210_000">U$D 210.000</string>
+    <string name="lbl_filtrar">Filtrar</string>
+    <string name="lbl_propiedades">Propiedades</string>
+    <string name="lbl_3_dormitorios">3 dormitorios</string>
+    <string name="lbl_my_home">My Home</string>
+    <string name="msg_impec_balc_n_c">IMPEC! Balcón corrido al fte! M/Lum!...</string>
+    <string name="lbl_favoritos">Favoritos  </string>
+    <string name="propiedades">Propiedades</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="precio">Precio</string>
+    <string name="direccion">Direccion</string>
+    <string name="ciudadbarrio">Ciudad y Barrio</string>
+    <string name="m2">m2</string>
+    <string name="descripcion">descripcion</string>
+    <string name="dormitorio">dormitorio</string>
+
+    //***************************************
 
 </resources>
