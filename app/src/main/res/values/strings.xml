@@ -143,6 +143,36 @@
     <string name="descripcion">descripcion</string>
     <string name="dormitorio">dormitorio</string>
 
-    //***************************************
+    //****************************************************
+    //uso de strings para activity_list_user_properties.xml
+
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_u_s_109_200">U$S 109.200</string>
+    <string name="lbl_78_m2">78 m2 </string>
+    <string name="lbl_u_d_66_640">U$D 66.640</string>
+    <string name="lbl_nueva_propiedad">Nueva Propiedad</string>
+    <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
+    <string name="lbl_95_m2">95 m2 </string>
+    <string name="lbl_17_y_60">17 y 60</string>
+    <string name="lbl_propiedades">Propiedades</string>
+    <string name="msg_la_plata_bueno">La Plata, Buenos aires</string>
+    <string name="lbl_47_m2">47 m2 </string>
+    <string name="msg_impec_balc_n_c">IMPEC! Balcón corrido al fte! M/Lum!...</string>
+    <string name="lbl_paraguay_4200">Paraguay 4200</string>
+    <string name="lbl_charcas_4000">Charcas 4000</string>
+    <string name="lbl_u_d_140_000">U$D 140.000</string>
+    <string name="lbl_33_m2">33 m2 </string>
+    <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
+    <string name="msg_departamento_en3">Departamento en venta - 2 dormitorios - balcón - 78 mts2 - La Plata-Poz...</string>
+    <string name="lbl_1_dormitorio">1 dormitorio</string>
+    <string name="msg_departamento_en2">Departamento en venta - 1 dormitorio 1 baño - 47 mts2 - La Plata-Poz...</string>
+    <string name="lbl_perfil">Perfil</string>
+    <string name="lbl_u_d_210_000">U$D 210.000</string>
+    <string name="lbl_3_dormitorios">3 dormitorios</string>
+    <string name="lbl_mis_propiedades">Mis Propiedades</string>
+    <string name="lbl_my_home">My Home</string>
+    <string name="lbl_2_dormitorios">2 dormitorios</string>
+
+    //*****************************************************
 
 </resources>
