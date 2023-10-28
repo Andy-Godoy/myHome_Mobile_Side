@@ -319,6 +319,7 @@
                     android:layout_width="@dimen/_20pxh"
                     android:layout_height="@dimen/_22pxh"
                     android:layout_gravity="center"
+                    android:onClick="nuevapropiedad"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_plus"
                     tools:ignore="ContentDescription"
