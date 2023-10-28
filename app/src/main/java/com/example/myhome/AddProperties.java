@@ -1,8 +1,8 @@
 package com.example.myhome;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AddProperties extends AppCompatActivity {
 
