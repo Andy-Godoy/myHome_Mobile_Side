@@ -213,7 +213,7 @@
                 android:layout_marginTop="@dimen/_93pxv"
                 android:layout_marginEnd="@dimen/_11pxh"
                 android:layout_marginBottom="@dimen/_93pxv"
-                android:imageRes="@drawable/img_image15"
+                imageRes="@drawable/img_image15"
                 android:scaleType="fitXY"
                 tools:ignore="ContentDescription"
                 tools:src="@drawable/img_image15" />
