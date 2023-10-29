@@ -90,4 +90,40 @@ public class UsersApi extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    public Users loginUsuario (GoogleCredentials credentials){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Crea una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realiza la solicitud
+        Call<Users> call = apiService.loguearUsuario(credentials);
+
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if (response.isSuccessful()) {
+
+                    user = response.body();
+
+                    // Maneja la respuesta aquí
+                } else {
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                // Maneja errores de conexión aquí
+                Log.i("Loguear Usuario", "onFailure: "+t.getMessage());
+            }
+        });
+        return user;
+    }
+
 }
