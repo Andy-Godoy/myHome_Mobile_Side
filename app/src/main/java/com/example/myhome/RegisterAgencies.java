@@ -32,25 +32,31 @@ public class RegisterAgencies extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
 
                 //validar email
-                if (isValidEmail(email)) {
-
-                } else {
+                if (!isValidEmail(email)) {
                     showToast("Correo electrónico no válido");
                 }
                 // Validar la contraseña
-                if (isValidPassword(password)) {
-
-                } else {
+                if (!isValidPassword(password)) {
                     showToast("La contraseña debe tener al menos 6 caracteres");
                 }
 
                 // Validar el correo electrónico y la contraseña (puedes usar tus propias reglas de validación)
                 if (isValidEmail(email) && isValidPassword(password)) {
                     // Ambos datos son válidos, navegar de vuelta a la actividad "LoginRealState"
-                    Intent intent = new Intent(RegisterAgencies.this, LoginAgencies.class);
-                    startActivity(intent);
-                    finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
-                } else {
+                    UsersApi usersApi = new UsersApi();
+                    BasicCredentials basicCredentials = new BasicCredentials(editTextEmail.getText().toString(),editTextPassword.getText().toString());
+                    Users user = usersApi.registrarUsuario (basicCredentials);
+
+                    if (user != null) {
+                        showToast("usuario registrado correctamente");
+                        Intent intent = new Intent(RegisterAgencies.this, LoginAgencies.class);
+                        startActivity(intent);
+                        finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+                    } else {
+                        showToast("El usuario ya existe");
+
+                    }
+
 
                 }
             }
@@ -71,8 +77,6 @@ public class RegisterAgencies extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
-
 
     public void volver (View view) {
         Intent miIntent=new Intent(RegisterAgencies.this, LoginUser.class);
