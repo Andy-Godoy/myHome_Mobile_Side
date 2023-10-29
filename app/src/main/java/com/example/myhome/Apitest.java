@@ -40,6 +40,8 @@ public class Apitest extends AppCompatActivity {
         getAgencie();
     }
 
+
+
     private void getAgencie() {
         // Configura Retrofit
         Retrofit retrofit = new Retrofit.Builder()
@@ -75,7 +77,10 @@ public class Apitest extends AppCompatActivity {
             public void onFailure(Call<List<Agencies>> call, Throwable t) {
                 // Maneja errores de conexión aquí
                 Toast.makeText(Apitest.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
+
+
 }
