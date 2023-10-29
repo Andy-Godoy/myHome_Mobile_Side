@@ -69,21 +69,42 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
 
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
-            goMainScreen();
+            goMainScreen(result);
         } else {
             Toast.makeText(this, R.string.not_log_in, Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void goMainScreen() {
-        Intent intent = new Intent(LoginUser.this, SecondActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    private void goMainScreen(GoogleSignInResult result) {
+            // Ambos datos son válidos, navegar de vuelta a la actividad "LoginRealState"
+            UsersApi usersApi = new UsersApi();
+            GoogleCredentials credentials = new GoogleCredentials(
+                    result.getSignInAccount().getId(),
+                    result.getSignInAccount().getEmail(),
+                    result.getSignInAccount().getDisplayName(),
+                    result.getSignInAccount().getPhotoUrl().toString());
+
+            Users user = usersApi.loginUsuario (credentials);
+
+            if (user != null) {
+                Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
+                startActivity(intent);
+                finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+            }
+
+        // Intent intent = new Intent(LoginUser.this, SecondActivity.class);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        // startActivity(intent);
     }
 
     public void ingresar(View view) {
         Intent miIntent=new Intent(LoginUser.this, LoginAgencies.class);
         startActivity(miIntent);
+    }
+
+    // Función para mostrar un mensaje Toast
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 

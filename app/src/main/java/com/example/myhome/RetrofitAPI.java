@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.POST;
 
+
 public interface RetrofitAPI {
     @GET("agencies")
     //Call<Agencies> getAgencies();
@@ -15,5 +16,8 @@ public interface RetrofitAPI {
 
     @POST("users")
     Call<Users> registrarUsuario (@Body BasicCredentials basicCredentials);
+
+    @POST("users/logins")
+    Call<Users> loguearUsuario (@Body GoogleCredentials credentials);
 
 }
