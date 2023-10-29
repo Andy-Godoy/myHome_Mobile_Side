@@ -22,6 +22,32 @@
     <color name="lightGrey">#EAEAEA</color>
     <color name="lavender">#8692f7</color>
 
+    //color usado para activity_list_user_properties.xml
+    <color name="gray_600">#707070</color>
+    <color name="gray_501">#949494</color>
+    <color name="gray_700">#646464</color>
+    <color name="deep_orange_50">#f5e3e6</color>
+    <color name="gray_400">#c5b5b5</color>
+    <color name="gray_500">#9d9d9d</color>
+    <color name="bluegray_900_33">#33282b30</color>
+    <color name="amber_500">#ffc107</color>
+    <color name="red_600">#dc3545</color>
+    <color name="gray_800">#3e3e3e</color>
+    <color name="red_800">#be313e</color>
+    <color name="bluegray_100">#cdd4cf</color>
+    <color name="amber_200">#ffe082</color>
+    <color name="red_400">#dd5764</color>
+    <color name="black_900_3f">#3f000000</color>
+    <color name="gray_200">#efefef</color>
+    <color name="gray_201">#e8e8e8</color>
+    <color name="orange_200">#e7ca90</color>
+    <color name="green_500">#4d9f5f</color>
+    <color name="teal_300">#49a5c5</color>
+    <color name="cyan_300">#55c1e6</color>
+    <color name="blue_100">#d1daf9</color>
+
+    //***************************************
+
 
 
 </resources>
