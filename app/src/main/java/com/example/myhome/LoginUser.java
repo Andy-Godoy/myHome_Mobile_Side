@@ -2,6 +2,7 @@ package com.example.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,7 +16,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, LoginCallback {
 
     private GoogleApiClient googleApiClient;
 
@@ -76,25 +77,17 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     }
 
     private void goMainScreen(GoogleSignInResult result) {
-            // Ambos datos son válidos, navegar de vuelta a la actividad "LoginRealState"
+
             UsersApi usersApi = new UsersApi();
             GoogleCredentials credentials = new GoogleCredentials(
                     result.getSignInAccount().getId(),
                     result.getSignInAccount().getEmail(),
-                    result.getSignInAccount().getDisplayName(),
-                    result.getSignInAccount().getPhotoUrl().toString());
+                    result.getSignInAccount().getPhotoUrl().toString(),
+                    result.getSignInAccount().getDisplayName());
 
-            Users user = usersApi.loginUsuario (credentials);
+            Users user = usersApi.loginUsuario (credentials, this);
 
-            if (user != null) {
-                Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
-                startActivity(intent);
-                finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
-            }
 
-        // Intent intent = new Intent(LoginUser.this, SecondActivity.class);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        // startActivity(intent);
     }
 
     public void ingresar(View view) {
@@ -108,4 +101,21 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     }
 
 
+    @Override
+    public void onLoginSuccess(Users user) {
+        if (user != null) {
+            Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
+            startActivity(intent);
+            finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+        }
+
+        Intent intent = new Intent(LoginUser.this, SecondActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLoginFailure(String errorMessage) {
+        showToast(errorMessage);
+    }
 }
