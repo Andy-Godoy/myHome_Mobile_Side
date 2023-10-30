@@ -72,6 +72,19 @@ dependencies {
 
     //implementación de librerias para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-auth:20.7.0") //Libreria para el uso de Google Auth
+
+    //******nuevas librerias agregadas para auth
+    implementation ("com.google.android.gms:play-services-auth-api-phone:18.0.1") //Libreria para el uso de Google Auth
+
+    implementation ("com.google.android.gms:play-services-auth-base:18.0.10") //Libreria para el uso de Google Auth
+    implementation ("com.google.android.gms:play-services-base:18.2.0") //Libreria para el uso de Google Auth
+    implementation ("com.google.android.gms:play-services-basement:18.2.0") //Libreria para el uso de Google Auth
+
+    implementation ("com.google.android.gms:play-services-tasks:18.0.2") //Libreria para el uso de Google Auth
+
+    //*****************************************
+
+
     implementation ("com.github.bumptech.glide:glide:4.12.0") //Libreria para el uso de imagenes
     implementation (platform("com.google.firebase:firebase-bom:32.4.0")) //Libreria para el uso de Firebase
     implementation ("com.google.firebase:firebase-auth:22.2.0")         //Libreria para el uso de Firebase Auth
@@ -90,7 +103,7 @@ dependencies {
 
     implementation ("com.squareup.retrofit2:retrofit:2.9.0") //Libreria para el uso de Retrofit
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0") //Libreria para el uso de Retrofit
-    implementation ("com.sun.mail:android-mail:1.6.5")
+    implementation ("com.sun.mail:android-mail:1.6.5") //NO ACTUALIZAR ESTA LIBRERIA
     implementation ("com.sun.mail:android-activation:1.6.7")
     implementation ("com.google.code.gson:gson:2.10.1") //Libreria para el uso de Gson
 

@@ -91,7 +91,8 @@ public class UsersApi extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public Users loginUsuario (GoogleCredentials credentials){
+    public Users loginUsuario (GoogleCredentials credentials, final LoginCallback callback){
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -109,10 +110,10 @@ public class UsersApi extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     user = response.body();
-
+                    callback.onLoginSuccess(user);
                     // Maneja la respuesta aquí
                 } else {
-
+                    callback.onLoginFailure("Error al loguear usuario");
 
                 }
             }
@@ -121,9 +122,9 @@ public class UsersApi extends AppCompatActivity {
             public void onFailure(Call<Users> call, Throwable t) {
                 // Maneja errores de conexión aquí
                 Log.i("Loguear Usuario", "onFailure: "+t.getMessage());
+                callback.onLoginFailure("Error al loguear usuario");
             }
         });
         return user;
     }
-
 }
