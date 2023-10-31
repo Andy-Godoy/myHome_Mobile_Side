@@ -91,7 +91,7 @@
 
     <string name="home">Home</string>
 
-    <string name="nuevapropiedad">Crear Propiedad</string>
+    <string name="nuevapropiedad">Nueva Propiedad</string>
 
     <string name="perfil">Perfil</string>
 
@@ -164,4 +164,25 @@
 
     //*****************************************************
 
+    //****************************************************
+    //uso de strings para activity_new_properties.xml
+
+    <string name="calle">Calle</string>
+
+    <string name="numero">Número</string>
+
+    <string name="dpto">Dpto</string>
+
+    <string name="piso">Piso</string>
+
+    <string name="pais">País</string>
+
+    <string name="provincia">Provincia</string>
+
+    <string name="localidad">Localidad</string>
+
+    <string name="barrio">Barrio</string>
+
+
+    //*****************************************************
 </resources>

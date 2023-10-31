@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="txt">
         <item name="android:textSize">@dimen/_7pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">600</item>
         <item name="android:background">@drawable/rectangle_dhi_0</item>
@@ -15,7 +15,7 @@
     </style>
     <style name="txtOpenSansopensansmedium12_1">
         <item name="android:textSize">@dimen/_12pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">500</item>
     </style>
@@ -24,13 +24,13 @@
     </style>
     <style name="txtOpenSansopensansbold14">
         <item name="android:textSize">@dimen/_14pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">700</item>
     </style>
     <style name="txtOpenSansopensanssemibold20">
         <item name="android:textSize">@dimen/_20pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">600</item>
     </style>
@@ -42,19 +42,19 @@
     </style>
     <style name="txtOpenSansopensansbold28">
         <item name="android:textSize">@dimen/_28pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">700</item>
     </style>
     <style name="txtOpenSansopensansbold12">
         <item name="android:textSize">@dimen/_12pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">700</item>
     </style>
     <style name="txtOpenSansopensansregular20">
         <item name="android:textSize">@dimen/_20pxh</item>
-        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textColor">@color/general_titulo</item>
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="android:textFontWeight" tools:targetApi="p">400</item>
     </style>

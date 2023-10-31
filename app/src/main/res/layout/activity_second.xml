@@ -54,6 +54,14 @@
         tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="continuar"
+        android:text="Continuar"
+        tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/revoke"

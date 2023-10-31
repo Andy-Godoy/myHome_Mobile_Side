@@ -120,4 +120,9 @@ public class SecondActivity extends AppCompatActivity implements GoogleApiClient
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    public void continuar(View view) {
+        // Cambiar al segundo diseño
+        setContentView(R.layout.activity_new_properties);
+    }
 }
