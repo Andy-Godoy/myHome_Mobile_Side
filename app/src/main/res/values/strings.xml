@@ -183,6 +183,105 @@
 
     <string name="barrio">Barrio</string>
 
+    <string name="tipoPropiedad">Tipo Propiedad</string>
+
+    <string name="estado">Estado</string>
+
+    <string name="orientacion">Orientación</string>
+
+    <string name="posicion">Posición</string>
+
+    <string name="tieneTerraza">¿Tiene terraza?</string>
+
+    <string name="tieneCochera">¿Tiene cochera?</string>
+
+    <string name="cantidadAmbientes">Cant. de ambientes</string>
+
+    <string name="cantidadCochera">Cant. cocheras</string>
+
+    <string name="tieneBaulera">¿Tiene baulera?</string>
+
+    <string name="tieneBalcon">¿Tiene balcón?</string>
+
+    <string name="cantidadBaños">Cant. de baños</string>
+
+    <string name="cantidadCuartos">Cant. de cuartos</string>
+
+    <string name="antiguedad">Antigüedad</string>
+
+    <string name="amenities">Amenities</string>
+
+    <string name="metrosCuadrados">METROS CUADRADOS</string>
+
+    <string name="cubiertos">Cubiertos</string>
+
+    <string name="semiCubiertos">Semicubiertos</string>
+
+    <string name="descubiertos">Descubiertos</string>
+
+    <string name="PrecioDePropiedad">Precio de propiedad</string>
+
+    <string name="PrecioDeExpensas">Precio de expensas</string>
+
+    <string name="descripcion1">Descripción</string>
+
+
+    //****************************************************
+    //uso de strings para spinners de activity_new_properties.xml
+
+    <string-array name="lista_de_estados">
+        <item>Venta</item>
+        <item>Alquiler</item>
+    </string-array>
+
+    <string-array name="lista_de_tipo_propiedad">
+        <item>Casa</item>
+        <item>Departamento</item>
+        <item>Galpón</item>
+        <item>Local</item>
+        <item>Oficina</item>
+        <item>Ph</item>
+        <item>Terreno</item>
+    </string-array>
+
+    <string-array name="lista_orientacion">
+        <item>N</item>
+        <item>S</item>
+        <item>E</item>
+        <item>O</item>
+        <item>NE</item>
+        <item>NO</item>
+        <item>SE</item>
+        <item>SO</item>
+    </string-array>
+
+    <string-array name="lista_posicion">
+        <item>Frente</item>
+        <item>Contrafrente</item>
+    </string-array>
+
+    <string-array name="lista_antiguedad">
+        <item>A estrenar</item>
+        <item>Menor a 1 año</item>
+        <item>Menor a 3 años</item>
+        <item>Menor a 5 años</item>
+        <item>Menor a 10 años</item>
+        <item>Menor a 25 años</item>
+        <item>Menor a 50 años</item>
+        <item>Mayor a 50 años</item>
+    </string-array>
+
+    <string-array name="lista_amenities">
+        <item>Todos</item>
+        <item>Quincho</item>
+        <item>Pileta</item>
+        <item>Jacuzzi</item>
+        <item>Sauna</item>
+        <item>Sum</item>
+        <item>Sala de juegos</item>
+        <item>Gimnasio</item>
+        <item>Laundry</item>
+    </string-array>
 
     //*****************************************************
 </resources>
