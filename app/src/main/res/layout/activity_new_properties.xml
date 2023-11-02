@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp">
+    tools:layout_editor_absoluteX="@dimens/_1pxh"
+    tools:layout_editor_absoluteY="@dimens/_1pxh"
+    android:background="@drawable/bg_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_new_properties"
@@ -275,6 +276,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextSizeCheck" />
 
+
         <EditText
             android:id="@+id/txtBarrio"
             android:layout_width="0dp"
@@ -301,9 +303,526 @@
             android:text="@string/barrio"
             android:textColor="@color/general_titulo"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/lblNumero"
+            app:layout_constraintStart_toStartOf="@+id/txtBarrio"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblTipoPropiedad"
+            android:layout_width="124dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="788dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/tipoPropiedad"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/TipoPropiedad"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblcantidadAmbientes"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1116dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/cantidadAmbientes"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtcantidadAmbientes"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1148dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/cantidadAmbientes"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/orientacion"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblcantidadCochera"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1116dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/cantidadCochera"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadCochera"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtcantidadCochera"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1148dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/cantidadCochera"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtcantidadAmbientes"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblorientacion"
+            android:layout_width="124dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="908dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/orientacion"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/orientacion"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblposicion"
+            android:layout_width="124dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="912dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/posicion"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/posicion"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblEstado"
+            android:layout_width="57dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="788dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="center"
+            android:text="@string/estado"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/Estado"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/lblcantidadBaños"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1324dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/cantidadBaños"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadBaños"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtcantidadBaños"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1356dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/cantidadBaños"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblcantidadCuartos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1324dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/cantidadCuartos"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadCuartos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtcantidadCuartos"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1356dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/cantidadCuartos"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtcantidadBaños"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblamenities"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1444dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/amenities"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/amenities"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblantiguedad"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1444dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/antiguedad"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/antiguedad"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/lblmetrosCuadrados"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="1554dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="center"
+            android:text="@string/metrosCuadrados"
+            android:textColor="@color/general_titulo"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/lblcubiertos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1594dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/cubiertos"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtcubiertos"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1626dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/cubiertos"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/antiguedad"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblsemiCubiertos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1594dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/semiCubiertos"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtsemiCubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtsemiCubiertos"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1626dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/semiCubiertos"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtcubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lbldescubiertos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1698dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/descubiertos"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtdescubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtdescubiertos"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1730dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/descubiertos"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/txtcubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblPrecioDePropiedad"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1792dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/PrecioDePropiedad"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtPrecioDePropiedad"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1824dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/PrecioDePropiedad"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/txtdescubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lblPrecioDeExpensas"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1792dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/PrecioDeExpensas"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtPrecioDeExpensas"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtPrecioDeExpensas"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1824dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/PrecioDeExpensas"
+            android:inputType="number"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtcubiertos"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/lbldescripcion1"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="1904dp"
+            android:ems="10"
+            android:fontFamily="@font/opensanssemibold"
+            android:gravity="left"
+            android:text="@string/descripcion1"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtdescripcion1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/txtdescripcion1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1936dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/descripcion1"
+            android:paddingTop="0dp"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:minLines="10"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrecioDeExpensas"
+            app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="377dp"
+            tools:layout_editor_absoluteY="732dp">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/Estado"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="820dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_de_estados"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toEndOf="@+id/TipoPropiedad"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/TipoPropiedad"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="820dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_de_tipo_propiedad"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="@+id/txtBarrio"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/orientacion"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="940dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_orientacion"
+            app:layout_constraintStart_toStartOf="@+id/TipoPropiedad"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/posicion"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="940dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_posicion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/orientacion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/antiguedad"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1476dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_antiguedad"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadBaños"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/amenities"
+            android:layout_width="156dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="1476dp"
+            android:background="@drawable/borde_redondo"
+            android:entries="@array/lista_amenities"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/antiguedad"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/tieneBaulera"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1028dp"
+            android:text="@string/tieneBaulera"
+            app:layout_constraintStart_toStartOf="@+id/orientacion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/tieneBalcon"
+            android:layout_width="148dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="1028dp"
+            android:text="@string/tieneBalcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tieneBaulera"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/tieneCochera"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1236dp"
+            android:text="@string/tieneCochera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.393"
+            app:layout_constraintStart_toEndOf="@+id/tieneTerraza"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/tieneTerraza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1236dp"
+            android:text="@string/tieneTerraza"
+            app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="418dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1006dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

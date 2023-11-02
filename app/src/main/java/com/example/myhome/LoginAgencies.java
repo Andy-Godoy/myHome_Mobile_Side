@@ -34,8 +34,9 @@ public class LoginAgencies extends AppCompatActivity {
             } else if (isValidEmail(email) && isValidPassword(password)) {
                 // Los datos son válidos, puedes proceder con la autenticación o lo que sea necesario.
                 Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
-                Intent miIntent=new Intent(LoginAgencies.this, ListAgencieProperties.class);
+                Intent miIntent=new Intent(LoginAgencies.this, NewProperties.class);
                 startActivity(miIntent);
+
             } else {
                 // Mostrar mensajes de validación en un AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
