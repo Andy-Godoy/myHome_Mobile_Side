@@ -18,7 +18,7 @@ public class MultiSelectDropDown extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multi_select_drop_down);
+        setContentView(R.layout.multi_select_drop_down);
 
         //asigno las variables
         tvAmenities = findViewById(R.id.tv_amenities);
