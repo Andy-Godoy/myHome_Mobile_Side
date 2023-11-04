@@ -121,7 +121,6 @@
         android:id="@+id/txtOlvido"
         android:layout_width="307dp"
         android:layout_height="43dp"
-
         android:layout_gravity="start"
         android:layout_margin="15dp"
         android:gravity="left"
