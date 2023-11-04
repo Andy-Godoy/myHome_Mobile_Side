@@ -225,6 +225,10 @@
 
     <string name="descripcion1">Descripción</string>
 
+    <string name="guardarImagenes">Agregar imágenes</string>
+
+    <string name="guardarPropiedad">Guardar propiedad</string>
+
 
     //****************************************************
     //uso de strings para spinners de activity_new_properties.xml
@@ -272,7 +276,7 @@
     </string-array>
 
     <string-array name="lista_amenities">
-        <item>Todos</item>
+        <item>Estacionamiento</item>
         <item>Quincho</item>
         <item>Pileta</item>
         <item>Jacuzzi</item>
@@ -281,6 +285,7 @@
         <item>Sala de juegos</item>
         <item>Gimnasio</item>
         <item>Laundry</item>
+        <item>WI-FI</item>
     </string-array>
 
     //*****************************************************
