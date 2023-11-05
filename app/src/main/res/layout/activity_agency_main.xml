@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color"
-    tools:context=".ListAgencyProperties">
+    tools:context=".ListAgencieProperties">
 
     <LinearLayout
         android:id="@+id/agencyMainView"
@@ -31,7 +31,6 @@
 
             <TextView
                 android:id="@+id/lblProperties"
-                style="@style/txtOpenSansopensansbold14"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
@@ -53,7 +52,6 @@
             android:layout_marginBottom="10dp">
             <FrameLayout
                 android:id="@+id/frameStacksearch"
-                style="@style/groupStylewhite_A700_f2cornerRadius"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48pxv">
                 <ImageView
@@ -92,7 +90,6 @@
         </ScrollView>
         <FrameLayout
             android:id="@+id/footerBar"
-            style="@style/groupStylegray_200"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp">
@@ -102,31 +99,37 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="0dp">
+
                 <Button
+                    android:id="@+id/btnPropiedades"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="0dp"
                     android:layout_weight="0.33"
                     android:drawableTop="@drawable/img_home"
-                    android:layout_gravity="center"
-                    android:text="Propiedades"
-                    android:layout_margin="0dp"
-                />
+                    android:onClick="verPropiedades"
+                    android:text="Propiedades" />
                 <Button
+                    android:id="@+id/btnNuevaPropiedad"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.33"
                     android:drawableTop="@drawable/img_plus"
                     android:layout_gravity="center"
                     android:text="Nueva Propeiedad"
+                    android:onClick="nuevaPropiedad"
                     android:layout_margin="0dp"
                 />
                 <Button
+                    android:id="@+id/btnPerfil"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.33"
                     android:drawableTop="@drawable/img_user"
                     android:layout_gravity="center"
                     android:text="Perfil"
+                    android:onClick="verPerfil"
                     android:layout_margin="0dp"
                 />
             </LinearLayout>

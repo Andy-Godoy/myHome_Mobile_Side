@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginAgencies extends AppCompatActivity {
+public class LoginAgencies extends AppCompatActivity implements LoginCallback {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -33,9 +33,10 @@ public class LoginAgencies extends AppCompatActivity {
                 Toast.makeText(this, "El campo de correo electrónico está vacío", Toast.LENGTH_SHORT).show();
             } else if (isValidEmail(email) && isValidPassword(password)) {
                 // Los datos son válidos, puedes proceder con la autenticación o lo que sea necesario.
-                Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
-                Intent miIntent=new Intent(LoginAgencies.this, NewProperties.class);
-                startActivity(miIntent);
+
+                BasicCredentials credentials = new BasicCredentials(email, password);
+                UsersApi userApi = new UsersApi();
+                Users user = userApi.loginUsuario(credentials, this);
 
             } else {
                 // Mostrar mensajes de validación en un AlertDialog
@@ -79,5 +80,21 @@ public class LoginAgencies extends AppCompatActivity {
         Intent miIntent=new Intent(LoginAgencies.this, ForgotPassword.class);
         startActivity(miIntent);
 
+    }
+
+    @Override
+    public void onLoginSuccess(Users user) {
+
+        MyHome myHome = (MyHome) getApplication();
+        myHome.setUsuario(user);
+
+        Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
+        Intent miIntent=new Intent(LoginAgencies.this, ListAgencieProperties.class);
+        startActivity(miIntent);
+    }
+
+    @Override
+    public void onLoginFailure(String errorMessage) {
+        Toast.makeText(this, "No ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
     }
 }

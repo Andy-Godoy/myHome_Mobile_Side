@@ -104,6 +104,10 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
 
     @Override
     public void onLoginSuccess(Users user) {
+
+        MyHome myHome = (MyHome) getApplication();
+        myHome.setUsuario(user);
+
         if (user != null) {
             Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
             startActivity(intent);

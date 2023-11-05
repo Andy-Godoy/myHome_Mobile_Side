@@ -246,7 +246,7 @@
             tools:text="@string/lbl_my_home" />
 
         <TextView
-            android:id="@+id/txtPropiedades"
+            android:id="@+id/txtPropiedades1"
             style="@style/txtOpenSansopensansbold14"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

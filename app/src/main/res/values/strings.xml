@@ -278,6 +278,7 @@
     </string-array>
 
     <string-array name="lista_amenities">
+        <item>Todos</item>
         <item>Estacionamiento</item>
         <item>Quincho</item>
         <item>Pileta</item>

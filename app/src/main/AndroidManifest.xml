@@ -21,15 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyHome"
-        tools:targetApi="31">
-        <activity
-            android:name=".AddProperties"
-            android:exported="false" />
+        tools:targetApi="31"
+        android:name=".MyHome">
+
         <activity
             android:name=".ListAgencieProperties"
-            android:exported="false" />
-        <activity
-            android:name=".SelectPropertieUser"
             android:exported="false" />
         <activity
             android:name=".ListUserProperties"

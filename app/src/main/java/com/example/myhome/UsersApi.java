@@ -43,7 +43,7 @@ public class UsersApi extends AppCompatActivity {
         //registrarUsuario();
     }
 
-        public Users registrarUsuario(BasicCredentials basicCredentials) {
+        public Users registrarUsuario(BasicCredentials basicCredentials, final LoginCallback callback) {
             // Configura Retrofit
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -62,17 +62,12 @@ public class UsersApi extends AppCompatActivity {
                     if (response.isSuccessful()) {
 
                         user = response.body();
-                        System.out.println(user);
-
+                        callback.onLoginSuccess(user);
 
                         // Maneja la respuesta aquí
                     } else {
 
-                        Log.i("Registrar Usuario", "onFailure: "+response.code());
-                        Log.i("Registrar Usuario", "onFailure: "+response.body());
-
-                        showToast("El usuario ya existe");
-
+                        callback.onLoginFailure("El usuario ya existe");
 
                     }
                 }
@@ -127,4 +122,42 @@ public class UsersApi extends AppCompatActivity {
         });
         return user;
     }
+    //arranca acá la copia
+    public Users loginUsuario (BasicCredentials credentials, final LoginCallback callback){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Crea una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realiza la solicitud
+        Call<Users> call = apiService.loguearUsuario(credentials);
+
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if (response.isSuccessful()) {
+
+                    user = response.body();
+                    callback.onLoginSuccess(user);
+                    // Maneja la respuesta aquí
+                } else {
+                    callback.onLoginFailure("Error al loguear usuario");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                // Maneja errores de conexión aquí
+                Log.i("Loguear Usuario", "onFailure: "+t.getMessage());
+                callback.onLoginFailure("Error al loguear usuario");
+            }
+        });
+        return user;
+    }
+
 }
