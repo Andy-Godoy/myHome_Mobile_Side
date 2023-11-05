@@ -1,4 +1,5 @@
 <resources>
+
     <string name="logo">logo</string>
 
     <string name="app_name">MyHome</string>
@@ -228,6 +229,7 @@
     <string name="guardarImagenes">Agregar imágenes</string>
 
     <string name="guardarPropiedad">Guardar propiedad</string>
+    <string name="myhome">MyHome</string>
 
 
     //****************************************************
