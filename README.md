@@ -151,7 +151,7 @@ Las clases de la aplicación son las siguientes:
 Para instalar la aplicación, siga estos pasos:
 
 1. Abra la APK facilitada por el equipo 10 desde archivos de Teams. Caso contrario:
-2. Descargue el proyecto de GitHub o 
+2. Descargue el proyecto de GitHub  
 2. Abra el proyecto en Android Studio.
 3. Compile y ejecute la aplicación.
 
