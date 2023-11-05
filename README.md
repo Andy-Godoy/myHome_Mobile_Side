@@ -21,9 +21,9 @@ Android Studio Giraffe 2022.3.1
 
 ### SDK Versions
 
-Api Level 34
+Api Level "34"
 
-compileSdk = 34
+compileSdk "34"
 
 minSdkVersion "26"
 
