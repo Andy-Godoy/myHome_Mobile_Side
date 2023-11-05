@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterAgencies extends AppCompatActivity {
+public class RegisterAgencies extends AppCompatActivity implements LoginCallback {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -42,25 +42,26 @@ public class RegisterAgencies extends AppCompatActivity {
 
                 // Validar el correo electrónico y la contraseña (puedes usar tus propias reglas de validación)
                 if (isValidEmail(email) && isValidPassword(password)) {
+
+
                     // Ambos datos son válidos, navegar de vuelta a la actividad "LoginRealState"
-                    UsersApi usersApi = new UsersApi();
+
                     BasicCredentials basicCredentials = new BasicCredentials(editTextEmail.getText().toString(),editTextPassword.getText().toString());
-                    Users user = usersApi.registrarUsuario (basicCredentials);
+                    intentarRegistrar(basicCredentials);
 
-                    if (user != null) {
-                        showToast("usuario registrado correctamente");
-                        Intent intent = new Intent(RegisterAgencies.this, LoginAgencies.class);
-                        startActivity(intent);
-                        finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
-                    } else {
-                        showToast("El usuario ya existe");
-
-                    }
 
 
                 }
             }
+
         });
+    }
+
+
+    private void intentarRegistrar(BasicCredentials credentials) {
+
+        UsersApi userApi = new UsersApi();
+        Users user = userApi.registrarUsuario (credentials, this);
     }
 
     // Función para validar el formato del correo electrónico
@@ -83,4 +84,21 @@ public class RegisterAgencies extends AppCompatActivity {
         startActivity(miIntent);
     }
 
+    @Override
+    public void onLoginSuccess(Users user) {
+
+        MyHome myHome = (MyHome) getApplication();
+        myHome.setUsuario(user);
+
+        showToast("usuario registrado correctamente");
+        Intent intent = new Intent(RegisterAgencies.this, ListAgencieProperties.class);
+        startActivity(intent);
+        finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+
+    }
+
+    @Override
+    public void onLoginFailure(String errorMessage) {
+        showToast(errorMessage);
+    }
 }

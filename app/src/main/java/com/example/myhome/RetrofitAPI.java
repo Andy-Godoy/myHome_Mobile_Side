@@ -1,6 +1,7 @@
 package com.example.myhome;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -33,6 +34,9 @@ public interface RetrofitAPI {
 
     @GET("properties")
     Call<Properties> getProperty (@Query("propertyId") long propertyId);
+
+    @POST("properties")
+    Call<List<PropertySummary>> getProperties (@Body Map<String, Object> filters);
 
     @DELETE("properties")
     Call<Response<Properties>> deleteProperty (@Query("propertyId") long propertyId, @Query("agencyId") long agencyId);

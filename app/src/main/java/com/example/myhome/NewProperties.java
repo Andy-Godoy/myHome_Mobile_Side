@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.net.Uri;
+import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class NewProperties extends AppCompatActivity {
@@ -17,14 +20,18 @@ public class NewProperties extends AppCompatActivity {
     private ImageAdapter imageAdapter;
     private ArrayList<Uri> imageUris = new ArrayList<>();
     private static final int PICK_IMAGES_REQUEST = 1;
+    private Spinner spinner;
+    private CustomSpinnerAdapter adapter;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_properties);
 
-        ViewStub viewStub = findViewById(R.id.multi_select_stub);
-        View inflatedView = viewStub.inflate();
+        spinner = findViewById(R.id.spnrAmenities);
+        adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
+        spinner.setAdapter(adapter);
 
         gridView = findViewById(R.id.gridView);
         imageAdapter = new ImageAdapter(this, imageUris);
