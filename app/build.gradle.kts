@@ -79,7 +79,7 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth-base:18.0.10") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-base:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-basement:18.2.0") //Libreria para el uso de Google Auth
-
+    //implementation ("com.google.firebase:firebase-auth:23.0.0")
     implementation ("com.google.android.gms:play-services-tasks:18.0.2") //Libreria para el uso de Google Auth
 
     //*****************************************

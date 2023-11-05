@@ -30,6 +30,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         setContentView(R.layout.activity_loginuser);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("387896738234-qb9p54qj9hhfj4s0t028gab34r9f035q.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -78,14 +79,14 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
 
     private void goMainScreen(GoogleSignInResult result) {
 
-            UsersApi usersApi = new UsersApi();
-            GoogleCredentials credentials = new GoogleCredentials(
-                    result.getSignInAccount().getId(),
-                    result.getSignInAccount().getEmail(),
-                    result.getSignInAccount().getPhotoUrl().toString(),
-                    result.getSignInAccount().getDisplayName());
+        UsersApi usersApi = new UsersApi();
+        GoogleCredentials credentials = new GoogleCredentials(
+                result.getSignInAccount().getId(),
+                result.getSignInAccount().getEmail(),
+                result.getSignInAccount().getPhotoUrl().toString(),
+                result.getSignInAccount().getDisplayName());
 
-            Users user = usersApi.loginUsuario (credentials, this);
+        Users user = usersApi.loginUsuario (credentials, this);
 
 
     }
