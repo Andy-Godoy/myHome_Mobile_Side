@@ -1,17 +1,19 @@
 package com.example.myhome;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewStub;
-import java.util.ArrayList;
 import android.widget.Button;
-import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
-import android.net.Uri;
 import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 
 public class NewProperties extends AppCompatActivity {
@@ -28,6 +30,20 @@ public class NewProperties extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_properties);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Obtén el ID del ítem de menú correspondiente a esta actividad
+        int menuItemId = R.id.action_add; // Reemplaza con el ID correcto para esta actividad
+
+        // Marcar el ítem del menú como seleccionado
+        bottomNavigationView.setSelectedItemId(menuItemId);
+
+        // Configurar el listener para los elementos del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            MenuHandler.handleMenuItemClick(this, item);
+            return true;
+        });
 
         spinner = findViewById(R.id.spnrAmenities);
         adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));

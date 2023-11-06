@@ -88,51 +88,18 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </ScrollView>
-        <FrameLayout
-            android:id="@+id/footerBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp">
-            <LinearLayout
-                android:id="@+id/linearRowhome"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="0dp">
 
-                <Button
-                    android:id="@+id/btnPropiedades"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_margin="0dp"
-                    android:layout_weight="0.33"
-                    android:drawableTop="@drawable/img_home"
-                    android:onClick="verPropiedades"
-                    android:text="Propiedades" />
-                <Button
-                    android:id="@+id/btnNuevaPropiedad"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
-                    android:drawableTop="@drawable/img_plus"
-                    android:layout_gravity="center"
-                    android:text="Nueva Propeiedad"
-                    android:onClick="nuevaPropiedad"
-                    android:layout_margin="0dp"
-                />
-                <Button
-                    android:id="@+id/btnPerfil"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.33"
-                    android:drawableTop="@drawable/img_user"
-                    android:layout_gravity="center"
-                    android:text="Perfil"
-                    android:onClick="verPerfil"
-                    android:layout_margin="0dp"
-                />
-            </LinearLayout>
-        </FrameLayout>
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        app:backgroundTint="@color/gray_200"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:menu="@menu/bottom_navigation_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
