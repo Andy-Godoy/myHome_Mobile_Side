@@ -1,20 +1,17 @@
 package com.example.myhome;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +31,23 @@ public class ListAgencieProperties extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_agency_main);
 
-            btnNuevaPropiedad = findViewById(R.id.btnNuevaPropiedad);
-            btnPropiedades = findViewById(R.id.btnPropiedades);
-            btnPerfil = findViewById(R.id.btnPerfil);
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+            // Obtén el ID del ítem de menú correspondiente a esta actividad
+            int menuItemId = R.id.action_home; // Reemplaza con el ID correcto para esta actividad
+
+            // Marcar el ítem del menú como seleccionado
+            bottomNavigationView.setSelectedItemId(menuItemId);
+
+            // Configurar el listener para los elementos del menú
+            bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+                MenuHandler.handleMenuItemClick(this, item);
+                return true;
+            });
+
+//            btnNuevaPropiedad = findViewById(R.id.btnNuevaPropiedad);
+//            btnPropiedades = findViewById(R.id.btnPropiedades);
+//            btnPerfil = findViewById(R.id.btnPerfil);
             cardConteiner = findViewById(R.id.cardContainer);
 
             Map<String, Object> filters = new HashMap<>();
