@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,7 +46,7 @@ public class NewPassword extends AppCompatActivity implements LoginCallback{
     public void onLoginSuccess(Users user) {
 
         ((MyHome) this.getApplication()).setUsuario(user);
-
+        Toast.makeText(this, "Reseteo exitoso", Toast.LENGTH_SHORT).show();
         Intent Aceptar=new Intent(NewPassword.this, LoginAgencies.class);
         startActivity(Aceptar);
 
