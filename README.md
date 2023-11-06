@@ -4,7 +4,7 @@ Aplicación de Android para administrar propiedades inmobiliarias.
 
 ## Descripción
 
-MyHome es una aplicación de Android que permite a los usuarios administrar propiedades inmobiliarias. 
+MyHome es una aplicación de Android que permite a los usuarios administrar y consultar propiedades inmobiliarias. 
 
 
 # Funciones disponibles en esta versión:
@@ -16,11 +16,10 @@ MyHome es una aplicación de Android que permite a los usuarios administrar prop
 - Creacion de propiedades 
 - Visualización de listado de propiedades
 
-## Restricciones y futures releases:
+## Restricciones para futuras releases:
 De momento la aplicación no maneja: 
 
 *almacenamiento de imagenes
-*compatibilidad con modo oscuro
 *detalles, edicion y eliminación de propiedades
 *Geolocalización y ordenamiento por distancia
 

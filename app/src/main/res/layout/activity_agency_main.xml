@@ -19,17 +19,27 @@
             android:padding="3dp"
             android:gravity="center"
             tools:layout_editor_absoluteX="0dp">
+
             <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:id="@+id/imageHome"
+                android:layout_width="43dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/icon"
-                tools:text="@string/lbl_my_home" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/icon" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.7"
+                android:fontFamily="@font/opensansbold"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="@string/lbl_mispropiedades"
