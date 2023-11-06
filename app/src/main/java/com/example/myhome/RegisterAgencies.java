@@ -87,8 +87,7 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
     @Override
     public void onLoginSuccess(Users user) {
 
-        MyHome myHome = (MyHome) getApplication();
-        myHome.setUsuario(user);
+        ((MyHome) this.getApplication()).setUsuario(user);
 
         showToast("usuario registrado correctamente");
         Intent intent = new Intent(RegisterAgencies.this, ListAgencieProperties.class);

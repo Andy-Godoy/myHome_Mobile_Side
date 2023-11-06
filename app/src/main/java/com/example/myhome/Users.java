@@ -9,6 +9,31 @@ public class Users {
 
     private CurrencyType userCurrencyPreference;
 
+    private long agencyId;
+
+    private RoleType userRole;
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userImage='" + userImage + '\'' +
+                ", userCurrencyPreference=" + userCurrencyPreference +
+                ", agencyId=" + agencyId +
+                ", userRole=" + userRole +
+                '}';
+    }
+
+    public Long getAgencyId() {
+        return agencyId;
+    }
+
+    public void setAgencyId(Long agencyId) {
+        this.agencyId = agencyId;
+    }
+
     public long getUserId() {
         return userId;
     }
@@ -57,6 +82,6 @@ public class Users {
         this.userRole = userRole;
     }
 
-    private RoleType userRole;
+
 
 }

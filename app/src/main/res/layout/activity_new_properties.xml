@@ -849,13 +849,18 @@
 
             <Button
                 android:id="@+id/btnAddImage"
-                android:layout_width="156dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2150dp"
+                android:layout_marginTop="2132dp"
                 android:background="@drawable/borde_redondo"
+                android:backgroundTint="@color/boton"
+                android:drawableTop="@drawable/ic_menu_camera"
+                android:drawablePadding="8dp"
+                android:gravity="center"
                 android:text="@string/guardarImagenes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/txtdescripcion1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@id/txtdescripcion1"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

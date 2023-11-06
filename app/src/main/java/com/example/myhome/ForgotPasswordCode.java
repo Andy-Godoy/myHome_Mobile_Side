@@ -13,6 +13,7 @@ public class ForgotPasswordCode extends AppCompatActivity {
 
     private EditText editTextCodigo;
     private TextView mensajeTextView;
+    private String email;
 
     private String codigo; // El código generado en la primera pantalla
 
@@ -26,6 +27,8 @@ public class ForgotPasswordCode extends AppCompatActivity {
 
         // Recupera el código generado de la primera pantalla
         codigo = getIntent().getStringExtra("codigo");
+        email = getIntent().getStringExtra("email");
+
 
         Button validarButton = findViewById(R.id.validarButton);
         validarButton.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +46,7 @@ public class ForgotPasswordCode extends AppCompatActivity {
             // Código válido, permite modificar la contraseña
             mensajeTextView.setText("");
             Intent miIntent=new Intent(ForgotPasswordCode.this, NewPassword.class);
+            miIntent.putExtra("email", email);
             startActivity(miIntent);
             // Aquí puedes habilitar otros elementos de UI para modificar la contraseña.
         } else {

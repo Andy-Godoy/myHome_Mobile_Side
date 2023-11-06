@@ -48,9 +48,6 @@
             android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
 
         <activity
-            android:name=".MultiSelectDropDown"
-            android:exported="false" />
-        <activity
             android:name=".NewPassword"
             android:exported="false" />
         <activity
