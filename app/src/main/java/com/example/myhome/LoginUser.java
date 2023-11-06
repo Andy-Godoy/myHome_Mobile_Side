@@ -2,7 +2,6 @@ package com.example.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -98,7 +97,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         startActivity(miIntent);
     }
 
-    // Función para mostrar un mensaje Toast
+    // mostramos un mensaje Toast
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
@@ -112,7 +111,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         if (user != null) {
             Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
             startActivity(intent);
-            finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+            finish(); // Finalizamos la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
         }
 
         Intent intent = new Intent(LoginUser.this, SecondActivity.class);

@@ -8,8 +8,6 @@
     android:background="@drawable/bg_color"
     tools:context=".NewProperties">
 
-    <!-- Otros elementos del ConstraintLayout si los tienes -->
-
     <ImageView
         android:id="@+id/imageHome"
         android:layout_width="43dp"
@@ -63,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/lblMyHome"> <!-- Aquí está la restricción para que no se superponga con el BottomNavigationView -->
+        app:layout_constraintTop_toTopOf="@id/lblMyHome"> <!-- es es una restricción para que no se superponga con el BottomNavigationView -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -632,12 +630,12 @@
                 android:text="@string/PrecioDePropiedad"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioPropiedad"
+                android:id="@+id/txtPrecioDePropiedad"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -661,12 +659,12 @@
                 android:text="@string/PrecioDeExpensas"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioDeExpensas"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioExpensas"
+                android:id="@+id/txtPrecioDeExpensas"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -830,8 +828,8 @@
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPrecioExpensas"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
+                app:layout_constraintEnd_toEndOf="@+id/txtPrecioDeExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 

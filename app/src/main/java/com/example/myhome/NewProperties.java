@@ -39,17 +39,17 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        // Obtén el ID del ítem de menú correspondiente a esta actividad
-        int menuItemId = R.id.action_add; // Reemplaza con el ID correcto para esta actividad
+       // Obtenemos el ID del ítem de menú correspondiente a esta actividad
+        int menuItemId = R.id.action_add; // Reemplazamos con el ID correcto para esta actividad
 
-        // Marcar el ítem del menú como seleccionado
+       // Marcamos el ítem del menú como seleccionado
         bottomNavigationView.setSelectedItemId(menuItemId);
 
-        // Configurar el listener para los elementos del menú
+        // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             MenuHandler.handleMenuItemClick(this, item);
             return true;
-        });
+       });
 
         spinner = findViewById(R.id.spnrAmenities);
         adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));

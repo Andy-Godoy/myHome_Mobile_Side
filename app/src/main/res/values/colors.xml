@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -11,43 +8,23 @@
     <color name="boton">#49A5C5</color> //color de los botones
     <color name="toolbar">#CDD4CF</color> //color de la toolbar
     <color name="colorAccent">#B81414</color>
-    <color name="fondoTextView">@color/material_dynamic_neutral95</color> //color de fondo de los textview
+    <color name="fondoTextView">@color/material_dynamic_neutral95</color>
+    //color de fondo de los textview
 
-
-    <color name="colorPrimary">#FFB20C</color>
-    <color name="colorPrimaryDark">#DE9B0B</color>
 
     <color name="textHeadline">#434343</color>
-    <color name="textDescription">#686868</color>
-    <color name="lightGrey">#EAEAEA</color>
-    <color name="lavender">#8692f7</color>
 
     //color usado para activity_list_user_properties.xml
     <color name="gray_600">#707070</color>
-    <color name="gray_501">#949494</color>
-    <color name="gray_700">#646464</color>
-    <color name="deep_orange_50">#f5e3e6</color>
     <color name="gray_400">#c5b5b5</color>
     <color name="gray_500">#9d9d9d</color>
-    <color name="bluegray_900_33">#33282b30</color>
-    <color name="amber_500">#ffc107</color>
-    <color name="red_600">#dc3545</color>
     <color name="general_titulo">#3e3e3e</color>
-    <color name="red_800">#be313e</color>
     <color name="bluegray_100">#cdd4cf</color>
-    <color name="amber_200">#ffe082</color>
-    <color name="red_400">#dd5764</color>
-    <color name="black_900_3f">#3f000000</color>
     <color name="gray_200">#efefef</color>
-    <color name="gray_201">#e8e8e8</color>
     <color name="orange_200">#e7ca90</color>
-    <color name="green_500">#4d9f5f</color>
     <color name="teal_300">#49a5c5</color>
-    <color name="cyan_300">#55c1e6</color>
-    <color name="blue_100">#d1daf9</color>
 
     //***************************************
-
 
 
 </resources>

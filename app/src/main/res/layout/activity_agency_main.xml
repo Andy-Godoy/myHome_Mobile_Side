@@ -8,12 +8,10 @@
     tools:context=".ListAgencieProperties">
 
     <LinearLayout
-        android:id="@+id/agencyMainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/headerProperties"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +20,6 @@
             android:gravity="center"
             tools:layout_editor_absoluteX="0dp">
             <ImageView
-                android:id="@+id/imgLogo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
@@ -30,7 +27,6 @@
                 tools:text="@string/lbl_my_home" />
 
             <TextView
-                android:id="@+id/lblProperties"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
@@ -70,17 +66,16 @@
             </FrameLayout>
         </LinearLayout>
         <ScrollView
-            android:id="@+id/propertyScrollList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="Lista de propiedades">
+            android:contentDescription="@string/lista_de_propiedades">
             <LinearLayout
                 android:id="@+id/cardContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <!-- Tus tarjetas se agregarán aquí -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

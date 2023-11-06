@@ -43,17 +43,17 @@ public class Apitest extends AppCompatActivity {
 
 
     private void getAgencie() {
-        // Configura Retrofit
+        // Configuramos Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+        // Creamos una instancia de la interfaz ApiService
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
-        Call<List<Agencies>> call = call = apiService.getAgencies(1); // Supongo que deseas userId = 1
+        // Realizamos la solicitud
+        Call<List<Agencies>> call = call = apiService.getAgencies(1);
 
         call.enqueue(new Callback<List<Agencies>>() {
             @Override
@@ -67,15 +67,15 @@ public class Apitest extends AppCompatActivity {
                     agencyId.setText(agencies.get(0).getAgencyId().toString());
                     userId.setText(agencies.get(0).getUserId().toString());
                     agencyName.setText(agencies.get(0).getAgencyName().toString());
-                    // Maneja la respuesta aquí
+                    // acá podemos manejar la respuesta
                 } else {
-                    // Maneja errores de respuesta aquí
+                    // acá podemos manejar los errores de respuesta
                 }
             }
 
             @Override
             public void onFailure(Call<List<Agencies>> call, Throwable t) {
-                // Maneja errores de conexión aquí
+                // Manejamos errores de conexión acá y lo mostramos con un Toast
                 Toast.makeText(Apitest.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
 
             }

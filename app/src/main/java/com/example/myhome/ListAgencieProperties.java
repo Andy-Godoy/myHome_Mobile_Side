@@ -33,8 +33,8 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-            // Obtén el ID del ítem de menú correspondiente a esta actividad
-            int menuItemId = R.id.action_home; // Reemplaza con el ID correcto para esta actividad
+            // Obtenemos el ID del ítem de menú correspondiente a esta actividad
+            int menuItemId = R.id.action_home;
 
             // Marcar el ítem del menú como seleccionado
             bottomNavigationView.setSelectedItemId(menuItemId);

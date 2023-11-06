@@ -33,16 +33,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public List<PropertySummary> verPropiedades(FiltersDTO filters, final PropertiesCallback callback) {
-        // Configura Retrofit
+        // Configuramos Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+        // Creamos una instancia de la interfaz ApiService
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
+        // Realizamos la solicitud
 
         Call<List<PropertySummary>> call = apiService.getProperties(filters);
 
@@ -59,7 +59,7 @@ public class PropertyApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
-                // Maneja errores de conexión aquí
+                // Acá manejamos los errores de conexión
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });

@@ -1,19 +1,13 @@
 package com.example.myhome;
 
 
-
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,7 +30,7 @@ public class UsersApi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_agencies);
 
-        //inicializar vistas
+        //inicializamos las vistas
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         validarButton = findViewById(R.id.validarButton);
@@ -44,16 +38,16 @@ public class UsersApi extends AppCompatActivity {
     }
 
         public Users registrarUsuario(BasicCredentials basicCredentials, final LoginCallback callback) {
-            // Configura Retrofit
+            // Configuramos Retrofit
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            // Crea una instancia de la interfaz ApiService
+            // Creamos una instancia de la interfaz ApiService
             RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-            // Realiza la solicitud
+            // Realizamos la solicitud
             Call<Users> call = apiService.registrarUsuario(basicCredentials);
 
             call.enqueue(new Callback<Users>() {
@@ -64,9 +58,9 @@ public class UsersApi extends AppCompatActivity {
                         user = response.body();
                         callback.onLoginSuccess(user);
 
-                        // Maneja la respuesta aquí
-                    } else {
 
+                    } else {
+                        //acá validamos si el usuario ya existe
                         callback.onLoginFailure("El usuario ya existe");
 
                     }
@@ -74,7 +68,7 @@ public class UsersApi extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Users> call, Throwable t) {
-                    // Maneja errores de conexión aquí
+                    // Acá manejamos los errores de conexión
                     Log.i("Registrar Usuario", "onFailure: "+t.getMessage());
                    // Toast.makeText(UsersApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
                 }
@@ -130,10 +124,10 @@ public class UsersApi extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+        // Creamos una instancia de la interfaz ApiService
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
+        // Realizamos la solicitud
         Call<Users> call = apiService.loguearUsuario(credentials);
 
         call.enqueue(new Callback<Users>() {
@@ -143,7 +137,7 @@ public class UsersApi extends AppCompatActivity {
 
                     user = response.body();
                     callback.onLoginSuccess(user);
-                    // Maneja la respuesta aquí
+                    // acá manejamos la respuesta
                 } else {
                     callback.onLoginFailure("Error al loguear usuario");
 
@@ -152,7 +146,7 @@ public class UsersApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
-                // Maneja errores de conexión aquí
+                // Acá manejamos errores de conexión
                 Log.i("Loguear Usuario", "onFailure: "+t.getMessage());
                 callback.onLoginFailure("Error al loguear usuario");
             }
@@ -166,10 +160,10 @@ public class UsersApi extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+        // Creamos una instancia de la interfaz ApiService
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
+        // Realizamos la solicitud
         Call<Users> call = apiService.resetPassword(credentials);
 
         call.enqueue(new Callback<Users>() {
@@ -178,7 +172,7 @@ public class UsersApi extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     user = response.body();
                     callback.onLoginSuccess(user);
-                    // Maneja la respuesta aquí
+                    // Acá manejamos la respuesta
                 } else {
                     callback.onLoginFailure("No se ha podido resetear la contraseña 123");
 
@@ -187,7 +181,7 @@ public class UsersApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
-                // Maneja errores de conexión aquí
+                // acá manejamos los errores de conexión
                 callback.onLoginFailure("No se ha podido resetear la contraseña");
             }
         });

@@ -36,10 +36,6 @@
 
     <string name="createaccount">Crear Cuenta</string>
 
-    <string name="mailerror">El formato del mail es inválido</string>
-
-    <string name="passerror">Ingresa la contraseña</string>
-
     <string name="not_log_in">No se pudo iniciar sesión</string>
 
     <string name="log_out">Log Out</string>
@@ -50,51 +46,23 @@
 
     <string name="not_revoke">No se pudo revocar el acceso</string>
 
-    <string name="hint_direccion">Dirección</string>
-
-    <string name="hint_latitud">Latitud</string>
-
-    <string name="hint_longitud">Longitud</string>
-
     <string name="mailenviado">El mail ha sido enviado</string>
 
     <string name="codigo">Introduce el código de verificación recibido para generar la nueva contraseña</string>
-
-    <string name="codigoerror">El código de verificación es incorrecto</string>
 
     <string name="codigohint">Código de verificación</string>
 
     <string name="aceptar">Aceptar</string>
 
-    <string name="id">ID</string>
-
-    <string name="nombre">Nombre</string>
-
-    <string name="mail">Mail</string>
-
-    <string name="logout">Cerrar Sesión</string>
-
-    <string name="verresenas">Ver Reseñas</string>
-
     <string name="validarpass">Ingrese la contraseña</string>
 
     <string name="nuevapass">Contraseña</string>
-
-    <string name="nuevapasshint">Contraseña</string>
 
     <string name="repetirpasshint">Confirmá tu contraseña</string>
 
     <string name="cambiarpass">Cambiar contraseña</string>
 
-    <string name="btnmodificar">Modificar</string>
-
-    <string name="btneliminar">Eliminar</string>
-
-    <string name="home">Home</string>
-
     <string name="nuevapropiedad">Nueva Propiedad</string>
-
-    <string name="perfil">Perfil</string>
 
     <string name="email_de_inmobiliaria">Email de Inmobiliaria:</string>
 
@@ -103,64 +71,25 @@
     <string name="nombre_de_inmobiliaria">Nombre de Inmobiliaria</string>
 
     <string name="id_de_usuario">ID de Usuario</string>
-    <string name="title_activity_list_properties_user">ListPropertiesUser</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
     //uso de strings para activity_list_user_properties.xml
 
-    <string name="loading">Loading…</string>
-    <string name="no_internet_connection">No internet connection!</string>
     <string name="lbl_paraguay_4200">Paraguay 4200</string>
-    <string name="lbl_charcas_4000">Charcas 4000</string>
     <string name="lbl_u_d_220">U$D 220</string>
     <string name="lbl_33_m2">33 m2 </string>
     <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
     <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
-    <string name="lbl_95_m2">95 m2 </string>
     <string name="lbl_1_dormitorio">1 dormitorio</string>
     <string name="lbl_perfil">Perfil     </string>
-    <string name="lbl_u_d_210_000">U$D 210.000</string>
     <string name="lbl_filtrar">Filtrar</string>
     <string name="lbl_propiedades">Propiedades</string>
-    <string name="lbl_3_dormitorios">3 dormitorios</string>
     <string name="lbl_my_home">My Home</string>
-    <string name="msg_impec_balc_n_c">IMPEC! Balcón corrido al fte! M/Lum!...</string>
     <string name="lbl_favoritos">Favoritos  </string>
-    <string name="propiedades">Propiedades</string>
-    <string name="filtrar">Filtrar</string>
-    <string name="precio">Precio</string>
-    <string name="direccion">Direccion</string>
-    <string name="ciudadbarrio">Ciudad y Barrio</string>
-    <string name="m2">m2</string>
-    <string name="descripcion">descripcion</string>
-    <string name="dormitorio">dormitorio</string>
 
     //****************************************************
     //uso de strings para activity_list_user_properties.xml
 
 
-    <string name="lbl_u_s_109_200">U$S 109.200</string>
-    <string name="lbl_78_m2">78 m2 </string>
-    <string name="lbl_u_d_66_640">U$D 66.640</string>
-    <string name="lbl_nueva_propiedad">Nueva Propiedad</string>
-
-    <string name="lbl_17_y_60">17 y 60</string>
-
-    <string name="msg_la_plata_bueno">La Plata, Buenos aires</string>
-    <string name="lbl_47_m2">47 m2 </string>
-
-    <string name="lbl_u_d_140_000">U$D 140.000</string>
-
-    <string name="lbl_2_dormitorios">2 dormitorios</string>
     <string name="lbl_mispropiedades">Mis Propiedades</string>
 
     //*****************************************************
@@ -229,7 +158,17 @@
     <string name="guardarImagenes">Agregar imágenes</string>
 
     <string name="guardarPropiedad">Guardar propiedad</string>
-    <string name="myhome">MyHome</string>
+    <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
+    <string name="precio">Precio</string>
+    <string name="direccion">Direccion</string>
+    <string name="ciudad_y_provincia">Ciudad y Provincia</string>
+    <string name="editar_propiedad">Editar Propiedad</string>
+    <string name="eliminar_propiedad">Eliminar Propiedad</string>
+    <string name="dimensiones">Dimensiones</string>
+    <string name="habitaciones">Habitaciones</string>
+    <string name="descripci_n_de_la_propiedad">Descripción de la propiedad</string>
+    <string name="lista_de_propiedades">Lista de propiedades</string>
+    <string name="continuar">Continuar</string>
 
 
     //****************************************************

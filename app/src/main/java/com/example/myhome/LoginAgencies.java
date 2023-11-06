@@ -2,7 +2,6 @@ package com.example.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,7 +32,7 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
                 // Mostrar mensaje de error si el campo de correo electrónico está vacío
                 Toast.makeText(this, "El campo de correo electrónico está vacío", Toast.LENGTH_SHORT).show();
             } else if (isValidEmail(email) && isValidPassword(password)) {
-                // Los datos son válidos, puedes proceder con la autenticación o lo que sea necesario.
+                // Cuando ambos datos son válidos, autenticamos o lo que sea necesario.
 
                 BasicCredentials credentials = new BasicCredentials(email, password);
                 UsersApi userApi = new UsersApi();
@@ -57,15 +56,15 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
             }
         }
     private boolean isValidEmail(String email) {
-        // Puedes utilizar una expresión regular para validar el formato del correo electrónico.
-        // Este es un ejemplo simple, puedes ajustarlo según tus necesidades.
+        // Usamos una expresión regular para validar el formato del mail
+
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         return email.matches(emailPattern);
     }
 
     private boolean isValidPassword(String password) {
-        // Puedes establecer tus propias reglas de validación de contraseña aquí.
-        // Por ejemplo, asegurarte de que tenga al menos 6 caracteres.
+
+        // Validamos que la pass tenga al menos 6 caracteres.
         return password.length() >= 6;
     }
 

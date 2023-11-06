@@ -119,7 +119,6 @@
 
 
     <TextView
-        android:id="@+id/TxtOlvido"
         android:layout_width="0dp"
         android:layout_height="43dp"
 
@@ -165,11 +164,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/validarButton"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/TVSignInLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
@@ -182,7 +180,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/validarButton"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/TVSignIn"
         tools:ignore="TouchTargetSizeCheck" />
 
