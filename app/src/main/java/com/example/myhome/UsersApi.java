@@ -176,12 +176,11 @@ public class UsersApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
                 if (response.isSuccessful()) {
-
                     user = response.body();
                     callback.onLoginSuccess(user);
                     // Maneja la respuesta aquí
                 } else {
-                    callback.onLoginFailure("No se ha podido resetear la contraseña");
+                    callback.onLoginFailure("No se ha podido resetear la contraseña 123");
 
                 }
             }

@@ -88,6 +88,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));
                 ((TextView) propertyCard.findViewById(R.id.propertyRooms)).setText(p.getPropertyBedroomQuantity().toString().concat(" Habitaciones"));
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
+                propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
                 cardConteiner.addView(propertyCard);
 
