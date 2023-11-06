@@ -23,6 +23,7 @@ public class Properties {
     private Integer propertySemiCoveredM2;
     private Integer propertyUncoveredM2;
     private Address propertyAddress;
+    private boolean propertyHasTerrace;
 
     public Long getPropertyId() {
         return propertyId;
@@ -198,5 +199,13 @@ public class Properties {
 
     public void setPropertyAddress(Address propertyAddress) {
         this.propertyAddress = propertyAddress;
+    }
+
+    public void setpropertyTerrace(boolean propertyHasTerrace) {
+        this.propertyHasTerrace = propertyHasTerrace;
+    }
+
+    public boolean getpropertyTerrace() {
+       return  this.propertyHasTerrace;
     }
 }
