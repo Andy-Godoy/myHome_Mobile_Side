@@ -11,6 +11,30 @@ public class PropertySummary {
     private String propertyNeighbourhood;
     private String propertyCity;
 
+    public PropertySummary(Long propertyId, Long agencyId, Integer propertyPrice, Integer propertyDimension, Integer propertyBedroomQuantity, String propertyDescription, String propertyAddress, String propertyNeighbourhood, String propertyCity) {
+        this.propertyId = propertyId;
+        this.agencyId = agencyId;
+        this.propertyPrice = propertyPrice;
+        this.propertyDimension = propertyDimension;
+        this.propertyBedroomQuantity = propertyBedroomQuantity;
+        this.propertyDescription = propertyDescription;
+        this.propertyAddress = propertyAddress;
+        this.propertyNeighbourhood = propertyNeighbourhood;
+        this.propertyCity = propertyCity;
+    }
+
+    public PropertySummary(PropertySummary ps) {
+        this.propertyId = ps.getPropertyId();
+        this.agencyId = ps.getAgencyId();
+        this.propertyPrice = ps.getPropertyPrice();
+        this.propertyDimension = ps.getPropertyDimension();
+        this.propertyBedroomQuantity = ps.getPropertyBedroomQuantity();
+        this.propertyDescription = ps.getPropertyDescription();
+        this.propertyAddress = ps.getPropertyAddress();
+        this.propertyNeighbourhood = ps.getPropertyNeighbourhood();
+        this.propertyCity = ps.getPropertyCity();
+    }
+
     public Long getPropertyId() {
         return propertyId;
     }

@@ -2,6 +2,7 @@ package com.example.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -85,8 +86,7 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
     @Override
     public void onLoginSuccess(Users user) {
 
-        MyHome myHome = (MyHome) getApplication();
-        myHome.setUsuario(user);
+        ((MyHome) this.getApplication()).setUsuario(user);
 
         Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
         Intent miIntent=new Intent(LoginAgencies.this, ListAgencieProperties.class);

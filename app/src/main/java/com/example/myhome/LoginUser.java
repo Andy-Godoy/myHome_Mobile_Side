@@ -29,6 +29,8 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginuser);
 
+        MyHome myHome = (MyHome) getApplication();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("387896738234-qb9p54qj9hhfj4s0t028gab34r9f035q.apps.googleusercontent.com")
                 .requestEmail()
@@ -105,8 +107,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     @Override
     public void onLoginSuccess(Users user) {
 
-        MyHome myHome = (MyHome) getApplication();
-        myHome.setUsuario(user);
+        ((MyHome) this.getApplication()).setUsuario(user);
 
         if (user != null) {
             Intent intent = new Intent(LoginUser.this, ListUserProperties.class);

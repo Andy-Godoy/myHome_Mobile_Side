@@ -8,8 +8,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,7 +36,7 @@ public class PropertyApi extends AppCompatActivity {
 
     }
 
-    public List<PropertySummary> verPropiedades(Map<String, Object> filters) {
+    public List<PropertySummary> verPropiedades(FiltersDTO filters, final PropertiesCallback callback) {
         // Configura Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -50,9 +55,10 @@ public class PropertyApi extends AppCompatActivity {
             public void onResponse(Call<List<PropertySummary>> call, Response<List<PropertySummary>> response) {
                 if (response.isSuccessful()) {
 
-                     properties = response.body();
+                   callback.onPropertiesSuccess(response.body());
 
                 }
+
             }
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
@@ -60,6 +66,7 @@ public class PropertyApi extends AppCompatActivity {
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });
+
         return properties;
     }
 

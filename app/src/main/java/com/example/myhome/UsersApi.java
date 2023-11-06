@@ -54,7 +54,7 @@ public class UsersApi extends AppCompatActivity {
             RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
             // Realiza la solicitud
-            Call<Users> call = apiService.registrarUsuario(basicCredentials); // Supongo que deseas userId = 1
+            Call<Users> call = apiService.registrarUsuario(basicCredentials);
 
             call.enqueue(new Callback<Users>() {
                 @Override
@@ -122,7 +122,7 @@ public class UsersApi extends AppCompatActivity {
         });
         return user;
     }
-    //arranca acá la copia
+
     public Users loginUsuario (BasicCredentials credentials, final LoginCallback callback){
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -155,6 +155,41 @@ public class UsersApi extends AppCompatActivity {
                 // Maneja errores de conexión aquí
                 Log.i("Loguear Usuario", "onFailure: "+t.getMessage());
                 callback.onLoginFailure("Error al loguear usuario");
+            }
+        });
+        return user;
+    }
+
+    public Users resetPassword(BasicCredentials credentials, final LoginCallback callback) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Crea una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realiza la solicitud
+        Call<Users> call = apiService.resetPassword(credentials);
+
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if (response.isSuccessful()) {
+
+                    user = response.body();
+                    callback.onLoginSuccess(user);
+                    // Maneja la respuesta aquí
+                } else {
+                    callback.onLoginFailure("No se ha podido resetear la contraseña");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                // Maneja errores de conexión aquí
+                callback.onLoginFailure("No se ha podido resetear la contraseña");
             }
         });
         return user;

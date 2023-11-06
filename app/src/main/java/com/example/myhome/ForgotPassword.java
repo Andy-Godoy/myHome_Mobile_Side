@@ -18,7 +18,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class ForgotPassword extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity  {
 
     private EditText editTextEmail;
     private Button enviarCodigoButton;
@@ -76,6 +76,7 @@ public class ForgotPassword extends AppCompatActivity {
                             Toast.makeText(ForgotPassword.this, "Correo de verificación enviado con éxito", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ForgotPassword.this, ForgotPasswordCode.class);
                             intent.putExtra("codigo", verificationCode); // verificationCode es el código generado
+                            intent.putExtra("email", editTextEmail.getText());
                             startActivity(intent);
 
                         }
