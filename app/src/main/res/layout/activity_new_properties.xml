@@ -334,7 +334,7 @@
                 android:text="@string/tipoPropiedad"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/TipoPropiedad"
+                app:layout_constraintStart_toStartOf="@+id/spnrTipoPropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
@@ -349,12 +349,12 @@
                 android:text="@string/cantidadAmbientes"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtcantidadAmbientes"
+                android:id="@+id/txtCantidadAmbientes"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1020dp"
@@ -363,7 +363,7 @@
                 android:inputType="number"
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/orientacion"
+                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -378,12 +378,12 @@
                 android:text="@string/cantidadCochera"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadCochera"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadCochera"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtcantidadCochera"
+                android:id="@+id/txtCantidadCochera"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1020dp"
@@ -393,7 +393,7 @@
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtcantidadAmbientes"
+                app:layout_constraintStart_toEndOf="@+id/txtCantidadAmbientes"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -408,7 +408,7 @@
                 android:text="@string/orientacion"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/orientacion"
+                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
@@ -423,7 +423,7 @@
                 android:text="@string/posicion"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/posicion"
+                app:layout_constraintStart_toStartOf="@+id/spnrPosicion"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
@@ -438,7 +438,7 @@
                 android:text="@string/estado"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/Estado"
+                app:layout_constraintStart_toStartOf="@+id/spnrEstado"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
@@ -454,12 +454,12 @@
                 android:text="@string/cantidadBaños"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadBaños"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadBanios"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtcantidadBaños"
+                android:id="@+id/txtCantidadBanios"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1198dp"
@@ -468,7 +468,7 @@
                 android:inputType="number"
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -483,12 +483,12 @@
                 android:text="@string/cantidadCuartos"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadCuartos"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadCuartos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtcantidadCuartos"
+                android:id="@+id/txtCantidadCuartos"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1198dp"
@@ -498,7 +498,7 @@
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtcantidadBaños"
+                app:layout_constraintStart_toEndOf="@+id/txtCantidadBanios"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -513,7 +513,7 @@
                 android:text="@string/antiguedad"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/antiguedad"
+                app:layout_constraintStart_toStartOf="@+id/spnrAntiguedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
@@ -544,12 +544,12 @@
                 android:text="@string/cubiertos"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcubiertos"
+                app:layout_constraintStart_toStartOf="@+id/txtCubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtcubiertos"
+                android:id="@+id/txtCubiertos"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1560dp"
@@ -558,7 +558,7 @@
                 android:inputType="number"
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/antiguedad"
+                app:layout_constraintStart_toStartOf="@+id/spnrAntiguedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -573,12 +573,12 @@
                 android:text="@string/semiCubiertos"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtsemiCubiertos"
+                app:layout_constraintStart_toStartOf="@+id/txtSemiCubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtsemiCubiertos"
+                android:id="@+id/txtSemiCubiertos"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1560dp"
@@ -588,7 +588,7 @@
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtcubiertos"
+                app:layout_constraintStart_toEndOf="@+id/txtCubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -617,7 +617,7 @@
                 android:inputType="number"
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtcubiertos"
+                app:layout_constraintStart_toStartOf="@+id/txtCubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -632,12 +632,12 @@
                 android:text="@string/PrecioDePropiedad"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioDePropiedad"
+                android:id="@+id/txtPrecioPropiedad"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -661,12 +661,12 @@
                 android:text="@string/PrecioDeExpensas"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDeExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioExpensas"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioDeExpensas"
+                android:id="@+id/txtPrecioExpensas"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -676,12 +676,12 @@
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtcubiertos"
+                app:layout_constraintStart_toEndOf="@+id/txtCubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
             <Spinner
-                android:id="@+id/Estado"
+                android:id="@+id/spnrEstado"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="726dp"
@@ -690,11 +690,11 @@
                 android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.486"
-                app:layout_constraintStart_toEndOf="@+id/TipoPropiedad"
+                app:layout_constraintStart_toEndOf="@+id/spnrTipoPropiedad"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/TipoPropiedad"
+                android:id="@+id/spnrTipoPropiedad"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="726dp"
@@ -705,34 +705,34 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/orientacion"
+                android:id="@+id/spnrOrientacion"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="842dp"
                 android:background="@drawable/bg_custom_spinner"
                 android:entries="@array/lista_orientacion"
-                app:layout_constraintStart_toStartOf="@+id/TipoPropiedad"
+                app:layout_constraintStart_toStartOf="@+id/spnrTipoPropiedad"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/posicion"
+                android:id="@+id/spnrPosicion"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="842dp"
                 android:background="@drawable/bg_custom_spinner"
                 android:entries="@array/lista_posicion"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/orientacion"
+                app:layout_constraintStart_toEndOf="@+id/spnrOrientacion"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/antiguedad"
+                android:id="@+id/spnrAntiguedad"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1314dp"
                 android:background="@drawable/bg_custom_spinner"
                 android:entries="@array/lista_antiguedad"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadBaños"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadBanios"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
@@ -741,7 +741,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="928dp"
                 android:text="@string/tieneBaulera"
-                app:layout_constraintStart_toStartOf="@+id/orientacion"
+                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
@@ -771,7 +771,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1106dp"
                 android:text="@string/tieneTerraza"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadAmbientes"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -798,7 +798,7 @@
                 android:background="@drawable/bg_custom_spinner"
                 android:prompt="@string/amenities"
                 android:spinnerMode="dropdown"
-                app:layout_constraintStart_toStartOf="@+id/txtcantidadCuartos"
+                app:layout_constraintStart_toStartOf="@+id/txtCantidadCuartos"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -812,12 +812,12 @@
                 android:text="@string/descripcion1"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtdescripcion1"
+                app:layout_constraintStart_toStartOf="@+id/txtDescripcion1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtdescripcion1"
+                android:id="@+id/txtDescripcion1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1908dp"
@@ -830,8 +830,8 @@
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPrecioDeExpensas"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+                app:layout_constraintEnd_toEndOf="@+id/txtPrecioExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -858,9 +858,9 @@
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="@string/guardarImagenes"
-                app:layout_constraintEnd_toEndOf="@id/txtdescripcion1"
+                app:layout_constraintEnd_toEndOf="@id/txtDescripcion1"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/txtdescripcion1"
+                app:layout_constraintStart_toStartOf="@id/txtDescripcion1"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -1,20 +1,16 @@
 package com.example.myhome;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,6 +56,7 @@ public class PropertyApi extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
                 // Maneja errores de conexión aquí
@@ -70,4 +67,38 @@ public class PropertyApi extends AppCompatActivity {
         return properties;
     }
 
+    public Properties setPropiedades(Properties propiedad, final PropertiesCallback callback) {
+        // Configura Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Crea una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realiza la solicitud
+
+        Call<Properties> call = apiService.setPropiedades(propiedad,propiedad.getAgencyId());
+
+        call.enqueue(new Callback<Properties>() {
+            @Override
+            public void onResponse(Call<Properties> call, Response<Properties> response) {
+                if (response.isSuccessful()) {
+
+                    callback.onPropertiesSuccess(response.body());
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Properties> call, Throwable t) {
+                // Maneja errores de conexión aquí
+                Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return propiedad;
+    }
 }

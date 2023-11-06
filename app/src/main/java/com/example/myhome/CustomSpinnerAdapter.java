@@ -9,11 +9,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CustomSpinnerAdapter extends ArrayAdapter<String> {
 
     private LayoutInflater inflater;
     private boolean allChecked = false;
     private boolean[] checkedItems;
+    private Set<String> amenities = new HashSet<>();
 
     public CustomSpinnerAdapter(Context context, String[] items) {
         super(context, 0, items);
@@ -44,6 +48,14 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         if (item != null) {
             textView.setText(item);
 
+//            if(checkBox.isChecked()){
+//                amenities.add(item);
+//            }
+//
+//            else {
+//                amenities.remove(item);
+//            }
+
             if (position == 0) {
                 checkBox.setChecked(allChecked);
                 checkBox.setEnabled(true); // Permitir seleccionar/deseleccionar "Todos"
@@ -54,6 +66,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
                         allChecked = isChecked;
                         updateCheckedItems(isChecked);
                         notifyDataSetChanged();
+                        updateAmenitiesList(); // Actualizar el conjunto amenities
                     }
                 });
 
@@ -64,9 +77,12 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         checkedItems[position] = isChecked;
+                        updateAmenitiesList(); // Actualizar el conjunto amenities
                     }
                 });
             }
+
+
         }
 
         return view;
@@ -75,6 +91,23 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     private void updateCheckedItems(boolean isChecked) {
         for (int i = 1; i < checkedItems.length; i++) {
             checkedItems[i] = isChecked;
+        }
+    }
+
+    private void updateAmenitiesList() {
+        amenities.clear(); // Limpiar el conjunto de amenidades
+        if (allChecked) {
+            // Si "Todos" está marcado, agrega todas las amenidades
+            for (int i = 1; i < checkedItems.length; i++) {
+                amenities.add(getItem(i));
+            }
+        } else {
+            // Agrega las amenidades seleccionadas individualmente
+            for (int i = 1; i < checkedItems.length; i++) {
+                if (checkedItems[i]) {
+                    amenities.add(getItem(i));
+                }
+            }
         }
     }
 
@@ -119,5 +152,13 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
             CheckBox checkBox = view.findViewById(R.id.checkBox);
             checkBox.setEnabled(enabled);
         }
+    }
+
+    public Set<String> getAmenities(){
+        return amenities;
+    }
+
+    public void setAmenities(Set<String> amenities){
+        this.amenities = amenities;
     }
 }
