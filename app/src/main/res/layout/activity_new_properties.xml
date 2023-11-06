@@ -603,12 +603,12 @@
                 android:text="@string/descubiertos"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtdescubiertos"
+                app:layout_constraintStart_toStartOf="@+id/txtDescubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtdescubiertos"
+                android:id="@+id/txtDescubiertos"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1676dp"
@@ -646,7 +646,7 @@
                 android:inputType="number"
                 android:paddingLeft="8dp"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtdescubiertos"
+                app:layout_constraintStart_toStartOf="@+id/txtDescubiertos"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
