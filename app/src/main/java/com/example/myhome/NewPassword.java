@@ -59,8 +59,7 @@ public class NewPassword extends AppCompatActivity implements LoginCallback{
 
     }
     private boolean isValidPassword(String password) {
-        // Puedes establecer tus propias reglas de validación de contraseña aquí.
-        // Por ejemplo, asegurarte de que tenga al menos 6 caracteres.
+        // validamos que tenga al menos 6 caracteres la contraseña
         return password.length() >= 6;
     }
 }

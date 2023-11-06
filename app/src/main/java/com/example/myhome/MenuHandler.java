@@ -15,15 +15,15 @@ public class MenuHandler {
                 context.startActivity(intent);
                 Log.d("MenuHandler", "Home");
             }
-            // Lógica para abrir la ventana correspondiente a "Mis propiedades" desde aquí
+            // Lógica para abrir la ventana correspondiente a "Mis propiedades" desde acá
         } else if (itemId == R.id.action_add) {
             Intent intent=new Intent(context, NewProperties.class);
             context.startActivity(intent);
-            // Lógica para abrir la ventana correspondiente a "Agregar propiedad" desde aquí
+            // Lógica para abrir la ventana correspondiente a "Agregar propiedad" desde acá
         } else if (itemId == R.id.action_profile) {
-//            Intent intent=new Intent(context, AgenciesProfile.class);
-//            context.startActivity(intent);
-            // Lógica para abrir la ventana correspondiente a "Perfil" desde aquí
+            //Intent intent=new Intent(context, AgenciesProfile.class);
+            //context.startActivity(intent);
+            //Lógica para abrir la ventana correspondiente a "Perfil" desde acá
         }
     }
 }

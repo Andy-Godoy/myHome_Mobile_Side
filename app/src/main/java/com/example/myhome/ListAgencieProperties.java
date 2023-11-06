@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,13 +34,13 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-// Obtén el ID del ítem de menú correspondiente a esta actividad
-            int menuItemId = R.id.action_home; // Reemplaza con el ID correcto para esta actividad
+            // Obtenemos el ID del ítem de menú correspondiente a esta actividad
+            int menuItemId = R.id.action_home;
 
-// Marcar el ítem del menú como seleccionado
+            // Marcar el ítem del menú como seleccionado
             bottomNavigationView.setSelectedItemId(menuItemId);
 
-// Configurar el listener para los elementos del menú
+            // Configurar el listener para los elementos del menú
             bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
                 MenuHandler.handleMenuItemClick(this, item);
                 return true;

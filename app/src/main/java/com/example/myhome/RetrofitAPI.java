@@ -1,17 +1,15 @@
 package com.example.myhome;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.DELETE;
-import retrofit2.http.QueryMap;
+import retrofit2.http.Query;
 
 
 public interface RetrofitAPI {

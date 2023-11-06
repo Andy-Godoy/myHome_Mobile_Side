@@ -43,16 +43,17 @@ public class ForgotPassword extends AppCompatActivity  {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                final String username = "germanhectorfalasco@gmail.com"; // Reemplaza con tu correo
-                final String password = "LE6tD8MYyAWbvmOa"; // Reemplaza con tu contraseña
+                //acá configuramos los datos del SMTP para el envío de correo para enviar el código de verificación
+                final String username = "germanhectorfalasco@gmail.com";
+                final String password = "LE6tD8MYyAWbvmOa";
 
                 String recipientEmail = editTextEmail.getText().toString().trim();
 
                 Properties props = new Properties();
                 props.put("mail.smtp.auth", "true");
                 props.put("mail.smtp.starttls.enable", "false");
-                props.put("mail.smtp.host", "smtp-relay.sendinblue.com"); // Reemplaza con el servidor SMTP que deseas
-                props.put("mail.smtp.port", "587"); // Puerto para SMTP
+                props.put("mail.smtp.host", "smtp-relay.sendinblue.com");
+                props.put("mail.smtp.port", "587");
 
                 Session session = Session.getInstance(props, new javax.mail.Authenticator() {
                     protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -97,7 +98,7 @@ public class ForgotPassword extends AppCompatActivity  {
     }
 
     private String generarCodigoVerificacion() {
-        // Genera un código de verificación aleatorio de 6 dígitos
+        // Genera un código de verificación aleatorio de 6 dígitos que enviamos por mail
         Random random = new Random();
         int codigo = 100000 + random.nextInt(900000);
         return String.valueOf(codigo);

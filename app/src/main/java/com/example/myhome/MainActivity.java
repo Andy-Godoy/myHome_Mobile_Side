@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -27,18 +26,18 @@ public class MainActivity extends AppCompatActivity {
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                // La animación ha comenzado
+                // inicio de la animación
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                // La animación ha terminado, muestra el texto "MyHome"
+                // cuando la animación termina, muestra el texto "MyHome"
                 textViewMyHome.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                // La animación se repite (si aplicable)
+                // por si queremos repeteir la animación
             }
         });
 

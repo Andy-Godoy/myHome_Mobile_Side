@@ -1,20 +1,16 @@
 package com.example.myhome;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,16 +33,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public List<PropertySummary> verPropiedades(FiltersDTO filters, final PropertiesCallback callback) {
-        // Configura Retrofit
+        // Configuramos Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+        // Creamos una instancia de la interfaz ApiService
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
+        // Realizamos la solicitud
 
         Call<List<PropertySummary>> call = apiService.getProperties(filters);
 
@@ -62,7 +58,7 @@ public class PropertyApi extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
-                // Maneja errores de conexión aquí
+                // Acá manejamos los errores de conexión
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });

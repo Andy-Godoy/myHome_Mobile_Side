@@ -27,24 +27,24 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
         validarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtener el texto ingresado en los campos de correo y contraseña
+                // Obtenemos el texto ingresado en los campos de correo y contraseña
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                //validar email
+                //validamos mail
                 if (!isValidEmail(email)) {
                     showToast("Correo electrónico no válido");
                 }
-                // Validar la contraseña
+                // Validamos la contraseña
                 if (!isValidPassword(password)) {
                     showToast("La contraseña debe tener al menos 6 caracteres");
                 }
 
-                // Validar el correo electrónico y la contraseña (puedes usar tus propias reglas de validación)
+                // Validamos el mail y la contraseña
                 if (isValidEmail(email) && isValidPassword(password)) {
 
 
-                    // Ambos datos son válidos, navegar de vuelta a la actividad "LoginRealState"
+                    // Ambos datos son válidos, navegamos de vuelta a la actividad "LoginRealState"
 
                     BasicCredentials basicCredentials = new BasicCredentials(editTextEmail.getText().toString(),editTextPassword.getText().toString());
                     intentarRegistrar(basicCredentials);
@@ -64,12 +64,12 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
         Users user = userApi.registrarUsuario (credentials, this);
     }
 
-    // Función para validar el formato del correo electrónico
+    // Función para validar el formato del mail
     private boolean isValidEmail(CharSequence target) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
-    // Función para validar la contraseña (puedes personalizar esta validación según tus necesidades)
+    // Función para validar la contraseña
     private boolean isValidPassword(String password) {
         return password.length() >= 6; // Por ejemplo, mínimo 6 caracteres
     }
@@ -92,7 +92,7 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
         showToast("usuario registrado correctamente");
         Intent intent = new Intent(RegisterAgencies.this, ListAgencieProperties.class);
         startActivity(intent);
-        finish(); // Finalizar la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
+        finish(); // Finalizamos la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
 
     }
 

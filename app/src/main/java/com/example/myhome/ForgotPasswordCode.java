@@ -48,7 +48,7 @@ public class ForgotPasswordCode extends AppCompatActivity {
             Intent miIntent=new Intent(ForgotPasswordCode.this, NewPassword.class);
             miIntent.putExtra("email", email);
             startActivity(miIntent);
-            // Aquí puedes habilitar otros elementos de UI para modificar la contraseña.
+
         } else {
             mensajeTextView.setText("Código incorrecto. Intente de nuevo.");
         }

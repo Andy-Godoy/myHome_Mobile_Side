@@ -62,10 +62,9 @@ dependencies {
     implementation("com.android.support:support-annotations:28.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.navigation:navigation-fragment:2.7.4")
-    implementation("androidx.navigation:navigation-ui:2.7.4") //Libreria para el uso de anotaciones
-    //implementation("com.androidx.support:content:1.0.0")
-    //implementation("com.androidx.support:support:28.0.0")
+    implementation("androidx.navigation:navigation-fragment:2.7.5")
+    implementation("androidx.navigation:navigation-ui:2.7.5") //Libreria para el uso de anotaciones
+
     testImplementation("junit:junit:4.13.2")    //Libreria para el uso de pruebas unitarias
     androidTestImplementation("androidx.test.ext:junit:1.1.5") //Libreria para el uso de pruebas unitarias
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1") //Libreria para el uso de pruebas unitarias
@@ -95,7 +94,7 @@ dependencies {
     //implementation ("com.google.android.libraries.places:places:3.2.0")
 
     implementation("com.android.volley:volley:1.2.1") //Libreria para el uso de peticiones http
-    //implementation("com.androidx.core:core:1.9.0")
+
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28") //Libreria para el uso de gifs
     implementation ("androidx.recyclerview:recyclerview:1.3.2") //Libreria para el uso de RecyclerView
     implementation ("androidx.cardview:cardview:1.0.0") //Libreria para el uso de CardView
