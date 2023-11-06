@@ -44,5 +44,6 @@ public interface RetrofitAPI {
     @PUT("properties")
     Call<Properties> updateProperty (@Body Properties property);
 
-
+    @POST("properties")
+    Call<Properties> setPropiedades(@Body Properties propiedad, @Query("agencyId") long agencyId);
 }

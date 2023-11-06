@@ -56,6 +56,7 @@ public class PropertyApi extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
                 // Acá manejamos los errores de conexión
@@ -66,4 +67,38 @@ public class PropertyApi extends AppCompatActivity {
         return properties;
     }
 
+    public Properties setPropiedades(Properties propiedad, final PropertiesCallback callback) {
+        // Configura Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Crea una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realiza la solicitud
+
+        Call<Properties> call = apiService.setPropiedades(propiedad,propiedad.getAgencyId());
+
+        call.enqueue(new Callback<Properties>() {
+            @Override
+            public void onResponse(Call<Properties> call, Response<Properties> response) {
+                if (response.isSuccessful()) {
+
+                    callback.onPropertiesSuccess(response.body());
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Properties> call, Throwable t) {
+                // Maneja errores de conexión aquí
+                Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return propiedad;
+    }
 }
