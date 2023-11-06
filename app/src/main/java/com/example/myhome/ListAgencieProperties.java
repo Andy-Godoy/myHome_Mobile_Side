@@ -3,13 +3,13 @@ package com.example.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,13 +33,13 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-// Obtén el ID del ítem de menú correspondiente a esta actividad
+            // Obtén el ID del ítem de menú correspondiente a esta actividad
             int menuItemId = R.id.action_home; // Reemplaza con el ID correcto para esta actividad
 
-// Marcar el ítem del menú como seleccionado
+            // Marcar el ítem del menú como seleccionado
             bottomNavigationView.setSelectedItemId(menuItemId);
 
-// Configurar el listener para los elementos del menú
+            // Configurar el listener para los elementos del menú
             bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
                 MenuHandler.handleMenuItemClick(this, item);
                 return true;
@@ -47,9 +47,12 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             cardConteiner = findViewById(R.id.cardContainer);
 
-            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
+//            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
             FiltersDTO filters = new FiltersDTO();
-            filters.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
+
+            if (((MyHome) this.getApplication()).getUsuario() != null) {
+                filters.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
+            }
 
             PropertyApi propertyApi = new PropertyApi();
             properties = propertyApi.verPropiedades(filters, this);
@@ -94,9 +97,12 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             }
 
 
-
         }
 
+    }
+
+    @Override
+    public void onPropertiesSuccess(Properties propiedad) {
     }
 
     @Override
