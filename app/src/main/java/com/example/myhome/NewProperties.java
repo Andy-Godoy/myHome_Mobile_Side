@@ -77,12 +77,11 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         btnGuardarPropiedad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findViewById(R.id.spnrAmenities);
-
-                setAddress();
-                setProperty();
-                guardarPropiead();
-
+                if (validacion()) {
+                    setAddress();
+                    setProperty();
+                    guardarPropiedad();
+                }
             }
         });
     }
@@ -123,13 +122,14 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         String[] amenities = new String[adapter.getAmenities().size()];
         int x = 0;
 
-        for (String i : adapter.getAmenities()) {
-            amenities[x] = i;
-            x++;
+        if (adapter.getAmenities().size() > 0) {
+            for (String i : adapter.getAmenities()) {
+                amenities[x] = i;
+                x++;
+            }
         }
 
         properties.setPropertyAddress(address);
-        Object temp = ((MyHome) this.getApplication()).getUsuario();
         properties.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
         properties.setPropertyType(((Spinner) findViewById(R.id.spnrTipoPropiedad)).getSelectedItem().toString());
         properties.setPropertyStatus(((Spinner) findViewById(R.id.spnrEstado)).getSelectedItem().toString());
@@ -150,7 +150,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyDescription(((TextView) findViewById(R.id.txtDescripcion1)).getText().toString());
         properties.setPropertyCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtCubiertos)).getText().toString()));
         properties.setPropertySemiCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtSemiCubiertos)).getText().toString()));
-        properties.setPropertyUncoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtCubiertos)).getText().toString()));
+        properties.setPropertyUncoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtDescubiertos)).getText().toString()));
     }
 
     @Override
@@ -169,8 +169,87 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
-    public void guardarPropiead(){
+    public void guardarPropiedad() {
         PropertyApi propertyApi = new PropertyApi();
         propertyApi.setPropiedades(properties, this);
+    }
+
+    public boolean validacion() {
+        boolean esValido = true;
+
+        //Address
+        TextView addressName = findViewById(R.id.txtCalle);
+        TextView addressNumber = findViewById(R.id.txtNumero);
+        TextView addressCity = findViewById(R.id.txtLocalidad);
+        TextView addressState = findViewById(R.id.txtProvincia);
+        TextView addressCountry = findViewById(R.id.txtPais);
+
+        //Property
+        Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
+        Spinner estado = findViewById(R.id.spnrEstado);
+        TextView precioPropiedad = findViewById(R.id.txtPrecioPropiedad);
+        TextView precioExpensas = findViewById(R.id.txtPrecioExpensas);
+        TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientes);
+        TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartos);
+        TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
+        TextView cantidadCochera = findViewById(R.id.txtCantidadCochera);
+        TextView cubiertos = findViewById(R.id.txtCubiertos);
+        TextView semiCubiertos = findViewById(R.id.txtSemiCubiertos);
+        TextView descubiertos = findViewById(R.id.txtDescubiertos);
+
+        if (addressName.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un nombre de calle", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (addressNumber.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un numero de calle", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (addressCity.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una ciudad", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (addressState.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una provincia", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (addressCountry.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un pais", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (tipoPropiedad.getSelectedItem().toString().isEmpty()) {
+            Toast.makeText(this, "Debe seleccionar un tipo de propiedad", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (estado.getSelectedItem().toString().isEmpty()) {
+            Toast.makeText(this, "Debe seleccionar un estado", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (precioPropiedad.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un precio de propiedad", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (precioExpensas.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un precio de expensas", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (cantidadAmbientes.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de ambientes", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (cantidadCochera.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de cocheras", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (cantidadBanios.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de baños", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (cantidadCuartos.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de cuartos", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (cubiertos.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de metros cubiertos", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (semiCubiertos.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de metros semi cubiertos", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (descubiertos.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar una cantidad de metros descubiertos", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        } else if (Integer.parseInt(cubiertos.getText().toString()) <=0) {
+            Toast.makeText(this, "Debe ingresar una cantidad de metros cubiertos mayor a 0", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        }
+
+        return esValido;
     }
 }
