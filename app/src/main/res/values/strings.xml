@@ -1,265 +1,234 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">myhome</string>
-    <string name="loading">Loading…</string>
-    <string name="no_internet_connection">No internet connection!</string>
-<string name="lbl_provincia">Provincia</string>
-<string name="msg_introduce_el_c">Introduce el código de verificación enviado, para genera la nueva contraseña</string>
-<string name="msg_tipo_de_propied">Tipo de propiedad</string>
-<string name="lbl_4_de_4">4 de 4</string>
-<string name="lbl_s">S</string>
-<string name="msg_cantidad_de_ba">Cantidad de baños</string>
-<string name="msg_precio_de_expen">Precio de expensas</string>
-<string name="lbl_calle">Calle</string>
-<string name="lbl_ba_os_2">Baños
-2 </string>
-<string name="msg_excelente_atenc2">Excelente atención y siempre buscan  considerando las necesidades del cliente</string>
-<string name="lbl_95_m2">95 m2 </string>
-<string name="lbl_ba_os_1">Baños
-1 </string>
-<string name="lbl_dd_mm_yyyy">dd/mm/yyyy</string>
-<string name="lbl_fotos_videos">Fotos/Videos</string>
-<string name="lbl_localidad">Localidad</string>
-<string name="lbl_propiedades">Propiedades</string>
-<string name="msg_precio_propieda">Precio propiedad</string>
-<string name="msg_caracter_sticas">Características generales</string>
-<string name="msg_marco_avellaned">Marco Avellaneda 1000</string>
-<string name="msg_cantidad_de_cua">Cantidad de cuartos</string>
-<string name="msg_seleccion_el_m">Seleccioná el método de pago:</string>
-<string name="msg_trato_siempre_r">Trato siempre respetuoso y cordial. Comprensivos con los inquilinos. No ignoran los reclamos y siempre hacen mediaciones justas entre locatarios y locadores.</string>
-<string name="lbl_piso">Piso</string>
-<string name="lbl_foto_3_png">Foto 3.png</string>
-<string name="msg_contact_al_anu">Contactá al anunciante</string>
-<string name="lbl_ambientes_4">Ambientes
-4 </string>
-<string name="lbl_min">Min</string>
-<string name="lbl_1_dormitorio">1 dormitorio</string>
-<string name="lbl_ambientes_6">Ambientes
-6 </string>
-<string name="lbl_filtrar">Filtrar</string>
-<string name="lbl_sum">SUM</string>
-<string name="lbl_aplicar_filtros">Aplicar Filtros</string>
-<string name="lbl_b">B</string>
-<string name="lbl_posici_n">Posición</string>
-<string name="lbl_propiedad">Propiedad</string>
-<string name="lbl_semicubiertos">Semicubiertos</string>
-<string name="msg_te_gustar_a_de">¿Te gustaría dejar un comentario?</string>
-<string name="msg_cant_de_cuarto">Cant. de cuartos</string>
-<string name="lbl_habitaciones_2">Habitaciones
-2 </string>
-<string name="msg_descubiertos_12">Descubiertos
-12 m2</string>
-<string name="lbl_habitaciones_3">Habitaciones
-3 </string>
-<string name="msg_error_debe_ingr7">Error debe ingresar una provincia</string>
-<string name="msg_error_debe_ingr6">Error debe ingresar un país</string>
-<string name="msg_error_debe_ingr9">Error debe ingresar un barrio</string>
-<string name="lbl_alquiler">Alquiler</string>
-<string name="msg_error_debe_ingr8">Error debe ingresar una localidad</string>
-<string name="lbl_hacer_consulta">Hacer Consulta</string>
-<string name="lbl_pa_s">País</string>
-<string name="lbl_moneda">Moneda</string>
-<string name="lbl_solicitar_turno">Solicitar Turno</string>
-<string name="lbl_17_y_60">17 y 60</string>
-<string name="msg_propiedad_a_res">Propiedad a reservar</string>
-<string name="lbl_departamento">Departamento</string>
-<string name="msg_valoraciones_y">Valoraciones y Comentarios</string>
-<string name="msg_su_cuenta_ha_si">Su cuenta ha sido creada exitosamente!</string>
-<string name="msg_la_plata_bueno">La Plata, Buenos aires</string>
-<string name="msg_excelente_atenc">Excelente atención y amplios horarios, todos los empleados son muy respetuosos y cordiales, siempre predispuestos a evacuar cualquier duda y explicar lo que sea necesario. -</string>
-<string name="lbl_paraguay_4200">Paraguay 4200</string>
-<string name="lbl_cerrar_sesi_n">Cerrar Sesión</string>
-<string name="msg_muchas_gracias">¡Muchas gracias por realizar una  reserva!</string>
-<string name="lbl_u_d_140_000">U$D 140.000</string>
-<string name="lbl_descripci_n">Descripción</string>
-<string name="msg_usd_dolar_est">USD - Dolar Estadounidense</string>
-<string name="lbl_ma_ana">Mañana</string>
-<string name="msg_cantidad_de_ba2">Cantidad de Baños</string>
-<string name="msg_monto_de_reserv">Monto de reserva:</string>
-<string name="lbl_video_1_mp4">Video 1.mp4</string>
-<string name="lbl_expensas">Expensas:</string>
-<string name="lbl_estado">Estado</string>
-<string name="msg_casa_430_m2">Casa * 430 m2 * NE * Frente * A estrenar </string>
-<string name="lbl_foto_2_png">Foto 2.png</string>
-<string name="lbl_4_5">4/5</string>
-<string name="lbl_contrafrente">ContraFrente</string>
-<string name="msg_cant_de_ambien">Cant. de ambientes</string>
-<string name="lbl_4_0">4.0</string>
-<string name="msg_departamento_de">Departamento de 2 dormitorios en venta ubicado sobre Avenida 60 y 17, este se encuentra sobre la Avenida, al frente por ascensor el mismo posee dos dormitorios, uno de ellos en suite, y ambos con placares empotrados, dos baño completos, cocina distribuida en forma de "L" con muebles sobre y bajo mesada integrada al living comedor con salida al balcón corrido que conecta con los dormitorios.&#13;
-_78 mts 2 totales construidos.
-_68 mts 2 cubiertos.&#13;
-_En espacios comunes el edificio dispone en la</string>
-<string name="lbl_barrio">Barrio</string>
-<string name="msg_cantidad_de_cua2">Cantidad de Cuartos</string>
-<string name="msg_tipo_de_contact">Tipo de Contacto</string>
-<string name="msg_error_debe_ingr3">Error debe ingresar
-un número</string>
-<string name="lbl_favoritos2">Favoritos</string>
-<string name="msg_error_debe_ingr2">Error debe ingresar una calle</string>
-<string name="msg_error_debe_ingr5">Error debe ingresar un piso</string>
-<string name="msg_ten_s_una_inmo">¿Tenés una inmobiliaria?</string>
-<string name="msg_error_debe_ingr4">Error debe ingresar un departamento</string>
-<string name="lbl_precio_expensas">Precio expensas</string>
-<string name="lbl_sauna">Sauna</string>
-<string name="lbl_descubiertos">Descubiertos</string>
-<string name="lbl_c_digo">Código</string>
-<string name="lbl_lopez_castromil">Lopez Castromil</string>
-<string name="lbl_cocheras_2">Cocheras
-2 </string>
-<string name="lbl_78_m2">78 m2 </string>
-<string name="lbl_u_d_220">U$D 220</string>
-<string name="lbl_dimensiones">Dimensiones</string>
-<string name="lbl_cocheras_1">Cocheras
-1 </string>
-<string name="lbl_enviar">Enviar</string>
-<string name="lbl_sala_de_juegos">Sala de juegos</string>
-<string name="lbl_2_de_4">2 de 4</string>
-<string name="lbl_5_5">5/5</string>
-<string name="lbl_cant_de_ba_os">Cant. de baños</string>
-<string name="lbl_precio">Precio</string>
-<string name="lbl_uploaded">Uploaded</string>
-<string name="lbl_favoritos">Favoritos  </string>
-<string name="lbl_reservar">Reservar</string>
-<string name="msg_reserva_realiza">Reserva realizada</string>
-<string name="lbl_menor_a_3_a_os">Menor a 3 años</string>
-<string name="lbl_usd_18_590">uSd 18.590</string>
-<string name="lbl_33_m2">33 m2 </string>
-<string name="lbl_ariel">Ariel</string>
-<string name="lbl_marcos_zuares">Marcos Zuares</string>
-<string name="msg_semicubiertos_2">Semicubiertos
-2 m2</string>
-<string name="lbl_perfil">Perfil     </string>
-<string name="msg_martin_fonseca">Martin Fonseca Propiedades</string>
-<string name="msg_confirma_tu_con">Confirma tu contraseña</string>
-<string name="msg_valoraciones_y2">Valoraciones y comentarios</string>
-<string name="lbl_3_dormitorios">3 dormitorios</string>
-<string name="lbl_contrase_a">Contraseña</string>
-<string name="lbl_usd_220">uSd 220</string>
-<string name="lbl_usd">uSd -</string>
-<string name="msg_buenos_aires_c">Buenos Aires, C.A.B.A. Palermo</string>
-<string name="lbl_usd_220_000">uSd 220.000</string>
-<string name="lbl_u_d_66_640">U$D 66.640</string>
-<string name="lbl_nueva_propiedad">Nueva Propiedad</string>
-<string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
-<string name="msg_ingresa_la_cont">Ingresa la contraseña</string>
-<string name="lbl_pais">Pais</string>
-<string name="lbl_ambientes">Ambientes</string>
-<string name="lbl_foto_1_png">Foto 1.png</string>
-<string name="msg_el_c_digo_ingre">El código ingresado es incorrecto</string>
-<string name="lbl_max">Max</string>
-<string name="lbl_turno">Turno</string>
-<string name="msg_cambiar_contras">Cambiar contraseña</string>
-<string name="lbl_precio2">Precio:</string>
-<string name="lbl_3_de_4">3 de 4</string>
-<string name="msg_olvidaste_tu_c">¿Olvidaste tu contraseña?</string>
-<string name="lbl_tiene_cochera">¿Tiene cochera?</string>
-<string name="lbl_en_alquiler">En alquiler</string>
-<string name="lbl_tiene_balc_n">¿Tiene balcón?</string>
-<string name="msg_lvide_mi_contr">Ólvide mi contraseña</string>
-<string name="msg_cant_de_cocher">Cant. de cocheras</string>
-<string name="lbl_ver_rese_as">Ver Reseñas</string>
-<string name="msg_precio_de_propi">Precio de Propiedad</string>
-<string name="lbl_lomas">Lomas</string>
-<string name="lbl_1_de_4">1 de 4</string>
-<string name="msg_editar_propieda">Editar Propiedad</string>
-<string name="lbl_mi_perfil">Mi Perfil</string>
-<string name="lbl_1973">1973</string>
-<string name="lbl_limpiar_filtros">Limpiar Filtros</string>
-<string name="lbl_aceptar">Aceptar</string>
-<string name="lbl_3_5">3/5</string>
-<string name="lbl_usd_50">uSd 50</string>
-<string name="lbl_orientaci_n">Orientación</string>
-<string name="msg_cubiertos_360_m">Cubiertos
-360 m2</string>
-<string name="msg_crear_tu_cuenta">Crear tu cuenta en menos de un minuto</string>
-<string name="msg_semicubiertos_22">Semicubiertos
-20 m2</string>
-<string name="lbl_antiguedad">Antiguedad</string>
-<string name="lbl_usd_110">USD 110</string>
-<string name="lbl_charcas_4000">Charcas 4000</string>
-<string name="lbl_tiene_terraza">¿Tiene terraza?</string>
-<string name="msg_seleccionar_arc">Seleccionar archivos a subir</string>
-<string name="lbl_n_mero">Número</string>
-<string name="lbl_quincho">Quincho</string>
-<string name="msg_departamento_en">Departamento en venta - 1 dormitorio 1 baño - 47 mts2 - La Plata-Poz...</string>
-<string name="msg_realizar_reserv">Realizar Reserva</string>
-<string name="msg_las_contrase_a">Las  contraseñas no coinciden</string>
-<string name="msg_que_te_pareci">¿Que te pareció la atención?</string>
-<string name="msg_buenos_aires_r">Buenos Aires, Remedios de escalada, Lanus</string>
-<string name="msg_no_tiene_una_c">¿No tiene una cuenta?</string>
-<string name="lbl_pileta">Pileta</string>
-<string name="lbl_tiene_baulera">¿Tiene baulera?</string>
-<string name="msg_departamento">Departamento * 287 m2 * NE * Frente * A estrenar </string>
-<string name="msg_mi_experiencia">Mi experiencia fue...</string>
-<string name="lbl_eliminar_cuenta">Eliminar cuenta</string>
-<string name="lbl_contactar">Contactar</string>
-<string name="lbl_antig_edad">Antigüedad</string>
-<string name="msg_5_calificacione">5 calificaciones</string>
-<string name="msg_ingresa_tu_mail">Ingresa tu mail, te enviaremos los pasos para cambiarla</string>
-<string name="lbl_gabriel">Gabriel</string>
-<string name="lbl_amenities">Amenities</string>
-<string name="lbl_crear_cuenta">Crear Cuenta</string>
-<string name="msg_cantidad_de_amb">Cantidad de ambientes</string>
-<string name="lbl_jacuzzi">Jacuzzi</string>
-<string name="lbl_47_m2">47 m2 </string>
-<string name="msg_el_mail_ha_sido">El mail ha sido enviado</string>
-<string name="msg_error_debe_ingr">Error debe ingresar un formato válido</string>
-<string name="lbl_fecha">Fecha</string>
-<string name="lbl_dto">Dto</string>
-<string name="msg_semi_descubiert">Semi descubiertos</string>
-<string name="lbl_ana">Ana</string>
-<string name="lbl_registrese_aqu">Registrese aquí</string>
-<string name="lbl_u_d_210_000">U$D 210.000</string>
-<string name="lbl_foto_4_png">Foto 4.png</string>
-<string name="msg_marcos_gmail_co">marcos@gmail.com</string>
-<string name="lbl_mis_propiedades">Mis Propiedades</string>
-<string name="lbl_descripci_n2"> Descripción...</string>
-<string name="lbl_email">Email</string>
-<string name="lbl_tarde">Tarde</string>
-<string name="lbl_u_s_109_200">U$S 109.200</string>
-<string name="lbl_laundry">Laundry</string>
-<string name="lbl_1">1</string>
-<string name="lbl_gym">Gym</string>
-<string name="lbl_2">2</string>
-<string name="lbl_3">3</string>
-<string name="lbl_4">4</string>
-<string name="lbl_perfil2">Perfil</string>
-<string name="msg_acced_para_ver">Accedé para ver las propiedades</string>
-<string name="lbl_tipo_propiedad">Tipo Propiedad</string>
-<string name="msg_est_s_accediend">Estás accediendo como inmobiliaria</string>
-<string name="msg_lomas_de_zamor">´Lomas de Zamora</string>
-<string name="lbl_8">8</string>
-<string name="lbl_cubiertos">Cubiertos</string>
-<string name="lbl_sofia_gmail_com">sofia@gmail.com</string>
-<string name="lbl_guardar">Guardar</string>
-<string name="lbl_nombre">Nombre</string>
-<string name="msg_usd">USD            35.799,00</string>
-<string name="lbl_buenos_aires">Buenos Aires</string>
-<string name="msg_cantidad_de_coc">Cantidad de cocheras</string>
-<string name="msg_la_reserva_se_h">La reserva se ha realizado de forma exitosa. En breve, 
-recibirá un mail de confirmación y la inmobiliaria se
-contactará con usted en las proximas 24hs.</string>
-<string name="msg_impec_balc_n_c">IMPEC! Balcón corrido al fte! M/Lum!...</string>
-<string name="lbl_usd_210_000">uSd 210.000</string>
-<string name="msg_casa_de_3_dormi">Casa de 3 dormitorios en venta ubicado sobre Marco Avellaneda al 1000, este se encuentra sobre la Avenida, al frente por ascensor el mismo posee dos dormitorios, uno de ellos en suite, y ambos con placares empotrados, dos baño completos, cocina distribuida en forma de "L" con muebles sobre y bajo mesada integrada al living comedor con salida al balcón corrido que conecta con los dormitorios.</string>
-<string name="lbl_argentina">Argentina</string>
-<string name="msg_usd_81">USD          810.999,00</string>
-<string name="msg_muy_buena_predi">Muy buena predisposicion, los contacte y en el dia fueron a ver mi propiedad, muchos exitos, saludos Ariel !</string>
-<string name="lbl_cabrera">Cabrera</string>
-<string name="msg_me_acompa_aron">Me acompañaron hasta lograr mi sueño de la casa propia!</string>
-<string name="lbl_en_venta">En venta</string>
-<string name="msg_cubiertos_275_m">Cubiertos
-275 m2</string>
-<string name="msg_departamento_en3">Departamento en venta de 1 dormitorio en Palermo</string>
-<string name="msg_descubiertos_50">Descubiertos
-50 m2</string>
-<string name="lbl_sof_a">Sofía</string>
-<string name="msg_departamento_en2">Departamento en venta - 2 dormitorios - balcón - 78 mts2 - La Plata-Poz...</string>
-<string name="lbl_ingresar">Ingresar</string>
-<string name="lbl_filtros">Filtros</string>
-<string name="lbl_my_home">My Home</string>
-<string name="lbl_mensaje"> Mensaje...</string>
-<string name="msg_metros_cuadrado">Metros cuadrados</string>
-<string name="lbl_2_dormitorios">2 dormitorios</string>
-<string name="msg_please_enter_valid_email">Please enter valid email</string>
+
+    <string name="logo">logo</string>
+
+    <string name="app_name">MyHome</string>
+
+    <string name="sincuenta">No tiene una cuenta?</string>
+
+    <string name="Registrese_link">Registrese aquí</string>
+
+    <string name="accessuser">Accedé para ver las propiedades</string>
+
+    <string name="accessrealstate">Estás accediendo como inmobiliaria</string>
+
+    <string name="loginaccess">Ingresar</string>
+
+    <string name="email">Email</string>
+
+    <string name="password">Contraseña</string>
+
+    <string name="forgot">Olvidé mi contraseña</string>
+
+    <string name="access">Ingresar</string>
+
+    <string name="signingoogle">Continuar con Google</string>
+
+    <string name="msginmobiliaria">¿Tenés una inmobiliaria?</string>
+
+    <string name="reset">¿Olvidaste tu contraseña?</string>
+
+    <string name="resetstep">Ingresá tu mail, te enviaremos los pasos para cambiarla</string>
+
+    <string name="send">Enviar</string>
+
+    <string name="registeraccount">Crear tu cuenta en menos de un minuto</string>
+
+    <string name="createaccount">Crear Cuenta</string>
+
+    <string name="not_log_in">No se pudo iniciar sesión</string>
+
+    <string name="log_out">Log Out</string>
+
+    <string name="revoke">Revoke</string>
+
+    <string name="not_close_session">No se pudo cerrar sesión</string>
+
+    <string name="not_revoke">No se pudo revocar el acceso</string>
+
+    <string name="mailenviado">El mail ha sido enviado</string>
+
+    <string name="codigo">Introduce el código de verificación recibido para generar la nueva contraseña</string>
+
+    <string name="codigohint">Código de verificación</string>
+
+    <string name="aceptar">Aceptar</string>
+
+    <string name="validarpass">Ingrese la contraseña</string>
+
+    <string name="nuevapass">Contraseña</string>
+
+    <string name="repetirpasshint">Confirmá tu contraseña</string>
+
+    <string name="cambiarpass">Cambiar contraseña</string>
+
+    <string name="nuevapropiedad">Nueva Propiedad</string>
+
+    <string name="email_de_inmobiliaria">Email de Inmobiliaria:</string>
+
+    <string name="id_de_inmobiliaria">ID de Inmobiliaria</string>
+
+    <string name="nombre_de_inmobiliaria">Nombre de Inmobiliaria</string>
+
+    <string name="id_de_usuario">ID de Usuario</string>
+
+    //uso de strings para activity_list_user_properties.xml
+
+    <string name="lbl_paraguay_4200">Paraguay 4200</string>
+    <string name="lbl_u_d_220">U$D 220</string>
+    <string name="lbl_33_m2">33 m2 </string>
+    <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
+    <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
+    <string name="lbl_1_dormitorio">1 dormitorio</string>
+    <string name="lbl_perfil">Perfil     </string>
+    <string name="lbl_filtrar">Filtrar</string>
+    <string name="lbl_propiedades">Propiedades</string>
+    <string name="lbl_my_home">My Home</string>
+    <string name="lbl_favoritos">Favoritos  </string>
+
+    //****************************************************
+    //uso de strings para activity_list_user_properties.xml
+
+
+    <string name="lbl_mispropiedades">Mis Propiedades</string>
+
+    //*****************************************************
+
+    //****************************************************
+    //uso de strings para activity_new_properties.xml
+
+    <string name="calle">Calle</string>
+
+    <string name="numero">Número</string>
+
+    <string name="dpto">Dpto</string>
+
+    <string name="piso">Piso</string>
+
+    <string name="pais">País</string>
+
+    <string name="provincia">Provincia</string>
+
+    <string name="localidad">Localidad</string>
+
+    <string name="barrio">Barrio</string>
+
+    <string name="tipoPropiedad">Tipo Propiedad</string>
+
+    <string name="estado">Estado</string>
+
+    <string name="orientacion">Orientación</string>
+
+    <string name="posicion">Posición</string>
+
+    <string name="tieneTerraza">¿Tiene terraza?</string>
+
+    <string name="tieneCochera">¿Tiene cochera?</string>
+
+    <string name="cantidadAmbientes">Cant. de ambientes</string>
+
+    <string name="cantidadCochera">Cant. cocheras</string>
+
+    <string name="tieneBaulera">¿Tiene baulera?</string>
+
+    <string name="tieneBalcon">¿Tiene balcón?</string>
+
+    <string name="cantidadBaños">Cant. de baños</string>
+
+    <string name="cantidadCuartos">Cant. de cuartos</string>
+
+    <string name="antiguedad">Antigüedad</string>
+
+    <string name="amenities">Amenities</string>
+
+    <string name="metrosCuadrados">METROS CUADRADOS</string>
+
+    <string name="cubiertos">Cubiertos</string>
+
+    <string name="semiCubiertos">Semicubiertos</string>
+
+    <string name="descubiertos">Descubiertos</string>
+
+    <string name="PrecioDePropiedad">Precio de propiedad</string>
+
+    <string name="PrecioDeExpensas">Precio de expensas</string>
+
+    <string name="descripcion1">Descripción</string>
+
+    <string name="guardarImagenes">Agregar imágenes</string>
+
+    <string name="guardarPropiedad">Guardar propiedad</string>
+    <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
+    <string name="precio">Precio</string>
+    <string name="direccion">Direccion</string>
+    <string name="ciudad_y_provincia">Ciudad y Provincia</string>
+    <string name="editar_propiedad">Editar Propiedad</string>
+    <string name="eliminar_propiedad">Eliminar Propiedad</string>
+    <string name="dimensiones">Dimensiones</string>
+    <string name="habitaciones">Habitaciones</string>
+    <string name="descripci_n_de_la_propiedad">Descripción de la propiedad</string>
+    <string name="lista_de_propiedades">Lista de propiedades</string>
+    <string name="continuar">Continuar</string>
+
+
+    //****************************************************
+    //uso de strings para spinners de activity_new_properties.xml
+
+    <string-array name="lista_de_estados">
+        <item>Venta</item>
+        <item>Alquiler</item>
+    </string-array>
+
+    <string-array name="lista_de_tipo_propiedad">
+        <item>Casa</item>
+        <item>Departamento</item>
+        <item>Galpón</item>
+        <item>Local</item>
+        <item>Oficina</item>
+        <item>Ph</item>
+        <item>Terreno</item>
+    </string-array>
+
+    <string-array name="lista_orientacion">
+        <item>N</item>
+        <item>S</item>
+        <item>E</item>
+        <item>O</item>
+        <item>NE</item>
+        <item>NO</item>
+        <item>SE</item>
+        <item>SO</item>
+    </string-array>
+
+    <string-array name="lista_posicion">
+        <item>Frente</item>
+        <item>Contrafrente</item>
+    </string-array>
+
+    <string-array name="lista_antiguedad">
+        <item>A estrenar</item>
+        <item>Menor a 1 año</item>
+        <item>Menor a 3 años</item>
+        <item>Menor a 5 años</item>
+        <item>Menor a 10 años</item>
+        <item>Menor a 25 años</item>
+        <item>Menor a 50 años</item>
+        <item>Mayor a 50 años</item>
+    </string-array>
+
+    <string-array name="lista_amenities">
+        <item>Todos</item>
+        <item>Estacionamiento</item>
+        <item>Quincho</item>
+        <item>Pileta</item>
+        <item>Jacuzzi</item>
+        <item>Sauna</item>
+        <item>Sum</item>
+        <item>Sala de juegos</item>
+        <item>Gimnasio</item>
+        <item>Laundry</item>
+        <item>WI-FI</item>
+    </string-array>
+
+    //*****************************************************
 </resources>
