@@ -10,6 +10,18 @@ android {
     namespace = "com.example.myhome"
     compileSdk = 34
 
+    packagingOptions {
+        exclude ("META-INF/DEPENDENCIES")
+        exclude ("META-INF/LICENSE")
+        exclude ("META-INF/LICENSE.txt")
+        exclude ("META-INF/license.txt")
+        exclude ("META-INF/NOTICE")
+        exclude ("META-INF/NOTICE.txt")
+        exclude ("META-INF/notice.txt")
+        exclude ("META-INF/ASL2.0")
+        exclude ("META-INF/INDEX.LIST")
+        exclude ("META-INF/io.netty.versions.properties")
+    }
 
 
     defaultConfig {
@@ -50,8 +62,9 @@ allprojects {
         jcenter()
         mavenCentral()
     }
-}
 
+
+}
 
 
 dependencies {
@@ -118,6 +131,8 @@ dependencies {
     implementation ("androidx.databinding:databinding-runtime:8.1.2")
     //implementation ("com.asksira.android:loopingviewpager:1.1.2")
 
+    implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
+    implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure
 
     //***************************************************************
 }

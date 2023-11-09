@@ -143,15 +143,6 @@
                         android:layout_height="@dimen/_155pxv"
                         android:layout_gravity="start">
 
-                        <com.asksira.loopingviewpager.LoopingViewPager
-                            android:id="@+id/imageSliderSlider"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_155pxv"
-                            android:layout_gravity="start"
-                            app:autoScroll="true"
-                            app:isInfinite="true"
-                            app:scrollInterval="5000" />
-
                         <ImageView
                             android:id="@+id/imageArrowright"
                             android:layout_width="@dimen/_10pxh"
@@ -165,6 +156,15 @@
                             android:src="@drawable/img_arrowright"
                             tools:ignore="ContentDescription"
                             tools:src="@drawable/img_arrowright" />
+
+                        <com.asksira.loopingviewpager.LoopingViewPager
+                            android:id="@+id/imageSliderSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_155pxv"
+                            android:layout_gravity="start"
+                            app:autoScroll="true"
+                            app:isInfinite="true"
+                            app:scrollInterval="5000" />
                     </FrameLayout>
 
                     <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
