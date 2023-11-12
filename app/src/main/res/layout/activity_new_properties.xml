@@ -39,7 +39,7 @@
         tools:ignore="TextSizeCheck" />
 
     <TextView
-        android:id="@+id/lblNuevaPropiedad"
+        android:id="@+id/lblDetallePropiedad"
         android:layout_width="140dp"
         android:layout_height="19dp"
         android:layout_marginStart="48dp"
@@ -630,12 +630,12 @@
                 android:text="@string/PrecioDePropiedad"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioDePropiedad"
+                android:id="@+id/txtPrecioPropiedad"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -659,12 +659,12 @@
                 android:text="@string/PrecioDeExpensas"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDeExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioExpensas"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/txtPrecioDeExpensas"
+                android:id="@+id/txtPrecioExpensas"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -828,8 +828,8 @@
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPrecioDeExpensas"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioDePropiedad"
+                app:layout_constraintEnd_toEndOf="@+id/txtPrecioExpensas"
+                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -869,7 +869,7 @@
                 android:layout_marginTop="2300dp"
                 android:backgroundTint="@color/boton"
                 android:text="@string/guardarPropiedad"
-                android:textColor="#212121"
+                android:textColor="@color/botonText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

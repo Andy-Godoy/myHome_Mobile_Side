@@ -2,7 +2,6 @@ package com.example.myhome;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.MenuItem;
 
 public class MenuHandler {
@@ -13,7 +12,6 @@ public class MenuHandler {
             if (!item.isChecked()) {
                 Intent intent = new Intent(context, ListAgencieProperties.class);
                 context.startActivity(intent);
-                Log.d("MenuHandler", "Home");
             }
             // Lógica para abrir la ventana correspondiente a "Mis propiedades" desde acá
         } else if (itemId == R.id.action_add) {
