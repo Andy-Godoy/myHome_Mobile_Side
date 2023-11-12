@@ -160,6 +160,7 @@
 
     <string name="guardarPropiedad">Guardar propiedad</string>
     <string name="cerrarPropiedad">Cerrar</string>
+
     <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
     <string name="precio">Precio</string>
     <string name="direccion">Direccion</string>
