@@ -9,6 +9,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -32,8 +33,11 @@ public interface RetrofitAPI {
     @POST("properties")
     Call<Properties> createProperty (@Body Properties property);
 
-    @GET("properties")
-    Call<Properties> getProperty (@Query("propertyId") long propertyId);
+//    @GET("properties")
+//    Call<Properties> getProperty (@Query("propertyId") long propertyId);
+
+    @GET("properties/{propertyId}")
+    Call<Properties> getProperty(@Path("propertyId") long propertyId);
 
     @POST("properties/filters")
     Call<List<PropertySummary>> getProperties (@Body FiltersDTO filters);

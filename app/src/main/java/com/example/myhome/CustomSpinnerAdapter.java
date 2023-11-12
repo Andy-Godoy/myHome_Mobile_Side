@@ -18,6 +18,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     private boolean allChecked = false;
     private boolean[] checkedItems;
     private Set<String> amenities = new HashSet<>();
+    private boolean isEnabled = true;
 
     public CustomSpinnerAdapter(Context context, String[] items) {
         super(context, 0, items);
@@ -48,17 +49,8 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         if (item != null) {
             textView.setText(item);
 
-//            if(checkBox.isChecked()){
-//                amenities.add(item);
-//            }
-//
-//            else {
-//                amenities.remove(item);
-//            }
-
             if (position == 0) {
                 checkBox.setChecked(allChecked);
-                checkBox.setEnabled(true); // Permitir seleccionar/deseleccionar "Todos"
                 checkBox.setOnCheckedChangeListener(null); // Limpiar el oyente anterior
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -82,6 +74,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
                 });
             }
 
+            checkBox.setEnabled(isEnabled); // Asumiendo que isEnabled es una variable que indica si el Spinner está habilitado
 
         }
 
@@ -147,10 +140,15 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     }
 
     public void setCheckBoxesEnabled(boolean enabled) {
-        for (int i = 1; i < getCount(); i++) {
-            View view = getView(i, null, null);
-            CheckBox checkBox = view.findViewById(R.id.checkBox);
-            checkBox.setEnabled(enabled);
+        isEnabled = enabled; // Actualizar el estado de habilitación del Spinner
+        notifyDataSetChanged();
+    }
+
+    public void setCheckedItems(boolean[] newCheckedItems) {
+        if (newCheckedItems.length == checkedItems.length) {
+            System.arraycopy(newCheckedItems, 0, checkedItems, 0, checkedItems.length);
+            notifyDataSetChanged();
+            updateAmenitiesList();
         }
     }
 
@@ -161,4 +159,5 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     public void setAmenities(Set<String> amenities){
         this.amenities = amenities;
     }
+
 }
