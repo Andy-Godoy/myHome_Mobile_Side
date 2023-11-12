@@ -45,8 +45,8 @@ public interface RetrofitAPI {
     @DELETE("properties/{propertyId}")
     Call<Void> deleteProperty (@Path("propertyId") long propertyId, @Query("agencyId") long agencyId);
 
-    @PUT("properties")
-    Call<Properties> updateProperty (@Body Properties property);
+    @PUT("properties/{propertyId}")
+    Call<Properties> updateProperty (@Path("propertyId") long propertyId, @Query("agencyId") long agencyId, @Body Properties property);
 
     @POST("properties")
     Call<Properties> setPropiedades(@Body Properties propiedad, @Query("agencyId") long agencyId);

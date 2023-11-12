@@ -170,4 +170,38 @@ public class PropertyApi extends AppCompatActivity {
         });
 
     }
+
+    public Properties editarPropiedad (Properties property, Long agencyId ,final PropertiesCallback callback) {
+        // Configuramos Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realizamos la solicitud
+        Call<Properties> call = apiService.updateProperty(property.getPropertyId(), agencyId, property);
+
+        call.enqueue(new Callback<Properties>() {
+            @Override
+            public void onResponse(Call<Properties> call, Response<Properties> response) {
+                if (response.isSuccessful()) {
+
+                    callback.onPropertiesSuccess(response.body());
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Properties> call, Throwable t) {
+                // Acá manejamos los errores de conexión
+                Toast.makeText(getApplicationContext(), "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return this.property;
+    }
 }

@@ -60,7 +60,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             PropertyApi propertyApi = new PropertyApi();
             properties = propertyApi.verPropiedades(filters, this);
 
-
         }
 
         public void verPropiedades (View view){
@@ -111,7 +110,21 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                     }
                 });
 
+                ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener(){
 
+                    // Establecer clic en editar propiedad
+                    @Override
+                    public void onClick(View view) {
+                        // Obtengo el ID de la propiedad
+                        String propertyId = p.getPropertyId().toString();
+
+                        //Iniciar la actividad para editar la propiedad pasando el id de propiedad
+                        Intent intent = new Intent(ListAgencieProperties.this, EditProperty.class);
+                        intent.putExtra("propertyId", propertyId);
+                        startActivity(intent);
+
+                    }
+                });
 
 
 
@@ -151,5 +164,22 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     public void onPropertiesSuccess(Long propertyId) {
         Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
         cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();     // Actualiza la interfaz de usuario con los nuevos datos si es necesario}
+
+        FiltersDTO filters = new FiltersDTO();
+
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
+            filters.setAgencyId(agencyId);
+        }
+
+        cardConteiner.removeAllViews();
+
+        PropertyApi propertyApi = new PropertyApi();
+        properties = propertyApi.verPropiedades(filters, this);
     }
 }

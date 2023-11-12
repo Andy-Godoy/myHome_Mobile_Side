@@ -85,6 +85,9 @@
         <activity
             android:name=".Apitest"
             android:exported="false" />
+        <activity
+            android:name=".EditProperty"
+            android:exported="false" />
     </application>
 
 </manifest>
