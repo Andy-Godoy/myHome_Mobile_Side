@@ -6,62 +6,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color"
-    tools:context=".NewProperties">
+    tools:context=".DetailProperty">
 
-    <ImageView
-        android:id="@+id/imageHome"
-        android:layout_width="43dp"
-        android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon"
+    <!-- Agrega el Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/icon" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/lblMyHome"
-        android:layout_width="43dp"
-        android:layout_height="12dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck" />
+        <!-- Botón de retroceso en la Toolbar -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/transparent"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:contentDescription="@string/back_button_description"
+            android:onClick="btnClose" />
 
-    <TextView
-        android:id="@+id/lblDetallePropiedad"
-        android:layout_width="140dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:fontFamily="@font/opensansbold"
-        android:gravity="center"
-        android:text="@string/nuevapropiedad"
-        android:textColor="@color/general_titulo"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck" />
+        <TextView
+            android:id="@+id/lblDetallePropiedad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/opensansbold"
+            android:gravity="center"
+            android:text="@string/detallepropiedad"
+            android:textColor="@color/general_titulo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+    </androidx.appcompat.widget.Toolbar>
+<!--    -->
+<!--    &lt;!&ndash; Agrega el ImageButton para la flecha de retroceso &ndash;&gt;-->
+<!--    <ImageButton-->
+<!--        android:id="@+id/btnBack"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:src="@drawable/baseline_arrow_back_ios_24"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="ContentDescription"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:clickable="true"-->
+<!--        android:onClick="btnClose"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:scaleType="fitCenter"-->
+
+<!--        />-->
+
+
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/lblMyHome"> <!-- es es una restricción para que no se superponga con el BottomNavigationView -->
+        app:layout_constraintTop_toTopOf="@id/toolbar"> <!-- es es una restricción para que no se superponga con el BottomNavigationView -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -70,6 +80,7 @@
             <!-- Contenido del ScrollView -->
             <EditText
                 android:id="@+id/txtCalle"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="28dp"
@@ -101,6 +112,7 @@
 
             <EditText
                 android:id="@+id/txtPiso"
+                android:enabled="false"
                 android:layout_width="90dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="106dp"
@@ -133,6 +145,7 @@
 
             <EditText
                 android:id="@+id/txtDpto"
+                android:enabled="false"
                 android:layout_width="90dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="106dp"
@@ -180,6 +193,7 @@
 
             <EditText
                 android:id="@+id/txtNumero"
+                android:enabled="false"
                 android:layout_width="90dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="106dp"
@@ -198,6 +212,7 @@
 
             <EditText
                 android:id="@+id/txtPais"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="262dp"
@@ -229,6 +244,7 @@
 
             <EditText
                 android:id="@+id/txtProvincia"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="378dp"
@@ -260,6 +276,7 @@
 
             <EditText
                 android:id="@+id/txtLocalidad"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="610dp"
@@ -292,6 +309,7 @@
 
             <EditText
                 android:id="@+id/txtBarrio"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="494dp"
@@ -353,6 +371,7 @@
 
             <EditText
                 android:id="@+id/txtCantidadAmbientes"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1020dp"
@@ -382,6 +401,7 @@
 
             <EditText
                 android:id="@+id/txtCantidadCochera"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1020dp"
@@ -458,6 +478,7 @@
 
             <EditText
                 android:id="@+id/txtCantidadBanios"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1198dp"
@@ -487,6 +508,7 @@
 
             <EditText
                 android:id="@+id/txtCantidadCuartos"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1198dp"
@@ -548,6 +570,7 @@
 
             <EditText
                 android:id="@+id/txtCubiertos"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1560dp"
@@ -577,6 +600,7 @@
 
             <EditText
                 android:id="@+id/txtSemiCubiertos"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1560dp"
@@ -607,6 +631,7 @@
 
             <EditText
                 android:id="@+id/txtDescubiertos"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1676dp"
@@ -636,6 +661,7 @@
 
             <EditText
                 android:id="@+id/txtPrecioPropiedad"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -665,6 +691,7 @@
 
             <EditText
                 android:id="@+id/txtPrecioExpensas"
+                android:enabled="false"
                 android:layout_width="156dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="1792dp"
@@ -735,6 +762,7 @@
 
             <Switch
                 android:id="@+id/tieneBaulera"
+                android:enabled="false"
                 android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="928dp"
@@ -744,6 +772,7 @@
 
             <Switch
                 android:id="@+id/tieneBalcon"
+                android:enabled="false"
                 android:layout_width="148dp"
                 android:layout_height="27dp"
                 android:layout_marginTop="928dp"
@@ -754,6 +783,7 @@
 
             <Switch
                 android:id="@+id/tieneCochera"
+                android:enabled="false"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1106dp"
@@ -765,6 +795,7 @@
 
             <Switch
                 android:id="@+id/tieneTerraza"
+                android:enabled="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1106dp"
@@ -816,6 +847,7 @@
 
             <EditText
                 android:id="@+id/txtDescripcion1"
+                android:enabled="false"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1908dp"
@@ -837,7 +869,7 @@
                 android:id="@+id/gridView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2200dp"
+                android:layout_marginTop="2120dp"
                 android:horizontalSpacing="8dp"
                 android:numColumns="4"
                 android:stretchMode="columnWidth"
@@ -845,30 +877,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
 
-            <Button
-                android:id="@+id/btnAddImage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2132dp"
-                android:background="@drawable/borde_redondo"
-                android:backgroundTint="@color/boton"
-                android:drawableTop="@drawable/ic_menu_camera"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:text="@string/guardarImagenes"
-                app:layout_constraintEnd_toEndOf="@id/txtDescripcion1"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/txtDescripcion1"
-                app:layout_constraintTop_toTopOf="parent" />
-
 
             <Button
-                android:id="@+id/btnGuardarPropiedad"
+                android:id="@+id/btnClose"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:layout_marginTop="2300dp"
+                android:layout_marginTop="2200dp"
                 android:backgroundTint="@color/boton"
-                android:text="@string/guardarPropiedad"
+                android:text="@string/cerrarPropiedad"
                 android:textColor="@color/botonText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

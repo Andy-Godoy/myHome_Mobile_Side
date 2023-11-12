@@ -201,11 +201,11 @@ public class Properties {
         this.propertyAddress = propertyAddress;
     }
 
-    public void setpropertyTerrace(boolean propertyHasTerrace) {
+    public void setpropertyHasTerrace(boolean propertyHasTerrace) {
         this.propertyHasTerrace = propertyHasTerrace;
     }
 
-    public boolean getpropertyTerrace() {
+    public boolean getpropertyHasTerrace() {
        return  this.propertyHasTerrace;
     }
 }

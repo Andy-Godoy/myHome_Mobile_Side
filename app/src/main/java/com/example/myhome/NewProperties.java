@@ -133,8 +133,8 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
         properties.setPropertyType(((Spinner) findViewById(R.id.spnrTipoPropiedad)).getSelectedItem().toString());
         properties.setPropertyStatus(((Spinner) findViewById(R.id.spnrEstado)).getSelectedItem().toString());
-        properties.setPropertyPrice(Integer.parseInt(((TextView) findViewById(R.id.txtPrecioDePropiedad)).getText().toString()));
-        properties.setPropertyExpenses(Integer.parseInt(((TextView) findViewById(R.id.txtPrecioDeExpensas)).getText().toString()));
+        properties.setPropertyPrice(Integer.parseInt(((TextView) findViewById(R.id.txtPrecioPropiedad)).getText().toString()));
+        properties.setPropertyExpenses(Integer.parseInt(((TextView) findViewById(R.id.txtPrecioExpensas)).getText().toString()));
         properties.setPropertyRoomQuantity(Integer.parseInt(((TextView) findViewById(R.id.txtCantidadAmbientes)).getText().toString()));
         properties.setPropertyBedroomQuantity(Integer.parseInt(((TextView) findViewById(R.id.txtCantidadCuartos)).getText().toString()));
         properties.setPropertyBathroomQuantity(Integer.parseInt(((TextView) findViewById(R.id.txtCantidadBanios)).getText().toString()));
@@ -142,7 +142,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyHasBalcony(((Switch) findViewById(R.id.tieneBalcon)).isChecked());
         properties.setPropertyHasGarage(((Switch) findViewById(R.id.tieneCochera)).isChecked());
         properties.setPropertyHasStorage(((Switch) findViewById(R.id.tieneBaulera)).isChecked());
-        properties.setpropertyTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
+        properties.setpropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
         properties.setPropertyPosition(((Spinner) findViewById(R.id.spnrPosicion)).getSelectedItem().toString());
         properties.setPropertyOrientation(((Spinner) findViewById(R.id.spnrOrientacion)).getSelectedItem().toString());
         properties.setPropertyAge(((Spinner) findViewById(R.id.spnrAntiguedad)).getSelectedItem().toString());
@@ -187,8 +187,8 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         //Property
         Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
         Spinner estado = findViewById(R.id.spnrEstado);
-        TextView precioPropiedad = findViewById(R.id.txtPrecioDePropiedad);
-        TextView precioExpensas = findViewById(R.id.txtPrecioDeExpensas);
+        TextView precioPropiedad = findViewById(R.id.txtPrecioPropiedad);
+        TextView precioExpensas = findViewById(R.id.txtPrecioExpensas);
         TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientes);
         TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartos);
         TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);

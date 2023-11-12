@@ -145,7 +145,7 @@
         android:backgroundTint="@color/boton"
         android:onClick="onLoginButtonClick"
         android:text="@string/loginaccess"
-        android:textColor="#212121"
+        android:textColor="@color/botonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
