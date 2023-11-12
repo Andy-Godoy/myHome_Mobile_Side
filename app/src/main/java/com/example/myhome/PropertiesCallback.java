@@ -7,4 +7,5 @@ public interface PropertiesCallback {
     void onPropertiesSuccess(Properties propiedad);
     void onPropertiesFailure(String errorMessage);
 
+    void onPropertiesSuccess(Long propertyId);
 }

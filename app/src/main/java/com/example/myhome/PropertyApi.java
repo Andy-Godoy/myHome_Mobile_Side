@@ -136,4 +136,38 @@ public class PropertyApi extends AppCompatActivity {
 
         return this.property;
     }
+
+    public void eliminarPropiedad( Long idPropiedad, Long agencyId, final PropertiesCallback callback) {
+
+        // Configuramos Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realizamos la solicitud
+
+        Call<Void> call = apiService.deleteProperty(idPropiedad, agencyId);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onPropertiesSuccess(idPropiedad);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Acá manejamos los errores de conexión
+                Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }

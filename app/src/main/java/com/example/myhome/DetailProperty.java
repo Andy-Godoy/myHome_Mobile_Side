@@ -166,6 +166,11 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
     public void onPropertiesFailure(String errorMessage) {
     }
 
+    @Override
+    public void onPropertiesSuccess(Long propertyId) {
+
+    }
+
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 

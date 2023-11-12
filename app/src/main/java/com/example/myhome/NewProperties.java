@@ -169,6 +169,11 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onPropertiesSuccess(Long propertyId) {
+
+    }
+
     public void guardarPropiedad() {
         PropertyApi propertyApi = new PropertyApi();
         propertyApi.setPropiedades(properties, this);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
         private Button btnPerfil;
         private LinearLayout cardConteiner;
         private List<PropertySummary> properties;
+        private Long agencyId;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             FiltersDTO filters = new FiltersDTO();
 
             if (((MyHome) this.getApplication()).getUsuario() != null) {
-                filters.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
+                agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
+                filters.setAgencyId(agencyId);
             }
 
             PropertyApi propertyApi = new PropertyApi();
@@ -93,6 +96,25 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
                 propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
+                ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener(){
+
+                    // Establecer clic en eliminar propiedad
+                    @Override
+                    public void onClick(View view) {
+                        // Obtengo el ID de la propiedad
+                        Long propertyId = p.getPropertyId();
+
+                        //Llamo a retrofit para eliminar la propiedad
+                        PropertyApi propertyApi = new PropertyApi();
+                        propertyApi.eliminarPropiedad(propertyId, agencyId, ListAgencieProperties.this);
+
+                    }
+                });
+
+
+
+
+
                 // Establecer clic en la vista
                 propertyCard.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -123,5 +145,11 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     @Override
     public void onPropertiesFailure(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPropertiesSuccess(Long propertyId) {
+        Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
+        cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
     }
 }
