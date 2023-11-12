@@ -42,8 +42,8 @@ public interface RetrofitAPI {
     @POST("properties/filters")
     Call<List<PropertySummary>> getProperties (@Body FiltersDTO filters);
 
-    @DELETE("properties")
-    Call<Response<Properties>> deleteProperty (@Query("propertyId") long propertyId, @Query("agencyId") long agencyId);
+    @DELETE("properties/{propertyId}")
+    Call<Void> deleteProperty (@Path("propertyId") long propertyId, @Query("agencyId") long agencyId);
 
     @PUT("properties")
     Call<Properties> updateProperty (@Body Properties property);

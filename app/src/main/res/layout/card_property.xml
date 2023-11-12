@@ -67,20 +67,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:orientation="horizontal">
+
                 <ImageButton
+                    android:id="@+id/editarPropiedad"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/white"
-                    android:padding="3dp"
+                    android:onClick="editarPropiedad"
                     android:contentDescription="@string/editar_propiedad"
+                    android:padding="3dp"
                     android:src="@drawable/img_edit" />
+
                 <ImageButton
+                    android:id="@+id/eliminarPropiedad"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/white"
                     android:padding="3dp"
+                    android:onClick="eliminarPropiedad"
                     android:contentDescription="@string/eliminar_propiedad"
                     android:src="@drawable/img_trash_gray_400" />
             </LinearLayout>
