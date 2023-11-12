@@ -13,6 +13,7 @@
     <uses-permission android:name="android.hardware.CAMERA" />
 
     <application
+        android:name=".MyHome"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,9 +22,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyHome"
-        tools:targetApi="31"
-        android:name=".MyHome">
-
+        tools:targetApi="31">
+        <activity
+            android:name=".UploadImageActivity"
+            android:exported="false" />
         <activity
             android:name=".ListAgencieProperties"
             android:exported="false" />

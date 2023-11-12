@@ -24,9 +24,10 @@
     <color name="gray_200">#efefef</color>
     <color name="orange_200">#e7ca90</color>
     <color name="teal_300">#49a5c5</color>
+    <color name="amarillo">#FFC107</color>
     <color name="transparent">#00000000</color>
 
     //***************************************
 
-
+    <color name="colorPrimary">#FF6200EA</color>
 </resources>

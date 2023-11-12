@@ -57,6 +57,7 @@
             android:background="@color/white"
             android:layout_marginBottom="10dp">
             <FrameLayout
+                android:background="@drawable/borde_redondo"
                 android:id="@+id/frameStacksearch"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48pxv">
@@ -70,6 +71,7 @@
                     android:layout_marginEnd="@dimen/_14pxh"
                     android:layout_marginBottom="@dimen/_15pxv"
                     android:scaleType="fitXY"
+
                     android:src="@drawable/img_search"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/img_search" />

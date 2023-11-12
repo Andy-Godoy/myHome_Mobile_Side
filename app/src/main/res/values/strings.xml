@@ -235,4 +235,14 @@
     </string-array>
 
     //*****************************************************
+
+    //uso de strings para spinners de activity_agencies_profile.xml
+
+    <string-array name="currency_options">
+        <item>USD - Dólar Estadounidense</item>
+        <item>PESOS - Peso Argentino</item>
+    </string-array>
+
+    //*****************************************************
+
 </resources>
