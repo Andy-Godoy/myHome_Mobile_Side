@@ -101,7 +101,7 @@
         android:backgroundTint="@color/boton"
         android:onClick="registrar"
         android:text="@string/createaccount"
-        android:textColor="#212121"
+        android:textColor="@color/botonText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"

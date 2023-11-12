@@ -6,6 +6,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="boton">#49A5C5</color> //color de los botones
+    <color name="botonText">#212121</color> //color de los botones
     <color name="toolbar">#CDD4CF</color> //color de la toolbar
     <color name="colorAccent">#B81414</color>
     <color name="fondoTextView">@color/material_dynamic_neutral95</color>
@@ -24,6 +25,7 @@
     <color name="orange_200">#e7ca90</color>
     <color name="teal_300">#49a5c5</color>
     <color name="amarillo">#FFC107</color>
+    <color name="transparent">#00000000</color>
 
     //***************************************
 

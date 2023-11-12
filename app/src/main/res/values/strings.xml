@@ -63,6 +63,7 @@
     <string name="cambiarpass">Cambiar contraseña</string>
 
     <string name="nuevapropiedad">Nueva Propiedad</string>
+    <string name="detallepropiedad">Detalle Propiedad</string>
 
     <string name="email_de_inmobiliaria">Email de Inmobiliaria:</string>
 
@@ -158,6 +159,7 @@
     <string name="guardarImagenes">Agregar imágenes</string>
 
     <string name="guardarPropiedad">Guardar propiedad</string>
+    <string name="cerrarPropiedad">Cerrar</string>
     <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
     <string name="precio">Precio</string>
     <string name="direccion">Direccion</string>
@@ -169,6 +171,7 @@
     <string name="descripci_n_de_la_propiedad">Descripción de la propiedad</string>
     <string name="lista_de_propiedades">Lista de propiedades</string>
     <string name="continuar">Continuar</string>
+    <string name="back_button_description">Volver</string>
 
 
     //****************************************************
@@ -177,6 +180,7 @@
     <string-array name="lista_de_estados">
         <item>Venta</item>
         <item>Alquiler</item>
+        <item>Reservada</item>
     </string-array>
 
     <string-array name="lista_de_tipo_propiedad">

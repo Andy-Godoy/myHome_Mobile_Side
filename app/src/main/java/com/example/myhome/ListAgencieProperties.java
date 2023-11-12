@@ -93,6 +93,20 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
                 propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
+                // Establecer clic en la vista
+                propertyCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Obtengo el ID de la propiedad
+                        String propertyId = p.getPropertyId().toString();
+
+                        // Iniciar la actividad DetailProperty y paso el ID como extra
+                        Intent intent = new Intent(ListAgencieProperties.this, DetailProperty.class);
+                        intent.putExtra("propertyId", propertyId);
+                        startActivity(intent);
+                    }
+                });
+
                 cardConteiner.addView(propertyCard);
 
             }
