@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:numStars="5"
+        android:onClick="verresena"
         android:progressTint="@color/amarillo"
         android:rating="4.5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +98,7 @@
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="44dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/borde_redondo"
         android:text="Nombre del Usuario"
@@ -121,8 +122,8 @@
 
     <TextView
         android:id="@+id/textViewEmail"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_width="353dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/borde_redondo"
         android:text="usuario@example.com"
@@ -146,8 +147,8 @@
 
     <Spinner
         android:id="@+id/spinnerCurrency"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_width="348dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/borde_redondo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,12 +177,13 @@
         android:layout_width="350dp"
         android:layout_height="0dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/red_rounded_button"
         android:text="Eliminar Cuenta"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout" /> <!-- Puedes ajustar el color del texto según tus preferencias -->
 

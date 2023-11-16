@@ -244,5 +244,9 @@
     </string-array>
 
     //*****************************************************
+    <string name="lbl_resenacomentario">Valoraciones y Comentarios</string>
+    <string name="comentario">Comentario:</string>
+    <string name="nombre_del_usuario">Nombre del Usuario</string>
+
 
 </resources>
