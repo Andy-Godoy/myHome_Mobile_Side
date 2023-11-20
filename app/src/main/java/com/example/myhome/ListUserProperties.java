@@ -3,10 +3,8 @@ package com.example.myhome;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.widget.ImageView;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;

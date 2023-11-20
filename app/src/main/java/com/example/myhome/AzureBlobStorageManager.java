@@ -1,10 +1,8 @@
 package com.example.myhome;
 
-import com.azure.storage.blob.BlobServiceClientBuilder;
-import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobContainerClient;
-import com.azure.storage.blob.models.BlobItem;
-
+import com.azure.storage.blob.BlobServiceClient;
+import com.azure.storage.blob.BlobServiceClientBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;

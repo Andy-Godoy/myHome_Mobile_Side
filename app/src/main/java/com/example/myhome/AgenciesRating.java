@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -20,7 +21,7 @@ public class AgenciesRating extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agencies_rating);
+        setContentView(R.layout.card_rating);
 
         // Inicializamos las vistas
         userImageView = findViewById(R.id.userImageView);
@@ -28,7 +29,7 @@ public class AgenciesRating extends AppCompatActivity {
         commentTextView = findViewById(R.id.commentTextView);
 
         ratingBar = findViewById(R.id.ratingBar);
-        cardView = findViewById(R.id.cardView);
+        //cardView = findViewById(R.id.cardView);
 
         // Aca podemos configurar el RatingBarChangeListener para actualizar el número de valoración
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {

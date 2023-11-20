@@ -42,7 +42,7 @@ public class RatingApi extends AppCompatActivity {
             public void onResponse(Call<List<Resenas>> call, Response<List<Resenas>> response) {
                 if (response.isSuccessful()) {
 
-                    callback.onResenasSuccess(response.body());
+                 //   callback.onResenasSuccess(response.body());
 
                 }
 

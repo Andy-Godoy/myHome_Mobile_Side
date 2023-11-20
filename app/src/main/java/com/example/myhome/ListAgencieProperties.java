@@ -7,13 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.asksira.loopingviewpager.LoopingViewPager;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.asksira.loopingviewpager.LoopingViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

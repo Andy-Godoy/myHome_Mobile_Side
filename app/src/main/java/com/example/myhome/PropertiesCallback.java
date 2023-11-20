@@ -8,4 +8,7 @@ public interface PropertiesCallback {
     void onPropertiesFailure(String errorMessage);
 
     void onPropertiesSuccess(Long propertyId);
+
+
+
 }

@@ -24,6 +24,9 @@
         android:theme="@style/Theme.MyHome"
         tools:targetApi="31">
         <activity
+            android:name=".GoogleMap"
+            android:exported="false" />
+        <activity
             android:name=".AgenciesRating"
             android:exported="false" />
         <activity
@@ -61,9 +64,7 @@
         <activity
             android:name=".SecondActivity"
             android:exported="false" />
-        <activity
-            android:name=".AgenciesState"
-            android:exported="false" />
+
         <activity
             android:name=".AgenciesProfile"
             android:exported="false" />
