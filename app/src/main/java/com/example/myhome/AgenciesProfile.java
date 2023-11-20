@@ -46,4 +46,9 @@ public class AgenciesProfile extends AppCompatActivity {
         Intent miIntent=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
         startActivity(miIntent);
     }
-}
+        public void verresena(View view) {
+            Intent verresena=new Intent(AgenciesProfile.this, AgenciesRating.class);
+            startActivity(verresena);
+        }
+    }
+
