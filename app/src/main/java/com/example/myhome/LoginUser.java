@@ -29,6 +29,13 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginuser);
 
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         MyHome myHome = (MyHome) getApplication();
 
@@ -125,4 +132,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     public void onLoginFailure(String errorMessage) {
         showToast(errorMessage);
     }
+
+
 }
+
