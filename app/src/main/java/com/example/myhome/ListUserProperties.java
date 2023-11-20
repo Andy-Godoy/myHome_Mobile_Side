@@ -16,7 +16,7 @@ public class ListUserProperties extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.card_property);
+        setContentView(R.layout.slider_item);
 
         LoopingViewPager imageSliderSlider = findViewById(R.id.imageSliderSlider);
 

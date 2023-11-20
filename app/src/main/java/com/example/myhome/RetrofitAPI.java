@@ -50,4 +50,7 @@ public interface RetrofitAPI {
 
     @POST("properties")
     Call<Properties> setPropiedades(@Body Properties propiedad, @Query("agencyId") long agencyId);
+
+    @GET("reviews")
+    Call<List<Resenas>> getResenas(@Query("agencyId") long agencyId);
 }

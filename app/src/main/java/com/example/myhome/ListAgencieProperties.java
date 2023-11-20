@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.asksira.loopingviewpager.LoopingViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,6 +36,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             setContentView(R.layout.activity_agency_main);
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
 
             // Obtenemos el ID del ítem de menú correspondiente a esta actividad
             int menuItemId = R.id.action_home;
@@ -86,6 +89,9 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             for (PropertySummary p: properties){
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property, cardConteiner, false);
+                List<String> imageUrls = obtenerUrlsDesdeAzure();
+
+                ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
                 ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText("USD ".concat(p.getPropertyPrice().toString()));
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
@@ -93,6 +99,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));
                 ((TextView) propertyCard.findViewById(R.id.propertyRooms)).setText(p.getPropertyBedroomQuantity().toString().concat(" Habitaciones"));
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
+                ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
                 propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
                 ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener(){
@@ -181,5 +188,16 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
+    }
+
+    private List<String> obtenerUrlsDesdeAzure() {
+        // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
+        // Puedes implementar la lógica específica para tu aplicación aquí
+        List<String> imageUrls = new ArrayList<>();
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
+        // Agrega más URLs según sea necesario
+        return imageUrls;
     }
 }
