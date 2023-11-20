@@ -79,9 +79,9 @@ public class GoogleMap extends AppCompatActivity {
                 @Override
                 public void onSuccess(Location location) {
                     if (location != null) {
-                        double latitude = location.getLatitude();
-                        double longitude = location.getLongitude();
-                        updateLocationUI(latitude, longitude);
+                        double addressLatitude = location.getLatitude();
+                        double addressLongitude = location.getLongitude();
+                        updateLocationUI(addressLatitude, addressLongitude);
                     } else {
                         // Si la ubicación es nula, puede ser que la ubicación no está disponible.
                         // acá podemos meter los logs que necesitemos para el debug
@@ -95,8 +95,8 @@ public class GoogleMap extends AppCompatActivity {
     }
 
     // Actualizamos la interfaz de usuario con la ubicación obtenida y la muestro en el activity_google_map.xml
-    private void updateLocationUI(double latitude, double longitude) {
-        String locationText = "Latitud: " + latitude + "\nLongitud: " + longitude;
+    private void updateLocationUI(double addressLatitude, double addressLongitude) {
+        String locationText = "Latitud: " + addressLatitude + "\nLongitud: " + addressLongitude;
         textLocation.setText(locationText);
     }
 }
