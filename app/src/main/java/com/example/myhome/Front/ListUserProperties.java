@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Ignore.ImageSliderAdapter;
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
 import java.util.ArrayList;
@@ -17,6 +18,14 @@ public class ListUserProperties extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slider_item);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         LoopingViewPager imageSliderSlider = findViewById(R.id.imageSliderSlider);
 

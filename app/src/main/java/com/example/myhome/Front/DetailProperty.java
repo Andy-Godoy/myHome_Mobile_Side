@@ -17,6 +17,7 @@ import com.example.myhome.Api.PropertyDTO;
 import com.example.myhome.Api.PropertySummary;
 import com.example.myhome.Front.CustomSpinnerAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
 import java.util.Arrays;
@@ -36,6 +37,14 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_property);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         spnrAmenities = findViewById(R.id.spnrAmenities);
         adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.AzureService.AzureBlobStorageManager;
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
 import java.io.IOException;
@@ -26,6 +27,14 @@ public class UploadImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         storageManager = new AzureBlobStorageManager();
         imageViewSelected = findViewById(R.id.imageViewSelected);

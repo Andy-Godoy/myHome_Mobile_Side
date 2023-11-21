@@ -13,6 +13,7 @@ import com.example.myhome.Api.BasicCredentials;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.example.myhome.Api.Users;
 
@@ -25,6 +26,14 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_agencies);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);

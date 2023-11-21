@@ -1,6 +1,7 @@
 package com.example.myhome.Front;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,10 +26,14 @@ import java.net.URI;
 public class AgenciesProfile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
+    private Button btnLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
+
+        Button btnLogout = findViewById(R.id.btnLogout);
 
         Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -48,6 +55,9 @@ public class AgenciesProfile extends AppCompatActivity {
             }
         });
     }
+
+
+
 
         private void openGallery() {
             Intent intent = new Intent();
@@ -98,12 +108,26 @@ public class AgenciesProfile extends AppCompatActivity {
 
 
     public void volver(View view) {
-        Intent miIntent=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
-        startActivity(miIntent);
+        Intent volver=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
+        startActivity(volver);
     }
         public void verresena(View view) {
             Intent verresena=new Intent(AgenciesProfile.this, AgenciesRating.class);
             startActivity(verresena);
         }
+    public void cerrarsesion(View view) {
+        SharedPreferences preferences = getSharedPreferences("MisDatos", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        Toast.makeText(this, "Cerrando sesión...", Toast.LENGTH_SHORT).show();
+        Intent cerrarsesion=new Intent(AgenciesProfile.this, LoginUser.class);
+        startActivity(cerrarsesion);
+        finish();
     }
+    }
+
+
+
+
 
