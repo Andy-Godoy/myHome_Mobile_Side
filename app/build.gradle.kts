@@ -105,6 +105,7 @@ dependencies {
     //implementation ("com.google.android.gms:play-services-location:21.0.1")
     //implementation ("com.google.android.gms:play-services-places:17.0.0")
     //implementation ("com.google.android.libraries.places:places:3.2.0")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
 
     implementation("com.android.volley:volley:1.2.1") //Libreria para el uso de peticiones http
 
@@ -133,6 +134,6 @@ dependencies {
 
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
     implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure
-
+    implementation ("com.microsoft.azure.android:azure-storage-android:2.0.0")
     //***************************************************************
 }
