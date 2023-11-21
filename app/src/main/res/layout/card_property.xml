@@ -14,27 +14,34 @@
         android:layout_height="@dimen/_316pxh"
             android:orientation="vertical">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5">
 
             <com.asksira.loopingviewpager.LoopingViewPager
                 android:id="@+id/imageSliderSlider"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:autoScroll="false"
                 app:isInfinite="false"
-                android:scaleType="centerCrop"
-                app:scrollInterval="5000"/>
+                app:layout_constraintWidth_percent="1.0"
+                app:layout_constraintDimensionRatio="1:1"
+                app:scrollInterval="5000"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-       <!---     <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"/> -->
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"/>
+            </com.asksira.loopingviewpager.LoopingViewPager>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

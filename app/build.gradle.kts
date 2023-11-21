@@ -134,6 +134,6 @@ dependencies {
 
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
     implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure
-
+    implementation ("com.microsoft.azure.android:azure-storage-android:2.0.0")
     //***************************************************************
 }
