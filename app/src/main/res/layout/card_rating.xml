@@ -8,7 +8,7 @@
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="#FFFFFF"
     android:layout_margin="8dp"
-    tools:context=".ListAgencieProperties">
+    tools:context=".Front.ListAgencieProperties">
 
 
     <LinearLayout

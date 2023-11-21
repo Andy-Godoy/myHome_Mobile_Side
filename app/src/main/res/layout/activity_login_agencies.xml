@@ -10,7 +10,7 @@
     android:background="@drawable/bg_color"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginAgencies">
+    tools:context=".Front.LoginAgencies">
 
 
     <androidx.appcompat.widget.Toolbar
