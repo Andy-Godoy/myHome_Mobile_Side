@@ -19,6 +19,14 @@
             android:layout_height="0dp"
             android:layout_weight="0.5">
 
+      <!--     <ImageView
+               android:id="@+id/imageView"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:scaleType="centerCrop"
+               android:background="@drawable/rounded_border"
+               app:layout_constraintDimensionRatio="1:1" /> -->
+
             <com.asksira.loopingviewpager.LoopingViewPager
                 android:id="@+id/imageSliderSlider"
                 android:layout_width="0dp"
@@ -27,18 +35,13 @@
                 app:isInfinite="false"
                 app:layout_constraintWidth_percent="1.0"
                 app:layout_constraintDimensionRatio="1:1"
-                app:scrollInterval="5000"
+                app:scrollInterval="7000"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:scaleType="fitXY"/>
             </com.asksira.loopingviewpager.LoopingViewPager>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

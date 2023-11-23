@@ -208,13 +208,13 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     }
 
     private List<String> obtenerUrlsDesdeAzure() {
-        // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
-        // Puedes implementar la lógica específica para tu aplicación aquí
+        // Lógica para obtener las URLs de las imágenes desde el blob de Azure
+
         List<String> imageUrls = new ArrayList<>();
         imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
         imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
         imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
-        // Agrega más URLs según sea necesario
+
         return imageUrls;
     }
 }
