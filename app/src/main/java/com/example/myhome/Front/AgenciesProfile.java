@@ -21,6 +21,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import android.graphics.drawable.BitmapDrawable;
 
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
@@ -28,6 +30,12 @@ import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.transition.Transition;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 public class AgenciesProfile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -42,6 +50,10 @@ public class AgenciesProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
 
+        imageViewProfile = findViewById(R.id.imageViewProfile);
+
+
+
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
 
@@ -49,6 +61,7 @@ public class AgenciesProfile extends AppCompatActivity {
             // mostramos mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
+
 
         ratingBar = findViewById(R.id.ratingBar);
         textViewRatingValue = findViewById(R.id.textViewRatingValue);
@@ -203,8 +216,8 @@ public class AgenciesProfile extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
 
-                // Mostrar la nueva imagen en el ImageView
-                imageViewProfile.setImageBitmap(bitmap);
+                // Redondear la imagen
+                setRoundedImage(bitmap);
 
                 // Puedes agregar aquí la lógica para subir la imagen a Azure Blob Storage si lo necesitas
             } catch (Exception e) {
@@ -212,7 +225,15 @@ public class AgenciesProfile extends AppCompatActivity {
             }
         }
     }
+    private void setRoundedImage(Bitmap bitmap) {
+        // Crear un drawable redondeado
+        RoundedBitmapDrawable circularDrawable =
+                RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        circularDrawable.setCircular(true);
 
+        // Establecer la imagen redondeada en el ImageView
+        imageViewProfile.setImageDrawable(circularDrawable);
+    }
     private class UploadImageToAzureBlobStorageTask extends AsyncTask<Bitmap, Void, Void> {
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
