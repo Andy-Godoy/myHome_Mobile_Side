@@ -127,7 +127,8 @@ public class AgenciesProfile extends AppCompatActivity {
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter);*/
+        spinnerCurrency.setAdapter(adapter); */
+
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
