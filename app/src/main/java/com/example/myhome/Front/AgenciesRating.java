@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
 public class AgenciesRating extends AppCompatActivity {
@@ -24,6 +25,14 @@ public class AgenciesRating extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_rating);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
 
         // Inicializamos las vistas
         userImageView = findViewById(R.id.userImageView);

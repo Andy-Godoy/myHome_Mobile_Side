@@ -21,6 +21,7 @@ import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.Properties;
 import com.example.myhome.Api.PropertySummary;
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -42,6 +43,14 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_agency_main);
+
+            // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+            if (NetworkUtils.isNetworkConnected(this)) {
+
+            } else {
+                // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+                NetworkUtils.showNoInternetMessage(this);
+            }
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
