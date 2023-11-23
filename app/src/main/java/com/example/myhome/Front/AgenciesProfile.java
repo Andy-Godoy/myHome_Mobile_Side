@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ public class AgenciesProfile extends AppCompatActivity {
     private Button btnLogout;
     private RatingBar ratingBar;
     private Button btnDeleteAccount;
+    private TextView textViewRatingValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +50,26 @@ public class AgenciesProfile extends AppCompatActivity {
             NetworkUtils.showNoInternetMessage(this);
         }
 
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
-
+        ratingBar = findViewById(R.id.ratingBar);
+        textViewRatingValue = findViewById(R.id.textViewRatingValue);
         // aca podemos configurar otros atributos del RatingBar según sea necesario...
+        // Agregar un OnRatingBarChangeListener al RatingBar
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // Actualizar el TextView con el valor del RatingBar
+                textViewRatingValue.setText(String.valueOf(rating));
+            }
+        });
+        textViewRatingValue.setText(String.valueOf(ratingBar.getRating()));
 
 
         // Agregar un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
         ratingBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
                 // Iniciar la actividad AgenciesRating
                 Intent intent = new Intent(AgenciesProfile.this, AgenciesRating.class);
                 startActivity(intent);
