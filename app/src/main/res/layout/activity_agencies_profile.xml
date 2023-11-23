@@ -60,14 +60,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:isIndicator="true"
         android:numStars="5"
-        android:onClick="verresena"
         android:progressTint="@color/amarillo"
-        android:rating="4.5"
+        android:rating="0"
+        android:stepSize="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewProfile" />
+        app:layout_constraintTop_toBottomOf="@id/imageViewProfile" /> <!-- Para que no se pueda modificar el rating al hacerle click -->
+
 
     <TextView
         android:id="@+id/textViewRatingValue"
@@ -76,7 +78,7 @@
         android:layout_marginStart="252dp"
         android:layout_marginTop="208dp"
         android:layout_marginBottom="53dp"
-        android:text="4.5"
+        android:text="0"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewName"

@@ -8,9 +8,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import java.io.ByteArrayOutputStream;
@@ -29,13 +32,39 @@ public class AgenciesProfile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
     private Button btnLogout;
-
+    private RatingBar ratingBar;
     private Button btnDeleteAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
+
+        RatingBar ratingBar = findViewById(R.id.ratingBar);
+
+        // aca podemos configurar otros atributos del RatingBar según sea necesario...
+
+
+        // Agregar un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
+        ratingBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                // Iniciar la actividad AgenciesRating
+                Intent intent = new Intent(AgenciesProfile.this, AgenciesRating.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
+
 
         btnLogout = findViewById(R.id.btnLogout);
 
@@ -197,10 +226,6 @@ public class AgenciesProfile extends AppCompatActivity {
         Intent volver=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
         startActivity(volver);
     }
-        public void verresena(View view) {
-            Intent verresena=new Intent(AgenciesProfile.this, AgenciesRating.class);
-            startActivity(verresena);
-        }
 
     }
 
