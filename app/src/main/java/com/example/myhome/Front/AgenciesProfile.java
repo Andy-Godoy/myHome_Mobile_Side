@@ -46,14 +46,14 @@ public class AgenciesProfile extends AppCompatActivity {
         if (NetworkUtils.isNetworkConnected(this)) {
 
         } else {
-            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            // mostramos mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
 
         ratingBar = findViewById(R.id.ratingBar);
         textViewRatingValue = findViewById(R.id.textViewRatingValue);
         // aca podemos configurar otros atributos del RatingBar según sea necesario...
-        // Agregar un OnRatingBarChangeListener al RatingBar
+        // Agregamos un OnRatingBarChangeListener al RatingBar
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -64,7 +64,7 @@ public class AgenciesProfile extends AppCompatActivity {
         textViewRatingValue.setText(String.valueOf(ratingBar.getRating()));
 
 
-        // Agregar un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
+        // Agregamos un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
         ratingBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
