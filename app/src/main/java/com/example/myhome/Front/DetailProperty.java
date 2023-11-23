@@ -15,7 +15,6 @@ import com.example.myhome.Api.Properties;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Api.PropertyDTO;
 import com.example.myhome.Api.PropertySummary;
-import com.example.myhome.Front.CustomSpinnerAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;

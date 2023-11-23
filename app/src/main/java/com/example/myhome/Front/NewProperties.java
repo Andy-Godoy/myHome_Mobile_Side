@@ -15,12 +15,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Api.Address;
-import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Api.ImageAdapter;
-import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.Properties;
+import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Api.PropertySummary;
+import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
