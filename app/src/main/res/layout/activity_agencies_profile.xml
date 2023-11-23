@@ -81,7 +81,7 @@
         android:layout_marginTop="208dp"
         android:layout_marginBottom="53dp"
         android:text=""
-        android:textColor="#000000"
+        android:textColor="@color/general_titulo"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewName"
         app:layout_constraintEnd_toEndOf="parent"
