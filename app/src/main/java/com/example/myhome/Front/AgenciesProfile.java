@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.R;
@@ -28,21 +30,104 @@ public class AgenciesProfile extends AppCompatActivity {
     private ImageView imageViewProfile;
     private Button btnLogout;
 
+    private Button btnDeleteAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
 
-        Button btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnLogout);
 
-        Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Crear un AlertDialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
+                builder.setTitle("Cerrar Sesión");
+                builder.setMessage("¿Estás seguro que desea cerrar sesión?");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // aca podemos meter otras cosas que queramos que se hagan al cerrar sesion
+
+                        // Por ejemplo, si usamos SharedPreferences para almacenar el estado de inicio de sesión
+                        SharedPreferences preferences = getSharedPreferences("mispreferencias", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+
+                        //  lo llevamos al activity LoginUser
+                        Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
+                        startActivity(intent);
+                        finish(); //  Finaliza la actividad actual
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //  No hace nada
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                // Mostrar el AlertDialog
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
+
+        btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
+
+
+        btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Mostramos un mensaje de advertencia al usuario
+                AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
+                builder.setTitle("Eliminar cuenta");
+                builder.setMessage("¿Está seguro de que desea eliminar su cuenta?");
+                builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Eliminar la cuenta
+                        // ...
+
+                        // Mostramos un mensaje de confirmación de que la cuenta fue realmente eliminada.
+                        AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
+                        builder.setTitle("Cuenta eliminada");
+                        builder.setMessage("Su cuenta se eliminó correctamente.");
+                        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // lo llevamos al activity LoginUser
+                                Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
+                                startActivity(intent);
+                            }
+                        });
+                        builder.show();
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // No hace nada
+                    }
+                });
+                builder.show();
+            }
+        });
+
+
+      /*  Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.currency_options, // Definimos las opciones en strings.xml dentro del array
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter);
+        spinnerCurrency.setAdapter(adapter);*/
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
@@ -115,16 +200,7 @@ public class AgenciesProfile extends AppCompatActivity {
             Intent verresena=new Intent(AgenciesProfile.this, AgenciesRating.class);
             startActivity(verresena);
         }
-    public void cerrarsesion(View view) {
-        SharedPreferences preferences = getSharedPreferences("MisDatos", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.apply();
-        Toast.makeText(this, "Cerrando sesión...", Toast.LENGTH_SHORT).show();
-        Intent cerrarsesion=new Intent(AgenciesProfile.this, LoginUser.class);
-        startActivity(cerrarsesion);
-        finish();
-    }
+
     }
 
 
