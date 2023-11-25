@@ -121,8 +121,12 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
     private void setAddress() {
         address.setAddressName(((TextView) findViewById(R.id.txtCalle)).getText().toString());
-        address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
-        address.setAddressFloor(Integer.parseInt(((TextView) findViewById(R.id.txtPiso)).getText().toString()));
+        if (((TextView) findViewById(R.id.txtNumero)).getText().toString() != null && (((TextView) findViewById(R.id.txtNumero)).getText().toString() != "")) {
+            address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
+        }
+        if (((TextView) findViewById(R.id.txtPiso)).getText().toString() != null && (((TextView) findViewById(R.id.txtPiso)).getText().toString() != "")){
+            address.setAddressFloor(Integer.parseInt(((TextView) findViewById(R.id.txtPiso)).getText().toString()));
+        }
         address.setAddressUnit(((TextView) findViewById(R.id.txtDpto)).getText().toString());
         address.setAddressNeighbourhood(((TextView) findViewById(R.id.txtBarrio)).getText().toString());
         address.setAddressCity(((TextView) findViewById(R.id.txtLocalidad)).getText().toString());

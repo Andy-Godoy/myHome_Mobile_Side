@@ -209,7 +209,7 @@ public class UsersApi extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
-                        callback.onLoginSuccess();
+                        callback.onUnregisterSuccess();
                         // Acá manejamos la respuesta
                     } else {
                         callback.onLoginFailure("No se ha podido eliminar el usuario");
