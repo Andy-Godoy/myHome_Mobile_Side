@@ -1,7 +1,6 @@
 package com.example.myhome;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.MenuItem;
 
 public class MenuHandlerUsuario {
@@ -16,8 +15,8 @@ public class MenuHandlerUsuario {
 //                context.startActivity(intent);
             // Lógica para abrir la ventana correspondiente a "Mis propiedades" desde acá
         } else if (itemId == R.id.action_favorite) {
-            Intent intent = new Intent(context, NewProperties.class);
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, NewProperties.class);
+//            context.startActivity(intent);
             // Lógica para abrir la ventana correspondiente a "Agregar propiedad" desde acá
         } else if (itemId == R.id.action_profile) {
             //                AGREGAR LA CLASE DE PERFIL DE USUARIO
