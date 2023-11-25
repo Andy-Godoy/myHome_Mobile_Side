@@ -10,8 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Interfaces.LoginCallback;
-import com.example.myhome.Interfaces.RetrofitAPI;
 import com.example.myhome.R;
+import com.example.myhome.model.BasicCredentials;
+import com.example.myhome.model.GoogleCredentials;
+import com.example.myhome.model.Users;
 
 import retrofit2.Call;
 import retrofit2.Callback;

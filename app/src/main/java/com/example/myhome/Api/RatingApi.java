@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Interfaces.PropertiesCallback;
-import com.example.myhome.Interfaces.RetrofitAPI;
+import com.example.myhome.model.Resenas;
 
 import java.util.ArrayList;
 import java.util.List;
