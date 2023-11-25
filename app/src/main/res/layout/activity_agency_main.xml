@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:fontFamily="@font/opensansbold"
-                android:gravity="center"
+                android:gravity="start"
                 android:padding="3dp"
                 android:text="@string/lbl_mispropiedades"
                 android:textAlignment="textStart"
@@ -54,7 +54,6 @@
             android:layout_marginStart="@dimen/_7pxh"
             android:layout_marginEnd="@dimen/_7pxh"
             android:orientation="horizontal"
-            android:background="@color/white"
             android:layout_marginBottom="10dp">
             <FrameLayout
                 android:background="@drawable/borde_redondo"

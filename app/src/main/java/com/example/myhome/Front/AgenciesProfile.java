@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -50,8 +51,6 @@ public class AgenciesProfile extends AppCompatActivity implements LoginCallback 
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
-
-
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
 
@@ -63,6 +62,12 @@ public class AgenciesProfile extends AppCompatActivity implements LoginCallback 
         //Recupero el usuario en contexto para tener los datos
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
+
+            TextView nombre = findViewById(R.id.textViewName);
+            TextView email = findViewById(R.id.textViewEmail);
+
+            nombre.setText(user.getUserName());
+            email.setText(user.getUserEmail());
         }
 
         ratingBar = findViewById(R.id.ratingBar);
@@ -268,7 +273,8 @@ public class AgenciesProfile extends AppCompatActivity implements LoginCallback 
         startActivity(volver);
     }
 
-    }
+
+}
 
 
 
