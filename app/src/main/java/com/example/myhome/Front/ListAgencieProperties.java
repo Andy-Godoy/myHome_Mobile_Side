@@ -69,7 +69,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             cardConteiner = findViewById(R.id.cardContainer);
 
-//            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
+//          Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
             FiltersDTO filters = new FiltersDTO();
 
             if (((MyHome) this.getApplication()).getUsuario() != null) {

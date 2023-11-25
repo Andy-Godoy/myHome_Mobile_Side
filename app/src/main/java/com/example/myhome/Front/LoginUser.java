@@ -139,6 +139,11 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         showToast(errorMessage);
     }
 
+    @Override
+    public void onLoginSuccess() {
+
+    }
+
 
 }
 
