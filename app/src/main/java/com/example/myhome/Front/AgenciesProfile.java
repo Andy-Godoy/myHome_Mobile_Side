@@ -8,33 +8,40 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-
+import com.example.myhome.Api.MyHome;
+import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.Api.UsersApi;
+import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
-public class AgenciesProfile extends AppCompatActivity {
+public class AgenciesProfile extends AppCompatActivity implements LoginCallback {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
     private Button btnLogout;
     private RatingBar ratingBar;
     private Button btnDeleteAccount;
     private TextView textViewRatingValue;
+    private Users user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,10 @@ public class AgenciesProfile extends AppCompatActivity {
             NetworkUtils.showNoInternetMessage(this);
         }
 
+        //Recupero el usuario en contexto para tener los datos
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            user = ((MyHome) this.getApplication()).getUsuario();
+        }
 
         ratingBar = findViewById(R.id.ratingBar);
         textViewRatingValue = findViewById(R.id.textViewRatingValue);
@@ -137,22 +148,13 @@ public class AgenciesProfile extends AppCompatActivity {
                 builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // Eliminar la cuenta
+
+                        //Llamo a retrofit para eliminar el usuario
+                        UsersApi usersApi = new UsersApi();
+                        usersApi.deleteUser(user.getUserId(), AgenciesProfile.this);
                         // ...
 
-                        // Mostramos un mensaje de confirmación de que la cuenta fue realmente eliminada.
-                        AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
-                        builder.setTitle("Cuenta eliminada");
-                        builder.setMessage("Su cuenta se eliminó correctamente.");
-                        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // lo llevamos al activity LoginUser
-                                Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
-                                startActivity(intent);
-                            }
-                        });
-                        builder.show();
+
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -225,6 +227,20 @@ public class AgenciesProfile extends AppCompatActivity {
         // Establecer la imagen redondeada en el ImageView
         imageViewProfile.setImageDrawable(circularDrawable);
     }
+
+    @Override
+    public void onLoginFailure(String errorMessage) {
+
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        Toast.makeText(this, "El usuario ha sido eliminado", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
+        startActivity(intent);
+    }
+
     private class UploadImageToAzureBlobStorageTask extends AsyncTask<Bitmap, Void, Void> {
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {

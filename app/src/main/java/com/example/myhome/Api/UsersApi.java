@@ -180,7 +180,7 @@ public class UsersApi extends AppCompatActivity {
                     callback.onLoginSuccess(user);
                     // Acá manejamos la respuesta
                 } else {
-                    callback.onLoginFailure("No se ha podido resetear la contraseña 123");
+                    callback.onLoginFailure("No se ha podido resetear la contraseña");
 
                 }
             }
@@ -190,6 +190,40 @@ public class UsersApi extends AppCompatActivity {
                 // acá manejamos los errores de conexión
                 callback.onLoginFailure("No se ha podido resetear la contraseña");
             }
+        });
+        return user;
+    }
+
+    //Eliminar usuario
+    public Users deleteUser(Long userId, final LoginCallback callback) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realizamos la solicitud
+        Call<Void> call = apiService.deleteUser(userId);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onLoginSuccess();
+                    // Acá manejamos la respuesta
+                } else {
+                    callback.onLoginFailure("No se ha podido eliminar el usuario");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onLoginFailure("No se ha podido eliminar el usuario");
+            }
+
         });
         return user;
     }
