@@ -27,26 +27,9 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_property);
 
-        spnrAmenities = findViewById(R.id.spnrAmenities);
-        adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
-        adapter.setCheckBoxesEnabled(false); // Deshabilita checkbox "Todos"
 
-        spnrTipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
-        spnrTipoPropiedad.setEnabled(false);
 
-        spnrEstado = findViewById(R.id.spnrEstado);
-        spnrEstado.setEnabled(false);
-
-        spnrOrientacion = findViewById(R.id.spnrOrientacion);
-        spnrOrientacion.setEnabled(false);
-
-        spnrPosicion = findViewById(R.id.spnrPosicion);
-        spnrPosicion.setEnabled(false);
-
-        spnrAntiguedad = findViewById(R.id.spnrAntiguedad);
-        spnrAntiguedad.setEnabled(false);
-
-        obtenerPropiedad();
+//        obtenerPropiedad();
 
 
         Button btnClose = findViewById(R.id.btnClose);

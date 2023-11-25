@@ -42,854 +42,441 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextSizeCheck" />
     </androidx.appcompat.widget.Toolbar>
-<!--    -->
-<!--    &lt;!&ndash; Agrega el ImageButton para la flecha de retroceso &ndash;&gt;-->
-<!--    <ImageButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="14dp"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:src="@drawable/baseline_arrow_back_ios_24"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="ContentDescription"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="btnClose"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:scaleType="fitCenter"-->
-
-<!--        />-->
-
-
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbar"> <!-- es es una restricción para que no se superponga con el BottomNavigationView -->
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDetailProperty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Contenido del ScrollView -->
-            <EditText
-                android:id="@+id/txtCalle"
-                android:enabled="false"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/calle"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPiso"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblCalle"
-                android:layout_width="40dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="0dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/calle"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/lblNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtPiso"
-                android:enabled="false"
-                android:layout_width="90dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="106dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/piso"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtDpto"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.017"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblPiso"
-                android:layout_width="40dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="116dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/piso"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txtPiso"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtDpto"
-                android:enabled="false"
-                android:layout_width="90dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="106dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/dpto"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtPiso"
-                app:layout_constraintStart_toEndOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.017"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblDpto"
-                android:layout_width="40dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="116dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/dpto"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txtDpto"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblNumero"
-                android:layout_width="64dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="116dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/numero"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtNumero"
-                android:enabled="false"
-                android:layout_width="90dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="106dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/numero"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtDpto"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.017"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <EditText
-                android:id="@+id/txtPais"
-                android:enabled="false"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="262dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/pais"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPiso"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblPais"
-                android:layout_width="40dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="232dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/pais"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/lblNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtProvincia"
-                android:enabled="false"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="378dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/provincia"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPiso"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblProvincia"
-                android:layout_width="75dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="348dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/provincia"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/lblNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtLocalidad"
-                android:enabled="false"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="610dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/localidad"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPiso"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblLocalidad"
-                android:layout_width="75dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="580dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/localidad"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/lblNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-
-            <EditText
-                android:id="@+id/txtBarrio"
-                android:enabled="false"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="494dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/barrio"
-                android:inputType="text"
-                android:paddingLeft="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPiso"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtNumero"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblBarrio"
-                android:layout_width="50dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="464dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/barrio"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtBarrio"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblTipoPropiedad"
-                android:layout_width="124dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="696dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/tipoPropiedad"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrTipoPropiedad"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblcantidadAmbientes"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="990dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/cantidadAmbientes"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtCantidadAmbientes"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1020dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/cantidadAmbientes"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblcantidadCochera"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="990dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/cantidadCochera"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadCochera"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtCantidadCochera"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1020dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/cantidadCochera"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtCantidadAmbientes"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblorientacion"
-                android:layout_width="124dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="812dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/orientacion"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblposicion"
-                android:layout_width="124dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="812dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/posicion"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrPosicion"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblEstado"
-                android:layout_width="57dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="696dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/estado"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrEstado"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-
-            <TextView
-                android:id="@+id/lblcantidadBaños"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1168dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/cantidadBaños"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadBanios"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtCantidadBanios"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1198dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/cantidadBaños"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblcantidadCuartos"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1168dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/cantidadCuartos"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadCuartos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtCantidadCuartos"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1198dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/cantidadCuartos"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtCantidadBanios"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblantiguedad"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1284dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/antiguedad"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrAntiguedad"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblmetrosCuadrados"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="1444dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/metrosCuadrados"
-                android:textColor="@color/general_titulo"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <TextView
-                android:id="@+id/lblcubiertos"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1530dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/cubiertos"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtCubiertos"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1560dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/cubiertos"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/spnrAntiguedad"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblsemiCubiertos"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1530dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/semiCubiertos"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtSemiCubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtSemiCubiertos"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1560dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/semiCubiertos"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtCubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lbldescubiertos"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1646dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/descubiertos"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtDescubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtDescubiertos"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1676dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/descubiertos"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtCubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblPrecioDePropiedad"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1762dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/PrecioDePropiedad"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtPrecioPropiedad"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1792dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/PrecioDePropiedad"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/txtDescubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <TextView
-                android:id="@+id/lblPrecioDeExpensas"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1762dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/PrecioDeExpensas"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioExpensas"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtPrecioExpensas"
-                android:enabled="false"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1792dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/PrecioDeExpensas"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtCubiertos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
-
-            <Spinner
-                android:id="@+id/spnrEstado"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="726dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:entries="@array/lista_de_estados"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.486"
-                app:layout_constraintStart_toEndOf="@+id/spnrTipoPropiedad"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spnrTipoPropiedad"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="726dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:entries="@array/lista_de_tipo_propiedad"
-                android:spinnerMode="dropdown"
-                app:layout_constraintStart_toStartOf="@+id/txtBarrio"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spnrOrientacion"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="842dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:entries="@array/lista_orientacion"
-                app:layout_constraintStart_toStartOf="@+id/spnrTipoPropiedad"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spnrPosicion"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="842dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:entries="@array/lista_posicion"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spnrOrientacion"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spnrAntiguedad"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="1314dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:entries="@array/lista_antiguedad"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadBanios"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Switch
-                android:id="@+id/tieneBaulera"
-                android:enabled="false"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="928dp"
-                android:text="@string/tieneBaulera"
-                app:layout_constraintStart_toStartOf="@+id/spnrOrientacion"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Switch
-                android:id="@+id/tieneBalcon"
-                android:enabled="false"
-                android:layout_width="148dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="928dp"
-                android:text="@string/tieneBalcon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tieneBaulera"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Switch
-                android:id="@+id/tieneCochera"
-                android:enabled="false"
-                android:layout_width="148dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1106dp"
-                android:text="@string/tieneCochera"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.393"
-                app:layout_constraintStart_toEndOf="@+id/tieneTerraza"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Switch
-                android:id="@+id/tieneTerraza"
-                android:enabled="false"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDetailProperty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1106dp"
-                android:text="@string/tieneTerraza"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadAmbientes"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
+                app:layout_constraintStart_toStartOf="@id/clDetailProperty"
+                app:layout_constraintTop_toTopOf="@id/clDetailProperty">
 
-            <TextView
-                android:id="@+id/lblamenities"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCard"
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvTipoOperacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Venta"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toTopOf="@+id/clCard" />
+
+                    <TextView
+                        android:id="@+id/tvPrecioPropiedad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:text="$ 1.000.000"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvTipoOperacion"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPrecioExpensas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:drawableLeft="@drawable/ic_noun_expense"
+                        android:text="$15000"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toTopOf="@+id/tvTipoOperacion" />
+
+                    <View
+                        android:id="@+id/vLineaExpensas"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="34dp"
+                        android:background="@color/gray_400"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toTopOf="@id/tvPrecioExpensas" />
+
+                    <TextView
+                        android:id="@+id/tvLocacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/ic_location_dot_solid"
+                        android:drawablePadding="8dp"
+                        android:text="Azopardo 425, Remedios de Escalada,5B"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toTopOf="@+id/vLineaExpensas" />
+
+                    <TextView
+                        android:id="@+id/tvPais"
+                        android:layout_width="290dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="32dp"
+                        android:text="Argentina, Buenos Aires, Barrio Belgrano"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvLocacion" />
+
+                    <TextView
+                        android:id="@+id/tvCasas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableLeft="@drawable/ic_building"
+                        android:drawablePadding="8dp"
+                        android:text="@string/casas"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPais" />
+
+                    <TextView
+                        android:id="@+id/tvAmbientes"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:drawableLeft="@drawable/ic_couch"
+                        android:drawablePadding="8dp"
+                        android:text="@string/ambientes"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvCasas"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.178"
+                        app:layout_constraintStart_toEndOf="@+id/tvCasas"
+                        app:layout_constraintTop_toTopOf="@+id/tvCasas" />
+
+                    <TextView
+                        android:id="@+id/tvAmbientes2"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:drawableLeft="@drawable/ic_couch"
+                        android:drawablePadding="8dp"
+                        android:text="@string/ambientes"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvCasas"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.178"
+                        app:layout_constraintStart_toEndOf="@+id/tvCasas"
+                        app:layout_constraintTop_toTopOf="@+id/tvCasas" />
+
+                    <TextView
+                        android:id="@+id/tvDormitorios"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:drawableLeft="@drawable/ic_bed"
+                        android:drawablePadding="8dp"
+                        android:text="@string/dormitorios"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvAmbientes"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintTop_toTopOf="@+id/tvAmbientes" />
+
+                    <TextView
+                        android:id="@+id/tvBanios"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableLeft="@drawable/ic_bath"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/banios"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/tvCasas"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+
+                    <TextView
+                        android:id="@+id/tvCocheras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableLeft="@drawable/ic_car_side"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/cocheras"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvBanios"
+                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+
+                    <TextView
+                        android:id="@+id/tvPisos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableLeft="@drawable/ic_layer_group_solid"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/pisos"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvDormitorios"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+
+                    <TextView
+                        android:id="@+id/tvOrientacion"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_compass_regular"
+                        android:drawablePadding="8dp"
+                        android:text="NE"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDisposicion"
+                        app:layout_constraintEnd_toStartOf="@+id/tvDisposicion"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvBanios"
+                        app:layout_constraintTop_toTopOf="@+id/tvDisposicion" />
+
+
+                    <TextView
+                        android:id="@+id/tvDisposicion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:drawableLeft="@drawable/ic_right_left_solid"
+                        android:drawablePadding="8dp"
+                        android:text="Frente"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
+                        app:layout_constraintEnd_toStartOf="@+id/tvPisos"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvCocheras"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
+
+                    <TextView
+                        android:id="@+id/tvTiempoPropiedad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_calendar_days_regular"
+                        android:drawablePadding="8dp"
+                        android:text="45 años"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvPisos"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
+
+                    <View
+                        android:id="@+id/vDatoPropiedad"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/gray_400"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvOrientacion" />
+
+                    <TextView
+                        android:id="@+id/tvTituloMetros"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="@string/metrosCuadrados"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDatoPropiedad" />
+
+                    <TextView
+                        android:id="@+id/tvCubierto"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/ic_superficie_cubierta"
+                        android:drawablePadding="8dp"
+                        android:text="1568 m2 \ncubierto"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/tvOrientacion"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+
+                    <TextView
+                        android:id="@+id/tvSemiCubierto"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="5dp"
+                        android:drawableLeft="@drawable/ic_superficie_cubierta"
+                        android:drawablePadding="8dp"
+                        android:text="323 m² \nsemicubie"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/tvDesCubierto"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/tvCubierto"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+
+                    <TextView
+                        android:id="@+id/tvDesCubierto"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:drawableLeft="@drawable/ic_superficie_cubierta"
+                        android:drawablePadding="8dp"
+                        android:text="570 m² \ndescubie."
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/tvSemiCubierto"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1284dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/amenities"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/lblcantidadCuartos"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <Spinner
-                android:id="@+id/spnrAmenities"
-                android:layout_width="156dp"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="1314dp"
-                android:background="@drawable/bg_custom_spinner"
-                android:prompt="@string/amenities"
-                android:spinnerMode="dropdown"
-                app:layout_constraintStart_toStartOf="@+id/txtCantidadCuartos"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lbldescripcion1"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginTop="1878dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="left"
-                android:text="@string/descripcion1"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txtDescripcion1"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextSizeCheck" />
-
-            <EditText
-                android:id="@+id/txtDescripcion1"
-                android:enabled="false"
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1908dp"
-                android:background="@drawable/borde_redondo"
-                android:gravity="top"
-                android:hint="@string/descripcion1"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:minLines="10"
-                android:paddingLeft="8dp"
-                android:paddingTop="8dp"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtPrecioExpensas"
-                app:layout_constraintStart_toStartOf="@+id/txtPrecioPropiedad"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="VisualLintTextFieldSize" />
 
-            <GridView
-                android:id="@+id/gridView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2120dp"
-                android:horizontalSpacing="8dp"
-                android:numColumns="4"
-                android:stretchMode="columnWidth"
-                android:verticalSpacing="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp" />
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
+                app:layout_constraintStart_toStartOf="@id/clDetailProperty"
+                app:layout_constraintTop_toBottomOf="@+id/cvDetailProperty">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCardGeneral"
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tvTituloAmenities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="@string/amenitiesTitulo"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toTopOf="@id/clCardGeneral" />
+
+                    <TextView
+                        android:id="@+id/tvAmenities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="+ Estacionamiento
+                                    \n+ Quincho
+                                    \n+ Pileta
+                                    \n+ Jacuzzi
+                                    \n+ Sauna
+                                    \n+ Sum
+                                    \n+ Sala de juegos
+                                    \n+ Gimnasio
+                                    \n+ Laundry
+                                    \n+ WI-FI"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@id/vAmenitiesDescripcion"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloAmenities" />
+
+                    <View
+                        android:id="@+id/vAmenitiesDescripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_400"
+                        app:layout_constraintBottom_toTopOf="@+id/tvTituloDescripcion"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAmenities" />
+
+
+                    <TextView
+                        android:id="@+id/tvTituloDescripcion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="@string/descripcionTitulo"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toBottomOf="@+id/vAmenitiesDescripcion" />
+
+                    <TextView
+                        android:id="@+id/tvDescripcion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="El edificio posee en planta baja cocheras cubiertas y descubiertas con ingreso por portón levadizo con control remoto y bauleras en subsuelo. 28 Departamentos en 8 pisos con vistas al frente y contra frente todos con mucha luminosidad de 1, 2 y 3 ambientes. Dos unidades en primer piso de 3 ambientes con patio y uno de 3 ambientes con balcón aterrazado en el 8vo. piso. Dos ascensores con gabinetes en acero inoxidable.
+                        En 8º piso Salón de Usos Múltiples con cocina y toilette, contiguo una Terraza con parrilla, mesada y bacha con grifería. Sector Landry.
+                        Especificaciones Técnicas:
+                        Hall entrada y palieres comunes con porcellanato, frente con marcos en acero inoxidable y vidrios de seguridad “Blindex”, cerradura de seguridad automática, pintura al frente y contra frente en Tarquini y medianera con latex para exteriores, al frente combinación con lajas piedra Bariloche.
+"
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloDescripcion"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnClose"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginTop="2200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/boton"
                 android:text="@string/cerrarPropiedad"
                 android:textColor="@color/botonText"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
                 tools:ignore="VisualLintButtonSize" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
