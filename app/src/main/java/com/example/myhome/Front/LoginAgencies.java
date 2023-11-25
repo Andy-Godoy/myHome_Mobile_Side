@@ -9,9 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.BasicCredentials;
+import com.example.myhome.model.BasicCredentials;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Users;
+import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;

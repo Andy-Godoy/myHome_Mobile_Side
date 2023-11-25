@@ -1,4 +1,7 @@
-package com.example.myhome.Api;
+package com.example.myhome.model;
+
+import com.example.myhome.model.enums.CurrencyType;
+import com.example.myhome.model.enums.RoleType;
 
 public class Users {
     private long userId;

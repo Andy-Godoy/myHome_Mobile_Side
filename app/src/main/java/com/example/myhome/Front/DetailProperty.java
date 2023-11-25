@@ -9,15 +9,16 @@ import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.Address;
+import com.example.myhome.model.Address;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Properties;
+import com.example.myhome.model.Properties;
 import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.Api.PropertyDTO;
-import com.example.myhome.Api.PropertySummary;
+import com.example.myhome.model.PropertyDTO;
+import com.example.myhome.model.PropertySummary;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +45,21 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
             // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+
+        // Obtenemos el ID del ítem de menú correspondiente a esta actividad
+        int menuItemId = R.id.action_home;
+
+        // Marcar el ítem del menú como seleccionado
+        bottomNavigationView.setSelectedItemId(menuItemId);
+
+        // Configurar el listener para los elementos del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            MenuHandler.handleMenuItemClick(this, item);
+            return true;
+        });
 
         spnrAmenities = findViewById(R.id.spnrAmenities);
         adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
