@@ -1,4 +1,4 @@
-package com.example.myhome.Api;
+package com.example.myhome.model;
 
 public class Address {
     private String addressName;

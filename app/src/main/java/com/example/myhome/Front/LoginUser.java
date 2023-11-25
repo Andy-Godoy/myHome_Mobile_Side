@@ -8,9 +8,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.GoogleCredentials;
+import com.example.myhome.model.GoogleCredentials;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Users;
+import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
