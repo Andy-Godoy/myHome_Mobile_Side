@@ -11,9 +11,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myhome.model.Address;
 import com.example.myhome.Front.ImageAdapter;
 import com.example.myhome.Api.MyHome;
@@ -24,7 +22,6 @@ import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -168,6 +165,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtCubiertos)).getText().toString()));
         properties.setPropertySemiCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtSemiCubiertos)).getText().toString()));
         properties.setPropertyUncoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtDescubiertos)).getText().toString()));
+        properties.setPropertyImages(new String[]{"url_1"});
     }
 
     @Override
