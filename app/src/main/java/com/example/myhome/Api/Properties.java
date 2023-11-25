@@ -1,7 +1,5 @@
 package com.example.myhome.Api;
 
-import com.example.myhome.Api.Address;
-
 public class Properties {
     private Long propertyId;
     private Long agencyId;

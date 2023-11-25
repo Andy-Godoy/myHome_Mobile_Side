@@ -130,7 +130,7 @@ dependencies {
     implementation ("com.airbnb.android:lottie:6.1.0")
     implementation ("io.github.chaosleung:pinview:1.4.4")
     implementation ("androidx.databinding:databinding-runtime:8.1.3")
-    //implementation ("com.asksira.android:loopingviewpager:1.1.2")
+    //implementation ("com.asksira.android:loopingviewpager:1.4.1")
 
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
     implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure

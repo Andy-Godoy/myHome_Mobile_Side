@@ -8,34 +8,80 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
+
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
-
 
 public class AgenciesProfile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
     private Button btnLogout;
-
+    private RatingBar ratingBar;
     private Button btnDeleteAccount;
+    private TextView textViewRatingValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
+
+        imageViewProfile = findViewById(R.id.imageViewProfile);
+
+
+
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
+
+        } else {
+            // mostramos mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
+        }
+
+
+        ratingBar = findViewById(R.id.ratingBar);
+        textViewRatingValue = findViewById(R.id.textViewRatingValue);
+        // aca podemos configurar otros atributos del RatingBar según sea necesario...
+        // Agregamos un OnRatingBarChangeListener al RatingBar
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // Actualizar el TextView con el valor del RatingBar
+                textViewRatingValue.setText(String.valueOf(rating));
+            }
+        });
+        textViewRatingValue.setText(String.valueOf(ratingBar.getRating()));
+
+
+        // Agregamos un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
+        ratingBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
+                // Iniciar la actividad AgenciesRating
+                Intent intent = new Intent(AgenciesProfile.this, AgenciesRating.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
+
 
         btnLogout = findViewById(R.id.btnLogout);
 
@@ -127,7 +173,8 @@ public class AgenciesProfile extends AppCompatActivity {
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter);*/
+        spinnerCurrency.setAdapter(adapter); */
+
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
@@ -160,8 +207,8 @@ public class AgenciesProfile extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
 
-                // Mostrar la nueva imagen en el ImageView
-                imageViewProfile.setImageBitmap(bitmap);
+                // Redondear la imagen
+                setRoundedImage(bitmap);
 
                 // Puedes agregar aquí la lógica para subir la imagen a Azure Blob Storage si lo necesitas
             } catch (Exception e) {
@@ -169,7 +216,15 @@ public class AgenciesProfile extends AppCompatActivity {
             }
         }
     }
+    private void setRoundedImage(Bitmap bitmap) {
+        // Crear un drawable redondeado
+        RoundedBitmapDrawable circularDrawable =
+                RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        circularDrawable.setCircular(true);
 
+        // Establecer la imagen redondeada en el ImageView
+        imageViewProfile.setImageDrawable(circularDrawable);
+    }
     private class UploadImageToAzureBlobStorageTask extends AsyncTask<Bitmap, Void, Void> {
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
@@ -196,10 +251,6 @@ public class AgenciesProfile extends AppCompatActivity {
         Intent volver=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
         startActivity(volver);
     }
-        public void verresena(View view) {
-            Intent verresena=new Intent(AgenciesProfile.this, AgenciesRating.class);
-            startActivity(verresena);
-        }
 
     }
 
