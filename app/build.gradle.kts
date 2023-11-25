@@ -105,6 +105,7 @@ dependencies {
     //implementation ("com.google.android.gms:play-services-location:21.0.1")
     //implementation ("com.google.android.gms:play-services-places:17.0.0")
     //implementation ("com.google.android.libraries.places:places:3.2.0")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
 
     implementation("com.android.volley:volley:1.2.1") //Libreria para el uso de peticiones http
 
@@ -128,11 +129,11 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("com.airbnb.android:lottie:6.1.0")
     implementation ("io.github.chaosleung:pinview:1.4.4")
-    implementation ("androidx.databinding:databinding-runtime:8.1.2")
-    //implementation ("com.asksira.android:loopingviewpager:1.1.2")
+    implementation ("androidx.databinding:databinding-runtime:8.1.3")
+    //implementation ("com.asksira.android:loopingviewpager:1.4.1")
 
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
     implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure
-
+    implementation ("com.microsoft.azure.android:azure-storage-android:2.0.0")
     //***************************************************************
 }

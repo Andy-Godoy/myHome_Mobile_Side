@@ -7,7 +7,7 @@
     android:background="@drawable/bg_color"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginUser">
+    tools:context=".Front.LoginUser">
 
     <ImageView
         android:id="@+id/LoginLogo"

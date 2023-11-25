@@ -1,22 +1,51 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="#FFFFFF"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    tools:context=".Front.ListAgencieProperties">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_316pxh"
             android:orientation="vertical">
-        <ImageView
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/imagen_de_la_propiedad" />
+            android:layout_weight="0.5">
+
+      <!--     <ImageView
+               android:id="@+id/imageView"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:scaleType="centerCrop"
+               android:background="@drawable/rounded_border"
+               app:layout_constraintDimensionRatio="1:1" /> -->
+
+            <com.asksira.loopingviewpager.LoopingViewPager
+                android:id="@+id/imageSliderSlider"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:autoScroll="false"
+                app:isInfinite="false"
+                app:layout_constraintWidth_percent="1.0"
+                app:layout_constraintDimensionRatio="1:1"
+                app:scrollInterval="7000"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+            </com.asksira.loopingviewpager.LoopingViewPager>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
