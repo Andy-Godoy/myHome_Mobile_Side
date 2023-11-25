@@ -16,6 +16,7 @@ import com.example.myhome.R;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
 
 public class UploadImageActivity extends AppCompatActivity {
 
@@ -58,19 +59,33 @@ public class UploadImageActivity extends AppCompatActivity {
             Uri uri = data.getData();
 
             try {
-                // Obtener el InputStream de la imagen seleccionada
+                // Obtenemos el InputStream de la imagen seleccionada
                 InputStream inputStream = getContentResolver().openInputStream(uri);
 
-                // Mostrar la imagen seleccionada en el ImageView
+                // Generamos un nombre único para la imagen
+                String imageName = generateUniqueImageName();
+
+                // Mostramos la imagen seleccionada en el ImageView
                 imageViewSelected.setVisibility(View.VISIBLE);
                 imageViewSelected.setImageURI(uri);
 
-                // Subir la imagen al almacenamiento de blobs en Azure
-                storageManager.uploadImage(inputStream, "imageName.jpg");
+                // Subimos la imagen al almacenamiento de blobs en Azure
+                storageManager.uploadImage(inputStream, imageName + ".jpg");
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private String generateUniqueImageName() {
+
+        long timestamp = System.currentTimeMillis();
+
+
+        String randomSuffix = String.valueOf(new Random().nextInt(100000));
+
+       //aca concatenamos el nombre de la imagen con el timestamp y el random
+        return "image_" + timestamp + "_" + randomSuffix;
     }
 }
