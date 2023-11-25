@@ -118,7 +118,7 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
     }
 
     @Override
-    public void onLoginSuccess() {
+    public void onUnregisterSuccess() {
 
     }
 }

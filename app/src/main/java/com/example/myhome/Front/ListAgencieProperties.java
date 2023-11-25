@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.asksira.loopingviewpager.LoopingViewPager;
-import com.example.myhome.Api.UsersApi;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.model.Properties;
@@ -69,7 +68,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
         cardConteiner = findViewById(R.id.cardContainer);
 
-//            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
         FiltersDTO filters = new FiltersDTO();
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
@@ -102,6 +100,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+
         if (properties != null){
             for (PropertySummary p: properties){
 
