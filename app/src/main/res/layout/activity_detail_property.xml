@@ -58,25 +58,60 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvDetailProperty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/cvCarousel"
+                android:layout_width="330dp"
+                android:layout_height="150dp"
                 app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
                 app:layout_constraintStart_toStartOf="@id/clDetailProperty"
-                app:layout_constraintTop_toTopOf="@id/clDetailProperty">
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCarousel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.asksira.loopingviewpager.LoopingViewPager
+                        android:id="@+id/imageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:autoScroll="false"
+                        app:isInfinite="false"
+                        android:contentDescription="imagenes de la propiedad"
+                        app:layout_constraintBottom_toBottomOf="@+id/clCarousel"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="@+id/clCarousel"
+                        app:layout_constraintStart_toStartOf="@+id/clCarousel"
+                        app:layout_constraintTop_toTopOf="@+id/clCarousel"
+                        app:layout_constraintWidth_percent="1.0"
+                        app:scrollInterval="7000">
+
+
+                    </com.asksira.loopingviewpager.LoopingViewPager>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDetailProperty"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
+                app:layout_constraintStart_toStartOf="@id/clDetailProperty"
+                app:layout_constraintTop_toBottomOf="@+id/cvCarousel">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clCard"
                     android:layout_width="330dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp">
 
                     <TextView
-                        android:id="@+id/tvTipoOperacion"
+                        android:id="@+id/tvEstado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:text="Venta"
+                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
@@ -88,24 +123,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:text="$ 1.000.000"
+                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="20sp"
-                        app:layout_constraintStart_toEndOf="@+id/tvTipoOperacion"
+                        app:layout_constraintStart_toEndOf="@+id/tvEstado"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvPrecioExpensas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="6dp"
                         android:layout_marginTop="32dp"
                         android:drawableLeft="@drawable/ic_noun_expense"
-                        android:text="$15000"
+                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
-                        app:layout_constraintTop_toTopOf="@+id/tvTipoOperacion" />
+                        app:layout_constraintTop_toTopOf="@+id/tvEstado" />
 
                     <View
                         android:id="@+id/vLineaExpensas"
@@ -119,13 +154,13 @@
 
                     <TextView
                         android:id="@+id/tvLocacion"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="6dp"
                         android:layout_marginTop="8dp"
                         android:drawableLeft="@drawable/ic_location_dot_solid"
                         android:drawablePadding="8dp"
-                        android:text="Azopardo 425, Remedios de Escalada,5B"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCard"
@@ -134,27 +169,26 @@
 
                     <TextView
                         android:id="@+id/tvPais"
-                        android:layout_width="290dp"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="32dp"
-                        android:text="Argentina, Buenos Aires, Barrio Belgrano"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="30dp"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvLocacion" />
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintStart_toStartOf="@+id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLocacion" />
 
                     <TextView
-                        android:id="@+id/tvCasas"
+                        android:id="@+id/tvTipoPropiedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_building"
                         android:drawablePadding="8dp"
-                        android:text="@string/casas"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
@@ -165,32 +199,18 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="40dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
                         android:drawableLeft="@drawable/ic_couch"
                         android:drawablePadding="8dp"
-                        android:text="@string/ambientes"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvCasas"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTipoPropiedad"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.178"
-                        app:layout_constraintStart_toEndOf="@+id/tvCasas"
-                        app:layout_constraintTop_toTopOf="@+id/tvCasas" />
-
-                    <TextView
-                        android:id="@+id/tvAmbientes2"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:drawableLeft="@drawable/ic_couch"
-                        android:drawablePadding="8dp"
-                        android:text="@string/ambientes"
-                        android:textColor="@color/gris_3"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvCasas"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.178"
-                        app:layout_constraintStart_toEndOf="@+id/tvCasas"
-                        app:layout_constraintTop_toTopOf="@+id/tvCasas" />
+                        app:layout_constraintStart_toEndOf="@+id/tvTipoPropiedad"
+                        app:layout_constraintTop_toTopOf="@+id/tvTipoPropiedad" />
 
                     <TextView
                         android:id="@+id/tvDormitorios"
@@ -199,7 +219,7 @@
                         android:layout_marginEnd="4dp"
                         android:drawableLeft="@drawable/ic_bed"
                         android:drawablePadding="8dp"
-                        android:text="@string/dormitorios"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvAmbientes"
@@ -214,10 +234,10 @@
                         android:drawableLeft="@drawable/ic_bath"
                         android:drawablePadding="8dp"
                         android:paddingTop="8dp"
-                        android:text="@string/banios"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvCasas"
+                        app:layout_constraintStart_toStartOf="@+id/tvTipoPropiedad"
                         app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
 
                     <TextView
@@ -225,10 +245,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
                         android:drawableLeft="@drawable/ic_car_side"
                         android:drawablePadding="8dp"
                         android:paddingTop="8dp"
-                        android:text="@string/cocheras"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toEndOf="@+id/tvBanios"
@@ -243,7 +265,7 @@
                         android:drawableLeft="@drawable/ic_layer_group_solid"
                         android:drawablePadding="8dp"
                         android:paddingTop="8dp"
-                        android:text="@string/pisos"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -253,11 +275,11 @@
 
                     <TextView
                         android:id="@+id/tvOrientacion"
-                        android:layout_width="70dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_compass_regular"
                         android:drawablePadding="8dp"
-                        android:text="NE"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvDisposicion"
@@ -271,10 +293,11 @@
                         android:id="@+id/tvDisposicion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
                         android:drawableLeft="@drawable/ic_right_left_solid"
                         android:drawablePadding="8dp"
-                        android:text="Frente"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
@@ -284,12 +307,12 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
 
                     <TextView
-                        android:id="@+id/tvTiempoPropiedad"
+                        android:id="@+id/tvAntiguedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_calendar_days_regular"
                         android:drawablePadding="8dp"
-                        android:text="45 años"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
@@ -330,7 +353,7 @@
                         android:layout_marginTop="8dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
-                        android:text="1568 m2 \ncubierto"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@+id/tvOrientacion"
@@ -344,8 +367,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="5dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
-                        android:drawablePadding="8dp"
-                        android:text="323 m² \nsemicubie"
+                        android:text="5 m2 \nsemicubie."
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/tvDesCubierto"
@@ -361,7 +383,7 @@
                         android:layout_marginEnd="8dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
-                        android:text="570 m² \ndescubie."
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -405,16 +427,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="+ Estacionamiento
-                                    \n+ Quincho
-                                    \n+ Pileta
-                                    \n+ Jacuzzi
-                                    \n+ Sauna
-                                    \n+ Sum
-                                    \n+ Sala de juegos
-                                    \n+ Gimnasio
-                                    \n+ Laundry
-                                    \n+ WI-FI"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@id/vAmenitiesDescripcion"
@@ -447,11 +460,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="El edificio posee en planta baja cocheras cubiertas y descubiertas con ingreso por portón levadizo con control remoto y bauleras en subsuelo. 28 Departamentos en 8 pisos con vistas al frente y contra frente todos con mucha luminosidad de 1, 2 y 3 ambientes. Dos unidades en primer piso de 3 ambientes con patio y uno de 3 ambientes con balcón aterrazado en el 8vo. piso. Dos ascensores con gabinetes en acero inoxidable.
-                        En 8º piso Salón de Usos Múltiples con cocina y toilette, contiguo una Terraza con parrilla, mesada y bacha con grifería. Sector Landry.
-                        Especificaciones Técnicas:
-                        Hall entrada y palieres comunes con porcellanato, frente con marcos en acero inoxidable y vidrios de seguridad “Blindex”, cerradura de seguridad automática, pintura al frente y contra frente en Tarquini y medianera con latex para exteriores, al frente combinación con lajas piedra Bariloche.
-"
+                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"

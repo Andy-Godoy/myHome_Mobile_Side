@@ -2,35 +2,24 @@ package com.example.myhome.Front;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.model.Address;
+import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Properties;
 import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.Ignore.ImageSliderAdapter;
+import com.example.myhome.Interfaces.PropertiesCallback;
+import com.example.myhome.R;
+import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.Interfaces.PropertiesCallback;
-import com.example.myhome.Network.NetworkUtils;
-import com.example.myhome.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
-    private CustomSpinnerAdapter adapter;
-    private Spinner spnrAmenities;
-    private Spinner spnrTipoPropiedad;
-    private Spinner spnrEstado;
-    private Spinner spnrOrientacion;
-    private Spinner spnrPosicion;
-    private Spinner spnrAntiguedad;
     private Properties propiedad;
 
     @Override
@@ -38,31 +27,23 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_property);
 
-        spnrAmenities = findViewById(R.id.spnrAmenities);
-        adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
-        adapter.setCheckBoxesEnabled(false); // Deshabilita checkbox "Todos"
+        LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
 
-        spnrTipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
-        spnrTipoPropiedad.setEnabled(false);
+        List<String> imageUrls = obtenerUrlsDesdeAzure();
 
-        spnrEstado = findViewById(R.id.spnrEstado);
-        spnrEstado.setEnabled(false);
+        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
+        imageSlider.setAdapter(imageSliderAdapter);
 
-        spnrOrientacion = findViewById(R.id.spnrOrientacion);
-        spnrOrientacion.setEnabled(false);
+        obtenerPropiedad();
 
-
-//        obtenerPropiedad();
-
-
-        Button btnClose = findViewById(R.id.btnClose);
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Cierra la actividad y vuelve a la actividad anterior
-                finish();
-            }
-        });
+//        Button btnClose = findViewById(R.id.btnClose);
+//        btnClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Cierra la actividad y vuelve a la actividad anterior
+//                finish();
+//            }
+//        });
     }
 
     @Override
@@ -71,101 +52,76 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
-        int posicionTipoPropiedad = obtenerPosicion(getResources().getStringArray(R.array.lista_de_tipo_propiedad), propiedad.getPropertyType());
-        int posicionEstado = obtenerPosicion(getResources().getStringArray(R.array.lista_de_estados), propiedad.getPropertyStatus());
-        int posicionOrientacion = obtenerPosicion(getResources().getStringArray(R.array.lista_orientacion), propiedad.getPropertyOrientation());
-        int posicionPosicion = obtenerPosicion(getResources().getStringArray(R.array.lista_posicion), propiedad.getPropertyPosition());
-        int posicionAntiguedad = obtenerPosicion(getResources().getStringArray(R.array.lista_antiguedad), propiedad.getPropertyAge());
+        TextView tvEstado = findViewById(R.id.tvEstado);
+        TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
+        TextView tvPrecioExpensas = findViewById(R.id.tvPrecioExpensas);
+        TextView tvLocacion = findViewById(R.id.tvLocacion);
+        TextView tvPais = findViewById(R.id.tvPais);
+        TextView tvTipoPropiedad = findViewById(R.id.tvTipoPropiedad);
+        TextView tvAmbientes = findViewById(R.id.tvAmbientes);
+        TextView tvDormitorios = findViewById(R.id.tvDormitorios);
+        TextView tvBanios = findViewById(R.id.tvBanios);
+        TextView tvCocheras = findViewById(R.id.tvCocheras);
+        TextView tvPisos = findViewById(R.id.tvPisos);
+        TextView tvOrientacion = findViewById(R.id.tvOrientacion);
+        TextView tvDisposicion = findViewById(R.id.tvDisposicion);
+        TextView tvAntiguedad = findViewById(R.id.tvAntiguedad);
+        TextView tvCubierto = findViewById(R.id.tvCubierto);
+        TextView tvSemicubierto = findViewById(R.id.tvSemiCubierto);
+        TextView tvDescubierto = findViewById(R.id.tvDesCubierto);
+        TextView tvAmenities = findViewById(R.id.tvAmenities);
+        TextView tvDescripcion = findViewById(R.id.tvDescripcion);
+        String locacion = propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
+                propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit();
 
-        String[] amenitiesApi = propiedad.getPropertyAmenities();
-        String[] amenities = getResources().getStringArray(R.array.lista_amenities);
-        boolean[] amenitiesChecks = new boolean[amenities.length];
+        String pais = propiedad.getPropertyAddress().getAddressCountry() + ", " + propiedad.getPropertyAddress().getAddressState() + ", " + propiedad.getPropertyAddress().getAddressNeighbourhood();
+        String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+        String dormitorio = (propiedad.getPropertyBedroomQuantity() <= 1) ? " dormitorio" : " dormitorios";
+        String banio = (propiedad.getPropertyBathroomQuantity() <= 1) ? " banio" : " banios";
+        String cochera = "";
+        String piso = (propiedad.getPropertyAddress().getAddressFloor() <= 1) ? " piso" : " pisos";
 
-        if (amenitiesApi.length == 0) {
-            // Establecer todos los valores en false
-            Arrays.fill(amenitiesChecks, false);
-            adapter.deselectAll();
-        } else if (amenities.length-1 == amenitiesApi.length) {
-            // Establecer todos los valores en true
-            Arrays.fill(amenitiesChecks, true);
-            adapter.selectAll();
+        if (propiedad.getPropertyHasGarage()) {
+            cochera = "Sin cochera";
         } else {
-            for (int i = 0; i < amenities.length; i++) {
-                boolean coincide = false;
-
-                for (int j = 0; j < amenitiesApi.length; j++) {
-                    if (amenities[i].equals(amenitiesApi[j])) {
-                        coincide = true;
-                        break;
-                    }
-                }
-
-                amenitiesChecks[i] = coincide;
-            }
-
-            adapter.setCheckedItems(amenitiesChecks);
+            cochera = (propiedad.getPropertyGarageQuantity() <= 1) ? " cochera" : " cocheras";
         }
 
-        spnrAmenities.setAdapter(adapter);
-        spnrAmenities.setEnabled(false);
+        String cubierto = propiedad.getPropertyCoveredM2() + " m2 \ncubierto";
+        String semicubierto = propiedad.getPropertySemiCoveredM2() + " m2 \nsemicubie.";
+        String descubierto = propiedad.getPropertyUncoveredM2() + " m2 \ndescubie.";
+        String amenities = "";
 
-        spnrTipoPropiedad.setSelection(posicionTipoPropiedad);
-        spnrEstado.setSelection(posicionEstado);
-        spnrOrientacion.setSelection(posicionOrientacion);
-        spnrPosicion.setSelection(posicionPosicion);
-        spnrAntiguedad.setSelection(posicionAntiguedad);
+        // Convertir la cadena en un array utilizando la coma como delimitador
+        String[] amenitiesArray = propiedad.getPropertyAmenities();
 
-        Switch tieneCochera = findViewById(R.id.tieneCochera);
-        tieneCochera.setChecked(propiedad.getPropertyHasGarage());
+        for (int i = 0; i < amenitiesArray.length; i++) {
+            if (i == 0) {
+                amenities ="+" + amenitiesArray[i];
+            } else {
+                amenities += "\n + " + amenitiesArray[i];
+            }
+        }
 
-        Switch tieneBalcon = findViewById(R.id.tieneBalcon);
-        tieneBalcon.setChecked(propiedad.getPropertyHasBalcony());
-
-        Switch tieneBaulera = findViewById(R.id.tieneBaulera);
-        tieneBaulera.setChecked(propiedad.getPropertyHasStorage());
-
-        Switch tieneTerraza = findViewById(R.id.tieneTerraza);
-        tieneTerraza.setChecked(propiedad.getpropertyHasTerrace());
-
-        Address address = propiedad.getPropertyAddress();
-
-        EditText calle = findViewById(R.id.txtCalle);
-        EditText numero = findViewById(R.id.txtNumero);
-        EditText piso = findViewById(R.id.txtPiso);
-        EditText departamento = findViewById(R.id.txtDpto);
-        EditText barrio = findViewById(R.id.txtBarrio);
-        EditText provincia = findViewById(R.id.txtProvincia);
-        EditText pais = findViewById(R.id.txtPais);
-        EditText localidad = findViewById(R.id.txtLocalidad);
-        EditText cantidadAmbientes = findViewById(R.id.txtCantidadAmbientes);
-        EditText cantidadBanios = findViewById(R.id.txtCantidadBanios);
-        EditText cantidadCuartos = findViewById(R.id.txtCantidadCuartos);
-        EditText cantidadCocheras = findViewById(R.id.txtCantidadCochera);
-        EditText cubiertos = findViewById(R.id.txtCubiertos);
-        EditText descubiertos = findViewById(R.id.txtDescubiertos);
-        EditText semiCubiertos = findViewById(R.id.txtSemiCubiertos);
-        EditText precioPropiedad = findViewById(R.id.txtPrecioPropiedad);
-        EditText precioExpensas = findViewById(R.id.txtPrecioExpensas);
-        EditText descripcion = findViewById(R.id.txtDescripcion1);
-
-        calle.setText(address.getAddressName());
-        numero.setText(String.valueOf(address.getAddressNumber()));
-        piso.setText(String.valueOf(address.getAddressFloor()));
-        departamento.setText(address.getAddressUnit());
-        barrio.setText(address.getAddressNeighbourhood());
-        provincia.setText(address.getAddressState());
-        pais.setText(address.getAddressCountry());
-        localidad.setText(address.getAddressCity());
-        cantidadAmbientes.setText(String.valueOf(propiedad.getPropertyBedroomQuantity()));
-        cantidadBanios.setText(String.valueOf(propiedad.getPropertyBathroomQuantity()));
-        cantidadCuartos.setText(String.valueOf(propiedad.getPropertyRoomQuantity()));
-        cantidadCocheras.setText(String.valueOf(propiedad.getPropertyGarageQuantity()));
-        cubiertos.setText(String.valueOf(propiedad.getPropertyCoveredM2()));
-        descubiertos.setText(String.valueOf(propiedad.getPropertyUncoveredM2()));
-        semiCubiertos.setText(String.valueOf(propiedad.getPropertySemiCoveredM2()));
-        precioPropiedad.setText(String.valueOf(propiedad.getPropertyPrice()));
-        precioExpensas.setText(String.valueOf(propiedad.getPropertyExpenses()));
-        descripcion.setText(propiedad.getPropertyDescription());
+        tvEstado.setText(propiedad.getPropertyStatus());
+        tvPrecioPropiedad.setText(moneda + " " + propiedad.getPropertyPrice().toString());
+        tvPrecioExpensas.setText(moneda + " " + propiedad.getPropertyExpenses().toString());
+        tvLocacion.setText(locacion);
+        tvPais.setText(pais);
+        tvTipoPropiedad.setText(propiedad.getPropertyType());
+        tvAmbientes.setText("Más de " + propiedad.getPropertyRoomQuantity().toString() + " ambientes");
+        tvDormitorios.setText(propiedad.getPropertyBedroomQuantity().toString() + dormitorio);
+        tvBanios.setText(propiedad.getPropertyBathroomQuantity().toString() + banio);
+        tvCocheras.setText(propiedad.getPropertyGarageQuantity().toString() + cochera);
+        tvPisos.setText(propiedad.getPropertyAddress().getAddressFloor().toString() + piso);
+        tvOrientacion.setText(propiedad.getPropertyOrientation());
+        tvDisposicion.setText(propiedad.getPropertyPosition());
+        tvAntiguedad.setText(propiedad.getPropertyAge().toString());
+        tvCubierto.setText(cubierto);
+        tvSemicubierto.setText(semicubierto);
+        tvDescubierto.setText(descubierto);
+        tvAmenities.setText(amenities);
+        tvDescripcion.setText(propiedad.getPropertyDescription());
     }
 
     @Override
@@ -188,16 +144,19 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         propiedad = propertyApi.obtenerPropiedad(property, this);
     }
 
-    private int obtenerPosicion(String[] opciones, String opcion) {
-        opciones = Arrays.stream(opciones)
-                .map(String::toLowerCase)
-                .toArray(String[]::new);
-
-        return Arrays.asList(opciones).indexOf(opcion.toLowerCase());
-    }
-
     public void btnClose(View view) {
         // Este método se llamará tanto desde el Button como desde el ImageButton
         finish();
+    }
+
+    private List<String> obtenerUrlsDesdeAzure() {
+        // Lógica para obtener las URLs de las imágenes desde el blob de Azure
+
+        List<String> imageUrls = new ArrayList<>();
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
+        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
+
+        return imageUrls;
     }
 }
