@@ -1,6 +1,7 @@
 package com.example.myhome.Front;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +11,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.MyHome;
@@ -24,7 +24,6 @@ import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,76 +31,76 @@ import java.util.List;
 
 public class ListAgencieProperties extends AppCompatActivity implements PropertiesCallback {
 
-        private Button btnPropiedades;
-        private Button btnNuevaPropiedad;
-        private Button btnPerfil;
-        private LinearLayout cardConteiner;
-        private List<PropertySummary> properties;
-        private Long agencyId;
+    private Button btnPropiedades;
+    private Button btnNuevaPropiedad;
+    private Button btnPerfil;
+    private LinearLayout cardConteiner;
+    private List<PropertySummary> properties;
+    private Long agencyId;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_agency_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_agency_main);
 
-            // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
-            if (NetworkUtils.isNetworkConnected(this)) {
+        // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
+        if (NetworkUtils.isNetworkConnected(this)) {
 
-            } else {
-                // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
-                NetworkUtils.showNoInternetMessage(this);
-            }
-
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-
-            // Obtenemos el ID del ítem de menú correspondiente a esta actividad
-            int menuItemId = R.id.action_home;
-
-            // Marcar el ítem del menú como seleccionado
-            bottomNavigationView.setSelectedItemId(menuItemId);
-
-            // Configurar el listener para los elementos del menú
-            bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-                MenuHandler.handleMenuItemClick(this, item);
-                return true;
-            });
-
-            cardConteiner = findViewById(R.id.cardContainer);
-
-//            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
-            FiltersDTO filters = new FiltersDTO();
-
-            if (((MyHome) this.getApplication()).getUsuario() != null) {
-                agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
-                filters.setAgencyId(agencyId);
-            }
-
-            PropertyApi propertyApi = new PropertyApi();
-            properties = propertyApi.verPropiedades(filters, this);
-
+        } else {
+            // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
+            NetworkUtils.showNoInternetMessage(this);
         }
 
-        public void verPropiedades (View view){
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-            Intent miIntent=new Intent(ListAgencieProperties.this, ListAgencieProperties.class);
-            startActivity(miIntent);
+
+        // Obtenemos el ID del ítem de menú correspondiente a esta actividad
+        int menuItemId = R.id.action_home;
+
+        // Marcar el ítem del menú como seleccionado
+        bottomNavigationView.setSelectedItemId(menuItemId);
+
+        // Configurar el listener para los elementos del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            MenuHandler.handleMenuItemClick(this, item);
+            return true;
+        });
+
+        cardConteiner = findViewById(R.id.cardContainer);
+
+        FiltersDTO filters = new FiltersDTO();
+
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
+            filters.setAgencyId(agencyId);
         }
 
-        public void nuevaPropiedad (View view){
+        PropertyApi propertyApi = new PropertyApi();
+        properties = propertyApi.verPropiedades(filters, this);
 
-            Intent miIntent=new Intent(ListAgencieProperties.this, NewProperties.class);
-            startActivity(miIntent);
-        }
+    }
 
-        public void verPerfil (View view){
+    public void verPropiedades (View view){
 
-            Intent miIntent=new Intent(ListAgencieProperties.this, AgenciesProfile.class);
-            startActivity(miIntent);
-        }
+        Intent miIntent=new Intent(ListAgencieProperties.this, ListAgencieProperties.class);
+        startActivity(miIntent);
+    }
+
+    public void nuevaPropiedad (View view){
+
+        Intent miIntent=new Intent(ListAgencieProperties.this, NewProperties.class);
+        startActivity(miIntent);
+    }
+
+    public void verPerfil (View view){
+
+        Intent miIntent=new Intent(ListAgencieProperties.this, AgenciesProfile.class);
+        startActivity(miIntent);
+    }
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+
         if (properties != null){
             for (PropertySummary p: properties){
 
@@ -122,15 +121,30 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener(){
 
                     // Establecer clic en eliminar propiedad
-                    @Override
-                    public void onClick(View view) {
-                        // Obtengo el ID de la propiedad
-                        Long propertyId = p.getPropertyId();
+                    public void onClick(View v) {
+                        // Mostramos un mensaje de advertencia al usuario
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListAgencieProperties.this);
+                        builder.setTitle("Eliminar propiedad");
+                        builder.setMessage("¿Está seguro de que desea eliminar su propiedad?");
+                        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Obtengo el ID de la propiedad
+                                Long propertyId = p.getPropertyId();
 
-                        //Llamo a retrofit para eliminar la propiedad
-                        PropertyApi propertyApi = new PropertyApi();
-                        propertyApi.eliminarPropiedad(propertyId, agencyId, ListAgencieProperties.this);
+                                //Llamo a retrofit para eliminar la propiedad
+                                PropertyApi propertyApi = new PropertyApi();
+                                propertyApi.eliminarPropiedad(propertyId, agencyId, ListAgencieProperties.this);
 
+                            }
+                        });
+                        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hace nada
+                            }
+                        });
+                        builder.show();
                     }
                 });
 
@@ -149,8 +163,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
                     }
                 });
-
-
 
                 // Establecer clic en la vista
                 propertyCard.setOnClickListener(new View.OnClickListener() {

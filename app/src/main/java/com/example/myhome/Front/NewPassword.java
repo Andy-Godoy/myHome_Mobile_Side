@@ -74,6 +74,12 @@ public class NewPassword extends AppCompatActivity implements LoginCallback {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onUnregisterSuccess() {
+
+    }
+
     private boolean isValidPassword(String password) {
         // validamos que tenga al menos 6 caracteres la contraseña
         return password.length() >= 6;

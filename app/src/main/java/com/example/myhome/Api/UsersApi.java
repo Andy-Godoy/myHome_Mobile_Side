@@ -26,9 +26,7 @@ public class UsersApi extends AppCompatActivity {
 
     private TextView editTextEmail, editTextPassword;
     private Button validarButton;
-
     private Users user;
-
     private static final String BASE_URL = "https://myhome.azurewebsites.net/api/v1/";
 
     @Override
@@ -43,44 +41,44 @@ public class UsersApi extends AppCompatActivity {
         //registrarUsuario();
     }
 
-        public Users registrarUsuario(BasicCredentials basicCredentials, final LoginCallback callback) {
-            // Configuramos Retrofit
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+    public Users registrarUsuario(BasicCredentials basicCredentials, final LoginCallback callback) {
+        // Configuramos Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-            // Creamos una instancia de la interfaz ApiService
-            RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-            // Realizamos la solicitud
-            Call<Users> call = apiService.registrarUsuario(basicCredentials);
+        // Realizamos la solicitud
+        Call<Users> call = apiService.registrarUsuario(basicCredentials);
 
-            call.enqueue(new Callback<Users>() {
-                @Override
-                public void onResponse(Call<Users> call, Response<Users> response) {
-                    if (response.isSuccessful()) {
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if (response.isSuccessful()) {
 
-                        user = response.body();
-                        callback.onLoginSuccess(user);
+                    user = response.body();
+                    callback.onLoginSuccess(user);
 
 
-                    } else {
-                        //acá validamos si el usuario ya existe
-                        callback.onLoginFailure("El usuario ya existe");
+                } else {
+                    //acá validamos si el usuario ya existe
+                    callback.onLoginFailure("El usuario ya existe");
 
-                    }
                 }
+            }
 
-                @Override
-                public void onFailure(Call<Users> call, Throwable t) {
-                    // Acá manejamos los errores de conexión
-                    Log.i("Registrar Usuario", "onFailure: "+t.getMessage());
-                   // Toast.makeText(UsersApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
-                }
-            });
-            return user;
-        }
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                // Acá manejamos los errores de conexión
+                Log.i("Registrar Usuario", "onFailure: "+t.getMessage());
+               // Toast.makeText(UsersApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return user;
+    }
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -180,7 +178,7 @@ public class UsersApi extends AppCompatActivity {
                     callback.onLoginSuccess(user);
                     // Acá manejamos la respuesta
                 } else {
-                    callback.onLoginFailure("No se ha podido resetear la contraseña 123");
+                    callback.onLoginFailure("No se ha podido resetear la contraseña");
 
                 }
             }
@@ -191,6 +189,40 @@ public class UsersApi extends AppCompatActivity {
                 callback.onLoginFailure("No se ha podido resetear la contraseña");
             }
         });
+        return user;
+    }
+
+        //Eliminar usuario
+        public Users deleteUser(Long userId, final LoginCallback callback) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            // Creamos una instancia de la interfaz ApiService
+            RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+            // Realizamos la solicitud
+            Call<Void> call = apiService.deleteUser(userId);
+
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        callback.onUnregisterSuccess();
+                        // Acá manejamos la respuesta
+                    } else {
+                        callback.onLoginFailure("No se ha podido eliminar el usuario");
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    callback.onLoginFailure("No se ha podido eliminar el usuario");
+                }
+
+            });
         return user;
     }
 

@@ -116,4 +116,9 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
     public void onLoginFailure(String errorMessage) {
         showToast(errorMessage);
     }
+
+    @Override
+    public void onUnregisterSuccess() {
+
+    }
 }

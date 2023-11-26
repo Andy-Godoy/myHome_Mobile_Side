@@ -112,4 +112,9 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
     public void onLoginFailure(String errorMessage) {
         Toast.makeText(this, "No ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onUnregisterSuccess() {
+
+    }
 }

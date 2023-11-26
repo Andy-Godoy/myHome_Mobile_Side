@@ -8,9 +8,7 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.example.myhome.model.Resenas;
 import com.example.myhome.model.Users;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -65,5 +63,9 @@ public interface RetrofitAPI {
     @GET("reviews")
     Call<List<Resenas>> getResenas(@Query("agencyId") long agencyId);
 
+    @GET("agencies/{agencyId}")
+    Call<Agencies> getAgency(@Path("agencyId") Long agencyId);
 
+    @PUT("agencies/{agencyId}")
+    Call<Agencies> updateAgency(@Path("agencyId") Long agencyId, @Body Agencies agency, @Query("userId") Long userId);
 }
