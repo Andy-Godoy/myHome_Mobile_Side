@@ -6,15 +6,12 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.R;
 import com.example.myhome.model.BasicCredentials;
 import com.example.myhome.model.GoogleCredentials;
 import com.example.myhome.model.Users;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -209,7 +206,7 @@ public class UsersApi extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
-                        callback.onLoginSuccess();
+                        callback.onUnregisterSuccess();
                         // Acá manejamos la respuesta
                     } else {
                         callback.onLoginFailure("No se ha podido eliminar el usuario");
@@ -225,5 +222,42 @@ public class UsersApi extends AppCompatActivity {
             });
         return user;
     }
+
+    //Editar usuario
+
+    public Users editarUsuario (Users user, final LoginCallback callback) {
+        // Configuramos Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realizamos la solicitud
+        Call<Users> call = apiService.updateUser(Long.valueOf(user.getUserId()), user);
+
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if (response.isSuccessful()) {
+
+                    callback.onLoginSuccess(response.body());
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                // Acá manejamos los errores de conexión
+                callback.onLoginFailure("Los datos no pudieron ser actualizados. Intentelo nuevamente mas tarde.");
+            }
+        });
+
+        return null;
+    }
+
 
 }

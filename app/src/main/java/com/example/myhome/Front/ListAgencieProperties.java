@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.asksira.loopingviewpager.LoopingViewPager;
-import com.example.myhome.Api.UsersApi;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.model.Properties;
@@ -69,7 +68,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
         cardConteiner = findViewById(R.id.cardContainer);
 
-//            Log.i("TAG", "onCreate: " + ((MyHome) this.getApplication()).getUsuario().getAgencyId());
         FiltersDTO filters = new FiltersDTO();
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
@@ -102,6 +100,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+
         if (properties != null){
             for (PropertySummary p: properties){
 
@@ -152,16 +151,30 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener(){
 
                     // Establecer clic en editar propiedad
-                    @Override
-                    public void onClick(View view) {
-                        // Obtengo el ID de la propiedad
-                        String propertyId = p.getPropertyId().toString();
+                    public void onClick(View v) {
+                        // Mostramos un mensaje de advertencia al usuario
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListAgencieProperties.this);
+                        builder.setTitle("Editar propiedad");
+                        builder.setMessage("¿Está seguro de que desea editar su propiedad?");
+                        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Obtengo el ID de la propiedad
+                                String propertyId = p.getPropertyId().toString();
 
-                        //Iniciar la actividad para editar la propiedad pasando el id de propiedad
-                        Intent intent = new Intent(ListAgencieProperties.this, EditProperty.class);
-                        intent.putExtra("propertyId", propertyId);
-                        startActivity(intent);
-
+                                //Iniciar la actividad para editar la propiedad pasando el id de propiedad
+                                Intent intent = new Intent(ListAgencieProperties.this, EditProperty.class);
+                                intent.putExtra("propertyId", propertyId);
+                                startActivity(intent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hace nada
+                            }
+                        });
+                        builder.show();
                     }
                 });
 

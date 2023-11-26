@@ -5,30 +5,22 @@ import android.content.Intent;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
-import com.azure.storage.blob.BlobAsyncClient;
-import com.azure.storage.blob.*;
-import com.azure.storage.blob.models.BlobRequestConditions;
 import com.example.myhome.R;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -36,6 +28,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+
 
 public class UploadImageActivity extends AppCompatActivity {
 
@@ -172,8 +165,6 @@ public class UploadImageActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-
-
         String randomFileName = UUID.randomUUID().toString() + ".jpg";
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
@@ -203,4 +194,6 @@ public class UploadImageActivity extends AppCompatActivity {
         String randomFileName = UUID.randomUUID().toString() + ".jpg";
         return blobContainerClient.getBlobClient(randomFileName).getBlobUrl();
     }
+
+
 }

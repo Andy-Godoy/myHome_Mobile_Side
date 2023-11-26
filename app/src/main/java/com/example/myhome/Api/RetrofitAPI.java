@@ -63,5 +63,12 @@ public interface RetrofitAPI {
     @GET("reviews")
     Call<List<Resenas>> getResenas(@Query("agencyId") long agencyId);
 
+    @GET("agencies/{agencyId}")
+    Call<Agencies> getAgency(@Path("agencyId") Long agencyId);
 
+    @PUT("agencies/{agencyId}")
+    Call<Agencies> updateAgency(@Path("agencyId") Long agencyId, @Body Agencies agency, @Query("userId") Long userId);
+
+    @PUT("users/{userId}")
+    Call<Users> updateUser(@Path("userId") Long userId, @Body Users user);
 }
