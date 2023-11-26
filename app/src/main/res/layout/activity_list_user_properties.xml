@@ -378,10 +378,11 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
+
                     <ImageView
                         android:id="@+id/imageUser"
-                        android:layout_width="@dimen/_20pxh"
-                        android:layout_height="@dimen/_22pxh"
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_user"
