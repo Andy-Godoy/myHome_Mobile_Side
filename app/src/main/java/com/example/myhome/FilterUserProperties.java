@@ -1,9 +1,7 @@
 package com.example.myhome;
 
 
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -11,12 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.Properties;
-
-import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.Interfaces.PropertiesCallback;
-import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Properties;
+import com.example.myhome.model.Properties;
 
 public class FilterUserProperties extends AppCompatActivity {
 

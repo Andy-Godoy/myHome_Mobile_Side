@@ -1,38 +1,18 @@
 package com.example.myhome.AzureService;
 
-import static androidx.core.app.ActivityCompat.startActivityForResult;
-
-import androidx.activity.ComponentActivity;
 import android.content.ClipData;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
-import com.azure.storage.blob.BlobAsyncClient;
-import com.azure.storage.blob.*;
-import com.azure.storage.blob.models.BlobRequestConditions;
-import com.example.myhome.Front.NewProperties;
-import com.example.myhome.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -66,7 +46,7 @@ public class AzureBlobStorageManager {
         data.setType("image/*");
         data.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         data.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(NewProperties, PICK_IMAGE_REQUEST, -1,data);
+//        startActivityForResult(NewProperties, PICK_IMAGE_REQUEST, -1,data);
         ClipData clipData = data.getClipData();
         if (clipData != null) {
             for (int i = 0; i < clipData.getItemCount(); i++) {

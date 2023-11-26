@@ -555,10 +555,6 @@
                 android:id="@+id/btnAplicarFiltos"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:layout_constraintHorizontal_bias="0.0"
-                android:layout_constraintEnd_toEndOf="parent"
-                android:layout_constraintStart_toStartOf="parent"
-                android:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/boton"
                 android:text="@string/AplicarFiltros"
@@ -567,8 +563,6 @@
 
 
         </LinearLayout>
-
-        />
 
     </LinearLayout>
 
