@@ -101,6 +101,9 @@
         <activity
             android:name=".Front.EditProperty"
             android:exported="false" />
+        <activity
+            android:name=".Front.UsersProfile"
+            android:exported="false" />
     </application>
 
 </manifest>
