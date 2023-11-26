@@ -189,7 +189,6 @@
                     android:inputType="text"
                     android:paddingLeft="8dp"
                     android:textSize="20sp"
-
                     tools:ignore="VisualLintTextFieldSize" />
 
 
