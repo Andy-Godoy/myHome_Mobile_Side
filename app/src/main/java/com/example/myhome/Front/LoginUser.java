@@ -125,14 +125,14 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         ((MyHome) this.getApplication()).setUsuario(user);
 
         if (user != null) {
-            Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
+            Intent intent = new Intent(LoginUser.this, UsersProfile.class);
             startActivity(intent);
             finish(); // Finalizamos la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
         }
 
-        Intent intent = new Intent(LoginUser.this, SecondActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+       // Intent intent = new Intent(LoginUser.this, SecondActivity.class);
+       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+       // startActivity(intent);
     }
 
     @Override

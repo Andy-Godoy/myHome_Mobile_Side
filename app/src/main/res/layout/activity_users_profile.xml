@@ -50,13 +50,12 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/profile_picture"
-        android:background="@drawable/circle_background"
+        android:background="@drawable/circle_shape"
         android:contentDescription="Profile Picture"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
 
     <!-- Para que no se pueda modificar el rating al hacerle click -->
 
@@ -87,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailUser" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailUser" />
 
         <!-- SPINNER PARA EL MANEJO DE MONEDAS (APLICA SOLO A PUBLICO GENERAL)-->
             <Spinner
@@ -105,7 +104,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewCurrencyLabel" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/textViewNameUser"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -152,8 +151,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewNameUser" />
 
-    <EditText
-        android:id="@+id/editTextEmailUser"
+    <TextView
+        android:id="@+id/textViewEmailUser"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
@@ -197,6 +196,7 @@
         android:enabled="false"
         android:text="Guardar Cambios"
         android:textColor="@color/botonText"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
