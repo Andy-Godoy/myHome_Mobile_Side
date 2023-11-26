@@ -1,15 +1,15 @@
 package com.example.myhome.AzureService;
 
-
 import android.content.ClipData;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -43,7 +43,7 @@ public class AzureBlobStorageManager {
         data.setType("image/*");
         data.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         data.setAction(Intent.ACTION_GET_CONTENT);
-        //startActivityForResult(NewProperties, PICK_IMAGE_REQUEST, -1,data);
+//        startActivityForResult(NewProperties, PICK_IMAGE_REQUEST, -1,data);
         ClipData clipData = data.getClipData();
         if (clipData != null) {
             for (int i = 0; i < clipData.getItemCount(); i++) {

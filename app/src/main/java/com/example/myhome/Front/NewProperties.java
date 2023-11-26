@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,17 +13,24 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myhome.model.Address;
+import com.example.myhome.Front.ImageAdapter;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Properties;
 import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.model.PropertySummary;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.Address;
+import com.example.myhome.model.Properties;
+import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -37,11 +45,26 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
     private CheckBox checkBox;
     private Properties properties = new Properties();
     private Address address = new Address();
+    private TextView tvCourses;
+    private MaterialCardView selectedCard;
+    private boolean[] selectedCourses;
+    private ArrayList<Integer> coursesList = new ArrayList<>();
+    private String[] courses;
+    private String[] amenities = new String[]{};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_properties);
+
+        tvCourses = findViewById(R.id.spnrAmenities);
+        selectedCard = findViewById(R.id.selectCard);
+        courses = getResources().getStringArray(R.array.lista_amenities);
+        selectedCourses = new boolean[courses.length];
+
+        selectedCard.setOnClickListener(v -> {
+            showCoursesDialog();
+        });
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
@@ -56,18 +79,14 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
        // Obtenemos el ID del ítem de menú correspondiente a esta actividad
         int menuItemId = R.id.action_add; // Reemplazamos con el ID correcto para esta actividad
 
-       // Marcamos el ítem del menú como seleccionado
+        // Marcamos el ítem del menú como seleccionado
         bottomNavigationView.setSelectedItemId(menuItemId);
 
         // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             MenuHandler.handleMenuItemClick(this, item);
             return true;
-       });
-
-        spinner = findViewById(R.id.spnrAmenities);
-        adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
-        spinner.setAdapter(adapter);
+        });
 
         gridView = findViewById(R.id.gridView);
         imageAdapter = new ImageAdapter(this, imageUris);
@@ -98,6 +117,111 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
                 }
             }
         });
+    }
+
+    private void showCoursesDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewProperties.this);
+        builder.setTitle("Selección amenities");
+        builder.setCancelable(false);
+
+        boolean[] originalSelectedCourses = Arrays.copyOf(selectedCourses, selectedCourses.length);
+        ArrayList<Integer> originalCoursesList = new ArrayList<>(coursesList);
+        builder.setMultiChoiceItems(courses, selectedCourses, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (which >= 0 && which < courses.length) {
+                    // Si se hace clic en otro elemento que no sea "Todos"
+                    if (isChecked) {
+                        // Agregar el elemento a la lista
+                        if (!coursesList.contains(which)) {
+                            coursesList.add(which);
+                        }
+                    } else {
+                        // Eliminar el elemento de la lista
+                        coursesList.remove(Integer.valueOf(which));
+                    }
+                }
+            }
+        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                StringBuilder stringBuilder = new StringBuilder();
+
+                if (coursesList.size() > 0) {
+                    amenities = new String[coursesList.size()];
+                } else {
+                    amenities = new String[]{};
+                }
+
+                for (int i = 0; i < coursesList.size(); i++) {
+                    amenities[i] = courses[coursesList.get(i)];
+                }
+
+                for (int i = 0; i < coursesList.size(); i++) {
+                    if (i < 3) {
+                        stringBuilder.append(courses[coursesList.get(i)]);
+                        if (i != coursesList.size() - 1) {
+                            stringBuilder.append(", ");
+                        }
+                    } else {
+                        stringBuilder.append("...");
+                        break;
+                    }
+                }
+
+                tvCourses.setText(stringBuilder.toString());
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Restaurar al estado original al hacer clic en Cancelar
+                System.arraycopy(originalSelectedCourses, 0, selectedCourses, 0, selectedCourses.length);
+                coursesList.clear();
+                coursesList.addAll(originalCoursesList);
+
+                // Actualizar el TextView con el estado original
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < coursesList.size(); i++) {
+                    stringBuilder.append(courses[coursesList.get(i)]);
+                    if (i != coursesList.size() - 1) {
+                        stringBuilder.append(", ");
+                    }
+                }
+                tvCourses.setText(stringBuilder.toString());
+
+                dialog.dismiss();
+            }
+        }).setNeutralButton("Limpiar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                for (int i = 0; i < selectedCourses.length; i++) {
+                    selectedCourses[i] = false;
+                    coursesList.clear();
+                    tvCourses.setText("");
+                }
+            }
+        });
+//                .setNeutralButton("Todos", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                for (int i = 0; i < selectedCourses.length; i++) {
+//                    selectedCourses[i] = true;
+//                    coursesList.add(i);
+//                }
+//                // Actualizar la vista con la lista seleccionada
+//                StringBuilder stringBuilder = new StringBuilder();
+//                for (int i = 0; i < coursesList.size(); i++) {
+//                    stringBuilder.append(courses[coursesList.get(i)]);
+//                    if (i != coursesList.size() - 1) {
+//                        stringBuilder.append(", ");
+//                    }
+//                }
+//                tvCourses.setText(stringBuilder.toString());
+//            }
+//        })
+
+        builder.show();
     }
 
     @Override
@@ -137,16 +261,6 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
     }
 
     private void setProperty() {
-        String[] amenities = new String[adapter.getAmenities().size()];
-        int x = 0;
-
-        if (adapter.getAmenities().size() > 0) {
-            for (String i : adapter.getAmenities()) {
-                amenities[x] = i;
-                x++;
-            }
-        }
-
         properties.setPropertyAddress(address);
         properties.setAgencyId(((MyHome) this.getApplication()).getUsuario().getAgencyId());
         properties.setPropertyType(((Spinner) findViewById(R.id.spnrTipoPropiedad)).getSelectedItem().toString());

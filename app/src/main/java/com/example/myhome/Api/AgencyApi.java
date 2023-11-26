@@ -49,7 +49,6 @@ public class AgencyApi {
         return null;
     }
 
-
     public Agencies editarAgencia (Agencies agency, final AgencyCallBack callback) {
         // Configuramos Retrofit
         Retrofit retrofit = new Retrofit.Builder()

@@ -69,6 +69,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         TextView tvDescripcion = findViewById(R.id.tvDescripcion);
         TextView tvBaulera = findViewById(R.id.tvBaulera);
         TextView tvTerrace = findViewById(R.id.tvTerraza);
+        TextView tvBalcon = findViewById(R.id.tvBalcon);
         String locacion = propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
                 propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit();
 
@@ -91,6 +92,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         String amenities = "";
         String baulera = (propiedad.getPropertyHasStorage()) ? "Tiene Baulera" : "No tiene Baulera";
         String terrace = (propiedad.getpropertyHasTerrace()) ? "Tiene Terraza" : "No tiene Terraza";
+        String balcony = (propiedad.getPropertyHasBalcony()) ? "Tiene Balcón" : "No tiene Balcón";
 
         // Convertir la cadena en un array utilizando la coma como delimitador
         String[] amenitiesArray = propiedad.getPropertyAmenities();
@@ -124,6 +126,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         tvDescripcion.setText(propiedad.getPropertyDescription());
         tvBaulera.setText(baulera);
         tvTerrace.setText(terrace);
+        tvBalcon.setText(balcony);
     }
 
     @Override
