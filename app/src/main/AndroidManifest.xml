@@ -63,6 +63,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
 
+        <meta-data
+            android:name="com.google.firebase.firebase-auth"
+            android:value="AIzaSyCrMZUurUTfYorX5WDB4uTVvMMCOIuhbFI" />
+
         <activity
             android:name=".Front.NewPassword"
             android:exported="false" />

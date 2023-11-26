@@ -99,7 +99,7 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.12.0") //Libreria para el uso de imagenes
     implementation (platform("com.google.firebase:firebase-bom:32.4.0")) //Libreria para el uso de Firebase
-    implementation ("com.google.firebase:firebase-auth:22.2.0")         //Libreria para el uso de Firebase Auth
+    implementation ("com.google.firebase:firebase-auth:22.3.0")         //Libreria para el uso de Firebase Auth
     //Implementación de libreria para el uso de mapas
     //implementation ("com.google.android.gms:play-services-maps:18.1.0")
     //implementation ("com.google.android.gms:play-services-location:21.0.1")
@@ -135,5 +135,6 @@ dependencies {
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
     implementation("com.azure:azure-storage-blob:12.25.0") //para el almacenamiento en Azure
     implementation ("com.microsoft.azure.android:azure-storage-android:2.0.0")
+    //implementation ("com.azure:azure-storage-common:12.25.0")
     //***************************************************************
 }
