@@ -325,36 +325,39 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         descripcion.setText(propiedad.getPropertyDescription());
 
         amenities = propiedad.getPropertyAmenities();
-        StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < amenities.length; i++) {
-         coursesList.add(Arrays.asList(courses).indexOf(amenities[i]));
-        }
+        if (!(amenities.length == 1 && (amenities[0].isEmpty() || amenities[0] == null))) {
+            StringBuilder stringBuilder = new StringBuilder();
 
-        coursesList.forEach(position -> {
-            selectedCourses[position] = true;
-        });
-
-        for (int i = 0; i < amenities.length; i++) {
-            if (i < 3) {
-                stringBuilder.append(courses[coursesList.get(i)]);
-                if (i != amenities.length - 1) {
-                    stringBuilder.append(", ");
-                }
-            } else {
-                stringBuilder.append("...");
-                break;
+            for (int i = 0; i < amenities.length; i++) {
+                coursesList.add(Arrays.asList(courses).indexOf(amenities[i]));
             }
+
+            coursesList.forEach(position -> {
+                selectedCourses[position] = true;
+            });
+
+            for (int i = 0; i < amenities.length; i++) {
+                if (i < 3) {
+                    stringBuilder.append(courses[coursesList.get(i)]);
+                    if (i != amenities.length - 1) {
+                        stringBuilder.append(", ");
+                    }
+                } else {
+                    stringBuilder.append("...");
+                    break;
+                }
+            }
+
+            tvCourses.setText(stringBuilder.toString());
         }
-
-
-
-        tvCourses.setText(stringBuilder.toString());
-
 
         if (!isLoadView) {
 
             Toast.makeText(EditProperty.this, "Los cambios han sido guardados exitosamente.", Toast.LENGTH_SHORT).show();
+
+            // Vuelve a la pantalla anterior
+            finish();
 
         }
         isLoadView = false;
@@ -396,7 +399,6 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         PropertyApi propertyApi = new PropertyApi();
         propertyApi.editarPropiedad(propiedad, agencyId ,this);
     }
-
 
 
     // Validaciones sobre la completitud de el formulario
