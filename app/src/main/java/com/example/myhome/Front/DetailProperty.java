@@ -99,7 +99,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
 
         for (int i = 0; i < amenitiesArray.length; i++) {
             if (i == 0) {
-                amenities = "+" + amenitiesArray[i];
+                amenities = " + " + amenitiesArray[i];
             } else {
                 amenities += "\n + " + amenitiesArray[i];
             }
