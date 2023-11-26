@@ -8,7 +8,6 @@ import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
