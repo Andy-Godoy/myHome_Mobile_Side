@@ -96,6 +96,17 @@
     //*****************************************************
 
     //****************************************************
+    //uso de strings para activity_filter_user_properties.xml
+    <string name="AplicarFiltros">Aplicar Filtros</string>
+    <string name="Filtros">Filtros</string>
+    <string name="LimpiarFiltros">Limpiar Filtros</string>
+    <string name="PrecioMax">Precio Max</string>
+    <string name="PrecioMin">Precio Min</string>
+
+
+
+    //****************************************************
+    //****************************************************
     //uso de strings para activity_new_properties.xml
 
     <string name="calle">Calle</string>

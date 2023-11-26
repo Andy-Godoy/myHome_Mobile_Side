@@ -27,6 +27,10 @@
         <activity
             android:name=".GoogleService.GoogleMap"
             android:exported="false" />
+        <activity android:name=".PerfilInmobiliaria">
+            <!-- Configuración adicional de la actividad, como el tema, el icono, etc. -->
+        </activity>
+
         <activity
             android:name=".Front.AgenciesRating"
             android:exported="false" />

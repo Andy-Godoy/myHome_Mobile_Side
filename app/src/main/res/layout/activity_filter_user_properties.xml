@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.07"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/transparent"
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                android:contentDescription="@string/back_button_description"
+                android:onClick="btnClose" />
+            <ImageView
+                android:id="@+id/imageHome"
+
+                android:layout_width="43dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/icon" />
+
+            <TextView
+                android:id="@+id/txtFiltros"
+
+
+                android:layout_width="140dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:ems="10"
+                android:fontFamily="@font/opensansbold"
+                android:gravity="center"
+                android:text="@string/Filtros"
+                android:textColor="@color/general_titulo"
+                android:textSize="16sp"
+                tools:ignore="TextSizeCheck" />
+
+            <Button
+                android:id="@+id/cleanFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:text="@string/LimpiarFiltros"
+                android:gravity="right"
+                 />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:layout_margin="0dp"
+            android:padding="2dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/lblTipoPropiedad"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/tipoPropiedad"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <Spinner
+                    android:id="@+id/spnrTipoPropiedad"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_custom_spinner"
+                    android:entries="@array/lista_de_tipo_propiedad"
+                    android:spinnerMode="dropdown" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lblEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/estado"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+
+                    tools:ignore="TextSizeCheck" />
+
+                <Spinner
+                    android:id="@+id/spnrEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_custom_spinner"
+                    android:entries="@array/lista_de_estados"
+                    android:spinnerMode="dropdown"
+      />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/localidadFiltertxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/localidad"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+
+
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtLocalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/localidad"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="20sp"
+
+                    tools:ignore="VisualLintTextFieldSize" />
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/provinciaFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/provincia"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtProvincia"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/provincia"
+                    android:inputType="text"
+                    android:paddingLeft="0dp"
+                    android:textSize="20sp"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/amenitiesFiltertxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/amenities"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <Spinner
+                    android:id="@+id/spnrAmenitiesFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_custom_spinner"
+                    android:prompt="@string/amenities"
+                    android:spinnerMode="dropdown"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="290dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/antigudadFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/antiguedad"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <Spinner
+                    android:id="@+id/spnrAntiguedad"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_custom_spinner"
+                    android:entries="@array/lista_antiguedad"
+                    tools:layout_editor_absoluteY="290dp" />
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtPais"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="Pais"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtPaisEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/pais"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="20sp"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="0dp"
+                android:padding="2dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/cantBaniosFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/cantidadBaños"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtCantidadBanios"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/cantidadBaños"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:textSize="15sp"
+                    tools:layout_editor_absoluteY="384dp" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="9dp"
+            android:layout_weight="0.12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="0.5"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/txtCantidadAmbientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/cantidadAmbientes"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtCantidadAmbientesEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/cantidadAmbientes"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:textSize="15sp"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="0.5"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/lblcantidadCuartos"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:ems="10"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:gravity="center"
+                    android:text="@string/cantidadCuartos"
+                    android:textColor="@color/general_titulo"
+                    android:textSize="16sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/txtCantidadCuartosEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/borde_redondo"
+                    android:hint="@string/cantidadCuartos"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:textSize="15sp"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:layout_weight="0.12"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:padding="2dp">
+            <TextView
+                android:id="@+id/precioMax"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:fontFamily="@font/opensanssemibold"
+                android:gravity="center"
+                android:text="@string/PrecioMax"
+                android:textColor="@color/general_titulo"
+                android:textSize="16sp"
+                tools:ignore="TextSizeCheck" />
+
+            <EditText
+                android:id="@+id/txtprecioMaxEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/borde_redondo"
+                android:hint="@string/PrecioMax"
+                android:inputType="number"
+                android:paddingLeft="8dp"
+                android:textSize="15sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:padding="2dp">
+            <TextView
+                android:id="@+id/precioMin"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:fontFamily="@font/opensanssemibold"
+                android:gravity="center"
+                android:text="@string/PrecioMin"
+                android:textColor="@color/general_titulo"
+                android:textSize="16sp"
+                tools:ignore="TextSizeCheck" />
+
+            <EditText
+                android:id="@+id/txtprecioMinEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/borde_redondo"
+                android:hint="@string/PrecioMin"
+                android:inputType="number"
+                android:paddingLeft="8dp"
+                android:textSize="15sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_weight="0.08"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnAplicarFiltos"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_constraintHorizontal_bias="0.0"
+                android:layout_constraintEnd_toEndOf="parent"
+                android:layout_constraintStart_toStartOf="parent"
+                android:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/boton"
+                android:text="@string/AplicarFiltros"
+                android:textColor="@color/botonText"
+                tools:ignore="VisualLintButtonSize" />
+
+
+        </LinearLayout>
+
+        />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

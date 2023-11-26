@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:fontFamily="@font/opensansbold"
-                android:gravity="center"
+
                 android:padding="3dp"
                 android:text="@string/lbl_mispropiedades"
                 android:textAlignment="textStart"
@@ -75,24 +75,35 @@
                     android:src="@drawable/img_search"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/img_search" />
+
             </FrameLayout>
+
         </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/lista_de_propiedades">
+
             <LinearLayout
                 android:id="@+id/cardContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout="@layout/card_property">
                 </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/action_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile" />
+
             </LinearLayout>
         </ScrollView>
 
