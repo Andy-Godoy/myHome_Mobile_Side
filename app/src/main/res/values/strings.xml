@@ -250,4 +250,20 @@
     <string name="nombre_del_usuario">Nombre del Usuario</string>
 
 
+    //****************************************************
+    //uso de strings para activity_detail_property.xml
+
+    <string name="ambientes">Más de 4 ambientes</string>
+    <string name="banios">Baños</string>
+    <string name="casas">Casas</string>
+    <string name="cocheras">Cocheras</string>
+    <string name="disposicion">Disposición</string>
+    <string name="dormitorios">Dormitorios</string>
+    <string name="pisos">Pisos</string>
+    <string name="superficieCubierta">Superficie cubierta</string>
+    <string name="amenitiesTitulo">AMENITIES</string>
+    <string name="descripcionTitulo">DESCRIPCIÓN</string>
+    <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
+
+    //*****************************************************
 </resources>
