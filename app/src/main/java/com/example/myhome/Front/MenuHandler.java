@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 
-import com.example.myhome.Front.AgenciesProfile;
-import com.example.myhome.Front.ListAgencieProperties;
-import com.example.myhome.Front.NewProperties;
 import com.example.myhome.R;
 
 public class MenuHandler {

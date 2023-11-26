@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.BasicCredentials;
+import com.example.myhome.model.BasicCredentials;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Users;
+import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
@@ -74,6 +74,12 @@ public class NewPassword extends AppCompatActivity implements LoginCallback {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onUnregisterSuccess() {
+
+    }
+
     private boolean isValidPassword(String password) {
         // validamos que tenga al menos 6 caracteres la contraseña
         return password.length() >= 6;

@@ -8,13 +8,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.GoogleCredentials;
+import com.example.myhome.model.GoogleCredentials;
+import com.example.myhome.Api.MyHome;
+import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
-import com.example.myhome.Api.MyHome;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-import com.example.myhome.Api.Users;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -137,6 +137,11 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     @Override
     public void onLoginFailure(String errorMessage) {
         showToast(errorMessage);
+    }
+
+    @Override
+    public void onUnregisterSuccess() {
+
     }
 
 

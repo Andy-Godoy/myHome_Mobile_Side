@@ -11,20 +11,17 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.myhome.Api.Address;
-import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.Api.ImageAdapter;
-import com.example.myhome.Interfaces.PropertiesCallback;
+import com.example.myhome.model.Address;
+import com.example.myhome.Front.ImageAdapter;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.Api.Properties;
-import com.example.myhome.Api.PropertySummary;
+import com.example.myhome.model.Properties;
+import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.model.PropertySummary;
+import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,8 +121,12 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
     private void setAddress() {
         address.setAddressName(((TextView) findViewById(R.id.txtCalle)).getText().toString());
-        address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
-        address.setAddressFloor(Integer.parseInt(((TextView) findViewById(R.id.txtPiso)).getText().toString()));
+        if (((TextView) findViewById(R.id.txtNumero)).getText().toString() != null && (((TextView) findViewById(R.id.txtNumero)).getText().toString() != "")) {
+            address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
+        }
+        if (((TextView) findViewById(R.id.txtPiso)).getText().toString() != null && (((TextView) findViewById(R.id.txtPiso)).getText().toString() != "")){
+            address.setAddressFloor(Integer.parseInt(((TextView) findViewById(R.id.txtPiso)).getText().toString()));
+        }
         address.setAddressUnit(((TextView) findViewById(R.id.txtDpto)).getText().toString());
         address.setAddressNeighbourhood(((TextView) findViewById(R.id.txtBarrio)).getText().toString());
         address.setAddressCity(((TextView) findViewById(R.id.txtLocalidad)).getText().toString());
@@ -168,6 +169,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtCubiertos)).getText().toString()));
         properties.setPropertySemiCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtSemiCubiertos)).getText().toString()));
         properties.setPropertyUncoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtDescubiertos)).getText().toString()));
+        properties.setPropertyImages(new String[]{"url_1"});
     }
 
     @Override

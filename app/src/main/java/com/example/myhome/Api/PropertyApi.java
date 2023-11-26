@@ -10,7 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Interfaces.PropertiesCallback;
-import com.example.myhome.Interfaces.RetrofitAPI;
+import com.example.myhome.model.FiltersDTO;
+import com.example.myhome.model.Properties;
+import com.example.myhome.model.PropertyDTO;
+import com.example.myhome.model.PropertySummary;
 
 import java.util.List;
 

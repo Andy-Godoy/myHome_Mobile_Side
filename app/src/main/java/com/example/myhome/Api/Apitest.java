@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.myhome.Interfaces.RetrofitAPI;
 import com.example.myhome.R;
+import com.example.myhome.model.Agencies;
 
 import java.util.List;
 

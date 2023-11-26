@@ -1,6 +1,4 @@
-package com.example.myhome.Api;
-
-import com.example.myhome.Api.Address;
+package com.example.myhome.model;
 
 public class Properties {
     private Long propertyId;
@@ -20,6 +18,24 @@ public class Properties {
     private String propertyOrientation;
     private String propertyAge;
     private String[] propertyAmenities;
+
+    public String[] getPropertyImages() {
+        return propertyImages;
+    }
+
+    public void setPropertyImages(String[] propertyImages) {
+        this.propertyImages = propertyImages;
+    }
+
+    public boolean isPropertyHasTerrace() {
+        return propertyHasTerrace;
+    }
+
+    public void setPropertyHasTerrace(boolean propertyHasTerrace) {
+        this.propertyHasTerrace = propertyHasTerrace;
+    }
+
+    private String[] propertyImages;
     private String propertyDescription;
     private Integer propertyCoveredM2;
     private Integer propertySemiCoveredM2;

@@ -9,13 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.Api.BasicCredentials;
+import com.example.myhome.model.BasicCredentials;
 import com.example.myhome.Api.MyHome;
+import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-import com.example.myhome.Api.Users;
 
 public class RegisterAgencies extends AppCompatActivity implements LoginCallback {
 
@@ -115,5 +115,10 @@ public class RegisterAgencies extends AppCompatActivity implements LoginCallback
     @Override
     public void onLoginFailure(String errorMessage) {
         showToast(errorMessage);
+    }
+
+    @Override
+    public void onUnregisterSuccess() {
+
     }
 }

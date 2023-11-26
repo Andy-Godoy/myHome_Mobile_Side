@@ -1,16 +1,14 @@
-package com.example.myhome.Interfaces;
+package com.example.myhome.Api;
 
-import com.example.myhome.Api.Agencies;
-import com.example.myhome.Api.BasicCredentials;
-import com.example.myhome.Api.FiltersDTO;
-import com.example.myhome.Api.GoogleCredentials;
-import com.example.myhome.Api.Properties;
-import com.example.myhome.Api.PropertySummary;
-import com.example.myhome.Api.Resenas;
-import com.example.myhome.Api.Users;
-
+import com.example.myhome.model.Agencies;
+import com.example.myhome.model.BasicCredentials;
+import com.example.myhome.model.FiltersDTO;
+import com.example.myhome.model.GoogleCredentials;
+import com.example.myhome.model.Properties;
+import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.Resenas;
+import com.example.myhome.model.Users;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -38,6 +36,9 @@ public interface RetrofitAPI {
     @POST("users/logins")
     Call<Users> loguearUsuario (@Body BasicCredentials credentials);
 
+    @DELETE("users/{userId}")
+    Call<Void> deleteUser (@Path("userId") long userId);
+
     @POST("properties")
     Call<Properties> createProperty (@Body Properties property);
 
@@ -61,4 +62,10 @@ public interface RetrofitAPI {
 
     @GET("reviews")
     Call<List<Resenas>> getResenas(@Query("agencyId") long agencyId);
+
+    @GET("agencies/{agencyId}")
+    Call<Agencies> getAgency(@Path("agencyId") Long agencyId);
+
+    @PUT("agencies/{agencyId}")
+    Call<Agencies> updateAgency(@Path("agencyId") Long agencyId, @Body Agencies agency, @Query("userId") Long userId);
 }
