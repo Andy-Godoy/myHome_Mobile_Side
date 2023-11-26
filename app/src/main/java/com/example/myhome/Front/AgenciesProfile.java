@@ -36,6 +36,7 @@ import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
+import java.util.List;
 
 public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack, LoginCallback {
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -95,7 +96,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
 
                 // Iniciar la actividad AgenciesRating
-                Intent intent = new Intent(AgenciesProfile.this, AgenciesRating.class);
+                Intent intent = new Intent(AgenciesProfile.this, ListAgencieReviews.class);
                 startActivity(intent);
                 return false;
             }

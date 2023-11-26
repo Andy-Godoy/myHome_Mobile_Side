@@ -1,7 +1,9 @@
-package com.example.myhome;
+package com.example.myhome.Front;
 
 import android.content.Context;
 import android.view.MenuItem;
+
+import com.example.myhome.R;
 
 public class MenuHandlerUsuario {
     public static void handleMenuItemClick(Context context, MenuItem item) {

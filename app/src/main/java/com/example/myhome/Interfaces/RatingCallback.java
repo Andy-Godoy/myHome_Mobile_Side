@@ -8,6 +8,6 @@ public interface RatingCallback {
 
     void onResenasSuccess(List<Resenas> body);
 
-
+    void onFailure(String errorMessage);
 
 }

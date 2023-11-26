@@ -27,7 +27,7 @@
         <activity
             android:name=".GoogleService.GoogleMap"
             android:exported="false" />
-        <activity android:name=".PerfilInmobiliaria">
+        <activity android:name=".Front.PerfilInmobiliaria">
             <!-- Configuración adicional de la actividad, como el tema, el icono, etc. -->
         </activity>
 
@@ -76,6 +76,9 @@
 
         <activity
             android:name=".Front.AgenciesProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Front.ListAgencieReviews"
             android:exported="false" />
         <activity
             android:name=".Front.RegisterAgencies"
