@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,24 +10,26 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.model.Address;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Properties;
 import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.model.PropertyDTO;
-import com.example.myhome.model.PropertySummary;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.Address;
+import com.example.myhome.model.Properties;
+import com.example.myhome.model.PropertyDTO;
+import com.example.myhome.model.PropertySummary;
+import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class EditProperty extends AppCompatActivity implements PropertiesCallback {
     private CustomSpinnerAdapter adapter;
-    private Spinner spnrAmenities;
     private Spinner spnrTipoPropiedad;
     private Spinner spnrEstado;
     private Spinner spnrOrientacion;
@@ -35,7 +38,12 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
     private Properties propiedad;
     private boolean isLoadView = true;
     private Address address = new Address();
-
+    private TextView tvCourses;
+    private MaterialCardView selectedCard;
+    private boolean[] selectedCourses;
+    private ArrayList<Integer> coursesList = new ArrayList<>();
+    private String[] courses;
+    private String[] amenities = new String[]{};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +58,15 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
             NetworkUtils.showNoInternetMessage(this);
         }
 
-        spnrAmenities = findViewById(R.id.spnrAmenities);
+        tvCourses = findViewById(R.id.spnrAmenities);
+        selectedCard = findViewById(R.id.selectCard);
+        courses = getResources().getStringArray(R.array.lista_amenities);
+        selectedCourses = new boolean[courses.length];
+
+        selectedCard.setOnClickListener(v -> {
+            showCoursesDialog();
+        });
+
         adapter = new CustomSpinnerAdapter(this, getResources().getStringArray(R.array.lista_amenities));
         adapter.setCheckBoxesEnabled(false); // Deshabilita checkbox "Todos"
 
@@ -81,16 +97,94 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         });
     }
 
-    private void setProperty() {
-        String[] amenities = new String[adapter.getAmenities().size()];
-        int x = 0;
+    private void showCoursesDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditProperty.this);
+        builder.setTitle("Selección amenities");
+        builder.setCancelable(false);
 
-        if (adapter.getAmenities().size() > 0) {
-            for (String i : adapter.getAmenities()) {
-                amenities[x] = i;
-                x++;
+        boolean[] originalSelectedCourses = Arrays.copyOf(selectedCourses, selectedCourses.length);
+        ArrayList<Integer> originalCoursesList = new ArrayList<>(coursesList);
+        builder.setMultiChoiceItems(courses, selectedCourses, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (which >= 0 && which < courses.length) {
+                    // Si se hace clic en otro elemento que no sea "Todos"
+                    if (isChecked) {
+                        // Agregar el elemento a la lista
+                        if (!coursesList.contains(which)) {
+                            coursesList.add(which);
+                        }
+                    } else {
+                        // Eliminar el elemento de la lista
+                        coursesList.remove(Integer.valueOf(which));
+                    }
+                }
             }
-        }
+        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                StringBuilder stringBuilder = new StringBuilder();
+
+                if (coursesList.size() > 0) {
+                    amenities = new String[coursesList.size()];
+                } else {
+                    amenities = new String[]{};
+                }
+
+                for (int i = 0; i < coursesList.size(); i++) {
+                    amenities[i] = courses[coursesList.get(i)];
+                }
+
+                for (int i = 0; i < coursesList.size(); i++) {
+                    if (i < 3) {
+                        stringBuilder.append(courses[coursesList.get(i)]);
+                        if (i != coursesList.size() - 1) {
+                            stringBuilder.append(", ");
+                        }
+                    } else {
+                        stringBuilder.append("...");
+                        break;
+                    }
+                }
+
+                tvCourses.setText(stringBuilder.toString());
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Restaurar al estado original al hacer clic en Cancelar
+                System.arraycopy(originalSelectedCourses, 0, selectedCourses, 0, selectedCourses.length);
+                coursesList.clear();
+                coursesList.addAll(originalCoursesList);
+
+                // Actualizar el TextView con el estado original
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < coursesList.size(); i++) {
+                    stringBuilder.append(courses[coursesList.get(i)]);
+                    if (i != coursesList.size() - 1) {
+                        stringBuilder.append(", ");
+                    }
+                }
+                tvCourses.setText(stringBuilder.toString());
+
+                dialog.dismiss();
+            }
+        }).setNeutralButton("Limpiar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                for (int i = 0; i < selectedCourses.length; i++) {
+                    selectedCourses[i] = false;
+                    coursesList.clear();
+                    tvCourses.setText("");
+                }
+            }
+        });
+
+        builder.show();
+    }
+
+    private void setProperty() {
 
         propiedad.setPropertyAddress(address);
         propiedad.setPropertyType(((Spinner) findViewById(R.id.spnrTipoPropiedad)).getSelectedItem().toString());
@@ -172,9 +266,6 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
             adapter.setCheckedItems(amenitiesChecks);
         }
 
-        spnrAmenities.setAdapter(adapter);
-        spnrAmenities.setEnabled(false);
-
         spnrTipoPropiedad.setSelection(posicionTipoPropiedad);
         spnrEstado.setSelection(posicionEstado);
         spnrOrientacion.setSelection(posicionOrientacion);
@@ -233,7 +324,35 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         precioExpensas.setText(String.valueOf(propiedad.getPropertyExpenses()));
         descripcion.setText(propiedad.getPropertyDescription());
 
-        if ( !isLoadView ){
+        amenities = propiedad.getPropertyAmenities();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < amenities.length; i++) {
+         coursesList.add(Arrays.asList(courses).indexOf(amenities[i]));
+        }
+
+        coursesList.forEach(position -> {
+            selectedCourses[position] = true;
+        });
+
+        for (int i = 0; i < amenities.length; i++) {
+            if (i < 3) {
+                stringBuilder.append(courses[coursesList.get(i)]);
+                if (i != amenities.length - 1) {
+                    stringBuilder.append(", ");
+                }
+            } else {
+                stringBuilder.append("...");
+                break;
+            }
+        }
+
+
+
+        tvCourses.setText(stringBuilder.toString());
+
+
+        if (!isLoadView) {
 
             Toast.makeText(EditProperty.this, "Los cambios han sido guardados exitosamente.", Toast.LENGTH_SHORT).show();
 
