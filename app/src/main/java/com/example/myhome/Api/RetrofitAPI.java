@@ -68,4 +68,7 @@ public interface RetrofitAPI {
 
     @PUT("agencies/{agencyId}")
     Call<Agencies> updateAgency(@Path("agencyId") Long agencyId, @Body Agencies agency, @Query("userId") Long userId);
+
+    @PUT("users/{userId}")
+    Call<Users> updateUser(@Path("userId") Long userId, @Body Users user);
 }

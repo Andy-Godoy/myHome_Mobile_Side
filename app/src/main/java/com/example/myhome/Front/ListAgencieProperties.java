@@ -151,16 +151,30 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener(){
 
                     // Establecer clic en editar propiedad
-                    @Override
-                    public void onClick(View view) {
-                        // Obtengo el ID de la propiedad
-                        String propertyId = p.getPropertyId().toString();
+                    public void onClick(View v) {
+                        // Mostramos un mensaje de advertencia al usuario
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListAgencieProperties.this);
+                        builder.setTitle("Editar propiedad");
+                        builder.setMessage("¿Está seguro de que desea editar su propiedad?");
+                        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Obtengo el ID de la propiedad
+                                String propertyId = p.getPropertyId().toString();
 
-                        //Iniciar la actividad para editar la propiedad pasando el id de propiedad
-                        Intent intent = new Intent(ListAgencieProperties.this, EditProperty.class);
-                        intent.putExtra("propertyId", propertyId);
-                        startActivity(intent);
-
+                                //Iniciar la actividad para editar la propiedad pasando el id de propiedad
+                                Intent intent = new Intent(ListAgencieProperties.this, EditProperty.class);
+                                intent.putExtra("propertyId", propertyId);
+                                startActivity(intent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hace nada
+                            }
+                        });
+                        builder.show();
                     }
                 });
 
