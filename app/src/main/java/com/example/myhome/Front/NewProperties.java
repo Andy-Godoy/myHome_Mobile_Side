@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -17,7 +18,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myhome.model.Address;
 import com.example.myhome.Front.ImageAdapter;
-
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -248,8 +248,8 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         if (((TextView) findViewById(R.id.txtNumero)).getText().toString() != null && (((TextView) findViewById(R.id.txtNumero)).getText().toString() != "")) {
             address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
         }
-        if (((TextView) findViewById(R.id.txtPiso)).getText().toString() != null && (((TextView) findViewById(R.id.txtPiso)).getText().toString() != "")){
-            address.setAddressFloor(Integer.parseInt(((TextView) findViewById(R.id.txtPiso)).getText().toString()));
+        if (((EditText) findViewById(R.id.txtPiso)).getText().toString() != null && (((EditText) findViewById(R.id.txtPiso)).getText().toString() != "")){
+            address.setAddressFloor(Integer.parseInt(((EditText) findViewById(R.id.txtPiso)).getText().toString()));
         }
         address.setAddressUnit(((TextView) findViewById(R.id.txtDpto)).getText().toString());
         address.setAddressNeighbourhood(((TextView) findViewById(R.id.txtBarrio)).getText().toString());

@@ -10,20 +10,23 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
 import com.example.myhome.Api.AgencyApi;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
@@ -34,28 +37,26 @@ import com.example.myhome.R;
 import com.example.myhome.model.Agencies;
 import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
+
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
-public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack, LoginCallback {
+public class UsersProfile extends AppCompatActivity implements LoginCallback {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
     private Button btnLogout;
-    private RatingBar ratingBar;
-    private Button btnSaveAgency;
+    private Button btnSaveUser;
     private Button btnDeleteAccount;
-    private TextView textViewRatingValue;
     private Users user;
-    private Long agencyId;
-    private Agencies agency;
     private EditText nombre;
     private EditText email;
+    private Spinner spinnerCurrency;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agencies_profile);
+        setContentView(R.layout.activity_users_profile);
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
@@ -70,89 +71,22 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         //Recupero el usuario en contexto para tener los datos
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
-            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
         }
 
 
-        ratingBar = findViewById(R.id.ratingBar);
-        textViewRatingValue = findViewById(R.id.textViewRatingValue);
-        // aca podemos configurar otros atributos del RatingBar según sea necesario...
-        // Agregamos un OnRatingBarChangeListener al RatingBar
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                // Actualizar el TextView con el valor del RatingBar
-                textViewRatingValue.setText(String.valueOf(rating));
-            }
-        });
-        textViewRatingValue.setText(String.valueOf(ratingBar.getRating()));
+        //Escucho si modificaron el selector de monedas y de ser así habilito el botón de guardado
+        spinnerCurrency = findViewById(R.id.spinnerCurrency);
+        if (spinnerCurrency.getOnItemSelectedListener() != null) {
+            btnSaveUser.setEnabled(true);
+        }
 
 
-        // Agregamos un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
-        ratingBar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-
-                // Iniciar la actividad AgenciesRating
-                Intent intent = new Intent(AgenciesProfile.this, AgenciesRating.class);
-                startActivity(intent);
-                return false;
-            }
-        });
-
-        //Escucho si modificaron el nombre y de ser así habilito el botón de guardado
-        nombre = findViewById(R.id.textViewName);
-        nombre.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                btnSaveAgency.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-
-
-        });
-
-        //Escucho si modificaron el email y de ser así habilito el botón de guardado
-        email = findViewById(R.id.editTextEmail);
-        email.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                btnSaveAgency.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-
-
-        });
-
-
-
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnLogoutUser);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Crear un AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(UsersProfile.this);
                 builder.setTitle("Cerrar Sesión");
                 builder.setMessage("¿Estás seguro que desea cerrar sesión?");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -167,7 +101,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                         editor.apply();
 
                         //  lo llevamos al activity LoginUser
-                        Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
+                        Intent intent = new Intent(UsersProfile.this, LoginUser.class);
                         startActivity(intent);
                         finish(); //  Finaliza la actividad actual
                     }
@@ -193,7 +127,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             public void onClick(View v) {
 
                 // Mostramos un mensaje de advertencia al usuario
-                AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(UsersProfile.this);
                 builder.setTitle("Eliminar cuenta");
                 builder.setMessage("¿Está seguro de que desea eliminar su cuenta?");
                 builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
@@ -202,7 +136,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
                         //Llamo a retrofit para eliminar el usuario
                         UsersApi usersApi = new UsersApi();
-                        usersApi.deleteUser(user.getUserId(), AgenciesProfile.this);
+                        usersApi.deleteUser(user.getUserId(), UsersProfile.this);
                         //
                     }
                 });
@@ -217,22 +151,23 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         });
 
 
-        btnSaveAgency = findViewById(R.id.btnSaveAgency);
-        btnSaveAgency.setOnClickListener(new View.OnClickListener() {
+        btnSaveUser = findViewById(R.id.btnSaveUser);
+        btnSaveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Crear un AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(AgenciesProfile.this);
-                builder.setTitle("Editar Agencia");
+                AlertDialog.Builder builder = new AlertDialog.Builder(UsersProfile.this);
+                builder.setTitle("Editar Usuario");
                 builder.setMessage("¿Estás seguro que deseas editar tus datos?");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int a) {
-                        agency.setAgencyName(nombre.getText().toString());
-                        agency.setAgencyEmail(email.getText().toString());
-                        //Llamo a retrofit para
-                        AgencyApi agencyApi = new AgencyApi();
-                        agencyApi.editarAgencia(agency, AgenciesProfile.this);
+
+                        String text = spinnerCurrency.getSelectedItem().toString();
+
+                        //Llamo a retrofit para editar el usuario
+                        UsersApi usersApi = new UsersApi();
+                        usersApi.editarUsuario(user, UsersProfile.this);
                         //
                     }
                 });
@@ -251,14 +186,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         });
 
 
-      /*  Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.currency_options, // Definimos las opciones en strings.xml dentro del array
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter); */
+
 
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
@@ -271,8 +199,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             }
         });
 
-        AgencyApi agencyApi = new AgencyApi();
-        agency = agencyApi.getAgency(agencyId, this);
+
     }
 
         private void openGallery() {
@@ -311,44 +238,28 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
     }
 
     @Override
-    public void onLoginSuccess(Users user) {
-
-    }
-
-    @Override
     public void onLoginFailure(String errorMessage) {
 
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onFailure(String errorMessage) {
-
-    }
 
     @Override
-    public void onAgencySuccess(Agencies agency, Boolean isUpdate) {
-        if (agency != null) {
-            this.agency = agency;
-            nombre.setText(agency.getAgencyName());
-            email.setText(agency.getAgencyEmail());
-            btnSaveAgency.setEnabled(false);
+    public void onLoginSuccess(Users user) {
+        if (user != null) {
+            this.user = user;
+            nombre.setText(user.getUserName());
+            email.setText(user.getUserEmail());
 
-            if (agency.getAgencyRating() != null) {
-                //Cargo los datos del reseñas
-                ratingBar.setRating(agency.getAgencyRating());
-            }
-            if (isUpdate){
-                Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
-            }
+            btnSaveUser.setEnabled(false);
+            Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
     public void onUnregisterSuccess() {
         Toast.makeText(this, "El usuario ha sido eliminado", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
+        Intent intent = new Intent(UsersProfile.this, LoginUser.class);
         startActivity(intent);
     }
 
@@ -375,7 +286,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
 
     public void volver(View view) {
-        Intent volver=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
+        Intent volver=new Intent(UsersProfile.this, ListAgencieProperties.class);
         startActivity(volver);
     }
 

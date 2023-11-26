@@ -14,14 +14,12 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.example.myhome.R;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -199,14 +197,5 @@ public class UploadImageActivity extends AppCompatActivity {
         return blobContainerClient.getBlobClient(randomFileName).getBlobUrl();
     }
 
-    private String generateUniqueImageName() {
 
-        long timestamp = System.currentTimeMillis();
-
-
-        String randomSuffix = String.valueOf(new Random().nextInt(100000));
-
-       //aca concatenamos el nombre de la imagen con el timestamp y el random
-        return "image_" + timestamp + "_" + randomSuffix;
-    }
 }

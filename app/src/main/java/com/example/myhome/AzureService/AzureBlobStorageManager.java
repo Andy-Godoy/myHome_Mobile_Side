@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
-
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 
@@ -24,11 +23,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class AzureBlobStorageManager {
     private static final int PICK_IMAGE_REQUEST = 1;
     private List<Uri> selectedImages = new ArrayList<>();
-
     public List<Uri> getSelectedImages() {
         return selectedImages;
     }
-
     private BlobContainerClient blobContainerClient;
     private Context context;
 
