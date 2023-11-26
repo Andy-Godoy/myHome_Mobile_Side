@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +22,15 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.bumptech.glide.Glide;
+import android.graphics.Bitmap;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.bumptech.glide.Glide;
 import com.example.myhome.Api.AgencyApi;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
@@ -36,20 +40,24 @@ import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.example.myhome.model.Agencies;
 import com.example.myhome.model.Users;
+import com.example.myhome.model.enums.CurrencyType;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
 public class UsersProfile extends AppCompatActivity implements LoginCallback {
+
+    private boolean isUpdate = false;
+    private  boolean isFirstTime = true;
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView imageViewProfile;
     private Button btnLogout;
-    private Button btnSaveUser;
+
     private Button btnDeleteAccount;
     private Users user;
-    private EditText nombre;
-    private EditText email;
+    private TextView nombre;
+    private TextView email;
     private Spinner spinnerCurrency;
 
 
@@ -59,6 +67,15 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
         setContentView(R.layout.activity_users_profile);
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
+
+        nombre = findViewById(R.id.textViewNameUser);
+        email = findViewById(R.id.textViewEmailUser);
+        spinnerCurrency = findViewById(R.id.spinnerCurrency);
+
+
+
+
+
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
@@ -71,14 +88,33 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
         //Recupero el usuario en contexto para tener los datos
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
+            nombre.setText(user.getUserName());
+            email.setText(user.getUserEmail());
+            spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference().toString()));
+            Glide.with(this).load(user.getUserImage()).into(imageViewProfile);
         }
 
 
         //Escucho si modificaron el selector de monedas y de ser así habilito el botón de guardado
         spinnerCurrency = findViewById(R.id.spinnerCurrency);
-        if (spinnerCurrency.getOnItemSelectedListener() != null) {
-            btnSaveUser.setEnabled(true);
-        }
+        spinnerCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if(isFirstTime){
+                    isFirstTime = false;
+                    return;
+                }
+                user.setUserCurrencyPreference((spinnerCurrency.getSelectedItem().toString() == "USD") ? CurrencyType.USD : CurrencyType.ARS);
+                UsersApi usersApi = new UsersApi();
+
+                isUpdate = true;
+                usersApi.editarUsuario(user, UsersProfile.this);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         btnLogout = findViewById(R.id.btnLogoutUser);
@@ -151,91 +187,8 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
         });
 
 
-        btnSaveUser = findViewById(R.id.btnSaveUser);
-        btnSaveUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Crear un AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(UsersProfile.this);
-                builder.setTitle("Editar Usuario");
-                builder.setMessage("¿Estás seguro que deseas editar tus datos?");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int a) {
-
-                        String text = spinnerCurrency.getSelectedItem().toString();
-
-                        //Llamo a retrofit para editar el usuario
-                        UsersApi usersApi = new UsersApi();
-                        usersApi.editarUsuario(user, UsersProfile.this);
-                        //
-                    }
-                });
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int a) {
-                        //  No hace nada
-                        dialogInterface.dismiss();
-                    }
-                });
-
-                // Mostrar el AlertDialog
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
-
-
-
-
-
-        imageViewProfile = findViewById(R.id.imageViewProfile);
-
-        // Manejar el clic en el ImageView
-        imageViewProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGallery();
-            }
-        });
-
-
     }
 
-        private void openGallery() {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), PICK_IMAGE_REQUEST);
-        }
-
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            // Obtener la imagen seleccionada de la galería
-            Uri selectedImageUri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
-
-                // Redondear la imagen
-                setRoundedImage(bitmap);
-
-                // Puedes agregar aquí la lógica para subir la imagen a Azure Blob Storage si lo necesitas
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    private void setRoundedImage(Bitmap bitmap) {
-        // Crear un drawable redondeado
-        RoundedBitmapDrawable circularDrawable =
-                RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-        circularDrawable.setCircular(true);
-
-        // Establecer la imagen redondeada en el ImageView
-        imageViewProfile.setImageDrawable(circularDrawable);
-    }
 
     @Override
     public void onLoginFailure(String errorMessage) {
@@ -250,9 +203,11 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
             this.user = user;
             nombre.setText(user.getUserName());
             email.setText(user.getUserEmail());
+           // spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference()));
+            if(isUpdate){
+                Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
+            }
 
-            btnSaveUser.setEnabled(false);
-            Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
         }
     }
 
