@@ -37,6 +37,7 @@ import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+
 public class UploadImageActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -172,8 +173,6 @@ public class UploadImageActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-
-
         String randomFileName = UUID.randomUUID().toString() + ".jpg";
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
@@ -202,5 +201,16 @@ public class UploadImageActivity extends AppCompatActivity {
         // Obtener la URL de la imagen en la posición dada
         String randomFileName = UUID.randomUUID().toString() + ".jpg";
         return blobContainerClient.getBlobClient(randomFileName).getBlobUrl();
+    }
+
+    private String generateUniqueImageName() {
+
+        long timestamp = System.currentTimeMillis();
+
+
+        String randomSuffix = String.valueOf(new Random().nextInt(100000));
+
+       //aca concatenamos el nombre de la imagen con el timestamp y el random
+        return "image_" + timestamp + "_" + randomSuffix;
     }
 }

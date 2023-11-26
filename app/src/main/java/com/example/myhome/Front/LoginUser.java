@@ -140,7 +140,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
     }
 
     @Override
-    public void onLoginSuccess() {
+    public void onUnregisterSuccess() {
 
     }
 
