@@ -2,6 +2,7 @@ package com.example.myhome.Front;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,29 +22,26 @@ import java.util.List;
 
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_property);
 
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
-
         List<String> imageUrls = obtenerUrlsDesdeAzure();
 
         ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
         imageSlider.setAdapter(imageSliderAdapter);
 
         obtenerPropiedad();
-
-//        Button btnClose = findViewById(R.id.btnClose);
-//        btnClose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Cierra la actividad y vuelve a la actividad anterior
-//                finish();
-//            }
-//        });
+        Button btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Cierra la actividad y vuelve a la actividad anterior
+                finish();
+            }
+        });
     }
 
     @Override
@@ -71,6 +69,8 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         TextView tvDescubierto = findViewById(R.id.tvDesCubierto);
         TextView tvAmenities = findViewById(R.id.tvAmenities);
         TextView tvDescripcion = findViewById(R.id.tvDescripcion);
+        TextView tvBaulera = findViewById(R.id.tvBaulera);
+        TextView tvTerrace = findViewById(R.id.tvTerraza);
         String locacion = propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
                 propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit();
 
@@ -91,13 +91,15 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         String semicubierto = propiedad.getPropertySemiCoveredM2() + " m2 \nsemicubie.";
         String descubierto = propiedad.getPropertyUncoveredM2() + " m2 \ndescubie.";
         String amenities = "";
+        String baulera = (propiedad.getPropertyHasStorage()) ? "Tiene Baulera" : "No tiene Baulera";
+        String terrace = (propiedad.getpropertyHasTerrace()) ? "Tiene Terraza" : "No tiene Terraza";
 
         // Convertir la cadena en un array utilizando la coma como delimitador
         String[] amenitiesArray = propiedad.getPropertyAmenities();
 
         for (int i = 0; i < amenitiesArray.length; i++) {
             if (i == 0) {
-                amenities ="+" + amenitiesArray[i];
+                amenities = "+" + amenitiesArray[i];
             } else {
                 amenities += "\n + " + amenitiesArray[i];
             }
@@ -122,6 +124,8 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         tvDescubierto.setText(descubierto);
         tvAmenities.setText(amenities);
         tvDescripcion.setText(propiedad.getPropertyDescription());
+        tvBaulera.setText(baulera);
+        tvTerrace.setText(terrace);
     }
 
     @Override

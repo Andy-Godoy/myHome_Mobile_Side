@@ -263,6 +263,7 @@
     <string name="superficieCubierta">Superficie cubierta</string>
     <string name="amenitiesTitulo">AMENITIES</string>
     <string name="descripcionTitulo">DESCRIPCIÓN</string>
+    <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
 
     //*****************************************************
 </resources>

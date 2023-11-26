@@ -60,15 +60,15 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvCarousel"
                 android:layout_width="330dp"
-                android:layout_height="150dp"
+                android:layout_height="300dp"
                 app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
                 app:layout_constraintStart_toStartOf="@id/clDetailProperty"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clCarousel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <com.asksira.loopingviewpager.LoopingViewPager
                         android:id="@+id/imageSlider"
@@ -77,16 +77,13 @@
                         app:autoScroll="false"
                         app:isInfinite="false"
                         android:contentDescription="imagenes de la propiedad"
-                        app:layout_constraintBottom_toBottomOf="@+id/clCarousel"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="@+id/clCarousel"
                         app:layout_constraintStart_toStartOf="@+id/clCarousel"
                         app:layout_constraintTop_toTopOf="@+id/clCarousel"
                         app:layout_constraintWidth_percent="1.0"
-                        app:scrollInterval="7000">
+                        app:scrollInterval="7000"/>
 
-
-                    </com.asksira.loopingviewpager.LoopingViewPager>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -463,11 +460,53 @@
                         android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
                         app:layout_constraintStart_toStartOf="@id/clCardGeneral"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTituloDescripcion"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloDescripcion" />
+
+                    <TextView
+                        android:id="@+id/tvTituloCaracteristicas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="@string/catacteristicasTitulo"
+                        android:textColor="@color/general_titulo"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDescripcion" />
+
+                    <TextView
+                        android:id="@+id/tvBaulera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/ic_treasure_chest"
+                        android:drawablePadding="8dp"
+                        android:paddingRight="10dp"
+                        android:text=""
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@id/clCardGeneral"
+                        app:layout_constraintStart_toStartOf="@id/clCardGeneral"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloCaracteristicas" />
+
+                    <TextView
+                        android:id="@+id/tvTerraza"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/ic_terrace"
+                        android:drawablePadding="8dp"
+                        android:text=""
+                        android:textColor="@color/gris_3"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@id/clCardGeneral"
+                        app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
+                        app:layout_constraintStart_toEndOf="@id/tvBaulera"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloCaracteristicas" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
