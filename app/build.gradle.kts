@@ -98,7 +98,7 @@ dependencies {
 
 
     implementation ("com.github.bumptech.glide:glide:4.12.0") //Libreria para el uso de imagenes
-    implementation (platform("com.google.firebase:firebase-bom:32.4.0")) //Libreria para el uso de Firebase
+    implementation (platform("com.google.firebase:firebase-bom:32.6.0")) //Libreria para el uso de Firebase
     implementation ("com.google.firebase:firebase-auth:22.3.0")         //Libreria para el uso de Firebase Auth
     //Implementación de libreria para el uso de mapas
     //implementation ("com.google.android.gms:play-services-maps:18.1.0")
@@ -127,9 +127,9 @@ dependencies {
     implementation ("com.dhiwise:endless-viewpager:1.1.0")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
-    implementation ("com.airbnb.android:lottie:6.1.0")
+    implementation ("com.airbnb.android:lottie:6.2.0")
     implementation ("io.github.chaosleung:pinview:1.4.4")
-    implementation ("androidx.databinding:databinding-runtime:8.1.3")
+    implementation ("androidx.databinding:databinding-runtime:8.1.4")
     //implementation ("com.asksira.android:loopingviewpager:1.4.1")
 
     implementation ("com.github.moondroid.coverflow:library:1.0") //para el slide de imagenes
