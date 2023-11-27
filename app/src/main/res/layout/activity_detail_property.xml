@@ -108,11 +108,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
-                        app:layout_constraintTop_toTopOf="@+id/clCard" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
 
                     <TextView
                         android:id="@+id/tvPrecioPropiedad"
@@ -120,11 +119,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/tvEstado"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
 
                     <TextView
                         android:id="@+id/tvPrecioExpensas"
@@ -133,11 +131,10 @@
                         android:layout_marginStart="6dp"
                         android:layout_marginTop="32dp"
                         android:drawableLeft="@drawable/ic_noun_expense"
-                        android:text=""
                         android:textColor="@color/general_titulo"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
-                        app:layout_constraintTop_toTopOf="@+id/tvEstado" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvEstado" />
 
                     <View
                         android:id="@+id/vLineaExpensas"
@@ -147,7 +144,7 @@
                         android:background="@color/gray_400"
                         app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintStart_toStartOf="@id/clCard"
-                        app:layout_constraintTop_toTopOf="@id/tvPrecioExpensas" />
+                        app:layout_constraintTop_toBottomOf="@id/tvPrecioExpensas" />
 
                     <TextView
                         android:id="@+id/tvLocacion"
@@ -157,7 +154,6 @@
                         android:layout_marginTop="8dp"
                         android:drawableLeft="@drawable/ic_location_dot_solid"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCard"
@@ -170,7 +166,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="30dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCard"
@@ -183,9 +178,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_building"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/clCard"
@@ -193,130 +188,114 @@
 
                     <TextView
                         android:id="@+id/tvAmbientes"
-                        android:layout_width="110dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_couch"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvTipoPropiedad"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.178"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintStart_toEndOf="@+id/tvTipoPropiedad"
-                        app:layout_constraintTop_toTopOf="@+id/tvTipoPropiedad" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvPais" />
 
                     <TextView
                         android:id="@+id/tvDormitorios"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_bed"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvAmbientes"
-                        app:layout_constraintEnd_toEndOf="@id/clCard"
-                        app:layout_constraintTop_toTopOf="@+id/tvAmbientes" />
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTipoPropiedad" />
 
                     <TextView
                         android:id="@+id/tvBanios"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_bath"
                         android:drawablePadding="8dp"
-                        android:paddingTop="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvTipoPropiedad"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTipoPropiedad" />
 
                     <TextView
                         android:id="@+id/tvCocheras"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_car_side"
                         android:drawablePadding="8dp"
-                        android:paddingTop="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toEndOf="@+id/tvBanios"
-                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDormitorios" />
 
                     <TextView
                         android:id="@+id/tvPisos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_layer_group_solid"
                         android:drawablePadding="8dp"
-                        android:paddingTop="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvDormitorios"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDormitorios" />
+
 
                     <TextView
                         android:id="@+id/tvOrientacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_compass_regular"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvDisposicion"
-                        app:layout_constraintEnd_toStartOf="@+id/tvDisposicion"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvBanios"
-                        app:layout_constraintTop_toTopOf="@+id/tvDisposicion" />
-
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
 
                     <TextView
                         android:id="@+id/tvDisposicion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_right_left_solid"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
-                        app:layout_constraintEnd_toStartOf="@+id/tvPisos"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvCocheras"
+                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
                         app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
 
                     <TextView
                         android:id="@+id/tvAntiguedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_calendar_days_regular"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/vDatoPropiedad"
-                        app:layout_constraintEnd_toEndOf="@id/clCard"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvPisos"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCocheras" />
+                        app:layout_constraintStart_toStartOf="@id/clCard"
+                        app:layout_constraintTop_toBottomOf="@+id/tvOrientacion" />
 
                     <View
                         android:id="@+id/vDatoPropiedad"
@@ -327,7 +306,7 @@
                         app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@id/clCard"
-                        app:layout_constraintTop_toBottomOf="@+id/tvOrientacion" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvAntiguedad" />
 
                     <TextView
                         android:id="@+id/tvTituloMetros"
@@ -341,52 +320,51 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/vDatoPropiedad" />
+                        app:layout_constraintTop_toTopOf="@+id/clCard" />
 
                     <TextView
                         android:id="@+id/tvCubierto"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvOrientacion"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+                        app:layout_constraintStart_toStartOf="@+id/tvTipoPropiedad"
+                        app:layout_constraintTop_toBottomOf="@+id/vDatoPropiedad" />
 
                     <TextView
                         android:id="@+id/tvSemiCubierto"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="8dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
-                        android:text="5 m2 \nsemicubie."
+                        android:paddingEnd="30dp"
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="@id/tvDesCubierto"
+                        app:layout_constraintEnd_toEndOf="@id/clCard"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/tvCubierto"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+                        app:layout_constraintStart_toStartOf="@+id/tvAmbientes"
+                        app:layout_constraintTop_toBottomOf="@+id/vDatoPropiedad" />
 
                     <TextView
                         android:id="@+id/tvDesCubierto"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/tvSemiCubierto"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTituloMetros" />
+                        app:layout_constraintStart_toStartOf="@+id/tvTipoPropiedad"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSemiCubierto" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -424,7 +402,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@id/vAmenitiesDescripcion"
@@ -457,7 +434,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
@@ -486,7 +462,6 @@
                         android:drawableLeft="@drawable/ic_treasure_chest"
                         android:drawablePadding="8dp"
                         android:paddingRight="10dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/clCardGeneral"
@@ -501,7 +476,6 @@
                         android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_terrace"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
@@ -515,7 +489,6 @@
                         android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/ic_balcony"
                         android:drawablePadding="8dp"
-                        android:text=""
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@+id/tvBaulera"

@@ -14,8 +14,12 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-
+import android.content.Context;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
@@ -26,10 +30,10 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         setContentView(R.layout.activity_detail_property);
 
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
-        List<String> imageUrls = obtenerUrlsDesdeAzure();
+       // List<String> imageUrls = obtenerUrlsDesdeAzure();
 
-        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
-        imageSlider.setAdapter(imageSliderAdapter);
+       // ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
+        //imageSlider.setAdapter(imageSliderAdapter);
 
         obtenerPropiedad();
         Button btnClose = findViewById(R.id.btnClose);
@@ -44,10 +48,19 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+
+
     }
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
+
+        String[] propertyImages = propiedad.getPropertyImages();
+
+        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
+        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+        imageSlider.setAdapter(imageSliderAdapter);
+
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
         TextView tvPrecioExpensas = findViewById(R.id.tvPrecioExpensas);
@@ -76,7 +89,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         String pais = propiedad.getPropertyAddress().getAddressCountry() + ", " + propiedad.getPropertyAddress().getAddressState() + ", " + propiedad.getPropertyAddress().getAddressNeighbourhood();
         String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
         String dormitorio = (propiedad.getPropertyBedroomQuantity() <= 1) ? " dormitorio" : " dormitorios";
-        String banio = (propiedad.getPropertyBathroomQuantity() <= 1) ? " banio" : " banios";
+        String banio = (propiedad.getPropertyBathroomQuantity() <= 1) ? " baño" : " baños";
         String cochera = "";
         String piso = (propiedad.getPropertyAddress().getAddressFloor() <= 1) ? " piso" : " pisos";
 
@@ -99,7 +112,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
 
         for (int i = 0; i < amenitiesArray.length; i++) {
             if (i == 0) {
-                amenities = "+" + amenitiesArray[i];
+                amenities = " + " + amenitiesArray[i];
             } else {
                 amenities += "\n + " + amenitiesArray[i];
             }
@@ -154,7 +167,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         finish();
     }
 
-    private List<String> obtenerUrlsDesdeAzure() {
+  /*  private List<String> obtenerUrlsDesdeAzure() {
         // Lógica para obtener las URLs de las imágenes desde el blob de Azure
 
         List<String> imageUrls = new ArrayList<>();
@@ -163,5 +176,5 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
 
         return imageUrls;
-    }
+    } */
 }

@@ -125,7 +125,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         ((MyHome) this.getApplication()).setUsuario(user);
 
         if (user != null) {
-            Intent intent = new Intent(LoginUser.this, UsersProfile.class);
+            Intent intent = new Intent(LoginUser.this, ListUserProperties.class);
             startActivity(intent);
             finish(); // Finalizamos la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
         }

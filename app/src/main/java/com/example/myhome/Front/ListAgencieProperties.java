@@ -11,8 +11,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.MyHome;
@@ -24,9 +26,10 @@ import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class ListAgencieProperties extends AppCompatActivity implements PropertiesCallback {
@@ -80,34 +83,56 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
     }
 
-    public void verPropiedades (View view){
+    public void verPropiedades(View view) {
 
-        Intent miIntent=new Intent(ListAgencieProperties.this, ListAgencieProperties.class);
+        Intent miIntent = new Intent(ListAgencieProperties.this, ListAgencieProperties.class);
         startActivity(miIntent);
     }
 
-    public void nuevaPropiedad (View view){
+    public void nuevaPropiedad(View view) {
 
-        Intent miIntent=new Intent(ListAgencieProperties.this, NewProperties.class);
+        Intent miIntent = new Intent(ListAgencieProperties.this, NewProperties.class);
         startActivity(miIntent);
     }
 
-    public void verPerfil (View view){
+    public void verPerfil(View view) {
 
-        Intent miIntent=new Intent(ListAgencieProperties.this, AgenciesProfile.class);
+        Intent miIntent = new Intent(ListAgencieProperties.this, AgenciesProfile.class);
         startActivity(miIntent);
     }
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
 
-        if (properties != null){
-            for (PropertySummary p: properties){
+        if (properties != null) {
+            for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property, cardConteiner, false);
-                List<String> imageUrls = obtenerUrlsDesdeAzure();
+                String[] propertyImages = p.getPropertyImages();
 
-                ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
+                if (propertyImages != null) {
+
+
+                    if (propertyImages.length > 0 && !(propertyImages[0].isEmpty())) {
+
+                        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+                        ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
+                    }
+
+                    else{
+                        propertyImages = new String[1];
+                        propertyImages[0] = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+                    }
+
+                }
+                else{
+                    propertyImages = new String[1];
+                    propertyImages[0] = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+                }
+
+                ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+                ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
+
 
                 ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText("USD ".concat(p.getPropertyPrice().toString()));
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
@@ -115,10 +140,10 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));
                 ((TextView) propertyCard.findViewById(R.id.propertyRooms)).setText(p.getPropertyBedroomQuantity().toString().concat(" Habitaciones"));
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
-                ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
+
                 propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
-                ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener(){
+                ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener() {
 
                     // Establecer clic en eliminar propiedad
                     public void onClick(View v) {
@@ -148,7 +173,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                     }
                 });
 
-                ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener(){
+                ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener() {
 
                     // Establecer clic en editar propiedad
                     public void onClick(View v) {
@@ -233,14 +258,5 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
         properties = propertyApi.verPropiedades(filters, this);
     }
 
-    private List<String> obtenerUrlsDesdeAzure() {
-        // Lógica para obtener las URLs de las imágenes desde el blob de Azure
 
-        List<String> imageUrls = new ArrayList<>();
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
-
-        return imageUrls;
-    }
 }
