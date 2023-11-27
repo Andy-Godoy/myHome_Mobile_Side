@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,12 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
         RatingApi ratingApi = new RatingApi();
         ratingApi.verResenas(agencyId, this);
 
+
+
+    }
+    public void volver(View view) {
+        Intent miIntent=new Intent(ListAgencieReviews.this, AgenciesProfile.class);
+        startActivity(miIntent);
     }
 
     @Override
