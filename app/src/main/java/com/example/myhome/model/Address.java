@@ -84,6 +84,7 @@ public class Address {
         this.addressLatitude = addressLatitude;
     }
 
+
     public double getAddressLongitude() {
         return addressLongitude;
     }

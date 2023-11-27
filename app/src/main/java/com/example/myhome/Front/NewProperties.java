@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,16 +26,19 @@ import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-import com.example.myhome.model.Address;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import android.location.Geocoder;
+
 
 
 public class NewProperties extends AppCompatActivity implements PropertiesCallback {
@@ -267,12 +271,17 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
     private void setAddress() {
         address.setAddressName(((TextView) findViewById(R.id.txtCalle)).getText().toString());
-        if (((TextView) findViewById(R.id.txtNumero)).getText().toString() != null && (((TextView) findViewById(R.id.txtNumero)).getText().toString() != "")) {
-            address.setAddressNumber(Integer.parseInt(((TextView) findViewById(R.id.txtNumero)).getText().toString()));
+
+        String numeroText = ((TextView) findViewById(R.id.txtNumero)).getText().toString();
+        if (!TextUtils.isEmpty(numeroText)) {
+            address.setAddressNumber(Integer.parseInt(numeroText));
         }
-        if (((EditText) findViewById(R.id.txtPiso)).getText().toString() != null && (((EditText) findViewById(R.id.txtPiso)).getText().toString() != "")){
-            address.setAddressFloor(Integer.parseInt(((EditText) findViewById(R.id.txtPiso)).getText().toString()));
+
+        String pisoText = ((EditText) findViewById(R.id.txtPiso)).getText().toString();
+        if (!TextUtils.isEmpty(pisoText)) {
+            address.setAddressFloor(Integer.parseInt(pisoText));
         }
+
         address.setAddressUnit(((TextView) findViewById(R.id.txtDpto)).getText().toString());
         address.setAddressNeighbourhood(((TextView) findViewById(R.id.txtBarrio)).getText().toString());
         address.setAddressCity(((TextView) findViewById(R.id.txtLocalidad)).getText().toString());
@@ -280,6 +289,36 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         address.setAddressCountry(((TextView) findViewById(R.id.txtPais)).getText().toString());
         address.setAddressLatitude(0);
         address.setAddressLongitude(0);
+
+        //aca concateno la info
+        String fullAddress = address.getAddressName() + ", " +
+                address.getAddressNumber() + ", " +
+                address.getAddressCity() + ", " +
+                address.getAddressState() + ", " +
+                address.getAddressCountry();
+
+        // Obtenemos la latitud y longitud mediante geocodificación
+        try {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            List<android.location.Address> addresses = geocoder.getFromLocationName(fullAddress, 1);
+
+            if (addresses != null && addresses.size() > 0) {
+                android.location.Address foundAddress = addresses.get(0);
+                double addressLatitude = foundAddress.getLatitude();
+                double addressLongitude = foundAddress.getLongitude();
+
+                // Asigne las coordenadas al objeto Address
+                address.setAddressLatitude(addressLatitude);
+                address.setAddressLongitude(addressLongitude);
+            } else {
+                // si no se puede geocodificar la dire nos da este mensaje
+                Toast.makeText(this, "No se pudo obtener la ubicación para la dirección proporcionada", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            // Maneja la excepción y le muestra al usuario un mensaje de error
+            Toast.makeText(this, "Error al obtener la ubicación: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
     private void setProperty() {
