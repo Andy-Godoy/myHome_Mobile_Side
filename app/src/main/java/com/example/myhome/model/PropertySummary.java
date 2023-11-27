@@ -106,4 +106,14 @@ public class PropertySummary {
     public void setPropertyCity(String propertyCity) {
         this.propertyCity = propertyCity;
     }
+
+    private String[] propertyImages;
+
+    public String[] getPropertyImages() {
+        return propertyImages;
+    }
+
+    public void setPropertyImages(String[] propertyImages) {
+        this.propertyImages = propertyImages;
+}
 }

@@ -127,8 +127,6 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
                     setProperty();
                     if (azureBlobStorageManager.uploadImages(imageUris))
                     {
-
-
                         //properties.setPropertyImages((String[]) azureBlobStorageManager.getUploadedImageUrls().toArray());
                         Object[] objectArray = azureBlobStorageManager.getUploadedImageUrls().toArray();
                         String[] stringArray = Arrays.copyOf(objectArray, objectArray.length, String[].class);
