@@ -3,15 +3,19 @@ package com.example.myhome;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myhome.model.Properties;
-
+import com.example.myhome.model.FiltersDTO;
+import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.Front.ListUserProperties;
+import android.view.View;
 public class FilterUserProperties extends AppCompatActivity {
 
-    private Properties properties = new Properties();
+   // private Properties properties = new Properties();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,11 +23,24 @@ public class FilterUserProperties extends AppCompatActivity {
 
     }
 
-    public void buscarPropiedad(Properties properties) {
-        this.properties = properties;
-        properties.getPropertyAge();
-        //en progreso
-    }
+    ImageButton btnBack = findViewById(R.id.btnBack);
+//arreglar boton para volver atras
+
+    /*
+btnBack.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Context context = view.getContext();
+
+            // Crear un Intent para abrir la actividad ListUserProperties
+            Intent intent = new Intent(context, ListUserProperties.class);
+
+            // Iniciar la actividad ListUserProperties
+            context.startActivity(intent);
+        }
+    });
+*/
+
 
     Button btnAplicarFiltros = findViewById(R.id.btnAplicarFiltos);
 /*
@@ -109,5 +126,56 @@ public class FilterUserProperties extends AppCompatActivity {
         return true;
     }
 
+    public void aplicarFiltros(){
 
+
+        Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
+        Spinner estado = findViewById(R.id.spnrEstado);
+        TextView addressCity = findViewById(R.id.txtLocalidad);
+        TextView addressState = findViewById(R.id.txtProvincia);
+        Spinner amenities=findViewById(R.id.spnrAmenitiesFilter);
+        Spinner antiguedad=findViewById(R.id.spnrAntiguedad);
+        TextView addressCountry = findViewById(R.id.txtPaisEdit);
+        TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
+        TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientesEdit);
+        TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
+
+        //precio Max y Min
+        TextView precioMax = findViewById(R.id.txtprecioMaxEdit);
+        TextView precioMin = findViewById(R.id.txtprecioMinEdit);
+
+        String valorTextoMax = precioMax.getText().toString();
+        int precioMaxvalor = Integer.parseInt(valorTextoMax);
+
+        String valorTextoMin = precioMin.getText().toString();
+        int precioMinvalor = Integer.parseInt(valorTextoMin);
+
+
+        //le paso la data a FiltersDTO
+        FiltersDTO filtersDTO = new FiltersDTO();
+
+        filtersDTO.setPropertyType(tipoPropiedad.toString());
+        filtersDTO.setPropertyStatus(estado.toString());
+        filtersDTO.setLocalidad(addressCity.toString());
+        filtersDTO.setProvincia(addressState.toString());
+        //filtersDTO.setPropertyAmenities(amenities.toString()); //String [] ?
+        filtersDTO.setPropertyAge(antiguedad.toString());
+        filtersDTO.setPais(addressCountry.toString());
+        filtersDTO.setCantidadBanios(Integer.parseInt(cantidadBanios.toString()));
+        filtersDTO.setCantidadAmbientes(Integer.parseInt(cantidadAmbientes.toString()));
+        filtersDTO.setCantidadCuatros(Integer.parseInt(cantidadCuartos.toString()));
+        filtersDTO.setPrecioMax(precioMaxvalor);
+        filtersDTO.setPrecioMin(precioMinvalor);
+
+        /*
+        PropertyApi p =New PropertyApi();
+        p.verPropiedades(filtersDTO, callback);
+
+        */
+
+
+
+
+
+    }
 }

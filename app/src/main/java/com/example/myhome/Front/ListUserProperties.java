@@ -36,6 +36,10 @@ public class ListUserProperties extends AppCompatActivity {
 
         // Establecer el adaptador en el LoopingViewPager
         imageSliderSlider.setAdapter(imageSliderAdapter);
+
+
+
+
     }
 
     private List<String> obtenerUrlsDesdeAzure() {
