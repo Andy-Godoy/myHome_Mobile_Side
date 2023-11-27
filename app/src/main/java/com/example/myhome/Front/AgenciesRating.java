@@ -59,8 +59,5 @@ public class AgenciesRating extends AppCompatActivity {
 
 
     }
-    public void volver(View view) {
-        Intent miIntent=new Intent(AgenciesRating.this, AgenciesProfile.class);
-        startActivity(miIntent);
-    }
+
 }

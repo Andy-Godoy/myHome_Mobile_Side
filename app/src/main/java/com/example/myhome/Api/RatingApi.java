@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Interfaces.PropertiesCallback;
+import com.example.myhome.Interfaces.RatingCallback;
 import com.example.myhome.model.Resenas;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class RatingApi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
     }
-    public List<Resenas> verResenas(long agencyId, final PropertiesCallback callback) {
+    public List<Resenas> verResenas(long agencyId, final RatingCallback callback) {
         // Configuramos Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -45,7 +46,7 @@ public class RatingApi extends AppCompatActivity {
             public void onResponse(Call<List<Resenas>> call, Response<List<Resenas>> response) {
                 if (response.isSuccessful()) {
 
-                 //   callback.onResenasSuccess(response.body());
+                   callback.onResenasSuccess(response.body());
 
                 }
 

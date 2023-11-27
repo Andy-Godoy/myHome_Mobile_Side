@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myhome.AzureService.AzureBlobStorageManager;
 import com.example.myhome.model.Address;
 import com.example.myhome.Front.ImageAdapter;
 import com.example.myhome.Api.MyHome;
@@ -31,6 +33,7 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -52,10 +55,21 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
     private String[] courses;
     private String[] amenities = new String[]{};
 
+    private AzureBlobStorageManager azureBlobStorageManager;
+
+
+    private void handleImageSelection(List<Uri> selectedImages) {
+        // Aquí puedes realizar cualquier acción necesaria con las imágenes seleccionadas
+        // Por ejemplo, agregarlas a la lista imageUris
+        imageUris.addAll(selectedImages);
+        imageAdapter.notifyDataSetChanged(); // Asegúrate de notificar al adaptador sobre los cambios
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_properties);
+
+        azureBlobStorageManager = new AzureBlobStorageManager(this);
 
         tvCourses = findViewById(R.id.spnrAmenities);
         selectedCard = findViewById(R.id.selectCard);
@@ -100,10 +114,8 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
             public void onClick(View view) {
                 // Abre la galería para seleccionar imágenes
                 Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Seleccionar imágenes"), PICK_IMAGES_REQUEST);
+                azureBlobStorageManager.openGallery(intent);
+                startActivityForResult(intent, PICK_IMAGES_REQUEST);
             }
         });
 
@@ -113,9 +125,20 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
                 if (validacion()) {
                     setAddress();
                     setProperty();
-                    guardarPropiedad();
+                    if (azureBlobStorageManager.uploadImages(imageUris))
+                    {
+
+
+                        //properties.setPropertyImages((String[]) azureBlobStorageManager.getUploadedImageUrls().toArray());
+                        Object[] objectArray = azureBlobStorageManager.getUploadedImageUrls().toArray();
+                        String[] stringArray = Arrays.copyOf(objectArray, objectArray.length, String[].class);
+
+                        properties.setPropertyImages(stringArray);
+                        guardarPropiedad();
+                    }
+
                 }
-            }
+           }
         });
     }
 
@@ -231,15 +254,16 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         if (requestCode == PICK_IMAGES_REQUEST && resultCode == RESULT_OK && data != null) {
             if (data.getClipData() != null) {
                 int count = data.getClipData().getItemCount();
+                List<Uri> selectedImages = new ArrayList<>();
                 for (int i = 0; i < count; i++) {
                     Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                    imageUris.add(imageUri);
+                    selectedImages.add(imageUri);
                 }
+                handleImageSelection(selectedImages);
             } else if (data.getData() != null) {
                 Uri imageUri = data.getData();
-                imageUris.add(imageUri);
+                handleImageSelection(Collections.singletonList(imageUri));
             }
-            imageAdapter.notifyDataSetChanged();
         }
     }
 
@@ -283,7 +307,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtCubiertos)).getText().toString()));
         properties.setPropertySemiCoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtSemiCubiertos)).getText().toString()));
         properties.setPropertyUncoveredM2(Integer.parseInt(((TextView) findViewById(R.id.txtDescubiertos)).getText().toString()));
-        properties.setPropertyImages(new String[]{"url_1"});
+
     }
 
     @Override
@@ -321,6 +345,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         TextView addressCity = findViewById(R.id.txtLocalidad);
         TextView addressState = findViewById(R.id.txtProvincia);
         TextView addressCountry = findViewById(R.id.txtPais);
+        TextView addresFloor = findViewById(R.id.txtPiso);
 
         //Property
         Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
@@ -385,6 +410,9 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
             esValido = false;
         } else if (Integer.parseInt(cubiertos.getText().toString()) <=0) {
             Toast.makeText(this, "Debe ingresar una cantidad de metros cubiertos mayor a 0", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        }else if (addresFloor.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un piso mayor o igual a cero", Toast.LENGTH_SHORT).show();
             esValido = false;
         }
 

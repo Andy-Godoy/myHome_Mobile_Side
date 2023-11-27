@@ -21,11 +21,19 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class AzureBlobStorageManager {
+    private List<String> uploadedImageUrls = new ArrayList<>();
+
+    public List<String> getUploadedImageUrls() {
+        return uploadedImageUrls;
+    }
+
     private static final int PICK_IMAGE_REQUEST = 1;
     private List<Uri> selectedImages = new ArrayList<>();
+
     public List<Uri> getSelectedImages() {
         return selectedImages;
     }
+
     private BlobContainerClient blobContainerClient;
     private Context context;
 
@@ -43,7 +51,6 @@ public class AzureBlobStorageManager {
         data.setType("image/*");
         data.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         data.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(NewProperties, PICK_IMAGE_REQUEST, -1,data);
         ClipData clipData = data.getClipData();
         if (clipData != null) {
             for (int i = 0; i < clipData.getItemCount(); i++) {
@@ -60,16 +67,19 @@ public class AzureBlobStorageManager {
         selectedImages.add(imageUri);
     }
 
-    public void uploadImages() {
+    public boolean uploadImages(ArrayList<Uri> imageUris) {
+        selectedImages = imageUris;
         BlockingQueue<Uri> uploadQueue = new LinkedBlockingQueue<>(selectedImages);
 
+        List<Thread> hilos = new ArrayList<>();
         for (int i = 0; i < selectedImages.size(); i++) {
-            new Thread(new Runnable() {
+            Thread hilo = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         Uri imageUri = uploadQueue.take();
-                        uploadImage(imageUri);
+                        String imageUrl = uploadImage(imageUri);
+                        uploadedImageUrls.add(imageUrl);
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
@@ -80,11 +90,23 @@ public class AzureBlobStorageManager {
                         }
                     }
                 }
-            }).start();
+            });
+            hilos.add(hilo);
+            hilo.start();
         }
+
+        for (Thread hilo : hilos) {
+            try {
+                hilo.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return true;
     }
 
-    private void uploadImage(Uri imageUri) {
+    private String uploadImage(Uri imageUri) {
         InputStream imageStream;
         Bitmap bitmap;
         try {
@@ -105,10 +127,12 @@ public class AzureBlobStorageManager {
         } catch (Exception e) {
             Log.e("uploadImage", "uploadImage: Algo falló pero sigue funcionando");
         }
+
+        // Devolver la URL del blob después de subir la imagen
+        return getImageUrl(randomFileName); // Pasa el nombre del archivo generado
     }
 
-    private String getImageUrl(int position) {
-        String randomFileName = UUID.randomUUID().toString() + ".jpg";
-        return blobContainerClient.getBlobClient(randomFileName).getBlobUrl();
+    private String getImageUrl(String fileName) {
+        return blobContainerClient.getBlobClient(fileName).getBlobUrl();
     }
 }
