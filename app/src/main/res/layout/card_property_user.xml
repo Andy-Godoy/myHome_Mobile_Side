@@ -1,0 +1,147 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#FFFFFF"
+    android:layout_margin="8dp"
+    tools:context=".Front.ListAgencieProperties"
+    tools:ignore="ExtraText">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_316pxh"
+            android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <com.asksira.loopingviewpager.LoopingViewPager
+                android:id="@+id/imageSliderSlider"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:autoScroll="false"
+                app:isInfinite="false"
+                app:layout_constraintWidth_percent="1.0"
+                app:layout_constraintDimensionRatio="1:1"
+                app:scrollInterval="7000"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="Galeria de imagenes de propiedades">
+
+
+            </com.asksira.loopingviewpager.LoopingViewPager>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/propertyPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="@string/precio"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace" />
+
+                <TextView
+                    android:id="@+id/propertyAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="@string/direccion"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/propertyLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:padding="3dp"
+                    android:text="@string/ciudad_y_provincia" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseline_home_24"
+                 />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/propertyDimensions"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/dimensiones"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/propertyRooms"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/habitaciones"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/propertyDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="3dp"
+            android:text="@string/descripci_n_de_la_propiedad"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
