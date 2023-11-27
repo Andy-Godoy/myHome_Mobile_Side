@@ -226,4 +226,28 @@ public class Properties {
     public boolean getpropertyHasTerrace() {
        return  this.propertyHasTerrace;
     }
+
+    public String[] setPropertyImages() {
+        return propertyImages;
+    }
+
+    public void setPropertyImages(String[] propertyImages) {
+        this.propertyImages = propertyImages;
+    }
+    public String[] getPropertyImages() {
+        return propertyImages;
+    }
+
+
+
+    public boolean isPropertyHasTerrace() {
+        return propertyHasTerrace;
+    }
+
+    public void setPropertyHasTerrace(boolean propertyHasTerrace) {
+        this.propertyHasTerrace = propertyHasTerrace;
+    }
+
+
 }
+
