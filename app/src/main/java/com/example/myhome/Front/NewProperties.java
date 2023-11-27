@@ -321,6 +321,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         TextView addressCity = findViewById(R.id.txtLocalidad);
         TextView addressState = findViewById(R.id.txtProvincia);
         TextView addressCountry = findViewById(R.id.txtPais);
+        TextView addresFloor = findViewById(R.id.txtPiso);
 
         //Property
         Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
@@ -385,6 +386,9 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
             esValido = false;
         } else if (Integer.parseInt(cubiertos.getText().toString()) <=0) {
             Toast.makeText(this, "Debe ingresar una cantidad de metros cubiertos mayor a 0", Toast.LENGTH_SHORT).show();
+            esValido = false;
+        }else if (addresFloor.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debe ingresar un piso mayor o igual a cero", Toast.LENGTH_SHORT).show();
             esValido = false;
         }
 
