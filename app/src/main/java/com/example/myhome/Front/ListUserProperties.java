@@ -97,7 +97,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
-        if (properties != null){
+  /*      if (properties != null){
             for (PropertySummary p: properties){
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property, cardConteiner, false);
@@ -129,7 +129,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
             }
 
 
-        }
+        }*/
     }
 
     @Override
