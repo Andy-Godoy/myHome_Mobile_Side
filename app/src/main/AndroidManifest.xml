@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
@@ -59,13 +63,7 @@
             android:name=".Front.DetailProperty"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
 
-        <meta-data
-            android:name="com.google.firebase.firebase-auth"
-            android:value="AIzaSyCrMZUurUTfYorX5WDB4uTVvMMCOIuhbFI" />
 
         <activity
             android:name=".Front.NewPassword"
