@@ -137,20 +137,7 @@ public class FiltersDTO {
         this.propertyAge = propertyAge;
     }
 
-    public static float calcularDistancia(float latitud1, float longitud1, float latitud2, float longitud2) {
-        float radioTierra = 6371.0f; // Radio de la Tierra en kilómetros
 
-        float dLat = (float) Math.toRadians(latitud2 - latitud1);
-        float dLon = (float) Math.toRadians(longitud2 - longitud1);
 
-        float a = (float) (Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                + Math.cos(Math.toRadians(latitud1)) * Math.cos(Math.toRadians(latitud2))
-                * Math.sin(dLon / 2) * Math.sin(dLon / 2));
 
-        float c = 2 * (float) Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        float distancia = radioTierra * c;
-
-        return distancia;
-    }
 }

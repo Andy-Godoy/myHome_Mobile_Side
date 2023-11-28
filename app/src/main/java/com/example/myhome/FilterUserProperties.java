@@ -13,6 +13,10 @@ import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Front.ListUserProperties;
 import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+
+
 public class FilterUserProperties extends AppCompatActivity {
 
    // private Properties properties = new Properties();
@@ -20,39 +24,59 @@ public class FilterUserProperties extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_user_properties);
+        //boton para volver atras
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+
+                // Create an Intent to open the ListUserProperties activity
+                Intent intent = new Intent(context, ListUserProperties.class);
+
+                // Start the ListUserProperties activity
+                context.startActivity(intent);
+            }
+        });
+        //boton aplicar filtros
+        Button btnAplicarFiltros = findViewById(R.id.btnAplicarFiltros);
+        btnAplicarFiltros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //trigger de aplicar filtors
+
+                if(validacionFiltro()) {
+                    aplicarFiltros();
+                    Toast.makeText(getApplicationContext(), "Filtros Aplicados", Toast.LENGTH_SHORT).show();
+
+                    //filtrar propiedades
+
+                    //volver a ventana MisPropiedades
+                    Context context = view.getContext();
+                    // Create an Intent to open the ListUserProperties activity
+                    Intent intent = new Intent(context, ListUserProperties.class);
+
+                    // Start the ListUserProperties activity
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+
+        //boton limpiar filtros
+        Button btnLimpiarFiltros=findViewById(R.id.btnCleanFilters);
+
+        btnLimpiarFiltros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               limpiarfiltro();
+
+            }
+        });
 
     }
 
-    ImageButton btnBack = findViewById(R.id.btnBack);
-//arreglar boton para volver atras
 
-    /*
-btnBack.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Context context = view.getContext();
-
-            // Crear un Intent para abrir la actividad ListUserProperties
-            Intent intent = new Intent(context, ListUserProperties.class);
-
-            // Iniciar la actividad ListUserProperties
-            context.startActivity(intent);
-        }
-    });
-*/
-
-
-    Button btnAplicarFiltros = findViewById(R.id.btnAplicarFiltos);
-/*
-    btnAplicarFiltros.setOnClickListener(new View.OnClickListener() {
-
-        public void onClick(View view) {
-            if (validacionFiltro()) {
-                //buscarPropiedad();
-            }
-        }
-    });
-*/
     public boolean validacionFiltro() {
         boolean esValido = true;
 
@@ -173,9 +197,35 @@ btnBack.setOnClickListener(new View.OnClickListener() {
 
         */
 
+    }
+
+    public void limpiarfiltro(){
+        Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
+        Spinner estado = findViewById(R.id.spnrEstado);
+        TextView addressCity = findViewById(R.id.txtLocalidad);
+        TextView addressState = findViewById(R.id.txtProvincia);
+        Spinner amenities=findViewById(R.id.spnrAmenitiesFilter);
+        Spinner antiguedad=findViewById(R.id.spnrAntiguedad);
+        TextView addressCountry = findViewById(R.id.txtPaisEdit);
+        TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
+        TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientesEdit);
+        TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
 
 
-
+        //setea valores por defecto
+        tipoPropiedad.setSelection(0);
+        estado.setSelection(0);
+        addressCity.setText("");
+        addressState.setText("");
+        amenities.setSelection(0);
+        antiguedad.setSelection(0);
+        addressCountry.setText("");
+        cantidadBanios.setText("");
+        cantidadAmbientes.setText("");
+        cantidadCuartos.setText("");
 
     }
+
+
+
 }
