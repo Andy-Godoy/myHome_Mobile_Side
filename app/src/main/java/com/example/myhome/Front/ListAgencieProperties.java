@@ -4,9 +4,13 @@ package com.example.myhome.Front;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +30,10 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ListAgencieProperties extends AppCompatActivity implements PropertiesCallback {
@@ -38,7 +44,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     private LinearLayout cardConteiner;
     private List<PropertySummary> properties;
     private Long agencyId;
-
+   private  EditText searchEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
         // Obtenemos el ID del ítem de menú correspondiente a esta actividad
         int menuItemId = R.id.action_home;
 
@@ -67,9 +72,47 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             return true;
         });
 
+        searchEditText = findViewById(R.id.editTextSearch);
         cardConteiner = findViewById(R.id.cardContainer);
-
         cargarPropiedades();
+        setupSearchEditText();
+    }
+
+    // Override //
+    @Override
+    public void onPropertiesSuccess(List<PropertySummary> properties) {
+        actualizarVista(properties);
+    }
+
+    @Override
+    public void onPropertiesSuccess(Properties propiedad) {
+    }
+
+    @Override
+    public void onPropertiesFailure(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPropertiesSuccess(Long propertyId) {
+        Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
+        cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
+        searchEditText.setText("");
+        filterProperties("");
+        cargarPropiedades();
+    }
+
+    //  Métodos //
+    private void cargarPropiedades() {
+        FiltersDTO filters = new FiltersDTO();
+
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
+            filters.setAgencyId(agencyId);
+        }
+
+        PropertyApi propertyApi = new PropertyApi();
+        properties = propertyApi.verPropiedades(filters, this);
     }
 
     public void verPropiedades(View view) {
@@ -90,10 +133,51 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
         startActivity(miIntent);
     }
 
-    @Override
-    public void onPropertiesSuccess(List<PropertySummary> properties) {
+    private void setupSearchEditText() {
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No necesario para tu caso
+                Log.d("TAG", "beforeTextChanged: " + charSequence.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                filterProperties(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("TAG", "afterTextChanged: " + editable.toString());
+                // No necesario para tu caso
+            }
+        });
+    }
+
+    private void filterProperties(String searchText) {
+        List<PropertySummary> filteredProperties = new ArrayList<>();
+        filteredProperties = properties.stream()
+                .filter(property -> propertyContainsText(property, searchText))
+                .collect(Collectors.toList());
+
+        actualizarVista(filteredProperties);
+    }
+
+    private boolean propertyContainsText(PropertySummary property, String searchText) {
+        // Verifica si la descripción de la propiedad contiene el texto de búsqueda
+        String propertyDescription = property.getPropertyAddress().toLowerCase();
+        return propertyDescription.contains(searchText.toLowerCase());
+    }
+
+    private void actualizarVista(List<PropertySummary> properties) {
+        cardConteiner.removeAllViews();
 
         if (properties != null) {
+            if(this.properties == null){
+                this.properties = properties;
+            }
+
             for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property, cardConteiner, false);
@@ -211,38 +295,5 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             }
 
         }
-
     }
-
-    @Override
-    public void onPropertiesSuccess(Properties propiedad) {
-    }
-
-    @Override
-    public void onPropertiesFailure(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onPropertiesSuccess(Long propertyId) {
-        Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
-        cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
-        cargarPropiedades();
-    }
-
-    private void cargarPropiedades() {
-        FiltersDTO filters = new FiltersDTO();
-
-        if (((MyHome) this.getApplication()).getUsuario() != null) {
-            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
-            filters.setAgencyId(agencyId);
-        }
-
-        cardConteiner.removeAllViews();
-
-        PropertyApi propertyApi = new PropertyApi();
-        properties = propertyApi.verPropiedades(filters, this);
-    }
-
-
 }

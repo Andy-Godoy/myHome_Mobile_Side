@@ -283,6 +283,7 @@
     <string name="amenitiesTitulo">AMENITIES</string>
     <string name="descripcionTitulo">DESCRIPCIÓN</string>
     <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
+    <string name="buscar">Buscar</string>
 
     //*****************************************************
 </resources>
