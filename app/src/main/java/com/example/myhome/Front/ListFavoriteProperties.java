@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
+import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -60,8 +61,11 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
         cardConteiner = findViewById(R.id.cardContainer);
 
         FiltersDTO filters = new FiltersDTO();
-        filters.setIsFavourite(true);
-
+        filters.setIsFavorite(true);
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
+            filters.setUserId(userId);
+        }
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
 

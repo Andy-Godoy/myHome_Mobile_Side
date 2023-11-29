@@ -199,7 +199,7 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         propiedad.setPropertyHasBalcony(((Switch) findViewById(R.id.tieneBalcon)).isChecked());
         propiedad.setPropertyHasGarage(((Switch) findViewById(R.id.tieneCochera)).isChecked());
         propiedad.setPropertyHasStorage(((Switch) findViewById(R.id.tieneBaulera)).isChecked());
-        propiedad.setpropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
+        propiedad.setPropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
         propiedad.setPropertyPosition(((Spinner) findViewById(R.id.spnrPosicion)).getSelectedItem().toString());
         propiedad.setPropertyOrientation(((Spinner) findViewById(R.id.spnrOrientacion)).getSelectedItem().toString());
         propiedad.setPropertyAge(((Spinner) findViewById(R.id.spnrAntiguedad)).getSelectedItem().toString());
@@ -282,7 +282,7 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         tieneBaulera.setChecked(propiedad.getPropertyHasStorage());
 
         Switch tieneTerraza = findViewById(R.id.tieneTerraza);
-        tieneTerraza.setChecked(propiedad.getpropertyHasTerrace());
+        tieneTerraza.setChecked(propiedad.getPropertyHasTerrace());
 
         Address address = propiedad.getPropertyAddress();
 
