@@ -97,6 +97,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     public void onPropertiesSuccess(Long propertyId) {
         Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
         cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
+
         searchEditText.setText("");
         filterProperties("");
         cargarPropiedades();
@@ -105,6 +106,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     //  Métodos //
     private void cargarPropiedades() {
         FiltersDTO filters = new FiltersDTO();
+        this.properties = null;
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
