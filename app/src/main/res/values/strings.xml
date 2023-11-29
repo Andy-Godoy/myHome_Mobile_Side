@@ -256,6 +256,13 @@
         <item>ARS</item>
     </string-array>
 
+    //uso de strings para spinners de activity_new_schedule.xml
+
+    <string-array name="lista_Tipo_Contacto">
+        <item>Hacer consulta</item>
+        <item>Solicitar turno</item>
+    </string-array>
+
     //*****************************************************
     <string name="lbl_resenacomentario">Valoraciones y Comentarios</string>
     <string name="comentario">Comentario:</string>

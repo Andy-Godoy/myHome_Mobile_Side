@@ -57,9 +57,7 @@ public class PropertyApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<PropertySummary>> call, Response<List<PropertySummary>> response) {
                 if (response.isSuccessful()) {
-
                    callback.onPropertiesSuccess(response.body());
-
                 }
 
             }
@@ -92,9 +90,7 @@ public class PropertyApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<Properties> call, Response<Properties> response) {
                 if (response.isSuccessful()) {
-
                     callback.onPropertiesSuccess(response.body());
-
                 }
 
             }
@@ -126,9 +122,7 @@ public class PropertyApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<Properties> call, Response<Properties> response) {
                 if (response.isSuccessful()) {
-
                     callback.onPropertiesSuccess(response.body());
-
                 }
 
             }
@@ -194,9 +188,7 @@ public class PropertyApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<Properties> call, Response<Properties> response) {
                 if (response.isSuccessful()) {
-
                     callback.onPropertiesSuccess(response.body());
-
                 }
 
             }
