@@ -57,9 +57,9 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         MyHome myHome = (MyHome) getApplication();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestServerAuthCode("387896738234-4ndcl2v0gpctt5nb087dr7btmm4ovvit.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
+                .requestServerAuthCode("387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
 
-                .requestIdToken("387896738234-4ndcl2v0gpctt5nb087dr7btmm4ovvit.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
+                .requestIdToken("387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
                 .requestEmail()
                 .build();
 

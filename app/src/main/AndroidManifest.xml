@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.myhome">
 
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
-    <meta-data
-        android:name="com.google.android.gms.auth.api.signin.client_id"
-        android:value="AIzaSyBr037vo9fyh56akLFtGb2EwWlnZm7FKFg" />
+
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -35,6 +30,14 @@
         <activity
             android:name=".Front.ReserveProperty"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
+        <meta-data
+            android:name="com.google.android.gms.auth.api.signin.client_id"
+            android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
+
         <activity
             android:name=".GoogleService.GoogleMap"
             android:exported="false" />
