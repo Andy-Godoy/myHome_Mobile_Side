@@ -1,6 +1,5 @@
 package com.example.myhome.Front;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
-import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -21,6 +19,7 @@ import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,12 +61,6 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         FiltersDTO filters = new FiltersDTO();
 
-        if (((MyHome) this.getApplication()).getUsuario() != null) {
-            agencyId = Long.valueOf(6);
-            //((MyHome) this.getApplication()).getUsuario().getAgencyId();
-            filters.setAgencyId(agencyId);
-        }
-
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
 
@@ -97,10 +90,10 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
-  /*      if (properties != null){
-            for (PropertySummary p: properties){
+        if (properties != null) {
+            for (PropertySummary p : properties) {
 
-                View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property, cardConteiner, false);
+                View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
                 List<String> imageUrls = obtenerUrlsDesdeAzure();
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
@@ -113,23 +106,15 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
                 ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
 
-               ImageView imageProperty =   propertyCard.findViewById(R.id.imageProperty);
-
-
-                // URL de la imagen
+                ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
                 String imageUrl = "https://static1.sosiva451.com/521961_a/8b07c18b-b15d-4d23-9bf1-e3d4ce2eea5e_small.jpg";
-                // Usa Glide para cargar y mostrar la imagen desde la URL
-                imageProperty.setImageURI(Uri.parse(imageUrl));
-
-                propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
-
-
+                Picasso.get().load(imageUrl).into(imageProperty);
                 cardConteiner.addView(propertyCard);
 
             }
 
 
-        }*/
+        }
     }
 
     @Override
