@@ -82,6 +82,9 @@
             android:name=".Front.SecondActivity"
             android:exported="false" />
         <activity
+            android:name=".Front.UserSchedule"
+            android:exported="false" />
+        <activity
             android:name=".Front.AgenciesProfile"
             android:exported="false" />
         <activity
