@@ -76,25 +76,36 @@
                     tools:src="@drawable/img_search" />
             </FrameLayout>
         </LinearLayout>
-        <ScrollView
+
+        <LinearLayout
+            android:id="@+id/temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/lista_de_propiedades">
-            <LinearLayout
-                android:id="@+id/cardContainer"
+            android:layout_marginStart="@dimen/_7pxh"
+            android:layout_marginEnd="@dimen/_7pxh"
+            android:layout_marginBottom="40dp"
+            android:paddingBottom="40dp"
+            android:orientation="horizontal">
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_weight="1"
+                android:contentDescription="@string/lista_de_propiedades">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
+                    android:id="@+id/cardContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout="@layout/card_property">
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </ScrollView>
+                    android:orientation="vertical">
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout="@layout/card_property"></androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

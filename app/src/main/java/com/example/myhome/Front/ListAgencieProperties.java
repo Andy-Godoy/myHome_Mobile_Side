@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,18 +15,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
-import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Properties;
 import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.model.PropertySummary;
 import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.FiltersDTO;
+import com.example.myhome.model.Properties;
+import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -65,22 +63,13 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandler.handleMenuItemClick(this, item);
+            MenuHandler.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 
         cardConteiner = findViewById(R.id.cardContainer);
 
-        FiltersDTO filters = new FiltersDTO();
-
-        if (((MyHome) this.getApplication()).getUsuario() != null) {
-            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
-            filters.setAgencyId(agencyId);
-        }
-
-        PropertyApi propertyApi = new PropertyApi();
-        properties = propertyApi.verPropiedades(filters, this);
-
+        cargarPropiedades();
     }
 
     public void verPropiedades(View view) {
@@ -143,7 +132,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
                 propertyCard.setId(Integer.valueOf(p.getPropertyId().toString()));
 
-                ((ImageButton) propertyCard.findViewById(R.id.eliminarPropiedad)).setOnClickListener(new View.OnClickListener() {
+                propertyCard.findViewById(R.id.eliminarPropiedad).setOnClickListener(new View.OnClickListener() {
 
                     // Establecer clic en eliminar propiedad
                     public void onClick(View v) {
@@ -173,7 +162,7 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
                     }
                 });
 
-                ((ImageButton) propertyCard.findViewById(R.id.editarPropiedad)).setOnClickListener(new View.OnClickListener() {
+                propertyCard.findViewById(R.id.editarPropiedad).setOnClickListener(new View.OnClickListener() {
 
                     // Establecer clic en editar propiedad
                     public void onClick(View v) {
@@ -221,7 +210,6 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
             }
 
-
         }
 
     }
@@ -239,12 +227,10 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     public void onPropertiesSuccess(Long propertyId) {
         Toast.makeText(this, "La propiedad ha sido eliminada", Toast.LENGTH_SHORT).show();
         cardConteiner.removeView(cardConteiner.findViewById(Integer.valueOf(propertyId.toString())));
+        cargarPropiedades();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();     // Actualiza la interfaz de usuario con los nuevos datos si es necesario}
-
+    private void cargarPropiedades() {
         FiltersDTO filters = new FiltersDTO();
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
