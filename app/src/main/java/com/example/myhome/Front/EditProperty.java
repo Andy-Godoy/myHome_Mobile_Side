@@ -22,6 +22,7 @@ import com.example.myhome.model.Address;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -37,11 +38,11 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
     private Spinner spnrAntiguedad;
     private Properties propiedad;
     private boolean isLoadView = true;
-    private Address address = new Address();
+    private final Address address = new Address();
     private TextView tvCourses;
     private MaterialCardView selectedCard;
     private boolean[] selectedCourses;
-    private ArrayList<Integer> coursesList = new ArrayList<>();
+    private final ArrayList<Integer> coursesList = new ArrayList<>();
     private String[] courses;
     private String[] amenities = new String[]{};
 
@@ -57,6 +58,14 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
             // muestra mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Configuramos el listener para los elementos del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            MenuHandler.handleMenuItemClick(this, item, this.getClass());
+            return true;
+        });
 
         tvCourses = findViewById(R.id.spnrAmenities);
         selectedCard = findViewById(R.id.selectCard);

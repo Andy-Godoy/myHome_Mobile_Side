@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -14,12 +16,9 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
@@ -30,10 +29,14 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         setContentView(R.layout.activity_detail_property);
 
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
-       // List<String> imageUrls = obtenerUrlsDesdeAzure();
 
-       // ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
-        //imageSlider.setAdapter(imageSliderAdapter);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Configuramos el listener para los elementos del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            MenuHandler.handleMenuItemClick(this, item, this.getClass());
+            return true;
+        });
 
         obtenerPropiedad();
         Button btnClose = findViewById(R.id.btnClose);
@@ -131,7 +134,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         tvPisos.setText(propiedad.getPropertyAddress().getAddressFloor().toString() + piso);
         tvOrientacion.setText(propiedad.getPropertyOrientation());
         tvDisposicion.setText(propiedad.getPropertyPosition());
-        tvAntiguedad.setText(propiedad.getPropertyAge().toString());
+        tvAntiguedad.setText(propiedad.getPropertyAge());
         tvCubierto.setText(cubierto);
         tvSemicubierto.setText(semicubierto);
         tvDescubierto.setText(descubierto);
