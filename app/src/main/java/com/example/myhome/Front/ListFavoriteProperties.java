@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUserProperties extends AppCompatActivity  implements PropertiesCallback {
+public class ListFavoriteProperties extends AppCompatActivity  implements PropertiesCallback {
 
     private LinearLayout cardConteiner;
     private List<PropertySummary> properties;
@@ -33,7 +33,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_user_properties);
+        setContentView(R.layout.activity_list_favorite_user);
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
@@ -46,7 +46,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Obtenemos el ID del ítem de menú correspondiente a esta actividad
-        int menuItemId = R.id.action_home;
+        int menuItemId = R.id.action_favorite;
 
         // Marcar el ítem del menú como seleccionado
         bottomNavigationView.setSelectedItemId(menuItemId);
@@ -60,6 +60,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
         cardConteiner = findViewById(R.id.cardContainer);
 
         FiltersDTO filters = new FiltersDTO();
+        filters.setIsFavourite(true);
 
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);

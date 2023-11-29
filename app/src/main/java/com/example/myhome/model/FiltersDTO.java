@@ -26,8 +26,7 @@ public class FiltersDTO {
     private String propertyStatus;
 
     private String propertyAge;
-
-
+    private boolean isFavourite;
 
 
     public Long getAgencyId() {
@@ -134,5 +133,13 @@ public class FiltersDTO {
 
     public void setPropertyAge(String propertyAge) {
         this.propertyAge = propertyAge;
+    }
+
+    public void setIsFavourite(boolean isFavourite) {
+        this.isFavourite = isFavourite;
+    }
+
+    public boolean getIsFavourite() {
+        return isFavourite;
     }
 }
