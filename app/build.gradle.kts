@@ -75,6 +75,9 @@ dependencies {
     implementation ("com.google.android.gms:play-services-basement:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-tasks:18.0.2") //Libreria para el uso de Google Auth
     implementation ("com.google.firebase:firebase-auth:22.3.0")
+
+    implementation ("com.google.firebase:firebase-bom:32.6.0")
+
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     //*****************************************
     //Implementación de libreria para el uso de mapas
@@ -111,5 +114,6 @@ dependencies {
     //***************************************************************
     implementation ("de.hdodenhof:circleimageview:3.1.0") //para el uso de imagenes circulares
     implementation ("com.squareup.picasso:picasso:2.71828")
+
 
 }

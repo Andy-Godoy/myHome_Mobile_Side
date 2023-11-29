@@ -1,6 +1,8 @@
 package com.example.myhome.model;
 
 public class FiltersDTO {
+    private Long userId;
+
 
     private Long agencyId;
     private String localidad;
@@ -26,7 +28,7 @@ public class FiltersDTO {
     private String propertyStatus;
 
     private String propertyAge;
-    private boolean isFavourite;
+    private boolean isFavorite;
 
 
     public Long getAgencyId() {
@@ -135,11 +137,22 @@ public class FiltersDTO {
         this.propertyAge = propertyAge;
     }
 
-    public void setIsFavourite(boolean isFavourite) {
-        this.isFavourite = isFavourite;
+    public void setIsFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 
-    public boolean getIsFavourite() {
-        return isFavourite;
+    public boolean getIsFavorite() {
+        return isFavorite;
     }
+
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+
 }

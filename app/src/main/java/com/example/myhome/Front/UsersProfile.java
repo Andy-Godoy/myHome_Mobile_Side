@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,12 +27,19 @@ import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.example.myhome.model.Users;
 import com.example.myhome.model.enums.CurrencyType;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
+
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
-public class UsersProfile extends AppCompatActivity implements LoginCallback {
+public class UsersProfile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, LoginCallback {
 
     private boolean isUpdate = false;
     private  boolean isFirstTime = true;
@@ -45,6 +53,7 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
     private TextView email;
     private Spinner spinnerCurrency;
 
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,13 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
         email = findViewById(R.id.textViewEmailUser);
         spinnerCurrency = findViewById(R.id.spinnerCurrency);
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
 
 
 
@@ -114,17 +130,8 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // aca podemos meter otras cosas que queramos que se hagan al cerrar sesion
+                        revoke();
 
-                        // Por ejemplo, si usamos SharedPreferences para almacenar el estado de inicio de sesión
-                        SharedPreferences preferences = getSharedPreferences("mispreferencias", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.clear();
-                        editor.apply();
-
-                        //  lo llevamos al activity LoginUser
-                        Intent intent = new Intent(UsersProfile.this, LoginUser.class);
-                        startActivity(intent);
-                        finish(); //  Finaliza la actividad actual
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -199,8 +206,12 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
     @Override
     public void onUnregisterSuccess() {
         Toast.makeText(this, "El usuario ha sido eliminado", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(UsersProfile.this, LoginUser.class);
-        startActivity(intent);
+        revoke();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 
     private class UploadImageToAzureBlobStorageTask extends AsyncTask<Bitmap, Void, Void> {
@@ -230,6 +241,23 @@ public class UsersProfile extends AppCompatActivity implements LoginCallback {
     }
 
 
+    public void revoke() {
+        Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                if (status.isSuccess()) {
+
+                    Intent intent = new Intent(UsersProfile.this, LoginUser.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.not_revoke, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+    }
 }
 
 
