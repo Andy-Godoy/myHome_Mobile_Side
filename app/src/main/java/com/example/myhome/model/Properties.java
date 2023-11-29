@@ -219,16 +219,19 @@ public class Properties {
         this.propertyAddress = propertyAddress;
     }
 
-    public void setpropertyHasTerrace(boolean propertyHasTerrace) {
+    public void setPropertyHasTerrace(boolean propertyHasTerrace) {
         this.propertyHasTerrace = propertyHasTerrace;
     }
 
-    public boolean getpropertyHasTerrace() {
+    public boolean getPropertyHasTerrace() {
        return  this.propertyHasTerrace;
     }
 
-    public String[] setPropertyImages() {
-        return propertyImages;
+    public void setPropertyImages(String[] propertyImages){
+        this.propertyImages = propertyImages;
     }
+
+    public String[] getPropertyImages() { return propertyImages; }
+
 }
 
