@@ -5,6 +5,9 @@
     <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4" />
+    <meta-data
+        android:name="com.google.android.gms.auth.api.signin.client_id"
+        android:value="AIzaSyBr037vo9fyh56akLFtGb2EwWlnZm7FKFg" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,7 +18,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.hardware.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:name=".Api.MyHome"
@@ -49,6 +53,9 @@
             android:exported="false" />
         <activity
             android:name=".Front.ListUserProperties"
+            android:exported="false" />
+        <activity
+            android:name=".Front.ListFavoriteProperties"
             android:exported="false" />
         <activity
             android:name=".Front.MainActivity"

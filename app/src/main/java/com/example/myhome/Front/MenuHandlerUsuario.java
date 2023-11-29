@@ -17,14 +17,15 @@ public class MenuHandlerUsuario {
                 context.startActivity(intent);
             }
         } else if (itemId == R.id.action_favorite) {
-//            Intent intent = new Intent(context, NewProperties.class);
-//            context.startActivity(intent);
+            Intent intent = new Intent(context, ListFavoriteProperties.class);
+            context.startActivity(intent);
             // Lógica para abrir la ventana correspondiente a "Agregar propiedad" desde acá
         } else if (itemId == R.id.action_profile) {
             //                AGREGAR LA CLASE DE PERFIL DE USUARIO
-        }
-//            Intent intent = new Intent(context, );
-//            context.startActivity(intent);
+
+            Intent intent = new Intent(context, UsersProfile.class);
+            context.startActivity(intent);
             //Lógica para abrir la ventana correspondiente a "Perfil" desde acá
+        }
         }
     }
