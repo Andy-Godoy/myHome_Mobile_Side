@@ -55,6 +55,9 @@
             android:name=".Front.ListUserProperties"
             android:exported="false" />
         <activity
+            android:name=".Front.ListFavoriteProperties"
+            android:exported="false" />
+        <activity
             android:name=".Front.MainActivity"
             android:exported="true" >
             <intent-filter>

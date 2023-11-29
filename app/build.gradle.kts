@@ -110,4 +110,6 @@ dependencies {
     //implementation ("com.azure:azure-storage-common:12.25.0")
     //***************************************************************
     implementation ("de.hdodenhof:circleimageview:3.1.0") //para el uso de imagenes circulares
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
 }
