@@ -104,7 +104,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         String descubierto = propiedad.getPropertyUncoveredM2() + " m2 \ndescubie.";
         String amenities = "";
         String baulera = (propiedad.getPropertyHasStorage()) ? "Tiene Baulera" : "No tiene Baulera";
-        String terrace = (propiedad.getpropertyHasTerrace()) ? "Tiene Terraza" : "No tiene Terraza";
+        String terrace = (propiedad.getPropertyHasTerrace()) ? "Tiene Terraza" : "No tiene Terraza";
         String balcony = (propiedad.getPropertyHasBalcony()) ? "Tiene Balcón" : "No tiene Balcón";
 
         // Convertir la cadena en un array utilizando la coma como delimitador

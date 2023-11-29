@@ -335,7 +335,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyHasBalcony(((Switch) findViewById(R.id.tieneBalcon)).isChecked());
         properties.setPropertyHasGarage(((Switch) findViewById(R.id.tieneCochera)).isChecked());
         properties.setPropertyHasStorage(((Switch) findViewById(R.id.tieneBaulera)).isChecked());
-        properties.setpropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
+        properties.setPropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
         properties.setPropertyPosition(((Spinner) findViewById(R.id.spnrPosicion)).getSelectedItem().toString());
         properties.setPropertyOrientation(((Spinner) findViewById(R.id.spnrOrientacion)).getSelectedItem().toString());
         properties.setPropertyAge(((Spinner) findViewById(R.id.spnrAntiguedad)).getSelectedItem().toString());
