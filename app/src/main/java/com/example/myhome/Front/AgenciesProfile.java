@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +35,6 @@ import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
-import java.util.List;
 
 public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack, LoginCallback {
     private static final int PICK_IMAGE_REQUEST = 1;

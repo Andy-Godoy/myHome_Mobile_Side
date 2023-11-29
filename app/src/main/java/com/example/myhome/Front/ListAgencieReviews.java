@@ -54,7 +54,7 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandler.handleMenuItemClick(this, item);
+            MenuHandler.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 

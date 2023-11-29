@@ -187,6 +187,7 @@
     <string name="lista_de_propiedades">Lista de propiedades</string>
     <string name="continuar">Continuar</string>
     <string name="back_button_description">Volver</string>
+    <string name="reservar">Reservar</string>
 
 
     //****************************************************
@@ -256,6 +257,13 @@
     <string-array name="currency_options">
         <item>USD</item>
         <item>ARS</item>
+    </string-array>
+
+    //uso de strings para spinners de activity_new_schedule.xml
+
+    <string-array name="lista_Tipo_Contacto">
+        <item>Hacer consulta</item>
+        <item>Solicitar turno</item>
     </string-array>
 
     //*****************************************************

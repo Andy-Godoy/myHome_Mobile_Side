@@ -19,22 +19,6 @@ public class Properties {
     private String propertyAge;
     private String[] propertyAmenities;
 
-    public String[] getPropertyImages() {
-        return propertyImages;
-    }
-
-    public void setPropertyImages(String[] propertyImages) {
-        this.propertyImages = propertyImages;
-    }
-
-    public boolean isPropertyHasTerrace() {
-        return propertyHasTerrace;
-    }
-
-    public void setPropertyHasTerrace(boolean propertyHasTerrace) {
-        this.propertyHasTerrace = propertyHasTerrace;
-    }
-
     private String[] propertyImages;
     private String propertyDescription;
     private Integer propertyCoveredM2;
@@ -219,34 +203,19 @@ public class Properties {
         this.propertyAddress = propertyAddress;
     }
 
-    public void setpropertyHasTerrace(boolean propertyHasTerrace) {
-        this.propertyHasTerrace = propertyHasTerrace;
-    }
-
-    public boolean getpropertyHasTerrace() {
-       return  this.propertyHasTerrace;
-    }
-
-    public String[] setPropertyImages() {
-        return propertyImages;
-    }
-
-    public void setPropertyImages(String[] propertyImages) {
-        this.propertyImages = propertyImages;
-    }
-    public String[] getPropertyImages() {
-        return propertyImages;
-    }
-
-
-
-    public boolean isPropertyHasTerrace() {
-        return propertyHasTerrace;
-    }
-
     public void setPropertyHasTerrace(boolean propertyHasTerrace) {
         this.propertyHasTerrace = propertyHasTerrace;
     }
+
+    public boolean getPropertyHasTerrace() {
+       return  this.propertyHasTerrace;
+    }
+
+    public void setPropertyImages(String[] propertyImages){
+        this.propertyImages = propertyImages;
+    }
+
+    public String[] getPropertyImages() { return propertyImages; }
 
 
 }

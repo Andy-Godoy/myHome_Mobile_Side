@@ -2,6 +2,7 @@ package com.example.myhome.Front;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,14 +19,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myhome.AzureService.AzureBlobStorageManager;
-import com.example.myhome.model.Address;
-import com.example.myhome.Front.ImageAdapter;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.AzureService.AzureBlobStorageManager;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.Address;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,7 +37,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import android.location.Geocoder;
 
 
 
@@ -45,17 +44,17 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
     private GridView gridView;
     private ImageAdapter imageAdapter;
-    private ArrayList<Uri> imageUris = new ArrayList<>();
+    private final ArrayList<Uri> imageUris = new ArrayList<>();
     private static final int PICK_IMAGES_REQUEST = 1;
     private Spinner spinner;
     private CustomSpinnerAdapter adapter;
     private CheckBox checkBox;
-    private Properties properties = new Properties();
-    private Address address = new Address();
+    private final Properties properties = new Properties();
+    private final Address address = new Address();
     private TextView tvCourses;
     private MaterialCardView selectedCard;
     private boolean[] selectedCourses;
-    private ArrayList<Integer> coursesList = new ArrayList<>();
+    private final ArrayList<Integer> coursesList = new ArrayList<>();
     private String[] courses;
     private String[] amenities = new String[]{};
 
@@ -102,7 +101,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
 
         // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandler.handleMenuItemClick(this, item);
+            MenuHandler.handleMenuItemClick(this, item,this.getClass());
             return true;
         });
 
@@ -335,7 +334,7 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
         properties.setPropertyHasBalcony(((Switch) findViewById(R.id.tieneBalcon)).isChecked());
         properties.setPropertyHasGarage(((Switch) findViewById(R.id.tieneCochera)).isChecked());
         properties.setPropertyHasStorage(((Switch) findViewById(R.id.tieneBaulera)).isChecked());
-        properties.setpropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
+        properties.setPropertyHasTerrace(((Switch) findViewById(R.id.tieneTerraza)).isChecked());
         properties.setPropertyPosition(((Spinner) findViewById(R.id.spnrPosicion)).getSelectedItem().toString());
         properties.setPropertyOrientation(((Spinner) findViewById(R.id.spnrOrientacion)).getSelectedItem().toString());
         properties.setPropertyAge(((Spinner) findViewById(R.id.spnrAntiguedad)).getSelectedItem().toString());

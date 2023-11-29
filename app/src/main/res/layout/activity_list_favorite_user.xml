@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color"
-    tools:context=".Front.ListAgencieProperties">
+    tools:context=".Front.ListFavoriteProperties">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,36 +76,25 @@
                     tools:src="@drawable/img_search" />
             </FrameLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/temp"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_7pxh"
-            android:layout_marginEnd="@dimen/_7pxh"
-            android:layout_marginBottom="40dp"
-            android:paddingBottom="40dp"
-            android:orientation="horizontal">
-
-            <ScrollView
+            android:layout_weight="1"
+            android:contentDescription="@string/lista_de_propiedades">
+            <LinearLayout
+                android:id="@+id/cardContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/lista_de_propiedades">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/cardContainer"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout="@layout/card_property_user">
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout="@layout/card_property"></androidx.cardview.widget.CardView>
-                </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -116,7 +105,7 @@
         android:background="@android:color/black"
         app:backgroundTint="@color/gray_200"
         app:layout_constraintHorizontal_bias="0.5"
-        app:menu="@menu/bottom_navigation_menu"
+        app:menu="@menu/bottom_navigation_menu_usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
