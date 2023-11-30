@@ -40,16 +40,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public List<PropertySummary> verPropiedades(FiltersDTO filters, final PropertiesCallback callback) {
-        // Configuramos Retrofit
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Creamos una instancia de la interfaz ApiService
+
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realizamos la solicitud
+
 
         Call<List<PropertySummary>> call = apiService.getProperties(filters);
 
@@ -57,14 +57,14 @@ public class PropertyApi extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<PropertySummary>> call, Response<List<PropertySummary>> response) {
                 if (response.isSuccessful()) {
-                   callback.onPropertiesSuccess(response.body());
+                    callback.onPropertiesSuccess(response.body());
                 }
 
             }
 
             @Override
             public void onFailure(Call<List<PropertySummary>> call, Throwable t) {
-                // Acá manejamos los errores de conexión
+
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });
@@ -73,16 +73,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public Properties setPropiedades(Properties propiedad, final PropertiesCallback callback) {
-        // Configura Retrofit
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una instancia de la interfaz ApiService
+
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realiza la solicitud
+
 
         Call<Properties> call = apiService.setPropiedades(propiedad,propiedad.getAgencyId());
 
@@ -97,7 +97,7 @@ public class PropertyApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Properties> call, Throwable t) {
-                // Maneja errores de conexión aquí
+
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });
@@ -106,16 +106,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public Properties obtenerPropiedad(PropertyDTO property, final PropertiesCallback callback) {
-        // Configuramos Retrofit
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Creamos una instancia de la interfaz ApiService
+
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realizamos la solicitud
+
         Call<Properties> call = apiService.getProperty(property.getPropertyId());
 
         call.enqueue(new Callback<Properties>() {
@@ -129,26 +129,27 @@ public class PropertyApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Properties> call, Throwable t) {
-                // Acá manejamos los errores de conexión
+
                 Toast.makeText(getApplicationContext(), "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });
 
+        //TODO: Devolvemos this.property, que parece ser null en este punto y pincha al compartir el detalle
         return this.property;
     }
 
     public void eliminarPropiedad( Long idPropiedad, Long agencyId, final PropertiesCallback callback) {
 
-        // Configuramos Retrofit
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Creamos una instancia de la interfaz ApiService
+
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realizamos la solicitud
+
 
         Call<Void> call = apiService.deleteProperty(idPropiedad, agencyId);
 
@@ -164,7 +165,7 @@ public class PropertyApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                // Acá manejamos los errores de conexión
+
                 Toast.makeText(PropertyApi.this, "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });
@@ -172,16 +173,16 @@ public class PropertyApi extends AppCompatActivity {
     }
 
     public Properties editarPropiedad (Properties property, Long agencyId ,final PropertiesCallback callback) {
-        // Configuramos Retrofit
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Creamos una instancia de la interfaz ApiService
+
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
-        // Realizamos la solicitud
+
         Call<Properties> call = apiService.updateProperty(property.getPropertyId(), agencyId, property);
 
         call.enqueue(new Callback<Properties>() {
@@ -195,7 +196,7 @@ public class PropertyApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Properties> call, Throwable t) {
-                // Acá manejamos los errores de conexión
+
                 Toast.makeText(getApplicationContext(), "Falla por un ratito la API :(", Toast.LENGTH_SHORT).show();
             }
         });

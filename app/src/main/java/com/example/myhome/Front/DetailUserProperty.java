@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -71,9 +72,9 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
        String[] propertyImages = propiedad.getPropertyImages();
 //TODO: Arreglar el slider
-//        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
-//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
-//        imageSlider.setAdapter(imageSliderAdapter);
+        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
+        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+        imageSlider.setAdapter(imageSliderAdapter);
 
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
@@ -182,12 +183,18 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     }
 
     public void compartirContenido() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "MyHome");
-        intent.putExtra(Intent.EXTRA_TEXT, "Te comparto esta propiedad: " + propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
-                propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit());
-        startActivity(Intent.createChooser(intent, "Compartir con"));
+        if (propiedad != null) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "MyHome");
+            intent.putExtra(Intent.EXTRA_TEXT, "Te comparto esta propiedad: " + propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
+                    propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit());
+            startActivity(Intent.createChooser(intent, "Compartir con"));
+        } else {
+            // Manejo si property es nulo
+            Toast.makeText(this, "La propiedad es nula", Toast.LENGTH_SHORT).show();
+        }
     }
 }
+
 

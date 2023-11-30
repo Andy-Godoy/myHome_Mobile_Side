@@ -80,6 +80,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 //        imageSliderSlider.setAdapter(imageSliderAdapter);
     }
 
+    //TODO: esto hay que reemplazarlo para que traiga las urls del blob de azure en el listado de propiedades del usuario
     private List<String> obtenerUrlsDesdeAzure() {
         // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
         // Puedes implementar la lógica específica para tu aplicación aquí
