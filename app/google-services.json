@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "387896738234",
+    "firebase_url": "https://myhome-23-default-rtdb.firebaseio.com",
     "project_id": "myhome-23",
     "storage_bucket": "myhome-23.appspot.com"
   },
@@ -14,15 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "387896738234-1i0t0n0qknkjd4dn82l4ftmj9511poct.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.myhome",
-            "certificate_hash": "59c1dd1f2e890b11b491da4dc7fcd0bd69b20a04"
-          }
-        },
-        {
-          "client_id": "387896738234-4srplruug7cs0vspl0bjfmuhdrepjcit.apps.googleusercontent.com",
+          "client_id": "387896738234-ii1f0a8fo2vjh7t0hk9k71hm0gjbq7gp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.myhome",
@@ -30,20 +23,20 @@
           }
         },
         {
-          "client_id": "387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com",
+          "client_id": "387896738234-bb0orrv5esi7jt7l7f458g8e29ag2pgc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAqypfwQxZRBOCUZgzsWD318fP85-vh9OY"
+          "current_key": "AIzaSyAHwryriQOzL51C9J5c7UkkwYDB2ls8ng8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com",
+              "client_id": "387896738234-bb0orrv5esi7jt7l7f458g8e29ag2pgc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
