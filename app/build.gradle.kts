@@ -62,21 +62,24 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.navigation:navigation-fragment:2.7.5")
-    implementation("androidx.navigation:navigation-ui:2.7.5") //Libreria para el uso de anotaciones
+    implementation("androidx.navigation:navigation-ui:2.7.5")
+    implementation("com.google.firebase:firebase-analytics:21.5.0")
+    implementation("com.google.firebase:firebase-database:20.3.0") //Libreria para el uso de anotaciones
 
     testImplementation("junit:junit:4.13.2")    //Libreria para el uso de pruebas unitarias
     androidTestImplementation("androidx.test.ext:junit:1.1.5") //Libreria para el uso de pruebas unitarias
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1") //Libreria para el uso de pruebas unitarias
 
     //implementación de librerias para el uso de Google Auth
-    implementation ("com.google.android.gms:play-services-auth:20.7.0") //Libreria para el uso de Google Auth
+
     implementation ("com.google.android.gms:play-services-auth-api-phone:18.0.1") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-base:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-basement:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-tasks:18.0.2") //Libreria para el uso de Google Auth
-    implementation ("com.google.firebase:firebase-auth:22.3.0")
-
-    implementation ("com.google.firebase:firebase-bom:32.6.0")
+    implementation ("com.google.android.gms:play-services-auth:20.0.1") //Libreria para el uso de Google Auth
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-auth")
 
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     //*****************************************
@@ -85,7 +88,7 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:21.0.1")
 
     implementation ("com.github.bumptech.glide:glide:4.12.0") //Libreria para el uso de imagenes
-    implementation("com.android.volley:volley:1.2.1") //Libreria para el uso de peticiones http
+    implementation  ("com.android.volley:volley:1.2.1") //Libreria para el uso de peticiones http
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28") //Libreria para el uso de gifs
     implementation ("androidx.recyclerview:recyclerview:1.3.2") //Libreria para el uso de RecyclerView
     implementation ("androidx.cardview:cardview:1.0.0") //Libreria para el uso de CardView
