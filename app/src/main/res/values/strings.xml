@@ -286,6 +286,7 @@
     <string name="descripcionTitulo">DESCRIPCIÓN</string>
     <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
     <string name="buscar">Buscar</string>
-
+    <string name="share_button_description">Compartir</string>
     //*****************************************************
+
 </resources>

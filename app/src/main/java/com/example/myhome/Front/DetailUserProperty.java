@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,22 +24,22 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Arrays;
 import java.util.List;
 
-public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
+public class DetailUserProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_property);
+        setContentView(R.layout.activity_detail_user_property);
 
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        // Configuramos el listener para los elementos del menú
+      /*  // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandler.handleMenuItemClick(this, item, this.getClass());
+            MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
-        });
+        }); */
 
         obtenerPropiedad();
         Button btnClose = findViewById(R.id.btnClose);
@@ -50,7 +51,13 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
             }
         });
 
-
+        FloatingActionButton fabShare = findViewById(R.id.fabShare);
+        fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                compartirContenido();
+            }
+        });
     }
 
     @Override
@@ -62,11 +69,11 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
 
-        String[] propertyImages = propiedad.getPropertyImages();
-
-        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
-        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
-        imageSlider.setAdapter(imageSliderAdapter);
+       String[] propertyImages = propiedad.getPropertyImages();
+//TODO: Arreglar el slider
+//        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
+//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+//        imageSlider.setAdapter(imageSliderAdapter);
 
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
@@ -174,5 +181,13 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
         finish();
     }
 
-
+    public void compartirContenido() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "MyHome");
+        intent.putExtra(Intent.EXTRA_TEXT, "Te comparto esta propiedad: " + propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
+                propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit());
+        startActivity(Intent.createChooser(intent, "Compartir con"));
+    }
 }
+
