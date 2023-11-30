@@ -33,8 +33,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.FirebaseApp;
+
+
 
 public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, LoginCallback {
+
 
     private GoogleApiClient googleApiClient;
 
@@ -58,10 +62,11 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         MyHome myHome = (MyHome) getApplication();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestServerAuthCode("387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
-                .requestIdToken("387896738234-n7ac7ria30r19bq8ef241eh3fafcnhu5.apps.googleusercontent.com") //toma el GoogleAuth_WebClient creado en https://console.cloud.google.com/apis/credentials/oauthclient/ (Como aplicacion web)
+                .requestIdToken(getString(R.string.default_web_client_id)) // Pedimos el token de autenticación
                 .requestEmail()
                 .build();
+
+
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
