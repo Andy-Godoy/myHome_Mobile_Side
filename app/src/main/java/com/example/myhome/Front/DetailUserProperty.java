@@ -71,10 +71,10 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     public void onPropertiesSuccess(Properties propiedad) {
 
        String[] propertyImages = propiedad.getPropertyImages();
-//TODO: Arreglar el slider
-//        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
-//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
-//        imageSlider.setAdapter(imageSliderAdapter);
+//TODO: Arreglar el slider si es necesario, por ahora no esta crasheando (revisar)
+        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
+        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+        imageSlider.setAdapter(imageSliderAdapter);
 
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
