@@ -55,28 +55,25 @@
             android:layout_marginEnd="@dimen/_7pxh"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
-            <FrameLayout
-                android:background="@drawable/borde_redondo"
-                android:id="@+id/frameStacksearch"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_48pxv">
-                <ImageView
-                    android:id="@+id/imageSearch"
-                    android:layout_width="@dimen/_18pxh"
-                    android:layout_height="@dimen/_18pxh"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_14pxh"
-                    android:layout_marginTop="@dimen/_15pxv"
-                    android:layout_marginEnd="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_15pxv"
-                    android:scaleType="fitXY"
+                android:layout_height="60dp">
 
-                    android:src="@drawable/img_search"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_search" />
-            </FrameLayout>
+                <EditText
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/borde_redondo"
+                    android:drawableStart="@drawable/img_search"
+                    android:drawablePadding="@dimen/_10pxh"
+                    android:hint="@string/buscar"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10pxh" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/temp"
             android:layout_width="match_parent"
