@@ -159,10 +159,11 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
 
     private void filterProperties(String searchText) {
         List<PropertySummary> filteredProperties = new ArrayList<>();
-        filteredProperties = properties.stream()
-                .filter(property -> propertyContainsText(property, searchText))
-                .collect(Collectors.toList());
-
+        if(properties!=null){
+            filteredProperties = properties.stream()
+                    .filter(property -> propertyContainsText(property, searchText))
+                    .collect(Collectors.toList());
+           }
         actualizarVista(filteredProperties);
     }
 
