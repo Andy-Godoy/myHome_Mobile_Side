@@ -24,6 +24,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.myhome.model.Properties;
+import android.content.Intent;
+
 public class ListUserProperties extends AppCompatActivity  implements PropertiesCallback {
 
     private LinearLayout cardConteiner;
@@ -77,6 +80,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 //        imageSliderSlider.setAdapter(imageSliderAdapter);
     }
 
+    //TODO: esto hay que reemplazarlo para que traiga las urls del blob de azure en el listado de propiedades del usuario
     private List<String> obtenerUrlsDesdeAzure() {
         // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
         // Puedes implementar la lógica específica para tu aplicación aquí
@@ -106,6 +110,19 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
                 ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
 
+                propertyCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Obtengo el ID de la propiedad
+                        String propertyId = p.getPropertyId().toString();
+
+                        // Iniciar la actividad DetailProperty y paso el ID como extra
+                        Intent intent = new Intent(ListUserProperties.this, DetailUserProperty.class);
+                        intent.putExtra("propertyId", propertyId);
+                        startActivity(intent);
+                    }
+                });
+
                 ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
                 String imageUrl = "https://static1.sosiva451.com/521961_a/8b07c18b-b15d-4d23-9bf1-e3d4ce2eea5e_small.jpg";
                 Picasso.get().load(imageUrl).into(imageProperty);
@@ -113,9 +130,8 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
             }
 
-
-        }
-    }
+}
+}
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
@@ -132,4 +148,4 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
     }
 
-}
+                }
