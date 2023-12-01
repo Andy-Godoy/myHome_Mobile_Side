@@ -9,6 +9,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -71,6 +73,25 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             MenuHandler.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        View decorView = getWindow().getDecorView();
+        decorView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                int rootViewHeight = decorView.getHeight();
+                int keypadHeight = rootViewHeight - decorView.findViewById(android.R.id.content).getHeight();
+                if (keypadHeight > rootViewHeight * 0.15) {
+                    // Teclado visible, ocultar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.GONE);
+                } else {
+                    // Teclado oculto, mostrar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
+
 
         searchEditText = findViewById(R.id.editTextSearch);
         cardConteiner = findViewById(R.id.cardContainer);

@@ -3,6 +3,8 @@ package com.example.myhome.Front;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -65,6 +67,24 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             MenuHandler.handleMenuItemClick(this, item, this.getClass());
             return true;
+        });
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        View decorView = getWindow().getDecorView();
+        decorView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                int rootViewHeight = decorView.getHeight();
+                int keypadHeight = rootViewHeight - decorView.findViewById(android.R.id.content).getHeight();
+                if (keypadHeight > rootViewHeight * 0.15) {
+                    // Teclado visible, ocultar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.GONE);
+                } else {
+                    // Teclado oculto, mostrar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
         });
 
         tvCourses = findViewById(R.id.spnrAmenities);
