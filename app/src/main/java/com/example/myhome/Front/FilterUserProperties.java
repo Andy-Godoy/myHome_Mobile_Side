@@ -1,13 +1,16 @@
-package com.example.myhome;
+package com.example.myhome.Front;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.Api.PropertyApi;
@@ -15,6 +18,8 @@ import com.example.myhome.Front.ListUserProperties;
 import android.view.View;
 import android.content.Context;
 import android.content.Intent;
+
+import java.io.Serializable;
 
 
 public class FilterUserProperties extends AppCompatActivity {
@@ -46,18 +51,13 @@ public class FilterUserProperties extends AppCompatActivity {
                 //trigger de aplicar filtors
 
                 if(validacionFiltro()) {
-                    aplicarFiltros();
-                    Toast.makeText(getApplicationContext(), "Filtros Aplicados", Toast.LENGTH_SHORT).show();
+                    FiltersDTO filters=aplicarFiltros();
 
-                    //filtrar propiedades
+                    Intent intent=new Intent();
+                    intent.putExtra("filters", (Serializable) filters);
+                    setResult(RESULT_OK,intent);
+                    finish();
 
-                    //volver a ventana MisPropiedades
-                    Context context = view.getContext();
-                    // Create an Intent to open the ListUserProperties activity
-                    Intent intent = new Intent(context, ListUserProperties.class);
-
-                    // Start the ListUserProperties activity
-                    context.startActivity(intent);
                 }
             }
         });
@@ -79,67 +79,38 @@ public class FilterUserProperties extends AppCompatActivity {
 
     public boolean validacionFiltro() {
         boolean esValido = true;
-
-        Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
-        Spinner estado = findViewById(R.id.spnrEstado);
-        TextView addressCity = findViewById(R.id.txtLocalidad);
-        TextView addressState = findViewById(R.id.txtProvincia);
-        Spinner amenities=findViewById(R.id.spnrAmenitiesFilter);
-        Spinner antiguedad=findViewById(R.id.spnrAntiguedad);
-        TextView addressCountry = findViewById(R.id.txtPaisEdit);
-        TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
-        TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientesEdit);
-        TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
-
         //precio Max y Min
         TextView precioMax = findViewById(R.id.txtprecioMaxEdit);
         TextView precioMin = findViewById(R.id.txtprecioMinEdit);
 
+        TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
+        TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientesEdit);
+        TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
+
+
         String valorTextoMax = precioMax.getText().toString();
-        int precioMaxvalor = Integer.parseInt(valorTextoMax);
+        int precioMaxvalor = (valorTextoMax.isEmpty())?0:Integer.valueOf(valorTextoMax);
 
         String valorTextoMin = precioMin.getText().toString();
-        int precioMinvalor = Integer.parseInt(valorTextoMin);
+        int precioMinvalor = (valorTextoMin.isEmpty())?0:Integer.valueOf(valorTextoMin);
+
+        String valorCantidadBanios=cantidadBanios.getText().toString();
+        int cantidadBaniosValor =(valorCantidadBanios.isEmpty())?0:Integer.valueOf(valorCantidadBanios);
+
+        String valorcantidadAmbientes=cantidadAmbientes.getText().toString();
+        int cantidadAmbientesValor =(valorcantidadAmbientes.isEmpty())?0:Integer.valueOf(valorcantidadAmbientes);
+
+        String valorCantidadCuartos=cantidadCuartos.getText().toString();
+        int cantidadCuartosValor =(valorCantidadCuartos.isEmpty())?0:Integer.valueOf(valorCantidadCuartos);
 
 
 
-        if (tipoPropiedad.getSelectedItem().toString().isEmpty()) {
-            Toast.makeText(this, "Debe seleccionar un tipo de propiedad", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (estado.getSelectedItem().toString().isEmpty()) {
-            Toast.makeText(this, "Debe seleccionar un estado", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (addressCity.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar una ciudad", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (addressState.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar una provincia", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (amenities.getSelectedItem().toString().isEmpty()){   //ver
-            Toast.makeText(this, "Debe seleccionar amenities", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (antiguedad.getSelectedItem().toString().isEmpty()){
-            Toast.makeText(this, "Debe seleccionar una antiguedad", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (addressCountry.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar un pais", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (cantidadBanios.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar una cantidad de baños", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        } else if (cantidadAmbientes.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar una cantidad de ambientes", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        } else if (cantidadCuartos.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debe ingresar una cantidad de cuartos", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (precioMax.getText().toString().isEmpty()){
-            Toast.makeText(this, "Debe ingresar un precio Maximo", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (precioMin.getText().toString().isEmpty()){
-            Toast.makeText(this, "Debe ingresar un precio Minimo", Toast.LENGTH_SHORT).show();
-            esValido = false;
-        }else if (precioMaxvalor<precioMinvalor){
+
+//validad cantidad banios ambientes y cuartos
+
+
+
+       if (precioMaxvalor<precioMinvalor){
             Toast.makeText(this, "El precio maximo debe ser mayor que el menor", Toast.LENGTH_SHORT).show();
             esValido = false;
         }else if (precioMaxvalor < 0 || precioMinvalor < 0){
@@ -147,10 +118,10 @@ public class FilterUserProperties extends AppCompatActivity {
             esValido = false;
         }
 
-        return true;
+        return esValido;
     }
 
-    public void aplicarFiltros(){
+    public FiltersDTO aplicarFiltros(){
 
 
         Spinner tipoPropiedad = findViewById(R.id.spnrTipoPropiedad);
@@ -164,39 +135,45 @@ public class FilterUserProperties extends AppCompatActivity {
         TextView cantidadAmbientes = findViewById(R.id.txtCantidadAmbientesEdit);
         TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
 
-        //precio Max y Min
         TextView precioMax = findViewById(R.id.txtprecioMaxEdit);
         TextView precioMin = findViewById(R.id.txtprecioMinEdit);
 
+
+
+
         String valorTextoMax = precioMax.getText().toString();
-        int precioMaxvalor = Integer.parseInt(valorTextoMax);
+        int precioMaxvalor = (valorTextoMax.isEmpty())?0:Integer.valueOf(valorTextoMax);
 
         String valorTextoMin = precioMin.getText().toString();
-        int precioMinvalor = Integer.parseInt(valorTextoMin);
+        int precioMinvalor = (valorTextoMin.isEmpty())?0:Integer.valueOf(valorTextoMin);
+
+        String valorCantidadBanios=cantidadBanios.getText().toString();
+        int cantidadBaniosValor =(valorCantidadBanios.isEmpty())?0:Integer.valueOf(valorCantidadBanios);
+
+        String valorcantidadAmbientes=cantidadAmbientes.getText().toString();
+        int cantidadAmbientesValor =(valorcantidadAmbientes.isEmpty())?0:Integer.valueOf(valorcantidadAmbientes);
+
+        String valorCantidadCuartos=cantidadCuartos.getText().toString();
+        int cantidadCuartosValor =(valorCantidadCuartos.isEmpty())?0:Integer.valueOf(valorCantidadCuartos);
 
 
         //le paso la data a FiltersDTO
         FiltersDTO filtersDTO = new FiltersDTO();
 
         filtersDTO.setPropertyType(tipoPropiedad.toString());
-        filtersDTO.setPropertyStatus(estado.toString());
+        filtersDTO.setPropertyStatus(estado.toString()); //poner .getSelected revisar si manda bien
         filtersDTO.setLocalidad(addressCity.toString());
         filtersDTO.setProvincia(addressState.toString());
-        //filtersDTO.setPropertyAmenities(amenities.toString()); //String [] ?
+        //filtersDTO.setPropertyAmenities(amenities.s); //String [] ?
         filtersDTO.setPropertyAge(antiguedad.toString());
         filtersDTO.setPais(addressCountry.toString());
-        filtersDTO.setCantidadBanios(Integer.parseInt(cantidadBanios.toString()));
-        filtersDTO.setCantidadAmbientes(Integer.parseInt(cantidadAmbientes.toString()));
-        filtersDTO.setCantidadCuatros(Integer.parseInt(cantidadCuartos.toString()));
+        filtersDTO.setCantidadBanios(cantidadBaniosValor);
+        filtersDTO.setCantidadAmbientes(cantidadAmbientesValor);
+        filtersDTO.setCantidadCuatros(cantidadCuartosValor);
         filtersDTO.setPrecioMax(precioMaxvalor);
         filtersDTO.setPrecioMin(precioMinvalor);
 
-        /*
-        PropertyApi p =New PropertyApi();
-        p.verPropiedades(filtersDTO, callback);
-
-        */
-
+        return filtersDTO;
     }
 
     public void limpiarfiltro(){
