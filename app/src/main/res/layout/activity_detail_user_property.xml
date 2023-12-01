@@ -67,6 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollDetailProperty"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -398,6 +399,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/clDetailProperty"
                 app:layout_constraintStart_toStartOf="@id/clDetailProperty"
                 app:layout_constraintTop_toBottomOf="@+id/cvDetailProperty">
@@ -481,9 +484,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_treasure_chest"
                         android:drawablePadding="8dp"
+                        android:paddingEnd="30dp"
                         android:paddingRight="10dp"
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
@@ -496,9 +499,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
-                        android:paddingEnd="30dp"
                         android:drawableLeft="@drawable/ic_terrace"
                         android:drawablePadding="8dp"
+                        android:paddingEnd="30dp"
                         android:textColor="@color/gris_3"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/clCardGeneral"
@@ -517,24 +520,46 @@
                         app:layout_constraintStart_toStartOf="@+id/tvBaulera"
                         app:layout_constraintTop_toBottomOf="@+id/tvBaulera" />
 
+                    <Button
+                        android:id="@+id/btnContactar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/borde_redondo"
+                        android:backgroundTint="@color/boton"
+                        android:drawableLeft="@drawable/ic_calendar_days_regular"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/white"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:text="@string/contactar"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBalcon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnReservar"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <Button
+                        android:id="@+id/btnReservar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/borde_redondo"
+                        android:backgroundTint="@color/boton"
+                        android:drawableLeft="@drawable/ic_baseline_email_24"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/white"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:text="@string/reservar"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBalcon"
+                        app:layout_constraintStart_toEndOf="@+id/btnContactar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/btnClose"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/boton"
-                android:text="@string/cerrarPropiedad"
-                android:textColor="@color/botonText"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
-                tools:ignore="VisualLintButtonSize" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
