@@ -117,6 +117,10 @@
         <activity
             android:name=".Front.EditProperty"
             android:exported="false" />
+
+        <activity
+            android:name=".Front.FilterUserProperties"
+            android:exported="false" />
         <activity
             android:name=".Front.UsersProfile"
             android:exported="false" />

@@ -3,6 +3,7 @@ package com.example.myhome.Front;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,8 +25,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.myhome.model.Properties;
 import android.content.Intent;
+import android.widget.Toast;
 
 public class ListUserProperties extends AppCompatActivity  implements PropertiesCallback {
 
@@ -48,6 +49,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+
         // Obtenemos el ID del ítem de menú correspondiente a esta actividad
         int menuItemId = R.id.action_home;
 
@@ -66,6 +68,21 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
+
+            //PONER BOTON FILTERS ACA
+
+        Button btnFilters = findViewById(R.id.btnFilters);
+        btnFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListUserProperties.this, FilterUserProperties.class);
+                startActivityForResult(intent, 1);
+
+
+
+            }
+        });
+
 
 
 //        LoopingViewPager imageSliderSlider = findViewById(R.id.imageSliderSlider);
@@ -142,10 +159,24 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
     public void onPropertiesFailure(String errorMessage) {
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                // Aquí puedes realizar la actualización según los datos recibidos
+                if (data != null) {
+                    FiltersDTO filters = (FiltersDTO) data.getSerializableExtra("filters");
+                    PropertyApi propertyApi = new PropertyApi();
+                    properties = propertyApi.verPropiedades(filters, this);
+                    Toast.makeText(getApplicationContext(), "Filtros Aplicados", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 
     @Override
     public void onPropertiesSuccess(Long propertyId) {
-
     }
 
-                }
+}

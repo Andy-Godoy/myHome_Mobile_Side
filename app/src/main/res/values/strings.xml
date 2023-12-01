@@ -95,6 +95,9 @@
 
     //*****************************************************
 
+    //uso de strings para activity_list_user_fav_properties.xml
+    <string name="lbl_mispropiedadesfav">Mis Propiedades Favoritas</string>
+
     //****************************************************
     //uso de strings para activity_filter_user_properties.xml
     <string name="AplicarFiltros">Aplicar Filtros</string>

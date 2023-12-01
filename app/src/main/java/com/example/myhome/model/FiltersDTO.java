@@ -1,6 +1,10 @@
 package com.example.myhome.model;
 
-public class FiltersDTO {
+
+import java.io.Serializable;
+
+public class FiltersDTO implements Serializable {
+
     private Long userId;
 
 
