@@ -33,7 +33,6 @@
             android:id="@+id/lblDetallePropiedad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:fontFamily="@font/opensansbold"
             android:gravity="center"
             android:text="@string/detallepropiedad"
@@ -45,16 +44,26 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color"
+        android:contentDescription="@string/lbl_favoritos"
+        android:src="@drawable/ic_heart_empty"
+        app:backgroundTint="@android:color/transparent"
+        android:onClick="toggleFavorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp"
         android:background="@drawable/bg_color"
         android:contentDescription="@string/share_button_description"
         android:src="@drawable/ic_share"
         app:backgroundTint="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
@@ -188,11 +197,11 @@
 
                     <TextView
                         android:id="@+id/tvTipoPropiedad"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_building"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -202,7 +211,7 @@
 
                     <TextView
                         android:id="@+id/tvAmbientes"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_couch"
@@ -215,7 +224,7 @@
 
                     <TextView
                         android:id="@+id/tvDormitorios"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
@@ -229,7 +238,7 @@
 
                     <TextView
                         android:id="@+id/tvBanios"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_bath"
@@ -243,7 +252,7 @@
 
                     <TextView
                         android:id="@+id/tvCocheras"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
@@ -257,7 +266,7 @@
 
                     <TextView
                         android:id="@+id/tvPisos"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_layer_group_solid"
@@ -338,7 +347,7 @@
 
                     <TextView
                         android:id="@+id/tvCubierto"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
@@ -352,7 +361,7 @@
 
                     <TextView
                         android:id="@+id/tvSemiCubierto"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"

@@ -177,11 +177,11 @@
 
                     <TextView
                         android:id="@+id/tvTipoPropiedad"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_building"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -191,7 +191,7 @@
 
                     <TextView
                         android:id="@+id/tvAmbientes"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_couch"
@@ -204,11 +204,11 @@
 
                     <TextView
                         android:id="@+id/tvDormitorios"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_bed"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -218,7 +218,7 @@
 
                     <TextView
                         android:id="@+id/tvBanios"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_bath"
@@ -232,11 +232,11 @@
 
                     <TextView
                         android:id="@+id/tvCocheras"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_car_side"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -246,7 +246,7 @@
 
                     <TextView
                         android:id="@+id/tvPisos"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:drawableLeft="@drawable/ic_layer_group_solid"
@@ -265,7 +265,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="20dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_compass_regular"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -327,11 +327,11 @@
 
                     <TextView
                         android:id="@+id/tvCubierto"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
@@ -341,9 +341,8 @@
 
                     <TextView
                         android:id="@+id/tvSemiCubierto"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
                         android:drawablePadding="8dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
@@ -361,7 +360,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
-                        android:paddingEnd="30dp"
+                        android:paddingEnd="10dp"
                         android:drawableLeft="@drawable/ic_superficie_cubierta"
                         android:drawablePadding="8dp"
                         android:textColor="@color/gris_3"
