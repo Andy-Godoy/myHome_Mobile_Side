@@ -76,9 +76,9 @@ dependencies {
     implementation ("com.google.android.gms:play-services-base:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-basement:18.2.0") //Libreria para el uso de Google Auth
     implementation ("com.google.android.gms:play-services-tasks:18.0.2") //Libreria para el uso de Google Auth
-    implementation ("com.google.android.gms:play-services-auth:20.0.1") //Libreria para el uso de Google Auth
+    implementation ("com.google.android.gms:play-services-auth:20.7.0") //Libreria para el uso de Google Auth
     // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-auth")
 
     implementation ("com.github.bumptech.glide:glide:4.12.0")

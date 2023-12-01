@@ -76,6 +76,9 @@
             android:name=".Front.DetailProperty"
             android:exported="false" />
         <activity
+            android:name=".Front.DetailUserProperty"
+            android:exported="false" />
+        <activity
             android:name=".Front.NewPassword"
             android:exported="false" />
         <activity
@@ -113,6 +116,10 @@
             android:exported="false" />
         <activity
             android:name=".Front.EditProperty"
+            android:exported="false" />
+
+        <activity
+            android:name=".Front.FilterUserProperties"
             android:exported="false" />
         <activity
             android:name=".Front.UsersProfile"
