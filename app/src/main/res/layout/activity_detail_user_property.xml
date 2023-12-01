@@ -33,7 +33,6 @@
             android:id="@+id/lblDetallePropiedad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:fontFamily="@font/opensansbold"
             android:gravity="center"
             android:text="@string/detallepropiedad"
@@ -45,16 +44,26 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color"
+        android:contentDescription="@string/lbl_favoritos"
+        android:src="@drawable/ic_heart_empty"
+        app:backgroundTint="@android:color/transparent"
+        android:onClick="toggleFavorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp"
         android:background="@drawable/bg_color"
         android:contentDescription="@string/share_button_description"
         android:src="@drawable/ic_share"
         app:backgroundTint="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
-import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.R;
 import com.example.myhome.model.Properties;
@@ -22,16 +21,19 @@ import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class DetailUserProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
+    private FloatingActionButton favoriteButton;
+    private boolean isFavorite = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_user_property);
 
+        favoriteButton = findViewById(R.id.favoriteButton);
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -68,13 +70,13 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     }
 
     @Override
-    public void onPropertiesSuccess(Properties propiedad) {
+    public void onPropertiesSuccess(Properties propiedad) { //Fixme: Solucionar este problema en Android Studio Arreglar el slider si es necesario, por ahora no esta crasheando (revisar)
+        this.propiedad = propiedad;
 
-       String[] propertyImages = propiedad.getPropertyImages();
-//TODO: Arreglar el slider si es necesario, por ahora no esta crasheando (revisar)
-        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
-        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
-        imageSlider.setAdapter(imageSliderAdapter);
+        String[] propertyImages = propiedad.getPropertyImages();
+//        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
+//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+//        imageSlider.setAdapter(imageSliderAdapter);
 
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
@@ -193,6 +195,18 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         } else {
             // Manejo si property es nulo
             Toast.makeText(this, "La propiedad es nula", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void toggleFavorite(View view) {
+        isFavorite = !isFavorite;
+
+        if (isFavorite) {
+            favoriteButton.setImageResource(R.drawable.baseline_favorite_24);
+            Toast.makeText(this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
+        } else {
+            favoriteButton.setImageResource(R.drawable.ic_heart_empty);
+            Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
         }
     }
 }
