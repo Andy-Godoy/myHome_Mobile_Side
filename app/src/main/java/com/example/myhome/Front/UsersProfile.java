@@ -2,7 +2,6 @@ package com.example.myhome.Front;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
@@ -34,8 +31,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
-
-
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 

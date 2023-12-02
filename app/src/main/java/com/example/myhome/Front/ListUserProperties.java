@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
@@ -21,10 +19,8 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.Intent;
 import android.widget.Toast;
 

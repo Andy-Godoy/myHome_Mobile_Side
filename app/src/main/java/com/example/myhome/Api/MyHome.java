@@ -1,7 +1,6 @@
 package com.example.myhome.Api;
 
 import android.app.Application;
-
 import com.example.myhome.model.Users;
 
 public class MyHome extends Application {
