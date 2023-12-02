@@ -3,6 +3,7 @@ package com.example.myhome.Front;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
 import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.Users;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,6 +30,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     private Properties propiedad;
     private FloatingActionButton favoriteButton;
     private boolean isFavorite = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +49,24 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         }); */
 
         obtenerPropiedad();
-        Button btnClose = findViewById(R.id.btnClose);
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Cierra la actividad y vuelve a la actividad anterior
-                finish();
-            }
-        });
 
         FloatingActionButton fabShare = findViewById(R.id.fabShare);
         fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 compartirContenido();
+            }
+        });
+
+
+        Button btnContactar = findViewById(R.id.btnContactar);
+        btnContactar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  lo llevamos al activity DetailProperty
+                Intent intent = new Intent(DetailUserProperty.this, UserSchedule.class);
+                startActivity(intent);
+                finish(); //  Finaliza la actividad actual
             }
         });
     }
@@ -161,6 +169,8 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
     @Override
     public void onPropertiesFailure(String errorMessage) {
+        String mensaje = (isFavorite)?"Agregado a":"Eliminado de";
+        Toast.makeText(this, mensaje.concat(errorMessage), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -203,11 +213,21 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
         if (isFavorite) {
             favoriteButton.setImageResource(R.drawable.baseline_favorite_24);
-            Toast.makeText(this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
         } else {
             favoriteButton.setImageResource(R.drawable.ic_heart_empty);
-            Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
         }
+
+
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            Long userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
+
+            //Llamo a retrofit para guardar a propiedad en favoritos
+            PropertyApi propertyApi = new PropertyApi();
+            propertyApi.updateFavorite(propiedad.getPropertyId(), userId, this);
+        }
+
     }
 
     public void contactarClick(View view) {
