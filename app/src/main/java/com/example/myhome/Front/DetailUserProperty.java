@@ -39,14 +39,13 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-      /*  // Configuramos el listener para los elementos del menú
+        // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
-        }); */
+        });
 
         obtenerPropiedad();
-
         FloatingActionButton fabShare = findViewById(R.id.fabShare);
         fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
