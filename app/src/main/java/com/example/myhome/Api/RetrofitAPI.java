@@ -71,4 +71,6 @@ public interface RetrofitAPI {
 
     @PUT("users/{userId}")
     Call<Users> updateUser(@Path("userId") Long userId, @Body Users user);
+    @POST("properties/{propertyId}/favorites")
+    Call<Void> updateFavorite(@Path ("propertyId") Long propertyId, @Query("userId") long userId);
 }

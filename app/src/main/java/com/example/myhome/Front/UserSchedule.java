@@ -6,13 +6,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myhome.Api.MyHome;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-
+import com.example.myhome.model.Users;
 
 
 public class UserSchedule extends AppCompatActivity {
@@ -20,6 +23,9 @@ public class UserSchedule extends AppCompatActivity {
     private ImageView imageViewProfile;
     private Spinner tipoContacto;
     private Button btnContact;
+    private EditText name;
+    private EditText email;
+    private Users user;
 
 
 
@@ -31,6 +37,9 @@ public class UserSchedule extends AppCompatActivity {
 
         tipoContacto = findViewById(R.id.spnTipoContacto);
         imageViewProfile = findViewById(R.id.imageViewProfile);
+        name = findViewById(R.id.editTextName);
+        email = findViewById(R.id.editTextEmail);
+
 
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
@@ -41,6 +50,11 @@ public class UserSchedule extends AppCompatActivity {
             NetworkUtils.showNoInternetMessage(this);
         }
 
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            user = ((MyHome) this.getApplication()).getUsuario();
+            name.setText(user.getUserName().toString());
+            email.setText(user.getUserEmail().toString());
+        }
 
         btnContact = findViewById(R.id.btnContactar);
         btnContact.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +75,7 @@ public class UserSchedule extends AppCompatActivity {
                         editor.apply();
 
                         //  lo llevamos al activity DetailProperty
-                        Intent intent = new Intent(UserSchedule.this, ListUserProperties.class);
+                        Intent intent = new Intent(UserSchedule.this, DetailUserProperty.class);
                         startActivity(intent);
                         finish(); //  Finaliza la actividad actual
 
@@ -79,5 +93,10 @@ public class UserSchedule extends AppCompatActivity {
 
     }
 
+    public void volver (View v){
+
+        finish(); //  Finaliza la actividad actual
+
+    }
 
 }
