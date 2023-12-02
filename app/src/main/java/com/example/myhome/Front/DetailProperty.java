@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
     @Override
