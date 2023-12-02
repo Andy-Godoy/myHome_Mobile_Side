@@ -1,7 +1,10 @@
 package com.example.myhome.Front;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
@@ -19,5 +22,9 @@ public class ReserveProperty extends AppCompatActivity {
             // mostramos mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
+    }
+
+    public void volver(View view) {
+        finish();
     }
 }
