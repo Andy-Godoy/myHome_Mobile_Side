@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
@@ -19,11 +23,10 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import android.content.Intent;
-import android.widget.Toast;
 
 public class ListUserProperties extends AppCompatActivity  implements PropertiesCallback {
 
@@ -46,7 +49,6 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
         // Obtenemos el ID del ítem de menú correspondiente a esta actividad
         int menuItemId = R.id.action_home;
 
@@ -66,21 +68,15 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
 
-            //PONER BOTON FILTERS ACA
-
+        //PONER BOTON FILTERS ACA
         Button btnFilters = findViewById(R.id.btnFilters);
         btnFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListUserProperties.this, FilterUserProperties.class);
                 startActivityForResult(intent, 1);
-
-
-
             }
         });
-
-
 
 //        LoopingViewPager imageSliderSlider = findViewById(R.id.imageSliderSlider);
 //
@@ -99,9 +95,9 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
         List<String> imageUrls = new ArrayList<>();
         if (propertyImages != null) {
             Collections.addAll(imageUrls, propertyImages);
-
         }
-            return imageUrls;
+
+        return imageUrls;
     }
 
 
