@@ -58,7 +58,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandlerUsuario.handleMenuItemClick(this, item);
+            MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 

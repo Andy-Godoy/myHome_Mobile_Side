@@ -55,7 +55,7 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandlerUsuario.handleMenuItemClick(this, item);
+            MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 
