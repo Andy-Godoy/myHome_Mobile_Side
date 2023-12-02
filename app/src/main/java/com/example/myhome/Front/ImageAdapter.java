@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class ImageAdapter extends BaseAdapter implements ListAdapter {
-    private Context context;
-    private ArrayList<Uri> imageUris;
+    private final Context context;
+    private final ArrayList<Uri> imageUris;
 
     public ImageAdapter(Context context, ArrayList<Uri> imageUris) {
         this.context = context;

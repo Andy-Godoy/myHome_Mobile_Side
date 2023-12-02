@@ -236,6 +236,16 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         }
 
     }
+
+    public void contactarClick(View view) {
+        Intent intent = new Intent(this, UserSchedule.class);
+        startActivity(intent);
+    }
+
+    public void reservarClick(View view) {
+        Intent intent = new Intent(this, ReserveProperty.class);
+        startActivity(intent);
+    }
 }
 
 

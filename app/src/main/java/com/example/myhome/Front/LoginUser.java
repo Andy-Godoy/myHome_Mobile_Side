@@ -57,7 +57,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        signInButton = (SignInButton) findViewById(R.id.signInButton);
+        signInButton = findViewById(R.id.signInButton);
 
         signInButton.setSize(SignInButton.SIZE_WIDE);
 

@@ -231,6 +231,5 @@ public class PropertyApi extends AppCompatActivity {
             }
         });
 
-        return;
     }
 }

@@ -14,9 +14,9 @@ import java.util.Set;
 
 public class CustomSpinnerAdapter extends ArrayAdapter<String> {
 
-    private LayoutInflater inflater;
+    private final LayoutInflater inflater;
     private boolean allChecked = false;
-    private boolean[] checkedItems;
+    private final boolean[] checkedItems;
     private Set<String> amenities = new HashSet<>();
     private boolean isEnabled = true;
 
