@@ -129,11 +129,14 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
         });
     }
 
-    private List<String> obtenerUrlsDesdeAzure() {
+    private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
+        if (propertyImages != null) {
+            for (String i : propertyImages) {
+                imageUrls.add(i);
+            }
+
+        }
         return imageUrls;
     }
 
@@ -142,7 +145,7 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
         if (properties != null) {
             for (PropertySummary p : properties) {
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
-                List<String> imageUrls = obtenerUrlsDesdeAzure();
+                List<String> imageUrls = obtenerUrlsDesdeAzure(p.getPropertyImages());
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 

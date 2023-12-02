@@ -18,7 +18,6 @@ public class Properties {
     private String propertyOrientation;
     private String propertyAge;
     private String[] propertyAmenities;
-
     private String[] propertyImages;
     private String propertyDescription;
     private Integer propertyCoveredM2;
