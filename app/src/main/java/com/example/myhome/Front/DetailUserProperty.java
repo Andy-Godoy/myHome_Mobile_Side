@@ -209,6 +209,16 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
             Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void contactarClick(View view) {
+        Intent intent = new Intent(this, UserSchedule.class);
+        startActivity(intent);
+    }
+
+    public void reservarClick(View view) {
+        Intent intent = new Intent(this, ReserveProperty.class);
+        startActivity(intent);
+    }
 }
 
 
