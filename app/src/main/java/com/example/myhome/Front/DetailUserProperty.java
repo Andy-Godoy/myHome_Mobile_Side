@@ -19,7 +19,6 @@ import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.Arrays;
 import java.util.List;
 
