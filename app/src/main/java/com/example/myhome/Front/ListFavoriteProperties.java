@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,7 +117,21 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
                 Picasso.get().load(imageUrl).into(imageProperty);
                 cardConteiner.addView(propertyCard);
 
+                propertyCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Obtengo el ID de la propiedad
+                        String propertyId = p.getPropertyId().toString();
+
+                        // Iniciar la actividad DetailProperty y paso el ID como extra
+                        Intent intent = new Intent(ListFavoriteProperties.this, DetailUserProperty.class);
+                        intent.putExtra("propertyId", propertyId);
+                        startActivity(intent);
+                    }
+                });
+
             }
+
 
 
         }
