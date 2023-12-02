@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -21,7 +19,6 @@ import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,14 +38,13 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-      /*  // Configuramos el listener para los elementos del menú
+        // Configuramos el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
-        }); */
+        });
 
         obtenerPropiedad();
-
         FloatingActionButton fabShare = findViewById(R.id.fabShare);
         fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +64,17 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
                 finish(); //  Finaliza la actividad actual
             }
         });
+
+        Button btnReservar = findViewById(R.id.btnReservar);
+        btnReservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  lo llevamos al activity DetailProperty
+                Intent intent = new Intent(DetailUserProperty.this, ReserveProperty.class);
+                startActivity(intent);
+                finish(); //  Finaliza la actividad actual
+            }
+        });
     }
 
     @Override
@@ -77,10 +84,11 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     }
 
     @Override
-    public void onPropertiesSuccess(Properties propiedad) { //Fixme: Solucionar este problema en Android Studio Arreglar el slider si es necesario, por ahora no esta crasheando (revisar)
+    public void onPropertiesSuccess(Properties propiedad) {
         this.propiedad = propiedad;
 
         String[] propertyImages = propiedad.getPropertyImages();
+
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
         ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
         imageSlider.setAdapter(imageSliderAdapter);

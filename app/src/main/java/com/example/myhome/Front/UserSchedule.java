@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
@@ -52,8 +51,8 @@ public class UserSchedule extends AppCompatActivity {
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
-            name.setText(user.getUserName().toString());
-            email.setText(user.getUserEmail().toString());
+            name.setText(user.getUserName());
+            email.setText(user.getUserEmail());
         }
 
         btnContact = findViewById(R.id.btnContactar);

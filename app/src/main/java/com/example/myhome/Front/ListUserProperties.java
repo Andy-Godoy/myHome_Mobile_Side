@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
@@ -21,10 +19,9 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -58,7 +55,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandlerUsuario.handleMenuItemClick(this, item);
+            MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 
@@ -97,17 +94,16 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
 //        imageSliderSlider.setAdapter(imageSliderAdapter);
     }
 
-    //TODO: esto hay que reemplazarlo para que traiga las urls del blob de azure en el listado de propiedades del usuario
-    private List<String> obtenerUrlsDesdeAzure() {
-        // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
-        // Puedes implementar la lógica específica para tu aplicación aquí
+
+    private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
-        // Agrega más URLs según sea necesario
-        return imageUrls;
+        if (propertyImages != null) {
+            Collections.addAll(imageUrls, propertyImages);
+
+        }
+            return imageUrls;
     }
+
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
@@ -115,7 +111,7 @@ public class ListUserProperties extends AppCompatActivity  implements Properties
             for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
-                List<String> imageUrls = obtenerUrlsDesdeAzure();
+                List<String> imageUrls = obtenerUrlsDesdeAzure(p.getPropertyImages());
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 

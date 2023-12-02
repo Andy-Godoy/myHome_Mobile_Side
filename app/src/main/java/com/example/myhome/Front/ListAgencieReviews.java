@@ -20,7 +20,6 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Resenas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.List;
 
 public class ListAgencieReviews extends AppCompatActivity implements RatingCallback {
