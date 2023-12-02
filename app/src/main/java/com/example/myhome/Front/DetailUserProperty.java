@@ -60,14 +60,13 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
 
 
         Button btnContactar = findViewById(R.id.btnContactar);
-        btnContactar.setOnTouchListener(new View.OnTouchListener() {
+        btnContactar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                // Iniciar la actividad de contacto
+            public void onClick(View v) {
+                //  lo llevamos al activity DetailProperty
                 Intent intent = new Intent(DetailUserProperty.this, UserSchedule.class);
                 startActivity(intent);
-                return false;
+                finish(); //  Finaliza la actividad actual
             }
         });
     }
