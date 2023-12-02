@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,12 +56,10 @@
             android:layout_marginEnd="@dimen/_7pxh"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
-
+                android:layout_height="48dp">
                 <EditText
                     android:id="@+id/editTextSearch"
                     android:layout_width="match_parent"
@@ -74,46 +73,35 @@
                     android:padding="@dimen/_10pxh" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/temp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_7pxh"
-            android:layout_marginEnd="@dimen/_7pxh"
-            android:layout_marginBottom="40dp"
-            android:paddingBottom="40dp"
-            android:orientation="horizontal">
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/lista_de_propiedades">
-
                 <LinearLayout
                     android:id="@+id/cardContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout="@layout/card_property"></androidx.cardview.widget.CardView>
                 </LinearLayout>
             </ScrollView>
-        </LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/black"
+            app:backgroundTint="@color/gray_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:menu="@menu/bottom_navigation_menu" />
+
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/black"
-        app:backgroundTint="@color/gray_200"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:menu="@menu/bottom_navigation_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
