@@ -69,19 +69,17 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         btnReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //  lo llevamos al activity DetailProperty
                 Intent intent = new Intent(DetailUserProperty.this, ReserveProperty.class);
+                intent.putExtra("propertyId", propiedad.getPropertyId().toString());
                 startActivity(intent);
                 finish(); //  Finaliza la actividad actual
             }
         });
     }
 
-    @Override
-    public void onPropertiesSuccess(List<PropertySummary> properties) {
 
-
-    }
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
@@ -181,9 +179,9 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     }
 
     @Override
-    public void onPropertiesSuccess(Long propertyId) {
-
-    }
+    public void onPropertiesSuccess(Long propertyId) {}
+    @Override
+    public void onPropertiesSuccess(List<PropertySummary> properties) {}
 
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
@@ -235,6 +233,16 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
             propertyApi.updateFavorite(propiedad.getPropertyId(), userId, this);
         }
 
+    }
+
+    public void contactarClick(View view) {
+        Intent intent = new Intent(this, UserSchedule.class);
+        startActivity(intent);
+    }
+
+    public void reservarClick(View view) {
+        Intent intent = new Intent(this, ReserveProperty.class);
+        startActivity(intent);
     }
 }
 

@@ -50,7 +50,7 @@ public class FilterUserProperties extends AppCompatActivity {
                     FiltersDTO filters=aplicarFiltros();
 
                     Intent intent=new Intent();
-                    intent.putExtra("filters", (Serializable) filters);
+                    intent.putExtra("filters", filters);
                     setResult(RESULT_OK,intent);
                     finish();
 

@@ -69,10 +69,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-
-
-
-
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
 
@@ -89,7 +85,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
             spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference().toString()));
             Glide.with(this).load(user.getUserImage()).into(imageViewProfile);
         }
-
 
         //Escucho si modificaron el selector de monedas y de ser así habilito el botón de guardado
         spinnerCurrency = findViewById(R.id.spinnerCurrency);
@@ -111,7 +106,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
 
             }
         });
-
 
         btnLogout = findViewById(R.id.btnLogoutUser);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -172,17 +166,13 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
                 builder.show();
             }
         });
-
-
     }
-
 
     @Override
     public void onLoginFailure(String errorMessage) {
 
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     public void onLoginSuccess(Users user) {
@@ -230,11 +220,9 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-
     public void volver(View view) {
         finish();
     }
-
 
     public void revoke() {
         Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback(new ResultCallback<Status>() {

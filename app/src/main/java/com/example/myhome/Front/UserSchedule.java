@@ -51,8 +51,8 @@ public class UserSchedule extends AppCompatActivity {
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
-            name.setText(user.getUserName().toString());
-            email.setText(user.getUserEmail().toString());
+            name.setText(user.getUserName());
+            email.setText(user.getUserEmail());
         }
 
         btnContact = findViewById(R.id.btnContactar);

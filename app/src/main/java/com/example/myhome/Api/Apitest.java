@@ -62,10 +62,10 @@ public class Apitest extends AppCompatActivity {
                     loadingPB.setVisibility(View.GONE);
                     courseCV.setVisibility(View.VISIBLE);
                     List<Agencies> agencies = response.body();
-                    agencyEmail.setText(agencies.get(0).getAgencyEmail().toString());
-                    agencyId.setText(agencies.get(0).getAgencyId().toString());
-                    userId.setText(agencies.get(0).getUserId().toString());
-                    agencyName.setText(agencies.get(0).getAgencyName().toString());
+                    agencyEmail.setText(agencies.get(0).getAgencyEmail());
+                    agencyId.setText(agencies.get(0).getAgencyId());
+                    userId.setText(agencies.get(0).getUserId());
+                    agencyName.setText(agencies.get(0).getAgencyName());
                     // acá podemos manejar la respuesta
                 } else {
                     // acá podemos manejar los errores de respuesta
