@@ -48,6 +48,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven("https://jitpack.io")
+
     }
 }
 
@@ -118,5 +120,8 @@ dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0") //para el uso de imagenes circulares
     implementation ("com.squareup.picasso:picasso:2.71828")
 
-
+    // https://mvnrepository.com/artifact/com.crystal/crystalrangeseekbar
+    implementation("com.crystal:crystalrangeseekbar:1.1.3")
+    implementation ("com.github.Jay-Goo:RangeSeekBar:v3.0.0")
+    implementation("org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0")
 }

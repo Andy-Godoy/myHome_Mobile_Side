@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_color">
 
 
@@ -267,19 +268,48 @@
                     android:textSize="16sp"
                     tools:ignore="TextSizeCheck" />
 
-                <Spinner
-                    android:id="@+id/spnrAmenitiesFilter"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/bg_custom_spinner"
-                    android:prompt="@string/amenities"
-                    android:spinnerMode="dropdown"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="290dp" />
+                    android:background="@drawable/rounded_gray_border"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/selectCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/transparent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintVertical_bias="0.25">
+
+                        <!-- Your CardView content here -->
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                    <TextView
+                        android:id="@+id/spnrAmenitiesFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentStart="true"
+                        android:hint="Selección amenities" />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_arrow_down" />
+
+                </RelativeLayout>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -493,59 +523,27 @@
             <TextView
                 android:id="@+id/precioMax"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:ems="10"
                 android:fontFamily="@font/opensanssemibold"
                 android:gravity="center"
-                android:text="@string/PrecioMax"
+                android:text="Precio Max y Min"
                 android:textColor="@color/general_titulo"
                 android:textSize="16sp"
                 tools:ignore="TextSizeCheck" />
 
-            <EditText
-                android:id="@+id/txtprecioMaxEdit"
+            <org.florescu.android.rangeseekbar.RangeSeekBar
+                android:id="@+id/rangeSeekbar"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/PrecioMax"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                tools:ignore="VisualLintTextFieldSize" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="0.5"
-            android:orientation="vertical"
-            android:padding="2dp">
-            <TextView
-                android:id="@+id/precioMin"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:ems="10"
-                android:fontFamily="@font/opensanssemibold"
-                android:gravity="center"
-                android:text="@string/PrecioMin"
-                android:textColor="@color/general_titulo"
-                android:textSize="16sp"
-                tools:ignore="TextSizeCheck" />
+                android:layout_height="wrap_content"
+                
+                />
 
-            <EditText
-                android:id="@+id/txtprecioMinEdit"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/borde_redondo"
-                android:hint="@string/PrecioMin"
-                android:inputType="number"
-                android:paddingLeft="8dp"
-                android:textSize="15sp"
-                tools:ignore="VisualLintTextFieldSize" />
+
+
+
         </LinearLayout>
 
 

@@ -1,0 +1,9 @@
+<!-- res/drawable/ic_thumb_right.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:width="20dp"
+        android:height="20dp" />
+    <solid
+        android:color="#FF4081" />
+</shape>
