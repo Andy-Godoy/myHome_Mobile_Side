@@ -180,14 +180,7 @@ public class FilterUserProperties extends AppCompatActivity {
         TextView cantidadCuartos = findViewById(R.id.txtCantidadCuartosEdit);
 
         int precioMaxvalor = rangeSeekBar.getSelectedMaxValue().intValue();
-
-
         int precioMinvalor =rangeSeekBar.getSelectedMinValue().intValue();
-
-
-
-
-
 
         String valorCantidadBanios=cantidadBanios.getText().toString();
         int cantidadBaniosValor =(valorCantidadBanios.isEmpty())?0:Integer.valueOf(valorCantidadBanios);
@@ -202,16 +195,16 @@ public class FilterUserProperties extends AppCompatActivity {
         //le paso la data a FiltersDTO
         FiltersDTO filtersDTO = new FiltersDTO();
 
-        filtersDTO.setPropertyType(tipoPropiedad.toString());
-        filtersDTO.setPropertyStatus(estado.toString()); //poner .getSelected revisar si manda bien
-        filtersDTO.setLocalidad(addressCity.toString());
-        filtersDTO.setProvincia(addressState.toString());
+        filtersDTO.setPropertyType(tipoPropiedad.getSelectedItem().toString());
+        filtersDTO.setPropertyStatus(estado.getSelectedItem().toString());
+        filtersDTO.setLocalidad(addressCity.getText().toString());
+        filtersDTO.setProvincia(addressState.getText().toString());
         filtersDTO.setPropertyAmenities(amenities);
-        filtersDTO.setPropertyAge(antiguedad.toString());
-        filtersDTO.setPais(addressCountry.toString());
+        filtersDTO.setPropertyAge(antiguedad.getSelectedItem().toString());
+        filtersDTO.setPais(addressCountry.getText().toString());
         filtersDTO.setCantidadBanios(cantidadBaniosValor);
         filtersDTO.setCantidadAmbientes(cantidadAmbientesValor);
-        filtersDTO.setCantidadCuatros(cantidadCuartosValor);
+        filtersDTO.setCantidadCuartos(cantidadCuartosValor);
         filtersDTO.setPrecioMax(precioMaxvalor);
         filtersDTO.setPrecioMin(precioMinvalor);
 
@@ -226,7 +219,6 @@ public class FilterUserProperties extends AppCompatActivity {
         Spinner estado = findViewById(R.id.spnrEstado);
         TextView addressCity = findViewById(R.id.txtLocalidad);
         TextView addressState = findViewById(R.id.txtProvincia);
-        //Spinner amenities=findViewById(R.id.spnrAmenitiesFilter);
         Spinner antiguedad=findViewById(R.id.spnrAntiguedad);
         TextView addressCountry = findViewById(R.id.txtPaisEdit);
         TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
@@ -338,24 +330,6 @@ public class FilterUserProperties extends AppCompatActivity {
                 }
             }
         });
-//                .setNeutralButton("Todos", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                for (int i = 0; i < selectedCourses.length; i++) {
-//                    selectedCourses[i] = true;
-//                    coursesList.add(i);
-//                }
-//                // Actualizar la vista con la lista seleccionada
-//                StringBuilder stringBuilder = new StringBuilder();
-//                for (int i = 0; i < coursesList.size(); i++) {
-//                    stringBuilder.append(courses[coursesList.get(i)]);
-//                    if (i != coursesList.size() - 1) {
-//                        stringBuilder.append(", ");
-//                    }
-//                }
-//                tvCourses.setText(stringBuilder.toString());
-//            }
-//        })
 
         builder.show();
     }
