@@ -97,7 +97,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         if (propertyImages != null) {
             ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
             imageSlider.setAdapter(imageSliderAdapter);
-        };
+        }
 
         isFavorite = propiedad.getPropertyIsFavorite();
         favoriteButton.setImageResource((isFavorite)?R.drawable.baseline_favorite_24:R.drawable.ic_heart_empty);
@@ -199,7 +199,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
-        Long userId = 0l;
+        Long userId = 0L;
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();

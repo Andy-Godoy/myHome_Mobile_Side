@@ -405,7 +405,7 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
-        Long userId = 0l;
+        Long userId = 0L;
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();

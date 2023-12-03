@@ -1,15 +1,20 @@
 package com.example.myhome.Front;
 
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -32,10 +37,10 @@ import java.util.List;
 
 public class ReserveProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
-    private RatingBar rbAtencion;
-    private EditText etComentario;
     private final float PORCENTAJE_COMISION = 0.1F;
     private final float TIPO_CAMBIO_PESOS = 1000;
+    private RatingBar rbAtencion;
+    private EditText etComentario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
