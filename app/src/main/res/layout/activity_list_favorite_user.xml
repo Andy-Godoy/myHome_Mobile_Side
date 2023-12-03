@@ -43,7 +43,7 @@
                 android:fontFamily="@font/opensansbold"
                 android:gravity="start"
                 android:padding="3dp"
-                android:text="Mis Favoritos"
+                android:text="@string/mis_favoritos"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 tools:text="Mis Favoritos" />

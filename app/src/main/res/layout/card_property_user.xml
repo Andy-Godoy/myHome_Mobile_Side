@@ -35,7 +35,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="Galeria de imagenes de propiedades">
+                android:contentDescription="@string/galeria_de_imagenes_de_propiedades">
 
 
             </com.asksira.loopingviewpager.LoopingViewPager>

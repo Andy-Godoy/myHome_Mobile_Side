@@ -34,7 +34,7 @@
             android:id="@+id/uploadImageButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Subir Imagen"
+            android:text="@string/subir_imagen"
             app:layout_constraintBottom_toTopOf="@+id/urlTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -63,7 +63,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Elegir Imagen"
+            android:text="@string/elegir_imagen"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="238dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

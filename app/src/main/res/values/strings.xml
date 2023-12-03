@@ -305,6 +305,24 @@
     <string name="graciasReserva">¡Muchas gracias por realizar una  reserva!</string>
     <string name="atencion">¿Que te pareció la atención?</string>
     <string name="experiencia">Mi experiencia fue...</string>
+    <string name="usuario_example_com">usuario@example.com</string>
+    <string name="ver_resenas">Ver Reseñas</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="library">Library</string>
+    <string name="home">Home</string>
+    <string name="galeria_de_imagenes_de_propiedades">Galeria de imagenes de propiedades</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="contacta_al_anunciante">Contactá al anunciante</string>
+    <string name="nombre">Nombre</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="moneda">Moneda:</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="subir_imagen">Subir Imagen</string>
+    <string name="elegir_imagen">Elegir Imagen</string>
+    <string name="mis_favoritos">Mis Favoritos</string>
+    <string name="seleccion_amenities">Selección amenities</string>
+    <string name="imagenes_de_la_propiedad">imagenes de la propiedad</string>
     //*****************************************************
 
 
