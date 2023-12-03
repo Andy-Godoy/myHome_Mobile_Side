@@ -172,7 +172,7 @@ public class FilterUserProperties extends AppCompatActivity {
         TextView addressState = findViewById(R.id.txtProvincia);
 
 
-        //Spinner amenities=findViewById(R.id.spnrAmenitiesFilter);
+
         Spinner antiguedad=findViewById(R.id.spnrAntiguedad);
         TextView addressCountry = findViewById(R.id.txtPaisEdit);
         TextView cantidadBanios = findViewById(R.id.txtCantidadBanios);
