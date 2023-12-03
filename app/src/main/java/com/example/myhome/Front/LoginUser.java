@@ -4,15 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.myhome.model.GoogleCredentials;
+
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.GoogleCredentials;
+import com.example.myhome.model.Users;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -131,9 +133,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
             finish(); // Finalizamos la actividad actual para evitar que el usuario regrese a ella con el botón "Atrás"
         }
 
-       // Intent intent = new Intent(LoginUser.this, SecondActivity.class);
-       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-       // startActivity(intent);
+
     }
 
     @Override

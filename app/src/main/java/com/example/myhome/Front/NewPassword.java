@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.myhome.model.BasicCredentials;
+
 import com.example.myhome.Api.MyHome;
-import com.example.myhome.model.Users;
 import com.example.myhome.Api.UsersApi;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
+import com.example.myhome.model.BasicCredentials;
+import com.example.myhome.model.Users;
 
 public class NewPassword extends AppCompatActivity implements LoginCallback {
 

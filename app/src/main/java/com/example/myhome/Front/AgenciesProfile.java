@@ -18,14 +18,18 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
+import com.ctc.wstx.util.StringUtil;
 import com.example.myhome.Api.AgencyApi;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
+import com.example.myhome.AzureService.AzureBlobStorageManager;
 import com.example.myhome.Interfaces.AgencyCallBack;
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.Network.NetworkUtils;
@@ -37,10 +41,15 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack, LoginCallback {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private ImageView imageViewProfile;
+    private CircleImageView imageViewProfile;
     private Button btnLogout;
     private RatingBar ratingBar;
     private Button btnSaveAgency;
@@ -51,6 +60,10 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
     private Agencies agency;
     private EditText nombre;
     private EditText email;
+    private AzureBlobStorageManager azureBlobStorageManager;
+    private String imageUris;
+    private ImageAdapter imageAdapter;
+
 
 
     @Override
@@ -58,7 +71,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agencies_profile);
 
-        imageViewProfile = findViewById(R.id.imageViewProfile);
+        azureBlobStorageManager = new AzureBlobStorageManager(this);
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
@@ -95,6 +108,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 return false;
             }
         });
+
         //Escucho si modificaron el nombre y de ser así habilito el botón de guardado
         nombre = findViewById(R.id.textViewName);
         nombre.addTextChangedListener(new TextWatcher() {
@@ -114,6 +128,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
             }
         });
+
         //Escucho si modificaron el email y de ser así habilito el botón de guardado
         email = findViewById(R.id.editTextEmail);
         email.addTextChangedListener(new TextWatcher() {
@@ -135,6 +150,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
 
         });
+
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,8 +179,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //  No hace nada
-                        dialogInterface.dismiss();
+                                                dialogInterface.dismiss();
                     }
                 });
 
@@ -173,6 +188,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 alertDialog.show();
             }
         });
+
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +217,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 builder.show();
             }
         });
+
         btnSaveAgency = findViewById(R.id.btnSaveAgency);
         btnSaveAgency.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +231,18 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                     public void onClick(DialogInterface dialogInterface, int a) {
                         agency.setAgencyName(nombre.getText().toString());
                         agency.setAgencyEmail(email.getText().toString());
+                        ArrayList<Uri> image = new ArrayList<>();
+                        image.add(Uri.parse(imageUris));
+
+                        if (azureBlobStorageManager.uploadImages(image)){
+
+                            Object[] objectArray = azureBlobStorageManager.getUploadedImageUrls().toArray();
+                            String[] stringArray = Arrays.copyOf(objectArray, objectArray.length, String[].class);
+
+                            agency.setAgencyImage(stringArray[0]);
+
+                        }
+
                         //Llamo a retrofit para
                         AgencyApi agencyApi = new AgencyApi();
                         agencyApi.editarAgencia(agency, AgenciesProfile.this);
@@ -234,20 +263,14 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             }
         });
 
-      /*  Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.currency_options, // Definimos las opciones en strings.xml dentro del array
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter); */
+
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
         // Manejar el clic en el ImageView
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnSaveAgency.setEnabled(true);
                 openGallery();
             }
         });
@@ -265,14 +288,13 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             // Obtener la imagen seleccionada de la galería
-            Uri selectedImageUri = data.getData();
+            imageUris = data.getData().toString();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(imageUris));
 
                 // Redondear la imagen
                 setRoundedImage(bitmap);
 
-                // Puedes agregar aquí la lógica para subir la imagen a Azure Blob Storage si lo necesitas
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -315,9 +337,17 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             if (isUpdate){
                 Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
             }
-        }
 
+            if(agency.getAgencyImage() != null && agency.getAgencyImage() != ""){
+                imageUris = agency.getAgencyImage();
+                Picasso.get().load(agency.getAgencyImage()).into(imageViewProfile);
+            } else {
+                imageUris = "";
+                Picasso.get().load("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg");
+            }
+        }
     }
+
     @Override
     public void onUnregisterSuccess() {
         Toast.makeText(this, "El usuario ha sido eliminado", Toast.LENGTH_SHORT).show();

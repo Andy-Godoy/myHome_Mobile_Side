@@ -75,16 +75,6 @@
 
     //uso de strings para activity_list_user_properties.xml
 
-    <string name="lbl_paraguay_4200">Paraguay 4200</string>
-    <string name="lbl_u_d_220">U$D 220</string>
-    <string name="lbl_33_m2">33 m2 </string>
-    <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
-    <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
-    <string name="lbl_1_dormitorio">1 dormitorio</string>
-    <string name="lbl_perfil">Perfil     </string>
-    <string name="lbl_filtrar">Filtrar</string>
-    <string name="lbl_propiedades">Propiedades</string>
-    <string name="lbl_my_home">My Home</string>
     <string name="lbl_favoritos">Favoritos  </string>
 
     //****************************************************
@@ -96,16 +86,12 @@
     //*****************************************************
 
     //uso de strings para activity_list_user_fav_properties.xml
-    <string name="lbl_mispropiedadesfav">Mis Propiedades Favoritas</string>
 
     //****************************************************
     //uso de strings para activity_filter_user_properties.xml
     <string name="AplicarFiltros">Aplicar Filtros</string>
     <string name="Filtros">Filtros</string>
     <string name="LimpiarFiltros">Limpiar Filtros</string>
-    <string name="PrecioMax">Precio Max</string>
-    <string name="PrecioMin">Precio Min</string>
-
 
 
     //****************************************************
@@ -277,14 +263,6 @@
     //****************************************************
     //uso de strings para activity_detail_property.xml
 
-    <string name="ambientes">Más de 4 ambientes</string>
-    <string name="banios">Baños</string>
-    <string name="casas">Casas</string>
-    <string name="cocheras">Cocheras</string>
-    <string name="disposicion">Disposición</string>
-    <string name="dormitorios">Dormitorios</string>
-    <string name="pisos">Pisos</string>
-    <string name="superficieCubierta">Superficie cubierta</string>
     <string name="amenitiesTitulo">AMENITIES</string>
     <string name="descripcionTitulo">DESCRIPCIÓN</string>
     <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
@@ -305,6 +283,22 @@
     <string name="graciasReserva">¡Muchas gracias por realizar una  reserva!</string>
     <string name="atencion">¿Que te pareció la atención?</string>
     <string name="experiencia">Mi experiencia fue...</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="library">Library</string>
+    <string name="home">Home</string>
+    <string name="galeria_de_imagenes_de_propiedades">Galeria de imagenes de propiedades</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="contacta_al_anunciante">Contactá al anunciante</string>
+    <string name="nombre">Nombre</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="moneda">Moneda:</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="subir_imagen">Subir Imagen</string>
+    <string name="elegir_imagen">Elegir Imagen</string>
+    <string name="mis_favoritos">Mis Favoritos</string>
+    <string name="seleccion_amenities">Selección amenities</string>
+    <string name="imagenes_de_la_propiedad">imagenes de la propiedad</string>
     //*****************************************************
 
 

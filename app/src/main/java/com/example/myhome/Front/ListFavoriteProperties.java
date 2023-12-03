@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -19,20 +21,21 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ListFavoriteProperties extends AppCompatActivity  implements PropertiesCallback {
+public class ListFavoriteProperties extends AppCompatActivity implements PropertiesCallback {
 
     private LinearLayout cardConteiner;
     private List<PropertySummary> properties;
     private Long userId;
     private Long agencyId;
     private final float TIPO_CAMBIO_PESOS = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +65,12 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
         cardConteiner = findViewById(R.id.cardContainer);
 
+        cargarDatos();
 
 
+    }
+
+    private void cargarDatos() {
         FiltersDTO filters = new FiltersDTO();
 
         filters.setIsFavorite(true);
@@ -73,15 +80,17 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
         }
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
-
-
     }
 
     private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        if (propertyImages != null) {
-            Collections.addAll(imageUrls, propertyImages);
+        if (propertyImages != null && propertyImages.length > 0) {
+            for (String i : propertyImages) {
+                imageUrls.add(i);
+            }
 
+        } else {
+            imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg");
         }
         return imageUrls;
     }
@@ -97,7 +106,7 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
                 String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
-                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD")) ? 1 : TIPO_CAMBIO_PESOS));
                 ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
                 ((TextView) propertyCard.findViewById(R.id.propertyLocation)).setText(p.getPropertyNeighbourhood().concat(", ").concat(p.getPropertyCity()));
@@ -107,9 +116,15 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
                 ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
 
                 ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
-                String imageUrl = "https://static1.sosiva451.com/521961_a/8b07c18b-b15d-4d23-9bf1-e3d4ce2eea5e_small.jpg";
-                Picasso.get().load(imageUrl).into(imageProperty);
+                String imageUrl = p.getAgencyImage();
+                if (imageUrl == null) {
+                    imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+                } else {
+                    Picasso.get().load(imageUrl).into(imageProperty);
+                }
+
                 cardConteiner.addView(propertyCard);
+
 
                 propertyCard.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -125,7 +140,6 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
                 });
 
             }
-
 
 
         }
@@ -146,5 +160,23 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        cargarDatos();
+    }
+
+    private void closePropertiesActivity() {
+        // Tu lógica para cerrar la actividad
+
+
+        // Configura el resultado para enviar datos de vuelta a la actividad AgenciasPropertiesActivity
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("actualizarDatos", true);
+        setResult(RESULT_OK, resultIntent);
+
+        // Cierra la actividad
+        finish();
+    }
 
 }

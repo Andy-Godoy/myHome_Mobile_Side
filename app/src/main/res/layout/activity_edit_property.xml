@@ -42,25 +42,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextSizeCheck" />
     </androidx.appcompat.widget.Toolbar>
-<!--    -->
-<!--    &lt;!&ndash; Agrega el ImageButton para la flecha de retroceso &ndash;&gt;-->
-<!--    <ImageButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="14dp"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:src="@drawable/baseline_arrow_back_ios_24"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="ContentDescription"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="btnClose"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:scaleType="fitCenter"-->
-
-<!--        />-->
 
 
 
@@ -71,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbar"> <!-- es es una restricción para que no se superponga con el BottomNavigationView -->
+        app:layout_constraintTop_toTopOf="@id/toolbar"> <!-- es una restricción para que no se superponga con el BottomNavigationView -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -819,7 +800,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
-                        android:hint="Selección amenities"
+                        android:hint="@string/seleccion_amenities"
                         android:paddingStart="10dp"
                         android:textColor="@color/black" />
 

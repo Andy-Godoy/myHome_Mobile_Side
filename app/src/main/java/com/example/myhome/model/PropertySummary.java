@@ -10,8 +10,18 @@ public class PropertySummary {
     private String propertyAddress;
     private String propertyNeighbourhood;
     private String propertyCity;
+    private String[] propertyImages;
+    private String agencyImage;
 
-    public PropertySummary(Long propertyId, Long agencyId, Integer propertyPrice, Integer propertyDimension, Integer propertyBedroomQuantity, String propertyDescription, String propertyAddress, String propertyNeighbourhood, String propertyCity) {
+    public String getAgencyImage() {
+        return agencyImage;
+    }
+
+    public void setAgencyImage(String agencyImage) {
+        this.agencyImage = agencyImage;
+    }
+
+    public PropertySummary(Long propertyId, Long agencyId, Integer propertyPrice, Integer propertyDimension, Integer propertyBedroomQuantity, String propertyDescription, String propertyAddress, String propertyNeighbourhood, String propertyCity, String agencyImage) {
         this.propertyId = propertyId;
         this.agencyId = agencyId;
         this.propertyPrice = propertyPrice;
@@ -21,6 +31,7 @@ public class PropertySummary {
         this.propertyAddress = propertyAddress;
         this.propertyNeighbourhood = propertyNeighbourhood;
         this.propertyCity = propertyCity;
+        this.agencyImage = agencyImage;
     }
 
     public PropertySummary(PropertySummary ps) {
@@ -33,6 +44,7 @@ public class PropertySummary {
         this.propertyAddress = ps.getPropertyAddress();
         this.propertyNeighbourhood = ps.getPropertyNeighbourhood();
         this.propertyCity = ps.getPropertyCity();
+        this.agencyImage = ps.getAgencyImage();
     }
 
     public Long getPropertyId() {
@@ -107,7 +119,7 @@ public class PropertySummary {
         this.propertyCity = propertyCity;
     }
 
-    private String[] propertyImages;
+
 
     public String[] getPropertyImages() {
         return propertyImages;

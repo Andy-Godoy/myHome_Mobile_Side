@@ -14,13 +14,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -29,9 +30,9 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class ReserveProperty extends AppCompatActivity implements PropertiesCallback {
@@ -99,7 +100,7 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
 
             ImageView imageView = findViewById(R.id.imagenIzquierda);
             String[] propertyImages = propiedad.getPropertyImages();
-            if (propertyImages != null && propertyImages.length > 0) {
+            if (propertyImages != null && propertyImages.length > 0 && !propertyImages[0].equals("")) {
                 Picasso.get().load(propertyImages[0]).into(imageView);
             }else{
                 Picasso.get().load("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg").into(imageView);

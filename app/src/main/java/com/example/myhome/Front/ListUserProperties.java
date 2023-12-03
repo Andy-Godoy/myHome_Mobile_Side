@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -26,7 +28,6 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -53,6 +54,15 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user_properties);
 
+        Button btnFilters = findViewById(R.id.btnFilters);
+        btnFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListUserProperties.this, FilterUserProperties.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         // Mover la solicitud de permisos al método onCreate
         requestLocationPermission();
 
@@ -75,7 +85,7 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
         cardContainer = findViewById(R.id.cardContainer);
 
         // Mover la carga de propiedades después de la solicitud de permisos
-        loadProperties();
+        loadProperties(null);
     }
 
     private boolean checkLocationPermission() {
@@ -103,16 +113,17 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
             public void onLocationResult(LocationResult locationResult) {
                 if (locationResult != null && locationResult.getLastLocation() != null) {
                     Location location = locationResult.getLastLocation();
-                    latitude = location.getLatitude();
-                    longitude = location.getLongitude();
+                    ((MyHome) ListUserProperties.this.getApplication()).setLatitude(location.getLatitude());
+                    ((MyHome) ListUserProperties.this.getApplication()).setLongitude(location.getLongitude());
+
                     // Después de obtener la ubicación, carga las propiedades
-                    loadProperties();
+
                 } else {
                     Toast.makeText(ListUserProperties.this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show();
-                    latitude = 0.0;
-                    longitude = 0.0;
+                    ((MyHome) ListUserProperties.this.getApplication()).setLatitude(0.0);
+                    ((MyHome) ListUserProperties.this.getApplication()).setLongitude(0.0);
                     // Aunque no se pueda obtener la ubicación, intenta cargar las propiedades
-                    loadProperties();
+
                 }
             }
         };
@@ -130,21 +141,17 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
     }
 
     // Muevo la carga de propiedades a un método separado
-    private void loadProperties() {
-        FiltersDTO filters = new FiltersDTO();
-        filters.setUserLatitude(latitude);
-        filters.setUserLongitude(longitude);
+    private void loadProperties(FiltersDTO filters) {
+        if (filters == null) {
+            filters = new FiltersDTO();
+        }
+
+        filters.setUserLatitude(((MyHome) this.getApplication()).getLatitude());
+        filters.setUserLongitude(((MyHome) this.getApplication()).getLongitude());
+
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
 
-        Button btnFilters = findViewById(R.id.btnFilters);
-        btnFilters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListUserProperties.this, FilterUserProperties.class);
-                startActivityForResult(intent, 1);
-            }
-        });
     }
 
     // Este método lo llamamos después de que el usuario responde a la solicitud de permisos
@@ -160,27 +167,17 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
             }
         }
 
-        FiltersDTO filters = new FiltersDTO();
-        filters.setUserLatitude(latitude);
-        filters.setUserLongitude(longitude);
-        PropertyApi propertyApi = new PropertyApi();
-        properties = propertyApi.verPropiedades(filters, this);
-
-        Button btnFilters = findViewById(R.id.btnFilters);
-        btnFilters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListUserProperties.this, FilterUserProperties.class);
-                startActivityForResult(intent, 1);
-            }
-        });
     }
 
     private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        if (propertyImages != null) {
-            Collections.addAll(imageUrls, propertyImages);
+        if (propertyImages != null && propertyImages.length > 0) {
+            for (String i : propertyImages) {
+                imageUrls.add(i);
+            }
 
+        }else{
+            imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg");
         }
         return imageUrls;
     }
@@ -188,6 +185,7 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+        cardContainer.removeAllViews();
         if (properties != null) {
             for (PropertySummary p : properties) {
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardContainer, false);
@@ -216,32 +214,40 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
                 });
 
                 ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
-                String imageUrl = "https://static1.sosiva451.com/521961_a/8b07c18b-b15d-4d23-9bf1-e3d4ce2eea5e_small.jpg";
+                String imageUrl = p.getAgencyImage();
+
+                if (imageUrl == null || imageUrl.equals("")) {
+                    imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+                }
+
                 Picasso.get().load(imageUrl).into(imageProperty);
+
                 cardContainer.addView(propertyCard);
+
             }
         }
+
     }
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
-        // Implementa la lógica para manejar la carga exitosa de propiedades
+
     }
 
     @Override
     public void onPropertiesFailure(String errorMessage) {
-        // Implementa la lógica para manejar la falla en la carga de propiedades
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == 1) {
+
             if (resultCode == RESULT_OK) {
-                if (data != null) {
-                    FiltersDTO filters = (FiltersDTO) data.getSerializableExtra("filters");
-                    PropertyApi propertyApi = new PropertyApi();
-                    properties = propertyApi.verPropiedades(filters, this);
+                  if (data != null) {
+                    loadProperties((FiltersDTO) data.getSerializableExtra("filters"));
                     Toast.makeText(getApplicationContext(), "Filtros Aplicados", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -250,6 +256,10 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
 
     @Override
     public void onPropertiesSuccess(Long propertyId) {
-        // Implementa la lógica para manejar la carga exitosa de propiedades por ID
+
+    }
+    public void onResume() {
+        super.onResume();
+        loadProperties(null);
     }
 }
