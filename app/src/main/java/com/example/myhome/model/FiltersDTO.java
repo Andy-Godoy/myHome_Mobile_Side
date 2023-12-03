@@ -12,7 +12,7 @@ public class FiltersDTO implements Serializable {
     private String pais;
     private int cantidadBanios;
     private int cantidadAmbientes;
-    private int cantidadCuatros;
+    private int cantidadCuartos;
     private int precioMax;
     private int precioMin;
     private String[] propertyAmenities;
@@ -72,12 +72,12 @@ public class FiltersDTO implements Serializable {
         this.cantidadAmbientes = cantidadAmbientes;
     }
 
-    public int getCantidadCuatros() {
-        return cantidadCuatros;
+    public int getCantidadCuartos() {
+        return cantidadCuartos;
     }
 
-    public void setCantidadCuatros(int cantidadCuatros) {
-        this.cantidadCuatros = cantidadCuatros;
+    public void setCantidadCuartos(int cantidadCuartos) {
+        this.cantidadCuartos = cantidadCuartos;
     }
 
     public int getPrecioMax() {

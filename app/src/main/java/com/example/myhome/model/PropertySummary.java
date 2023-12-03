@@ -11,6 +11,16 @@ public class PropertySummary {
     private String propertyNeighbourhood;
     private String propertyCity;
 
+    public String getAgencyImage() {
+        return AgencyImage;
+    }
+
+    public void setAgencyImage(String agencyImage) {
+        AgencyImage = agencyImage;
+    }
+
+    private String AgencyImage;
+
     public PropertySummary(Long propertyId, Long agencyId, Integer propertyPrice, Integer propertyDimension, Integer propertyBedroomQuantity, String propertyDescription, String propertyAddress, String propertyNeighbourhood, String propertyCity) {
         this.propertyId = propertyId;
         this.agencyId = agencyId;

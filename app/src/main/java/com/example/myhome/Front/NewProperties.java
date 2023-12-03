@@ -17,8 +17,10 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.AzureService.AzureBlobStorageManager;
@@ -30,6 +32,7 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

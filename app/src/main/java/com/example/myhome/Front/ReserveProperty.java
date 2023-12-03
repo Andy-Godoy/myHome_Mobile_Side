@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -24,9 +25,9 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class ReserveProperty extends AppCompatActivity implements PropertiesCallback {

@@ -1,19 +1,20 @@
 package com.example.myhome.Front;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
-import android.view.View;
-import android.content.Context;
-import android.content.Intent;
-import java.io.Serializable;
 
 
 
@@ -101,11 +102,6 @@ public class FilterUserProperties extends AppCompatActivity {
 
 
 
-
-//validad cantidad banios ambientes y cuartos
-
-
-
        if (precioMaxvalor<precioMinvalor){
             Toast.makeText(this, "El precio maximo debe ser mayor que el menor", Toast.LENGTH_SHORT).show();
             esValido = false;
@@ -156,16 +152,16 @@ public class FilterUserProperties extends AppCompatActivity {
         //le paso la data a FiltersDTO
         FiltersDTO filtersDTO = new FiltersDTO();
 
-        filtersDTO.setPropertyType(tipoPropiedad.toString());
-        filtersDTO.setPropertyStatus(estado.toString()); //poner .getSelected revisar si manda bien
-        filtersDTO.setLocalidad(addressCity.toString());
-        filtersDTO.setProvincia(addressState.toString());
+        filtersDTO.setPropertyType(tipoPropiedad.getSelectedItem().toString());
+        filtersDTO.setPropertyStatus(estado.getSelectedItem().toString());
+        filtersDTO.setLocalidad(addressCity.getText().toString());
+        filtersDTO.setProvincia(addressState.getText().toString());
         //filtersDTO.setPropertyAmenities(amenities.s); //String [] ?
-        filtersDTO.setPropertyAge(antiguedad.toString());
-        filtersDTO.setPais(addressCountry.toString());
+        filtersDTO.setPropertyAge(antiguedad.getSelectedItem().toString());
+        filtersDTO.setPais(addressCountry.getText().toString());
         filtersDTO.setCantidadBanios(cantidadBaniosValor);
         filtersDTO.setCantidadAmbientes(cantidadAmbientesValor);
-        filtersDTO.setCantidadCuatros(cantidadCuartosValor);
+        filtersDTO.setCantidadCuartos(cantidadCuartosValor);
         filtersDTO.setPrecioMax(precioMaxvalor);
         filtersDTO.setPrecioMin(precioMinvalor);
 

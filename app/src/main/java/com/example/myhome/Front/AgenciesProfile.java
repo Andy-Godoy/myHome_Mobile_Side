@@ -18,11 +18,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
 import com.example.myhome.Api.AgencyApi;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
@@ -33,7 +35,6 @@ import com.example.myhome.R;
 import com.example.myhome.model.Agencies;
 import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
-import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
@@ -163,8 +164,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //  No hace nada
-                        dialogInterface.dismiss();
+                                                dialogInterface.dismiss();
                     }
                 });
 
@@ -234,14 +234,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             }
         });
 
-      /*  Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.currency_options, // Definimos las opciones en strings.xml dentro del array
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter); */
+
 
         imageViewProfile = findViewById(R.id.imageViewProfile);
         // Manejar el clic en el ImageView
@@ -272,7 +265,6 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 // Redondear la imagen
                 setRoundedImage(bitmap);
 
-                // Puedes agregar aquí la lógica para subir la imagen a Azure Blob Storage si lo necesitas
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -17,9 +19,9 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
-import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         setContentView(R.layout.activity_detail_user_property);
 
         favoriteButton = findViewById(R.id.favoriteButton);
-        LoopingViewPager imageSlider = findViewById(R.id.imageSlider); // Reemplaza R.id.imageSlider con el ID real de tu LoopingViewPager
+        LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -256,6 +258,10 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     public void reservarClick(View view) {
         Intent intent = new Intent(this, ReserveProperty.class);
         startActivity(intent);
+    }
+    public void onResume() {
+        super.onResume();
+        obtenerPropiedad();
     }
 }
 
