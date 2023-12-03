@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 
@@ -47,7 +49,7 @@ public class AgenciesRating extends AppCompatActivity {
             }
         });
 
-        // Configurar los datos de prueba
+
         userImageView.setImageResource(R.drawable.profile_picture);
         userNameTextView.setText("Nombre del Usuario");
         commentTextView.setText("Comentario de prueba");

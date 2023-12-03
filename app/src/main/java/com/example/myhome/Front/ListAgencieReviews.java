@@ -10,7 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.RatingApi;
@@ -20,6 +22,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Resenas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.List;
 
 public class ListAgencieReviews extends AppCompatActivity implements RatingCallback {

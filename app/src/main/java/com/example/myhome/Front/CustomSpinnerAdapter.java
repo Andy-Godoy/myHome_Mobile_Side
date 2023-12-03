@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
 import com.example.myhome.R;
+
 import java.util.HashSet;
 import java.util.Set;
 

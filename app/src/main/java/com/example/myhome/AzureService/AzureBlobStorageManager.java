@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 
@@ -38,7 +39,7 @@ public class AzureBlobStorageManager {
     private Context context;
 
     public AzureBlobStorageManager(Context context) {
-        // Reemplaza con tus propias credenciales y URI de almacenamiento
+        // credenciales de acceso a Azure Blob Storage
         blobContainerClient = new BlobServiceClientBuilder()
                 .endpoint("https://storagemyhome.blob.core.windows.net")
                 .sasToken("si=full&sv=2022-11-02&sr=c&sig=dceTOJyNNUggF3oEYoEWkdhPRkpM8bmv3%2BNDIx5JS4o%3D")
@@ -84,8 +85,7 @@ public class AzureBlobStorageManager {
                         e.printStackTrace();
                     } finally {
                         if (uploadQueue.isEmpty()) {
-                            // Operación en el hilo principal
-                            // Limpiar la lista de imágenes seleccionadas
+                           // Limpiamos la lista de imágenes seleccionadas
                             selectedImages.clear();
                         }
                     }
@@ -122,14 +122,14 @@ public class AzureBlobStorageManager {
         byte[] byteArray = stream.toByteArray();
 
         try {
-            // Subir el archivo a Azure Blob Storage sin especificar la longitud del contenido
+            // Subimos el archivo a azure
             blobContainerClient.getBlobClient(randomFileName).upload(new ByteArrayInputStream(byteArray), byteArray.length);
         } catch (Exception e) {
             Log.e("uploadImage", "uploadImage: Algo falló pero sigue funcionando");
         }
 
-        // Devolver la URL del blob después de subir la imagen
-        return getImageUrl(randomFileName); // Pasa el nombre del archivo generado
+        // Devolvemos la URL del blob después de subir la imagen
+        return getImageUrl(randomFileName); // Pasamos el nombre del archivo generado
     }
 
     private String getImageUrl(String fileName) {

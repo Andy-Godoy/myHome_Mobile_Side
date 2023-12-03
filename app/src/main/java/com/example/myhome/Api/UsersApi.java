@@ -6,12 +6,15 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myhome.Interfaces.LoginCallback;
 import com.example.myhome.R;
 import com.example.myhome.model.BasicCredentials;
 import com.example.myhome.model.GoogleCredentials;
 import com.example.myhome.model.Users;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +38,7 @@ public class UsersApi extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         validarButton = findViewById(R.id.validarButton);
-        //registrarUsuario();
+
     }
 
     public Users registrarUsuario(BasicCredentials basicCredentials, final LoginCallback callback) {

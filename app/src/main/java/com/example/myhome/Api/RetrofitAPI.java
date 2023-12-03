@@ -8,7 +8,9 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.example.myhome.model.Resenas;
 import com.example.myhome.model.Users;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -41,9 +43,6 @@ public interface RetrofitAPI {
 
     @POST("properties")
     Call<Properties> createProperty (@Body Properties property);
-
- //   @GET("properties")
- //   Call<Properties> getProperty (@Query("propertyId") long propertyId);
 
     @GET("properties/{propertyId}")
     Call<Properties> getProperty(@Path("propertyId") long propertyId, @Query("userId") long userId);
