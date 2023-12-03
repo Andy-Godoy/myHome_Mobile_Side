@@ -86,7 +86,7 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
             Glide.with(this).load(user.getUserImage()).into(imageViewProfile);
         }
 
-        //Escucho si modificaron el selector de monedas y de ser así habilito el botón de guardado
+        //Escucho si modificaron el selector de monedas y de ser así guardo el cambio.
         spinnerCurrency = findViewById(R.id.spinnerCurrency);
         spinnerCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -94,7 +94,8 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
                     isFirstTime = false;
                     return;
                 }
-                user.setUserCurrencyPreference((spinnerCurrency.getSelectedItem().toString() == "USD") ? CurrencyType.USD : CurrencyType.ARS);
+                String currency = spinnerCurrency.getSelectedItem().toString();
+                user.setUserCurrencyPreference((currency.equals("USD")) ? CurrencyType.USD : CurrencyType.ARS);
                 UsersApi usersApi = new UsersApi();
 
                 isUpdate = true;
@@ -180,7 +181,7 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
             this.user = user;
             nombre.setText(user.getUserName());
             email.setText(user.getUserEmail());
-           // spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference()));
+            //spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference()));
             if(isUpdate){
                 Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
             }

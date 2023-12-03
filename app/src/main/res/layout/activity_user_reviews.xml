@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Contenido del modal -->
+    <View
+        android:id="@+id/barraSuperrior"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/boton"
+        android:backgroundTint="@color/boton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvGraciasReserva"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/opensansbold"
+        android:text="@string/graciasReserva"
+        android:textColor="@color/general_titulo"
+        android:textSize="@dimen/_20pxh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperrior" />
+
+    <TextView
+        android:id="@+id/tvAtencion"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/opensansbold"
+        android:text="@string/atencion"
+        android:textColor="@color/general_titulo"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvGraciasReserva" />
+
+    <RatingBar
+        android:id="@+id/rbAtencion"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:progressTint="@color/amarillo"
+        android:rating="1"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:stepSize="1.0"
+        android:background="?android:attr/actionBarItemBackground"
+        app:layout_constraintBottom_toTopOf="@+id/tvDejarComentario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvAtencion"
+        app:layout_constraintTop_toBottomOf="@id/tvGraciasReserva">
+
+    </RatingBar>
+
+    <TextView
+        android:id="@+id/tvDejarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/opensansbold"
+        android:text="@string/atencion"
+        android:textColor="@color/general_titulo"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAtencion" />
+
+
+    <EditText
+        android:id="@+id/txtComentario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/borde_redondo"
+        android:fontFamily="@font/opensanssemibold"
+        android:gravity="top|start"
+        android:hint="@string/experiencia"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:minLines="10"
+        android:padding="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDejarComentario"
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+    <Button
+        android:id="@+id/btnCloseModal"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/red_rounded_button"
+        android:backgroundTint="@color/boton"
+        android:text="@string/aceptar"
+        android:textColor="@color/botonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtComentario" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
