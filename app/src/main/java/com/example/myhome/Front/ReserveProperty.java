@@ -1,19 +1,25 @@
 package com.example.myhome.Front;
 
-import android.content.Intent;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.view.Window;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -23,6 +29,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 import java.util.List;
@@ -74,7 +81,7 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
-        Long userId = 0L;
+        Long userId = 0l;
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
