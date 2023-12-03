@@ -160,7 +160,7 @@ public class DetailProperty extends AppCompatActivity implements PropertiesCallb
 
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
-        Long userId = 0l;
+        Long userId = 0L;
 
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
