@@ -3,7 +3,6 @@ package com.example.myhome.Front;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
-
 import com.example.myhome.R;
 
 public class MenuHandler {

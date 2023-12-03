@@ -2,7 +2,6 @@ package com.example.myhome.Front;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.UsersApi;
@@ -34,8 +31,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
-
-
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
@@ -74,10 +69,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-
-
-
-
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
 
@@ -94,7 +85,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
             spinnerCurrency.setSelection(((ArrayAdapter) spinnerCurrency.getAdapter()).getPosition(user.getUserCurrencyPreference().toString()));
             Glide.with(this).load(user.getUserImage()).into(imageViewProfile);
         }
-
 
         //Escucho si modificaron el selector de monedas y de ser así habilito el botón de guardado
         spinnerCurrency = findViewById(R.id.spinnerCurrency);
@@ -116,7 +106,6 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
 
             }
         });
-
 
         btnLogout = findViewById(R.id.btnLogoutUser);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -177,17 +166,13 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
                 builder.show();
             }
         });
-
-
     }
-
 
     @Override
     public void onLoginFailure(String errorMessage) {
 
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     public void onLoginSuccess(Users user) {
@@ -235,11 +220,9 @@ public class UsersProfile extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-
     public void volver(View view) {
         finish();
     }
-
 
     public void revoke() {
         Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback(new ResultCallback<Status>() {

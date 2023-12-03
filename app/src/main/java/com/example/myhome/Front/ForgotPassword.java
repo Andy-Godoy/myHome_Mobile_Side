@@ -6,15 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-
 import java.util.Properties;
 import java.util.Random;
-
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;

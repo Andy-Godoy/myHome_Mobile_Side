@@ -293,4 +293,10 @@
     <string name="contactar">Contactar</string>
     //*****************************************************
 
+    //****************************************************
+    //uso de strings para activity_reserve_property.xml
+    <string name="propiedadReservar">Propiedad a reservar</string>
+    <string name="montoReserva">Monto de reserva:</string>
+
+    //*****************************************************
 </resources>

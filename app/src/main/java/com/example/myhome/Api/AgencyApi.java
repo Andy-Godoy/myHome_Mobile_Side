@@ -1,11 +1,8 @@
 package com.example.myhome.Api;
 
-import android.widget.Toast;
-import com.example.myhome.Interfaces.AgencyCallBack;
-import com.example.myhome.Interfaces.PropertiesCallback;
-import com.example.myhome.model.Agencies;
-import com.example.myhome.model.Properties;
 
+import com.example.myhome.Interfaces.AgencyCallBack;
+import com.example.myhome.model.Agencies;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

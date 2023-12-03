@@ -1,14 +1,22 @@
 package com.example.myhome.Front;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
@@ -20,6 +28,8 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +42,9 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
     private List<PropertySummary> properties;
     private Long userId;
     private Long agencyId;
+
+    private double latitude;
+    private double longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +68,57 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
         // Configurar el listener para los elementos del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            MenuHandlerUsuario.handleMenuItemClick(this, item);
+            MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
 
         cardConteiner = findViewById(R.id.cardContainer);
 
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+
+            obtenerUbicacion();
+        }
+    }
+
+
+    private void obtenerUbicacion() {
+        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        client.getLastLocation()
+                .addOnSuccessListener(this, location -> {
+                    if (location != null) {
+                        // Ubicación obtenida con éxito
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
+                        // Haz algo con latitude y longitude aquí
+                    } else {
+                        latitude = 0;
+                        longitude = 0;
+                    }
+                });
+    }
+
+    // Este método lo llamamos después de que el usuario responde a la solicitud de permisos
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // El usuario concedió los permisos, ahora tomamos la ubicación
+                obtenerUbicacion();
+            } else {
+                Toast.makeText(this, "Permiso denegado, permite la ubicación", Toast.LENGTH_SHORT).show();
+            }
+        }
+
         FiltersDTO filters = new FiltersDTO();
+        filters.setUserLatitude(latitude);
+        filters.setUserLongitude(longitude);
         filters.setIsFavorite(true);
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
@@ -83,14 +140,14 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 //        imageSliderSlider.setAdapter(imageSliderAdapter);
     }
 
-    private List<String> obtenerUrlsDesdeAzure() {
-        // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
-        // Puedes implementar la lógica específica para tu aplicación aquí
+    private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
-        // Agrega más URLs según sea necesario
+        if (propertyImages != null) {
+            for (String i : propertyImages) {
+                imageUrls.add(i);
+            }
+
+        }
         return imageUrls;
     }
 
@@ -100,7 +157,7 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
             for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
-                List<String> imageUrls = obtenerUrlsDesdeAzure();
+                List<String> imageUrls = obtenerUrlsDesdeAzure(p.getPropertyImages());
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 

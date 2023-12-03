@@ -1,13 +1,10 @@
 package com.example.myhome.Front;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -18,10 +15,10 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.Arrays;
 import java.util.List;
+
+
 
 public class DetailProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;

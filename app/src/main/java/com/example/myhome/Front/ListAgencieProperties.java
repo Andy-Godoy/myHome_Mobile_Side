@@ -16,10 +16,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -31,7 +29,6 @@ import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
