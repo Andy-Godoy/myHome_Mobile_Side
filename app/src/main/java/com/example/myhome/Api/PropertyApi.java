@@ -101,7 +101,7 @@ public class PropertyApi extends AppCompatActivity {
         return propiedad;
     }
 
-    public Properties obtenerPropiedad(PropertyDTO property, final PropertiesCallback callback) {
+    public Properties obtenerPropiedad(PropertyDTO property, Long userId, final PropertiesCallback callback) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -112,7 +112,7 @@ public class PropertyApi extends AppCompatActivity {
         RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
 
 
-        Call<Properties> call = apiService.getProperty(property.getPropertyId());
+        Call<Properties> call = apiService.getProperty(property.getPropertyId(), userId);
 
         call.enqueue(new Callback<Properties>() {
             @Override

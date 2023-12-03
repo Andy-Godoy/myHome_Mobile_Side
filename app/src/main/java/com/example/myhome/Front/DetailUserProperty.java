@@ -17,6 +17,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     private Properties propiedad;
     private FloatingActionButton favoriteButton;
     private boolean isFavorite = false;
+    private final float TIPO_CAMBIO_PESOS = 1000;
 
 
     @Override
@@ -43,6 +45,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
             MenuHandlerUsuario.handleMenuItemClick(this, item, this.getClass());
             return true;
         });
+
 
         obtenerPropiedad();
         FloatingActionButton fabShare = findViewById(R.id.fabShare);
@@ -69,19 +72,17 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         btnReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //  lo llevamos al activity DetailProperty
                 Intent intent = new Intent(DetailUserProperty.this, ReserveProperty.class);
+                intent.putExtra("propertyId", propiedad.getPropertyId().toString());
                 startActivity(intent);
                 finish(); //  Finaliza la actividad actual
             }
         });
     }
 
-    @Override
-    public void onPropertiesSuccess(List<PropertySummary> properties) {
 
-
-    }
 
     @Override
     public void onPropertiesSuccess(Properties propiedad) {
@@ -90,8 +91,13 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         String[] propertyImages = propiedad.getPropertyImages();
 
         LoopingViewPager imageSlider = findViewById(R.id.imageSlider);
-        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
-        imageSlider.setAdapter(imageSliderAdapter);
+        if (propertyImages != null) {
+            ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, Arrays.asList(propertyImages));
+            imageSlider.setAdapter(imageSliderAdapter);
+        }
+
+        isFavorite = propiedad.getPropertyIsFavorite();
+        favoriteButton.setImageResource((isFavorite)?R.drawable.baseline_favorite_24:R.drawable.ic_heart_empty);
 
         TextView tvEstado = findViewById(R.id.tvEstado);
         TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
@@ -151,8 +157,10 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         }
 
         tvEstado.setText(propiedad.getPropertyStatus());
-        tvPrecioPropiedad.setText(moneda + " " + propiedad.getPropertyPrice().toString());
-        tvPrecioExpensas.setText(moneda + " " + propiedad.getPropertyExpenses().toString());
+        Integer valorPropiedad = (Integer) Math.round(propiedad.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+        tvPrecioPropiedad.setText(moneda + " " + valorPropiedad);
+        Integer valorExpensas = (Integer) Math.round(propiedad.getPropertyExpenses() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+        tvPrecioExpensas.setText(moneda + " " + valorExpensas);
         tvLocacion.setText(locacion);
         tvPais.setText(pais);
         tvTipoPropiedad.setText(propiedad.getPropertyType());
@@ -181,19 +189,22 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     }
 
     @Override
-    public void onPropertiesSuccess(Long propertyId) {
-
-    }
+    public void onPropertiesSuccess(Long propertyId) {}
+    @Override
+    public void onPropertiesSuccess(List<PropertySummary> properties) {}
 
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
+        Long userId = 0L;
+
         if (((MyHome) this.getApplication()).getUsuario() != null) {
+            userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
             property.setPropertyId(Long.parseLong(getIntent().getStringExtra("propertyId")));
         }
 
         PropertyApi propertyApi = new PropertyApi();
-        propiedad = propertyApi.obtenerPropiedad(property, this);
+        propiedad = propertyApi.obtenerPropiedad(property, userId,this);
     }
 
     public void btnClose(View view) {

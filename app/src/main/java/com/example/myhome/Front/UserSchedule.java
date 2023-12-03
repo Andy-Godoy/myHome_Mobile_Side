@@ -74,7 +74,7 @@ public class UserSchedule extends AppCompatActivity {
                         editor.apply();
 
                         //  lo llevamos al activity DetailProperty
-                        Intent intent = new Intent(UserSchedule.this, DetailUserProperty.class);
+                        Intent intent = new Intent(UserSchedule.this, ListUserProperties.class);
                         startActivity(intent);
                         finish(); //  Finaliza la actividad actual
 

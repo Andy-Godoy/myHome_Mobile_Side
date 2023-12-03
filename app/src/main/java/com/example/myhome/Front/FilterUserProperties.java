@@ -16,6 +16,8 @@ import android.content.Intent;
 import java.io.Serializable;
 
 
+
+
 public class FilterUserProperties extends AppCompatActivity {
 
    // private Properties properties = new Properties();
