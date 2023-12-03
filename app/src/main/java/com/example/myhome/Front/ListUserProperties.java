@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.asksira.loopingviewpager.LoopingViewPager;
+import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
 import com.example.myhome.Ignore.ImageSliderAdapter;
 import com.example.myhome.Interfaces.PropertiesCallback;
@@ -28,6 +26,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -46,6 +45,7 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
     private double latitude;
     private double longitude;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
+    private final float TIPO_CAMBIO_PESOS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,7 +196,9 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
-                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText("USD ".concat(p.getPropertyPrice().toString()));
+                String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
                 ((TextView) propertyCard.findViewById(R.id.propertyLocation)).setText(p.getPropertyNeighbourhood().concat(", ").concat(p.getPropertyCity()));
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));

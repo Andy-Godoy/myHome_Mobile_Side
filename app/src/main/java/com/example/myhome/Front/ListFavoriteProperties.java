@@ -2,17 +2,13 @@ package com.example.myhome.Front;
 
 
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import com.asksira.loopingviewpager.LoopingViewPager;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
@@ -23,10 +19,9 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
-
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +31,7 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
     private List<PropertySummary> properties;
     private Long userId;
     private Long agencyId;
-
-
+    private final float TIPO_CAMBIO_PESOS = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +97,9 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
-                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText("USD ".concat(p.getPropertyPrice().toString()));
+                String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
                 ((TextView) propertyCard.findViewById(R.id.propertyLocation)).setText(p.getPropertyNeighbourhood().concat(", ").concat(p.getPropertyCity()));
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));
@@ -150,5 +146,6 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
     public void onPropertiesSuccess(Long propertyId) {
 
     }
+
 
 }

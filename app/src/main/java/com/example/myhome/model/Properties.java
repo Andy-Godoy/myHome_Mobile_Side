@@ -25,6 +25,24 @@ public class Properties {
     private Integer propertyUncoveredM2;
     private Address propertyAddress;
     private boolean propertyHasTerrace;
+    private boolean propertyIsFavorite;
+    private String agencyImage;
+
+    public String getAgencyImage() {
+        return agencyImage;
+    }
+
+    public void setAgencyImage(String agencyImage) {
+        this.agencyImage = agencyImage;
+    }
+
+    public boolean getPropertyIsFavorite() {
+        return propertyIsFavorite;
+    }
+
+    public void setPropertyIsFavorite(boolean propertyIsFavorite) {
+        this.propertyIsFavorite = propertyIsFavorite;
+    }
 
     public Long getPropertyId() {
         return propertyId;

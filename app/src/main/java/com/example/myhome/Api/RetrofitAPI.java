@@ -46,7 +46,7 @@ public interface RetrofitAPI {
  //   Call<Properties> getProperty (@Query("propertyId") long propertyId);
 
     @GET("properties/{propertyId}")
-    Call<Properties> getProperty(@Path("propertyId") long propertyId);
+    Call<Properties> getProperty(@Path("propertyId") long propertyId, @Query("userId") long userId);
 
     @POST("properties/filters")
     Call<List<PropertySummary>> getProperties (@Body FiltersDTO filters);

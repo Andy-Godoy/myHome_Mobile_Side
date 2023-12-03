@@ -33,6 +33,8 @@ import com.example.myhome.R;
 import com.example.myhome.model.Agencies;
 import com.example.myhome.model.Users;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
+import com.squareup.picasso.Picasso;
+
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 
@@ -60,12 +62,10 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
-
         } else {
             // mostramos mensaje de error si no hay conexión que lo trae de la clase NetworkUtils.java
             NetworkUtils.showNoInternetMessage(this);
         }
-
         //Recupero el usuario en contexto para tener los datos
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             user = ((MyHome) this.getApplication()).getUsuario();
@@ -75,7 +75,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
         ratingBar = findViewById(R.id.ratingBar);
         textViewRatingValue = findViewById(R.id.textViewRatingValue);
-        // aca podemos configurar otros atributos del RatingBar según sea necesario...
+
         // Agregamos un OnRatingBarChangeListener al RatingBar
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -85,21 +85,16 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             }
         });
         textViewRatingValue.setText(String.valueOf(ratingBar.getRating()));
-
-
         // Agregamos un OnTouchListener al RatingBar, porque esta desactivada la interaccion del click con el ratingbar
         ratingBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
-
                 // Iniciar la actividad AgenciesRating
                 Intent intent = new Intent(AgenciesProfile.this, ListAgencieReviews.class);
                 startActivity(intent);
                 return false;
             }
         });
-
         //Escucho si modificaron el nombre y de ser así habilito el botón de guardado
         nombre = findViewById(R.id.textViewName);
         nombre.addTextChangedListener(new TextWatcher() {
@@ -118,10 +113,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             public void afterTextChanged(Editable editable) {
 
             }
-
-
         });
-
         //Escucho si modificaron el email y de ser así habilito el botón de guardado
         email = findViewById(R.id.editTextEmail);
         email.addTextChangedListener(new TextWatcher() {
@@ -143,9 +135,6 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
 
 
         });
-
-
-
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,8 +173,6 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 alertDialog.show();
             }
         });
-
-
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,8 +201,6 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 builder.show();
             }
         });
-
-
         btnSaveAgency = findViewById(R.id.btnSaveAgency);
         btnSaveAgency.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,7 +234,6 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             }
         });
 
-
       /*  Spinner spinnerCurrency = findViewById(R.id.spinnerCurrency);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -259,9 +243,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCurrency.setAdapter(adapter); */
 
-
         imageViewProfile = findViewById(R.id.imageViewProfile);
-
         // Manejar el clic en el ImageView
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,18 +251,15 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 openGallery();
             }
         });
-
         AgencyApi agencyApi = new AgencyApi();
         agency = agencyApi.getAgency(agencyId, this);
     }
-
-        private void openGallery() {
+    private void openGallery() {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), PICK_IMAGE_REQUEST);
         }
-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -308,23 +287,19 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         // Establecer la imagen redondeada en el ImageView
         imageViewProfile.setImageDrawable(circularDrawable);
     }
-
     @Override
     public void onLoginSuccess(Users user) {
 
     }
-
     @Override
     public void onLoginFailure(String errorMessage) {
 
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
-
     @Override
     public void onFailure(String errorMessage) {
 
     }
-
     @Override
     public void onAgencySuccess(Agencies agency, Boolean isUpdate) {
         if (agency != null) {
@@ -343,14 +318,12 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
         }
 
     }
-
     @Override
     public void onUnregisterSuccess() {
         Toast.makeText(this, "El usuario ha sido eliminado", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(AgenciesProfile.this, LoginUser.class);
         startActivity(intent);
     }
-
     private class UploadImageToAzureBlobStorageTask extends AsyncTask<Bitmap, Void, Void> {
         @Override
         protected Void doInBackground(Bitmap... bitmaps) {
@@ -371,13 +344,10 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
             return null;
         }
     }
-
-
     public void volver(View view) {
         Intent volver=new Intent(AgenciesProfile.this, ListAgencieProperties.class);
         startActivity(volver);
     }
-
 
 }
 
