@@ -1,5 +1,6 @@
 package com.example.myhome.Front;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
     private List<PropertySummary> properties;
     private Long userId;
     private Long agencyId;
+    private final float TIPO_CAMBIO_PESOS = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +61,10 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
 
         cardConteiner = findViewById(R.id.cardContainer);
 
+
+
         FiltersDTO filters = new FiltersDTO();
+
         filters.setIsFavorite(true);
         if (((MyHome) this.getApplication()).getUsuario() != null) {
             userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
@@ -68,26 +74,16 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
         properties = propertyApi.verPropiedades(filters, this);
 
 
-//        LoopingViewPager imageSliderSlider = findViewById(R.id.imageSliderSlider);
-//
-//        // Aquí debes obtener la lista de URLs de tus imágenes en el bucket de Azure
-//        List<String> imageUrls = obtenerUrlsDesdeAzure();
-//
-//        // Crear un adaptador para el LoopingViewPager
-//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
-//
-//        // Establecer el adaptador en el LoopingViewPager
-//        imageSliderSlider.setAdapter(imageSliderAdapter);
     }
 
-    private List<String> obtenerUrlsDesdeAzure() {
-        // Lógica para obtener las URLs de las imágenes desde tu bucket de Azure
-        // Puedes implementar la lógica específica para tu aplicación aquí
+    private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa1.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa2.jpg");
-        imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/casa3.jpg");
-        // Agrega más URLs según sea necesario
+        if (propertyImages != null) {
+            for (String i : propertyImages) {
+                imageUrls.add(i);
+            }
+
+        }
         return imageUrls;
     }
 
@@ -97,11 +93,13 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
             for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
-                List<String> imageUrls = obtenerUrlsDesdeAzure();
+                List<String> imageUrls = obtenerUrlsDesdeAzure(p.getPropertyImages());
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
-                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText("USD ".concat(p.getPropertyPrice().toString()));
+                String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
                 ((TextView) propertyCard.findViewById(R.id.propertyLocation)).setText(p.getPropertyNeighbourhood().concat(", ").concat(p.getPropertyCity()));
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));
@@ -148,5 +146,6 @@ public class ListFavoriteProperties extends AppCompatActivity  implements Proper
     public void onPropertiesSuccess(Long propertyId) {
 
     }
+
 
 }
