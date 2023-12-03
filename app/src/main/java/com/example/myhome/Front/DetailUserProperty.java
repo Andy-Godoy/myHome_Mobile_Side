@@ -65,6 +65,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
             public void onClick(View v) {
                 //  lo llevamos al activity DetailProperty
                 Intent intent = new Intent(DetailUserProperty.this, UserSchedule.class);
+                intent.putExtra("agencyImage", propiedad.getAgencyImage().toString());
                 startActivity(intent);
                 finish(); //  Finaliza la actividad actual
             }

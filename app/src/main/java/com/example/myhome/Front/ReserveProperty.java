@@ -95,7 +95,7 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
 
             ImageView imageView = findViewById(R.id.imagenIzquierda);
             String[] propertyImages = propiedad.getPropertyImages();
-            if (propertyImages != null && propertyImages.length > 0) {
+            if (propertyImages != null && propertyImages.length > 0 && !propertyImages[0].equals("")) {
                 Picasso.get().load(propertyImages[0]).into(imageView);
             }else{
                 Picasso.get().load("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg").into(imageView);
