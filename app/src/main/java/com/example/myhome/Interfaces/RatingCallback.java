@@ -7,6 +7,7 @@ import java.util.List;
 public interface RatingCallback {
 
     void onResenasSuccess(List<Resenas> body);
+    void onResenasSuccess();
 
     void onFailure(String errorMessage);
 

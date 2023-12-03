@@ -128,7 +128,12 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
                 propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit();
 
         String pais = propiedad.getPropertyAddress().getAddressCountry() + ", " + propiedad.getPropertyAddress().getAddressState() + ", " + propiedad.getPropertyAddress().getAddressNeighbourhood();
-        String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+
+        String moneda = "USD";
+        if (((MyHome) this.getApplication()).getUsuario() != null) {
+            moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+        }
+
         String dormitorio = (propiedad.getPropertyBedroomQuantity() <= 1) ? " dormitorio" : " dormitorios";
         String banio = (propiedad.getPropertyBathroomQuantity() <= 1) ? " baño" : " baños";
         String cochera = "";
@@ -162,8 +167,10 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
         tvEstado.setText(propiedad.getPropertyStatus());
         Integer valorPropiedad = (Integer) Math.round(propiedad.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
         tvPrecioPropiedad.setText(moneda + " " + valorPropiedad);
+
         Integer valorExpensas = (Integer) Math.round(propiedad.getPropertyExpenses() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
         tvPrecioExpensas.setText(moneda + " " + valorExpensas);
+
         tvLocacion.setText(locacion);
         tvPais.setText(pais);
         tvTipoPropiedad.setText(propiedad.getPropertyType());

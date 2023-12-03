@@ -105,9 +105,16 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
                 ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(this, imageUrls);
 
-                String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
-                Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD")) ? 1 : TIPO_CAMBIO_PESOS));
-                ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
+                if (((MyHome) this.getApplication()).getUsuario() != null) {
+                    String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
+                    Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD")) ? 1 : TIPO_CAMBIO_PESOS));
+                    ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
+                }else{
+                    String moneda = "USD";
+                    Integer valorPropiedad = (Integer) Math.round(p.getPropertyPrice() * ((moneda.equals("USD")) ? 1 : TIPO_CAMBIO_PESOS));
+                    ((TextView) propertyCard.findViewById(R.id.propertyPrice)).setText(moneda + " " + valorPropiedad);
+                }
+
                 ((TextView) propertyCard.findViewById(R.id.propertyAddress)).setText(p.getPropertyAddress());
                 ((TextView) propertyCard.findViewById(R.id.propertyLocation)).setText(p.getPropertyNeighbourhood().concat(", ").concat(p.getPropertyCity()));
                 ((TextView) propertyCard.findViewById(R.id.propertyDimensions)).setText(p.getPropertyDimension().toString().concat(" M2"));

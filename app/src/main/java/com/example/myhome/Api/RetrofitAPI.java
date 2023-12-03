@@ -8,7 +8,7 @@ import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.example.myhome.model.Resenas;
 import com.example.myhome.model.Users;
-
+import com.example.myhome.model.enums.ResenaDTO;
 import java.util.List;
 
 import retrofit2.Call;
@@ -62,6 +62,9 @@ public interface RetrofitAPI {
     @GET("reviews")
     Call<List<Resenas>> getResenas(@Query("agencyId") long agencyId);
 
+    @POST("reviews")
+    Call<Void> saveResenas(@Query("agencyId") long agencyId, @Query("userId") long userIdId, @Body ResenaDTO resena);
+
     @GET("agencies/{agencyId}")
     Call<Agencies> getAgency(@Path("agencyId") Long agencyId);
 
@@ -72,4 +75,7 @@ public interface RetrofitAPI {
     Call<Users> updateUser(@Path("userId") Long userId, @Body Users user);
     @POST("properties/{propertyId}/favorites")
     Call<Void> updateFavorite(@Path ("propertyId") Long propertyId, @Query("userId") long userId);
+
+    @POST ("properties/{propertyId}/reservations")
+    Call<Void> reservarPropiedad(@Path ("propertyId") Long propertyId);
 }
