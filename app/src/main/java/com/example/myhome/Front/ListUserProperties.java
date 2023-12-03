@@ -29,6 +29,9 @@ import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertySummary;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
@@ -93,20 +96,36 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
             return;
         }
 
-        client.getLastLocation()
-                .addOnSuccessListener(this, location -> {
-                    if (location != null) {
-                        latitude = location.getLatitude();
-                        longitude = location.getLongitude();
-                        // Después de obtener la ubicación, carga las propiedades
-                        loadProperties();
-                    } else {
-                        Toast.makeText(this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show();
-                        latitude = 0.0;
-                        longitude = 0.0;
-                        loadProperties();
-                    }
-                });
+        // Utiliza un LocationCallback para recibir actualizaciones de ubicación en tiempo real
+        LocationCallback locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult != null && locationResult.getLastLocation() != null) {
+                    Location location = locationResult.getLastLocation();
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                    // Después de obtener la ubicación, carga las propiedades
+                    loadProperties();
+                } else {
+                    Toast.makeText(ListUserProperties.this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show();
+                    latitude = 0.0;
+                    longitude = 0.0;
+                    // Aunque no se pueda obtener la ubicación, intenta cargar las propiedades
+                    loadProperties();
+                }
+            }
+        };
+
+        // Solicita actualizaciones de ubicación
+        client.requestLocationUpdates(createLocationRequest(), locationCallback, null);
+    }
+
+    // Método para crear una solicitud de ubicación
+    private LocationRequest createLocationRequest() {
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000); // Intervalo de actualización en milisegundos
+        return locationRequest;
     }
 
     // Muevo la carga de propiedades a un método separado
