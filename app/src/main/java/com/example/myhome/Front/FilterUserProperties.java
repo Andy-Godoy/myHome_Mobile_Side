@@ -46,7 +46,7 @@ public class FilterUserProperties extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_user_properties);
 
-
+        //range bar precio
 
         RangeSeekBar rangeSeekBar = findViewById(R.id.rangeSeekbar);
 
