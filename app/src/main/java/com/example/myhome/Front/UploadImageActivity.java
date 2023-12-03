@@ -48,7 +48,7 @@ public class UploadImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
 
-        // Reemplaza con tus propias credenciales y URI de almacenamiento
+        // Credenciales del azure storage
         blobContainerClient = new BlobServiceClientBuilder()
                 .endpoint("https://storagemyhome.blob.core.windows.net")
                 .sasToken("si=full&sv=2022-11-02&sr=c&sig=dceTOJyNNUggF3oEYoEWkdhPRkpM8bmv3%2BNDIx5JS4o%3D")

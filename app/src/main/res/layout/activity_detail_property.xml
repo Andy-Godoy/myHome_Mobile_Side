@@ -79,7 +79,7 @@
                         android:layout_height="match_parent"
                         app:autoScroll="false"
                         app:isInfinite="false"
-                        android:contentDescription="imagenes de la propiedad"
+                        android:contentDescription="@string/imagen_de_la_propiedad"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="@+id/clCarousel"
                         app:layout_constraintStart_toStartOf="@+id/clCarousel"
