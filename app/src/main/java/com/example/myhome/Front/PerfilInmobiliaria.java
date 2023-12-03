@@ -1,5 +1,7 @@
 package com.example.myhome.Front;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PerfilInmobiliaria extends AppCompatActivity {
