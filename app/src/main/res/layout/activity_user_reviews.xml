@@ -53,7 +53,7 @@
         android:rating="1"
         android:scaleX="0.75"
         android:scaleY="0.75"
-        android:stepSize="1.0"
+        android:stepSize="1"
         android:background="?android:attr/actionBarItemBackground"
         app:layout_constraintBottom_toTopOf="@+id/tvDejarComentario"
         app:layout_constraintEnd_toEndOf="parent"

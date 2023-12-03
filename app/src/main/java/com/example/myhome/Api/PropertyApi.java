@@ -236,4 +236,35 @@ public class PropertyApi extends AppCompatActivity {
         });
 
     }
+
+    //Cambiar estado de propiedad
+    public void reservarPropiedad (Long propertyId ,final PropertiesCallback callback) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+
+        Call<Void> call = apiService.reservarPropiedad(propertyId);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onPropertiesSuccess(propertyId);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onPropertiesFailure("La propiedad no puso ser reservada");
+                }
+        });
+
+    }
 }

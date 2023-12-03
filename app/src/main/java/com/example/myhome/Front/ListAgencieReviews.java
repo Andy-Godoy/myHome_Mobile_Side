@@ -105,6 +105,11 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
     }
 
     @Override
+    public void onResenasSuccess() {
+
+    }
+
+    @Override
     public void onFailure(String errorMessage) {
         Toast.makeText(this, "Tu agencia no tiene reseñas", Toast.LENGTH_SHORT).show();
     }

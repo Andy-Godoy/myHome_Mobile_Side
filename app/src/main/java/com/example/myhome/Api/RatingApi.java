@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhome.Interfaces.RatingCallback;
 import com.example.myhome.model.Resenas;
+import com.example.myhome.model.enums.ResenaDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +61,37 @@ public class RatingApi extends AppCompatActivity {
 
         List<Resenas> resenas=new ArrayList<>();
         return resenas;
+    }
+
+    //Guardar nueva reseña
+    public void guardarResena(Long agencyId, Long userID, ResenaDTO resena, final RatingCallback callback) {
+        // Configuramos Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Creamos una instancia de la interfaz ApiService
+        RetrofitAPI apiService = retrofit.create(RetrofitAPI.class);
+
+        // Realizamos la solicitud
+
+        Call<Void> call = apiService.saveResenas(agencyId, userID, resena);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onResenasSuccess();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onFailure("No su pudo guardar su reseña");
+                }
+        });
+
     }
 }

@@ -22,20 +22,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ctc.wstx.util.StringUtil;
 import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.PropertyApi;
+import com.example.myhome.Api.RatingApi;
 import com.example.myhome.Interfaces.PropertiesCallback;
+import com.example.myhome.Interfaces.RatingCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.Resenas;
+import com.example.myhome.model.enums.ResenaDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ReserveProperty extends AppCompatActivity implements PropertiesCallback {
+public class ReserveProperty extends AppCompatActivity implements PropertiesCallback, RatingCallback {
     private Properties propiedad;
     private final float PORCENTAJE_COMISION = 0.1F;
     private final float TIPO_CAMBIO_PESOS = 1000;
@@ -65,18 +70,6 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
 
         obtenerPropiedad();
 
-        Button btnReservar = findViewById(R.id.btnReservar);
-        btnReservar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //  lo llevamos al activity ListUserProperties pero hay que ir contra la API
-                Intent intent = new Intent(ReserveProperty.this, ListUserProperties.class);
-                startActivity(intent);
-                finish(); //  Finaliza la actividad actual
-
-            }
-        });
     }
 
     public void obtenerPropiedad() {
@@ -137,11 +130,13 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
 
     @Override
     public void onPropertiesFailure(String errorMessage) {
-        Toast.makeText(this, "Error al recuperar la propiedad", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onPropertiesSuccess(Long propertyId) {}
+    public void onPropertiesSuccess(Long propertyId) {
+        showCustomDialog();
+    }
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {}
 
@@ -150,7 +145,8 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
     }
 
     public void btnReservar(View view) {
-        showCustomDialog();
+        PropertyApi propertyApi = new PropertyApi();
+        propertyApi.reservarPropiedad(propiedad.getPropertyId(), this);
     }
 
     private void showCustomDialog() {
@@ -163,6 +159,8 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.activity_user_reviews);
 
+
+
         Button btnCloseModal = dialog.findViewById(R.id.btnCloseModal);
         rbAtencion = dialog.findViewById(R.id.rbAtencion);
         etComentario = dialog.findViewById(R.id.txtComentario);
@@ -172,38 +170,62 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
                 String comentario = etComentario.getText().toString();
                 String rating = String.valueOf(rbAtencion.getRating());
 
-                Log.d("rbAtencion", rating);
+                ResenaDTO resena = new ResenaDTO();
+                resena.setReviewComment(comentario);
+                resena.setReviewScore(Character.getNumericValue(rating.charAt(0)));
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ReserveProperty.this);
+                if (((MyHome) ReserveProperty.this.getApplication()).getUsuario() != null) {
+                    Long userId = ((MyHome) ReserveProperty.this.getApplication()).getUsuario().getUserId();
+                    RatingApi ratingApi = new RatingApi();
+                    ratingApi.guardarResena(propiedad.getAgencyId(), userId, resena, ReserveProperty.this);
+                }
 
-                // Configura el título del diálogo
-                alertDialogBuilder.setTitle("Reserva realizada");
-
-                // Configura el mensaje del diálogo
-                alertDialogBuilder.setMessage("La reserva se ha realizado de forma exitosa.\n" +
-                        "En breve, recibirá un mail de confirmación y la inmobiliaria se contactará con usted en las proximas 24hs.");
-
-                // Configura el botón "Aceptar"
-                alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Regresa a la actividad anterior (ActividadA en este caso)
-                        Intent intent = new Intent(ReserveProperty.this, ListUserProperties.class);
-                        startActivity(intent);
-
-                        // Cierra la actividad actual si es necesario
-                        finish();
-                        dialog.dismiss(); // Cierra el diálogo
-                    }
-                });
-
-                // Crea y muestra el diálogo
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-//                dialog.dismiss();
             }
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void onResenasSuccess(List<Resenas> body) {
+
+    }
+
+    @Override
+    public void onResenasSuccess() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ReserveProperty.this);
+
+        // Configura el título del diálogo
+        alertDialogBuilder.setTitle("Reserva realizada");
+
+        // Configura el mensaje del diálogo
+        alertDialogBuilder.setMessage("La reserva se ha realizado de forma exitosa.\n" +
+                "En breve, recibirá un mail de confirmación y la inmobiliaria se contactará con usted en las proximas 24hs.");
+
+        // Configura el botón "Aceptar"
+        alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Regresa a la actividad anterior (ActividadA en este caso)
+                Intent intent = new Intent(ReserveProperty.this, ListUserProperties.class);
+                startActivity(intent);
+
+                // Cierra la actividad actual si es necesario
+                finish();
+                dialog.dismiss(); // Cierra el diálogo
+            }
+        });
+
+        // Crea y muestra el diálogo
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+//                dialog.dismiss();
+
+    }
+
+    @Override
+    public void onFailure(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+
     }
 }
