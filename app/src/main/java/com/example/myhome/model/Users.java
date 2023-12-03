@@ -7,13 +7,9 @@ public class Users {
     private long userId;
     private String userName;
     private String userEmail;
-
     private String userImage;
-
     private CurrencyType userCurrencyPreference;
-
     private long agencyId;
-
     private RoleType userRole;
 
     @Override
