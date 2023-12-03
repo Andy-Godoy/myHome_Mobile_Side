@@ -299,4 +299,13 @@
     <string name="montoReserva">Monto de reserva:</string>
 
     //*****************************************************
+
+    //****************************************************
+    //uso de strings para activity_user_reviews.xml
+    <string name="graciasReserva">¡Muchas gracias por realizar una  reserva!</string>
+    <string name="atencion">¿Que te pareció la atención?</string>
+    <string name="experiencia">Mi experiencia fue...</string>
+    //*****************************************************
+
+
 </resources>
