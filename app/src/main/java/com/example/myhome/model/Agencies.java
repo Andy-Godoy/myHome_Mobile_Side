@@ -8,8 +8,15 @@ public class Agencies {
     private String  userId;
     private String agencyName;
     private Float agencyRating;
+    private String agencyImage;
 
+    public String getAgencyImage() {
+        return agencyImage;
+    }
 
+    public void setAgencyImage(String agencyImage) {
+        this.agencyImage = agencyImage;
+    }
 
     public Float getAgencyRating() {
         return agencyRating;

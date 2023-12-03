@@ -59,7 +59,6 @@ public class NewProperties extends AppCompatActivity implements PropertiesCallba
     private final ArrayList<Integer> coursesList = new ArrayList<>();
     private String[] courses;
     private String[] amenities = new String[]{};
-
     private AzureBlobStorageManager azureBlobStorageManager;
 
 
