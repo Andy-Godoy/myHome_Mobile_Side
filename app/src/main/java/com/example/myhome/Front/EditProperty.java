@@ -402,12 +402,15 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
+        Long userId = 0l;
+
         if (((MyHome) this.getApplication()).getUsuario() != null) {
+            userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
             property.setPropertyId(Long.parseLong(getIntent().getStringExtra("propertyId")));
         }
 
         PropertyApi propertyApi = new PropertyApi();
-        propiedad = propertyApi.obtenerPropiedad(property, this);
+        propiedad = propertyApi.obtenerPropiedad(property, userId, this);
     }
 
     private int obtenerPosicion(String[] opciones, String opcion) {

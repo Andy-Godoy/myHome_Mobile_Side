@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +16,15 @@ import com.example.myhome.R;
 import com.example.myhome.model.Properties;
 import com.example.myhome.model.PropertyDTO;
 import com.example.myhome.model.PropertySummary;
+import com.example.myhome.model.enums.CurrencyType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ReserveProperty extends AppCompatActivity implements PropertiesCallback {
     private Properties propiedad;
+    private final float PORCENTAJE_COMISION = 0.1F;
+    private final float TIPO_CAMBIO_PESOS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,25 +66,37 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
     public void obtenerPropiedad() {
         PropertyDTO property = new PropertyDTO();
 
+        Long userId = 0l;
+
         if (((MyHome) this.getApplication()).getUsuario() != null) {
+            userId = ((MyHome) this.getApplication()).getUsuario().getUserId();
             property.setPropertyId(Long.parseLong(getIntent().getStringExtra("propertyId")));
         }
 
         PropertyApi propertyApi = new PropertyApi();
-        propiedad = propertyApi.obtenerPropiedad(property, this);
+        propiedad = propertyApi.obtenerPropiedad(property, userId, this);
     }
 
     public void onPropertiesSuccess(Properties propiedad) {
 
         this.propiedad = propiedad;
-
-        //String[] propertyImages = propiedad.getPropertyImages();
-        //ImageView imageView = findViewById(R.id.imagenIzquierda);
-        //imageView.setImageURI(propiedad.getPropertyImages);
-        //TextView tvEstado = findViewById(R.id.tvEstado);
-        //tvEstado.setText(propiedad.getPropertyStatus());
-
         if (propiedad != null) {
+
+            ImageView imageView = findViewById(R.id.imagenIzquierda);
+            String[] propertyImages = propiedad.getPropertyImages();
+            if (propertyImages != null && propertyImages.length > 0) {
+                Picasso.get().load(propertyImages[0]).into(imageView);
+            }else{
+                Picasso.get().load("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg").into(imageView);
+            }
+
+            ImageView imageViewProfile = findViewById(R.id.imageViewProfile);
+            String agencyImages = propiedad.getAgencyImage();
+            if (agencyImages != null) {
+                Picasso.get().load(agencyImages).into(imageViewProfile);
+            }else{
+                Picasso.get().load("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg").into(imageView);
+            }
 
             TextView tvLocacion = findViewById(R.id.tvDireccion);
             String locacion = propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber();
@@ -91,10 +108,11 @@ public class ReserveProperty extends AppCompatActivity implements PropertiesCall
 
             TextView tvPrecioPropiedad = findViewById(R.id.tvPrecioPropiedad);
             String moneda = ((MyHome) this.getApplication()).getUsuario().getUserCurrencyPreference().toString();
-            tvPrecioPropiedad.setText(moneda + " " + propiedad.getPropertyPrice().toString());
+            Integer valorPropiedad = (Integer) Math.round(propiedad.getPropertyPrice() * ((moneda.equals("USD"))?1:TIPO_CAMBIO_PESOS));
+            tvPrecioPropiedad.setText(moneda + " " + valorPropiedad);
 
             TextView tvMontoReserva = findViewById(R.id.tvMontoReserva);
-            float montoReserva = (propiedad.getPropertyPrice() * 10 / 100);
+            float montoReserva = (valorPropiedad * PORCENTAJE_COMISION);
             tvMontoReserva.setText(moneda + " " + montoReserva);
         }
 
