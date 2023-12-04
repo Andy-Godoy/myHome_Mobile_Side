@@ -4,8 +4,14 @@ package com.example.myhome.Front;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +35,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListFavoriteProperties extends AppCompatActivity implements PropertiesCallback {
 
@@ -36,6 +43,8 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
     private List<PropertySummary> properties;
     private Long userId;
     private Long agencyId;
+
+    private EditText searchEditText;
     private final float TIPO_CAMBIO_PESOS = 1000;
 
     @Override
@@ -65,11 +74,29 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
             return true;
         });
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        View decorView = getWindow().getDecorView();
+        decorView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                int rootViewHeight = decorView.getHeight();
+                int keypadHeight = rootViewHeight - decorView.findViewById(android.R.id.content).getHeight();
+                if (keypadHeight > rootViewHeight * 0.15) {
+                    // Teclado visible, ocultar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.GONE);
+                } else {
+                    // Teclado oculto, mostrar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
+
+        searchEditText = findViewById(R.id.editTextSearchFavorite);
         cardConteiner = findViewById(R.id.cardContainer);
 
         cargarDatos();
-
-
+        setupSearchEditText();
     }
 
     private void cargarDatos() {
@@ -87,9 +114,7 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
     private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
         if (propertyImages != null && propertyImages.length > 0) {
-            for (String i : propertyImages) {
-                imageUrls.add(i);
-            }
+            Collections.addAll(imageUrls, propertyImages);
 
         } else {
             imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg");
@@ -99,7 +124,90 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+        actualizarVista(properties);
+    }
+
+    @Override
+    public void onPropertiesSuccess(Properties propiedad) {
+
+    }
+
+    @Override
+    public void onPropertiesFailure(String errorMessage) {
+
+    }
+
+    @Override
+    public void onPropertiesSuccess(Long propertyId) {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        cargarDatos();
+    }
+
+    private void closePropertiesActivity() {
+        // Tu lógica para cerrar la actividad
+
+
+        // Configura el resultado para enviar datos de vuelta a la actividad AgenciasPropertiesActivity
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("actualizarDatos", true);
+        setResult(RESULT_OK, resultIntent);
+
+        // Cierra la actividad
+        finish();
+    }
+
+    private void setupSearchEditText() {
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No necesario para tu caso
+                Log.d("TAG", "beforeTextChanged: " + charSequence.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                filterProperties(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("TAG", "afterTextChanged: " + editable.toString());
+                // No necesario para tu caso
+            }
+        });
+    }
+
+    private void filterProperties(String searchText) {
+        List<PropertySummary> filteredProperties = new ArrayList<>();
+        if(properties!=null){
+            filteredProperties = properties.stream()
+                    .filter(property -> propertyContainsText(property, searchText))
+                    .collect(Collectors.toList());
+        }
+        actualizarVista(filteredProperties);
+    }
+
+    private boolean propertyContainsText(PropertySummary property, String searchText) {
+        // Verifica si la descripción de la propiedad contiene el texto de búsqueda
+        String propertyDescription = property.getPropertyAddress().toLowerCase();
+        return propertyDescription.contains(searchText.toLowerCase());
+    }
+
+    private void actualizarVista(List<PropertySummary> properties) {
+        cardConteiner.removeAllViews();
+
         if (properties != null) {
+
+            if(this.properties == null){
+                this.properties = properties;
+            }
+
             for (PropertySummary p : properties) {
 
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardConteiner, false);
@@ -160,7 +268,6 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
                 cardConteiner.addView(propertyCard);
 
-
                 propertyCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -178,40 +285,6 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
 
         }
-    }
-
-    @Override
-    public void onPropertiesSuccess(Properties propiedad) {
-
-    }
-
-    @Override
-    public void onPropertiesFailure(String errorMessage) {
-
-    }
-
-    @Override
-    public void onPropertiesSuccess(Long propertyId) {
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        cargarDatos();
-    }
-
-    private void closePropertiesActivity() {
-        // Tu lógica para cerrar la actividad
-
-
-        // Configura el resultado para enviar datos de vuelta a la actividad AgenciasPropertiesActivity
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("actualizarDatos", true);
-        setResult(RESULT_OK, resultIntent);
-
-        // Cierra la actividad
-        finish();
     }
 
 }
