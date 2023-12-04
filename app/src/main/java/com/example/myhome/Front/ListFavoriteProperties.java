@@ -1,6 +1,7 @@
 package com.example.myhome.Front;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.asksira.loopingviewpager.LoopingViewPager;
@@ -232,11 +234,37 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
                 ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
                 String imageUrl = p.getAgencyImage();
-                if (imageUrl == null) {
+                if (imageUrl == null || imageUrl.equals("")) {
                     imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
-                } else {
-                    Picasso.get().load(imageUrl).into(imageProperty);
                 }
+
+                Picasso.get().load(imageUrl).into(imageProperty);
+
+                propertyCard.findViewById(R.id.propertyImage).setOnClickListener(new View.OnClickListener() {
+
+                    // Establecer clic la imagen de la agencia para ver reseñas
+                    public void onClick(View v) {
+                        // Mostramos un mensaje de advertencia al usuario
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListFavoriteProperties.this);
+                        builder.setTitle("Ver Reseñas");
+                        builder.setMessage("¿Queres ingresar a ver las reseñas?");
+                        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent miIntent=new Intent(ListFavoriteProperties.this, ListUserReviews.class);
+                                miIntent.putExtra("agencyId", p.getAgencyId());
+                                startActivity(miIntent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hace nada
+                            }
+                        });
+                        builder.show();
+                    }
+                });
 
                 cardConteiner.addView(propertyCard);
 

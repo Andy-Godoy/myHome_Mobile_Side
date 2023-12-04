@@ -1,6 +1,6 @@
 package com.example.myhome.Front;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,23 +10,17 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
-import com.example.myhome.Api.MyHome;
 import com.example.myhome.Api.RatingApi;
 import com.example.myhome.Interfaces.RatingCallback;
 import com.example.myhome.Network.NetworkUtils;
 import com.example.myhome.R;
-import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Resenas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
-public class ListAgencieReviews extends AppCompatActivity implements RatingCallback {
+public class ListUserReviews extends AppCompatActivity implements RatingCallback {
 
     private Button btnPropiedades;
     private Button btnNuevaPropiedad;
@@ -37,7 +31,7 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
     protected void onCreate(Bundle savedInstanceState){
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agencies_rating);
+        setContentView(R.layout.activity_user_rating);
 
         // Validamos la conexión a Internet al iniciar la actividad que lo trae de la clase NetworkUtils.java
         if (NetworkUtils.isNetworkConnected(this)) {
@@ -63,23 +57,15 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
 
         cardConteiner = findViewById(R.id.cardContainer);
 
-        FiltersDTO filters = new FiltersDTO();
-
-        //Recupero la agencia en contexto para tener los datos de sus reviews
-        if (((MyHome) this.getApplication()).getUsuario() != null) {
-            agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
-            filters.setAgencyId(agencyId);
-        }
+        agencyId = getIntent().getLongExtra("agencyId", 0);
 
         RatingApi ratingApi = new RatingApi();
         ratingApi.verResenas(agencyId, this);
 
-
-
     }
+
     public void volver(View view) {
-        Intent miIntent=new Intent(ListAgencieReviews.this, AgenciesProfile.class);
-        startActivity(miIntent);
+       finish();
     }
 
     @Override
@@ -114,6 +100,6 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
 
     @Override
     public void onFailure(String errorMessage) {
-        Toast.makeText(this, "Tu agencia no tiene reseñas", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Esta agencia no tiene reseñas", Toast.LENGTH_SHORT).show();
     }
 }
