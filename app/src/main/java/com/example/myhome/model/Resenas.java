@@ -3,7 +3,7 @@ package com.example.myhome.model;
 public class Resenas {
     private Long reviewId;
     private String userName;
-    private String photo;
+    private String userPhoto;
     private Integer reviewScore;
     private String reviewComment;
 
@@ -40,11 +40,11 @@ public class Resenas {
         this.userName = userName;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getUserPhoto() {
+        return userPhoto;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
     }
 }

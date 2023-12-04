@@ -427,6 +427,9 @@ public class EditProperty extends AppCompatActivity implements PropertiesCallbac
     public void saveChanges() {
 
         Long agencyId = ((MyHome) this.getApplication()).getUsuario().getAgencyId();
+        if(propiedad.getPropertyImages()==null){
+            propiedad.setPropertyImages(new String[]{});
+        }
         // Este método se llamará tanto desde el Button como desde el ImageButton
         PropertyApi propertyApi = new PropertyApi();
         propertyApi.editarPropiedad(propiedad, agencyId ,this);

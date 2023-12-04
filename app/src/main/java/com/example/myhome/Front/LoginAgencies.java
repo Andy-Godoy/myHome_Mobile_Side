@@ -74,7 +74,7 @@ public class LoginAgencies extends AppCompatActivity implements LoginCallback {
     private boolean isValidEmail(String email) {
         // Usamos una expresión regular para validar el formato del mail
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+\\.*[a-z]*";
         return email.matches(emailPattern);
     }
 

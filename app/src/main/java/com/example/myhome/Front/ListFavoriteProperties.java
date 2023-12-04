@@ -124,11 +124,11 @@ public class ListFavoriteProperties extends AppCompatActivity implements Propert
 
                 ImageView imageProperty = propertyCard.findViewById(R.id.propertyImage);
                 String imageUrl = p.getAgencyImage();
-                if (imageUrl == null) {
+                if (imageUrl == null || imageUrl.equals("")) {
                     imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
-                } else {
-                    Picasso.get().load(imageUrl).into(imageProperty);
                 }
+
+                Picasso.get().load(imageUrl).into(imageProperty);
 
                 cardConteiner.addView(propertyCard);
 

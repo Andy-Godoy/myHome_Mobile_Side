@@ -65,7 +65,7 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
             public void onClick(View v) {
                 //  lo llevamos al activity DetailProperty
                 Intent intent = new Intent(DetailUserProperty.this, UserSchedule.class);
-                intent.putExtra("agencyImage", propiedad.getAgencyImage().toString());
+                intent.putExtra("agencyImage", (propiedad.getAgencyImage()==null)?"":propiedad.getAgencyImage().toString());
                 startActivity(intent);
                 finish(); //  Finaliza la actividad actual
             }
@@ -225,10 +225,10 @@ public class DetailUserProperty extends AppCompatActivity implements PropertiesC
     public void compartirContenido() {
         if (propiedad != null) {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
+            intent.setType("text/html");
             intent.putExtra(Intent.EXTRA_SUBJECT, "MyHome");
-            intent.putExtra(Intent.EXTRA_TEXT, "Te comparto esta propiedad: " + propiedad.getPropertyAddress().getAddressName() + " " + propiedad.getPropertyAddress().getAddressNumber() + ", " +
-                    propiedad.getPropertyAddress().getAddressCity() + ", " + propiedad.getPropertyAddress().getAddressFloor() + " " + propiedad.getPropertyAddress().getAddressUnit());
+            String url = "https://www.myhome.com.ar/properties/" + propiedad.getPropertyId();
+            intent.putExtra(Intent.EXTRA_TEXT, "Te comparto esta propiedad: <a href=\""+url+"\">" + url + "</a>");
             startActivity(Intent.createChooser(intent, "Compartir con"));
         } else {
             // Manejo si property es nulo

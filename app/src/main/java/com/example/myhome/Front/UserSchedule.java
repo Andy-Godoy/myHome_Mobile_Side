@@ -57,7 +57,14 @@ public class UserSchedule extends AppCompatActivity {
             user = ((MyHome) this.getApplication()).getUsuario();
             name.setText(user.getUserName());
             email.setText(user.getUserEmail());
-            Picasso.get().load(getIntent().getStringExtra("agencyImage")).into(imageViewProfile);
+            String imageUrl = getIntent().getStringExtra("agencyImage");
+            if (imageUrl == null || imageUrl.equals("")) {
+
+                imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+            }
+
+            Picasso.get().load(imageUrl).into(imageViewProfile);
+
 
         }
 

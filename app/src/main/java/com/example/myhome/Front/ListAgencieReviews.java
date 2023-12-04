@@ -22,6 +22,7 @@ import com.example.myhome.R;
 import com.example.myhome.model.FiltersDTO;
 import com.example.myhome.model.Resenas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -90,9 +91,11 @@ public class ListAgencieReviews extends AppCompatActivity implements RatingCallb
                 View raitingCard = LayoutInflater.from(this).inflate(R.layout.card_rating, cardConteiner, false);
 
                 ImageView userImageView = raitingCard.findViewById(R.id.userImageView);
-                Glide.with(this)
-                        .load(r.getPhoto())
-                        .into(userImageView);
+                String imageUrl = r.getUserPhoto();
+                if (imageUrl == null || imageUrl.equals("")) {
+                    imageUrl = "https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg";
+                }
+                Picasso.get().load(imageUrl).into(userImageView);
 
                 ((TextView) raitingCard.findViewById(R.id.userNameTextView)).setText(r.getUserName());
                 ((TextView) raitingCard.findViewById(R.id.commentTextView)).setText(r.getReviewComment());
