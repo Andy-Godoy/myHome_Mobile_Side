@@ -63,6 +63,7 @@
     <string name="cambiarpass">Cambiar contraseña</string>
 
     <string name="nuevapropiedad">Nueva Propiedad</string>
+    <string name="detallepropiedad">Detalle Propiedad</string>
 
     <string name="email_de_inmobiliaria">Email de Inmobiliaria:</string>
 
@@ -74,16 +75,6 @@
 
     //uso de strings para activity_list_user_properties.xml
 
-    <string name="lbl_paraguay_4200">Paraguay 4200</string>
-    <string name="lbl_u_d_220">U$D 220</string>
-    <string name="lbl_33_m2">33 m2 </string>
-    <string name="msg_palermo_soho_p">Palermo Soho, Palermo</string>
-    <string name="msg_departamento_en">Departamento en venta de 1 dormitorio en Palermo</string>
-    <string name="lbl_1_dormitorio">1 dormitorio</string>
-    <string name="lbl_perfil">Perfil     </string>
-    <string name="lbl_filtrar">Filtrar</string>
-    <string name="lbl_propiedades">Propiedades</string>
-    <string name="lbl_my_home">My Home</string>
     <string name="lbl_favoritos">Favoritos  </string>
 
     //****************************************************
@@ -94,6 +85,16 @@
 
     //*****************************************************
 
+    //uso de strings para activity_list_user_fav_properties.xml
+
+    //****************************************************
+    //uso de strings para activity_filter_user_properties.xml
+    <string name="AplicarFiltros">Aplicar Filtros</string>
+    <string name="Filtros">Filtros</string>
+    <string name="LimpiarFiltros">Limpiar Filtros</string>
+
+
+    //****************************************************
     //****************************************************
     //uso de strings para activity_new_properties.xml
 
@@ -158,6 +159,8 @@
     <string name="guardarImagenes">Agregar imágenes</string>
 
     <string name="guardarPropiedad">Guardar propiedad</string>
+    <string name="cerrarPropiedad">Cerrar</string>
+
     <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
     <string name="precio">Precio</string>
     <string name="direccion">Direccion</string>
@@ -169,7 +172,11 @@
     <string name="descripci_n_de_la_propiedad">Descripción de la propiedad</string>
     <string name="lista_de_propiedades">Lista de propiedades</string>
     <string name="continuar">Continuar</string>
-
+    <string name="back_button_description">Volver</string>
+    <string name="reservar">Reservar</string>
+    <string name="API_KEY_AUTH">AIzaSyAHwryriQOzL51C9J5c7UkkwYDB2ls8ng8</string>
+    <string name="default_web_client_id">387896738234-bb0orrv5esi7jt7l7f458g8e29ag2pgc.apps.googleusercontent.com</string>
+    <string name="API_KEY_GEO">AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4</string>
 
     //****************************************************
     //uso de strings para spinners de activity_new_properties.xml
@@ -177,6 +184,7 @@
     <string-array name="lista_de_estados">
         <item>Venta</item>
         <item>Alquiler</item>
+        <item>Reservada</item>
     </string-array>
 
     <string-array name="lista_de_tipo_propiedad">
@@ -217,7 +225,7 @@
     </string-array>
 
     <string-array name="lista_amenities">
-        <item>Todos</item>
+<!--        <item>Todos</item>-->
         <item>Estacionamiento</item>
         <item>Quincho</item>
         <item>Pileta</item>
@@ -231,4 +239,67 @@
     </string-array>
 
     //*****************************************************
+
+    //uso de strings para spinners de activity_agencies_profile.xml
+
+    <string-array name="currency_options">
+        <item>USD</item>
+        <item>ARS</item>
+    </string-array>
+
+    //uso de strings para spinners de activity_new_schedule.xml
+
+    <string-array name="lista_Tipo_Contacto">
+        <item>Hacer consulta</item>
+        <item>Solicitar turno</item>
+    </string-array>
+
+    //*****************************************************
+    <string name="lbl_resenacomentario">Valoraciones y Comentarios</string>
+    <string name="comentario">Comentario:</string>
+    <string name="nombre_del_usuario">Nombre del Usuario</string>
+
+
+    //****************************************************
+    //uso de strings para activity_detail_property.xml
+
+    <string name="amenitiesTitulo">AMENITIES</string>
+    <string name="descripcionTitulo">DESCRIPCIÓN</string>
+    <string name="catacteristicasTitulo">CARACTERÍSTICAS</string>
+    <string name="buscar">Buscar</string>
+    <string name="share_button_description">Compartir</string>
+    <string name="contactar">Contactar</string>
+    //*****************************************************
+
+    //****************************************************
+    //uso de strings para activity_reserve_property.xml
+    <string name="propiedadReservar">Propiedad a reservar</string>
+    <string name="montoReserva">Monto de reserva:</string>
+
+    //*****************************************************
+
+    //****************************************************
+    //uso de strings para activity_user_reviews.xml
+    <string name="graciasReserva">¡Muchas gracias por realizar una  reserva!</string>
+    <string name="atencion">¿Que te pareció la atención?</string>
+    <string name="experiencia">Mi experiencia fue...</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="library">Library</string>
+    <string name="home">Home</string>
+    <string name="galeria_de_imagenes_de_propiedades">Galeria de imagenes de propiedades</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="contacta_al_anunciante">Contactá al anunciante</string>
+    <string name="nombre">Nombre</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="moneda">Moneda:</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="subir_imagen">Subir Imagen</string>
+    <string name="elegir_imagen">Elegir Imagen</string>
+    <string name="mis_favoritos">Mis Favoritos</string>
+    <string name="seleccion_amenities">Selección amenities</string>
+    <string name="imagenes_de_la_propiedad">imagenes de la propiedad</string>
+    //*****************************************************
+
+
 </resources>

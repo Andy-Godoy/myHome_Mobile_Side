@@ -7,7 +7,7 @@
     android:background="@drawable/bg_color"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginUser">
+    tools:context=".Front.LoginUser">
 
     <ImageView
         android:id="@+id/LoginLogo"
@@ -55,7 +55,7 @@
 
         android:onClick="onClick"
         android:text="@string/signingoogle"
-        android:textColor="#212121"
+        android:textColor="@color/botonText"
         tools:ignore="DuplicateIds,VisualLintButtonSize" />
 
 
@@ -83,7 +83,7 @@
         android:backgroundTint="@color/boton"
         android:onClick="ingresar"
         android:text="@string/access"
-        android:textColor="#212121"
+        android:textColor="@color/botonText"
         tools:ignore="VisualLintButtonSize" />
 
 

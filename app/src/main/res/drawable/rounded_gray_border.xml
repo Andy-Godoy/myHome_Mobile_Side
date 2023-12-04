@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- rounded_gray_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white" /> <!-- Color gris -->
+    <corners android:radius="8dp" /> <!-- Radio para hacer los bordes redondos -->
+    <stroke
+        android:width="2dp"
+    android:color="@color/gris_3"/> <!-- Color del borde gris -->
+
+</shape>

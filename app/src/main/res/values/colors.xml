@@ -6,6 +6,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="boton">#49A5C5</color> //color de los botones
+    <color name="botonText">#212121</color> //color de los botones
     <color name="toolbar">#CDD4CF</color> //color de la toolbar
     <color name="colorAccent">#B81414</color>
     <color name="fondoTextView">@color/material_dynamic_neutral95</color>
@@ -15,16 +16,14 @@
     <color name="textHeadline">#434343</color>
 
     //color usado para activity_list_user_properties.xml
-    <color name="gray_600">#707070</color>
     <color name="gray_400">#c5b5b5</color>
     <color name="gray_500">#9d9d9d</color>
     <color name="general_titulo">#3e3e3e</color>
-    <color name="bluegray_100">#cdd4cf</color>
     <color name="gray_200">#efefef</color>
-    <color name="orange_200">#e7ca90</color>
-    <color name="teal_300">#49a5c5</color>
+    <color name="gris_3">#949494</color>
+    <color name="amarillo">#FFC107</color>
+    <color name="transparent">#00000000</color>
 
     //***************************************
-
 
 </resources>

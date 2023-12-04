@@ -1,43 +1,14 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="_1pxh">1.0dp</dimen>
-<dimen name="_2pxh">2.0dp</dimen>
-<dimen name="_3pxh">3.0dp</dimen>
-    <dimen name="_6pxh">6.0dp</dimen>
-<dimen name="_7pxh">7.0dp</dimen>
-<dimen name="_8pxh">8.0dp</dimen>
+    <dimen name="_7pxh">7.0dp</dimen>
     <dimen name="_10pxh">10.0dp</dimen>
-<dimen name="_11pxh">11.0dp</dimen>
-<dimen name="_12pxh">12.0dp</dimen>
     <dimen name="_14pxh">14.0dp</dimen>
 <dimen name="_15pxh">15.0dp</dimen>
     <dimen name="_17pxh">17.0dp</dimen>
 <dimen name="_18pxh">18.0dp</dimen>
     <dimen name="_20pxh">20.0dp</dimen>
-    <dimen name="_22pxh">22.0dp</dimen>
-    <dimen name="_28pxh">28.0dp</dimen>
-    <dimen name="_50pxh">50.0dp</dimen>
-    <dimen name="_80pxh">80.0dp</dimen>
-    <dimen name="_155pxh">155.0dp</dimen>
-    <dimen name="_178pxh">178.0dp</dimen>
-    <dimen name="_290pxh">290.0dp</dimen>
     <dimen name="_316pxh">316.0dp</dimen>
     <dimen name="_388pxh">388.0dp</dimen>
-    <dimen name="_1pxv">1.0dp</dimen>
-<dimen name="_2pxv">2.0dp</dimen>
-<dimen name="_3pxv">3.0dp</dimen>
-<dimen name="_4pxv">4.0dp</dimen>
-<dimen name="_5pxv">5.0dp</dimen>
-    <dimen name="_9pxv">9.0dp</dimen>
-<dimen name="_10pxv">10.0dp</dimen>
-    <dimen name="_14pxv">14.0dp</dimen>
-<dimen name="_15pxv">15.0dp</dimen>
-    <dimen name="_21pxv">21.0dp</dimen>
-<dimen name="_22pxv">22.0dp</dimen>
-    <dimen name="_27pxv">27.0dp</dimen>
+    <dimen name="_15pxv">15.0dp</dimen>
     <dimen name="_48pxv">48.0dp</dimen>
-    <dimen name="_58pxv">58.0dp</dimen>
-    <dimen name="_93pxv">93.0dp</dimen>
-    <dimen name="_155pxv">155.0dp</dimen>
-    <dimen name="_316pxv">316.0dp</dimen>
 </resources>

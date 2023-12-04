@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <corners android:radius="8dp" /> <!-- Ajusto el radio -->
+    <solid android:color="#E43B3B" /> <!-- Ajusto el color de fondo del botón -->
+    <stroke android:color="#E43B3B" android:width="2dp" /> <!-- Ajusto el color y el ancho del borde -->
+</shape>
