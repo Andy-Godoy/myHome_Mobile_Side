@@ -106,7 +106,12 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
     }
 
     @Override
-    public void onPropertiesSuccess(Properties propiedad) {
+    public void onPropertiesSuccess(Properties propiedad) {}
+
+    public void onResume() {
+        super.onResume();
+        cardConteiner.removeAllViews();
+        cargarPropiedades();
     }
 
     @Override
@@ -319,5 +324,8 @@ public class ListAgencieProperties extends AppCompatActivity implements Properti
             }
 
         }
+
+
     }
+
 }
