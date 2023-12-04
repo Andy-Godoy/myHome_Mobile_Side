@@ -338,7 +338,7 @@ public class AgenciesProfile extends AppCompatActivity implements AgencyCallBack
                 Toast.makeText(this, "Los cambios fueron realizados con éxito", Toast.LENGTH_SHORT).show();
             }
 
-            if(agency.getAgencyImage() != null && agency.getAgencyImage() != ""){
+            if(agency.getAgencyImage() != null && !agency.getAgencyImage().equals("")){
                 imageUris = agency.getAgencyImage();
                 Picasso.get().load(agency.getAgencyImage()).into(imageViewProfile);
             } else {

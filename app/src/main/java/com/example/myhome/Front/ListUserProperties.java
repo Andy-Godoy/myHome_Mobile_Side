@@ -2,6 +2,8 @@ package com.example.myhome.Front;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -48,6 +51,8 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
     private double longitude;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private final float TIPO_CAMBIO_PESOS = 1000;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +222,32 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
                         Intent intent = new Intent(ListUserProperties.this, DetailUserProperty.class);
                         intent.putExtra("propertyId", propertyId);
                         startActivity(intent);
+                    }
+                });
+
+                propertyCard.findViewById(R.id.propertyImage).setOnClickListener(new View.OnClickListener() {
+
+                    // Establecer clic en eliminar propiedad
+                    public void onClick(View v) {
+                        // Mostramos un mensaje de advertencia al usuario
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListUserProperties.this);
+                        builder.setTitle("Ver Reseñas");
+                        builder.setMessage("¿Queres ingresar a ver las reseñas?");
+                        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent miIntent=new Intent(ListUserProperties.this, ListAgencieReviews.class);
+                                miIntent.putExtra("agencyId", p.getAgencyId().toString());
+                                startActivity(miIntent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hace nada
+                            }
+                        });
+                        builder.show();
                     }
                 });
 
