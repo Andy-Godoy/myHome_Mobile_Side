@@ -22,7 +22,7 @@ minSdkVersion "26"
 targetSdkVersion 33
 
 
-### Librerias
+### Libraries
 implementation("androidx.appcompat:appcompat:1.6.1") //Libreria para el uso de AppCompat
 implementation("com.google.android.material:material:1.10.0")//Libreria para el uso de Material Design
 implementation("androidx.constraintlayout:constraintlayout:2.1.4") //Libreria para el uso de ConstraintLayout
@@ -273,7 +273,3 @@ Godoy Andres
 Guzmán Nydia
 Leto Marcelo
 Salvioli Santiago
-
-
-
-
