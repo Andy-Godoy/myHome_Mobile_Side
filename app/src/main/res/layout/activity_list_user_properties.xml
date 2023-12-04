@@ -56,40 +56,40 @@
             android:layout_marginStart="@dimen/_7pxh"
             android:layout_marginEnd="@dimen/_7pxh"
             android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-            <FrameLayout
-                android:background="@drawable/borde_redondo"
-                android:id="@+id/frameStacksearch"
-                android:layout_width="0dp"
-                android:layout_weight="0.7"
-                android:layout_height="@dimen/_48pxv">
-                <ImageView
-                    android:id="@+id/imageSearch"
-                    android:layout_width="@dimen/_18pxh"
-                    android:layout_height="@dimen/_18pxh"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_14pxh"
-                    android:layout_marginTop="@dimen/_15pxv"
-                    android:layout_marginEnd="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_15pxv"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_search"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_search" />
-            </FrameLayout>
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="280dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:background="@drawable/borde_redondo"
+                    android:drawableStart="@drawable/img_search"
+                    android:drawablePadding="@dimen/_10pxh"
+                    android:hint="@string/buscar"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/btnFilters"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:text="@string/Filtros"
-                android:gravity="center"
+                android:layout_weight="0.2"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@drawable/img_filter"
-                android:foreground="?android:attr/selectableItemBackground" />
+                android:foreground="?android:attr/selectableItemBackground"
+
+                android:text="@string/Filtros" />
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

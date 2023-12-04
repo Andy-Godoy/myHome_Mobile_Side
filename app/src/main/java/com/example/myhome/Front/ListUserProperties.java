@@ -5,9 +5,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +45,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListUserProperties extends AppCompatActivity implements PropertiesCallback {
 
@@ -48,6 +55,7 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
     private double longitude;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private final float TIPO_CAMBIO_PESOS = 1000;
+    private EditText searchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +90,30 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
             return true;
         });
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        View decorView = getWindow().getDecorView();
+        decorView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                int rootViewHeight = decorView.getHeight();
+                int keypadHeight = rootViewHeight - decorView.findViewById(android.R.id.content).getHeight();
+                if (keypadHeight > rootViewHeight * 0.15) {
+                    // Teclado visible, ocultar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.GONE);
+                } else {
+                    // Teclado oculto, mostrar BottomNavigationView
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
+
+        searchEditText = findViewById(R.id.editTextSearch);
         cardContainer = findViewById(R.id.cardContainer);
 
         // Mover la carga de propiedades después de la solicitud de permisos
         loadProperties(null);
+        setupSearchEditText();
     }
 
     private boolean checkLocationPermission() {
@@ -151,7 +179,6 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
 
         PropertyApi propertyApi = new PropertyApi();
         properties = propertyApi.verPropiedades(filters, this);
-
     }
 
     // Este método lo llamamos después de que el usuario responde a la solicitud de permisos
@@ -166,15 +193,12 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
                 Toast.makeText(this, "Permiso denegado, permite la ubicación", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
     private List<String> obtenerUrlsDesdeAzure(String[] propertyImages) {
         List<String> imageUrls = new ArrayList<>();
         if (propertyImages != null && propertyImages.length > 0) {
-            for (String i : propertyImages) {
-                imageUrls.add(i);
-            }
+            Collections.addAll(imageUrls, propertyImages);
 
         }else{
             imageUrls.add("https://storagemyhome.blob.core.windows.net/containermyhome/nodisponible.jpg");
@@ -185,8 +209,17 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
 
     @Override
     public void onPropertiesSuccess(List<PropertySummary> properties) {
+        actualizarVista(properties);
+    }
+
+    private void actualizarVista(List<PropertySummary> properties) {
         cardContainer.removeAllViews();
+
         if (properties != null) {
+            if(this.properties == null){
+                this.properties = properties;
+            }
+
             for (PropertySummary p : properties) {
                 View propertyCard = LayoutInflater.from(this).inflate(R.layout.card_property_user, cardContainer, false);
                 List<String> imageUrls = obtenerUrlsDesdeAzure(p.getPropertyImages());
@@ -209,7 +242,6 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
                 ((TextView) propertyCard.findViewById(R.id.propertyRooms)).setText(p.getPropertyBedroomQuantity().toString().concat(" Habitaciones"));
                 ((TextView) propertyCard.findViewById(R.id.propertyDescription)).setText(p.getPropertyDescription());
                 ((LoopingViewPager) propertyCard.findViewById(R.id.imageSliderSlider)).setAdapter(imageSliderAdapter);
-
                 propertyCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -230,28 +262,20 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
                 Picasso.get().load(imageUrl).into(imageProperty);
 
                 cardContainer.addView(propertyCard);
-
             }
         }
-
     }
 
     @Override
-    public void onPropertiesSuccess(Properties propiedad) {
-
-    }
-
+    public void onPropertiesSuccess(Properties propiedad) {}
     @Override
-    public void onPropertiesFailure(String errorMessage) {
-
-    }
+    public void onPropertiesFailure(String errorMessage) {}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1) {
-
             if (resultCode == RESULT_OK) {
                   if (data != null) {
                     loadProperties((FiltersDTO) data.getSerializableExtra("filters"));
@@ -268,5 +292,43 @@ public class ListUserProperties extends AppCompatActivity implements PropertiesC
     public void onResume() {
         super.onResume();
         loadProperties(null);
+    }
+
+    private void setupSearchEditText() {
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // No necesario para tu caso
+                Log.d("TAG", "beforeTextChanged: " + charSequence.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                filterProperties(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("TAG", "afterTextChanged: " + editable.toString());
+                // No necesario para tu caso
+            }
+        });
+    }
+
+    private void filterProperties(String searchText) {
+        List<PropertySummary> filteredProperties = new ArrayList<>();
+        if(properties!=null){
+            filteredProperties = properties.stream()
+                    .filter(property -> propertyContainsText(property, searchText))
+                    .collect(Collectors.toList());
+        }
+
+        actualizarVista(filteredProperties);
+    }
+
+    private boolean propertyContainsText(PropertySummary property, String searchText) {
+        // Verifica si la descripción de la propiedad contiene el texto de búsqueda
+        String propertyDescription = property.getPropertyAddress().toLowerCase();
+        return propertyDescription.contains(searchText.toLowerCase());
     }
 }
