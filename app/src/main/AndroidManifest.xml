@@ -49,6 +49,9 @@
             android:name=".Front.AgenciesRating"
             android:exported="false" />
         <activity
+            android:name=".Front.ListUserReviews"
+            android:exported="false" />
+        <activity
             android:name=".Front.UploadImageActivity"
             android:exported="false" />
         <activity
