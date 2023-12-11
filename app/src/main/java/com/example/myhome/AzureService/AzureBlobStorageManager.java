@@ -40,9 +40,9 @@ public class AzureBlobStorageManager {
     public AzureBlobStorageManager(Context context) {
         // Se colocan credenciales y URI de almacenamiento
         blobContainerClient = new BlobServiceClientBuilder()
-                .endpoint("https://storagemyhome.blob.core.windows.net")
-                .sasToken("si=full&sv=2022-11-02&sr=c&sig=dceTOJyNNUggF3oEYoEWkdhPRkpM8bmv3%2BNDIx5JS4o%3D")
-                .buildClient().getBlobContainerClient("containermyhome");
+                .endpoint("/*storageURL*/")
+                .sasToken("/*sasToken*/")
+                .buildClient().getBlobContainerClient("/*containerName*/");
 
         this.context = context;
     }
