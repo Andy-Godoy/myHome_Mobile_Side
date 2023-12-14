@@ -48,7 +48,7 @@ public class LoginUser extends AppCompatActivity implements GoogleApiClient.OnCo
         MyHome myHome = (MyHome) getApplication();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // Pedimos el token de autenticación
+                .requestIdToken("") // Pedimos el token de autenticación
                 .requestEmail()
                 .build();
 

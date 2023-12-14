@@ -33,10 +33,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/API_KEY_GEO" />
+            android:value="" />
         <meta-data
             android:name="com.google.android.gms.auth.api.signin.client_id"
-            android:value="@string/API_KEY_AUTH" />
+            android:value="" />
 
         <activity
             android:name=".GoogleService.GoogleMap"
