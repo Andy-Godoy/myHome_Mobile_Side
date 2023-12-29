@@ -56,16 +56,16 @@ public class ForgotPassword extends AppCompatActivity  {
             @Override
             public void run() {
                 //acá configuramos los datos del SMTP para el envío de correo para enviar el código de verificación
-                final String username = "germanhectorfalasco@gmail.com";
-                final String password = "LE6tD8MYyAWbvmOa";
+                final String username = "";
+                final String password = "";
 
                 String recipientEmail = editTextEmail.getText().toString().trim();
 
                 Properties props = new Properties();
-                props.put("mail.smtp.auth", "true");
-                props.put("mail.smtp.starttls.enable", "false");
-                props.put("mail.smtp.host", "smtp-relay.sendinblue.com");
-                props.put("mail.smtp.port", "587");
+                props.put("", "");
+                props.put("", "");
+                props.put("", "");
+                props.put("", "");
 
                 Session session = Session.getInstance(props, new javax.mail.Authenticator() {
                     protected javax.mail.PasswordAuthentication getPasswordAuthentication() {

@@ -40,10 +40,9 @@ public class AzureBlobStorageManager {
     public AzureBlobStorageManager(Context context) {
         // Se colocan credenciales y URI de almacenamiento
         blobContainerClient = new BlobServiceClientBuilder()
-                .endpoint("/*storageURL*/")
-                .sasToken("/*sasToken*/")
-                .buildClient().getBlobContainerClient("/*containerName*/");
-
+                .endpoint("")
+                .sasToken("")
+                .buildClient().getBlobContainerClient("");
         this.context = context;
     }
 
