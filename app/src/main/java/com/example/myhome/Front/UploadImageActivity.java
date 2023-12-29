@@ -50,9 +50,9 @@ public class UploadImageActivity extends AppCompatActivity {
 
         // Credenciales del azure storage
         blobContainerClient = new BlobServiceClientBuilder()
-                .endpoint("https://storagemyhome.blob.core.windows.net")
-                .sasToken("si=full&sv=2022-11-02&sr=c&sig=dceTOJyNNUggF3oEYoEWkdhPRkpM8bmv3%2BNDIx5JS4o%3D")
-                .buildClient().getBlobContainerClient("containermyhome");
+                .endpoint("")
+                .sasToken("")
+                .buildClient().getBlobContainerClient("");
 
         urlTextView = findViewById(R.id.urlTextView);
         imageGridView = findViewById(R.id.imageGridView);

@@ -174,9 +174,9 @@
     <string name="continuar">Continuar</string>
     <string name="back_button_description">Volver</string>
     <string name="reservar">Reservar</string>
-    <string name="API_KEY_AUTH">AIzaSyAHwryriQOzL51C9J5c7UkkwYDB2ls8ng8</string>
-    <string name="default_web_client_id">387896738234-bb0orrv5esi7jt7l7f458g8e29ag2pgc.apps.googleusercontent.com</string>
-    <string name="API_KEY_GEO">AIzaSyCj8X4X3RsPK_3LdoYz-dVlcrle2FYg9O4</string>
+    <string name="API_KEY_AUTH"></string>
+    <string name="default_web_client_id"></string>
+    <string name="API_KEY_GEO"></string>
 
     //****************************************************
     //uso de strings para spinners de activity_new_properties.xml
