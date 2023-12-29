@@ -269,7 +269,11 @@ Para instalar la aplicación, siga estos pasos:
 
 ## Autores Equipo 10
 Falasco Germán
+
 Godoy Andres
+
 Guzmán Nydia
+
 Leto Marcelo
+
 Salvioli Santiago

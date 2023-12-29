@@ -43,7 +43,6 @@ public class AzureBlobStorageManager {
                 .endpoint("")
                 .sasToken("")
                 .buildClient().getBlobContainerClient("");
-
         this.context = context;
     }
 
